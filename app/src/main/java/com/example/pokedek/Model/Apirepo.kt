@@ -12,7 +12,7 @@ class Apirepo() {
     }
 
 
-    suspend fun getsum(id : Int):Response<Pokesummary>{
+    suspend fun getsum(id : String):Response<Pokesummary>{
         return Retrofitbuilder.sumpoke.getsum(id)
     }
 

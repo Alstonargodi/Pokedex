@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/drawable/homebg.xml" value="0.35625" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_pokehom.xml" value="0.33" />
       </map>
     </option>
   </component>

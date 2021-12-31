@@ -18,7 +18,7 @@ interface Getdataapi {
 
     @GET("{id}/")
     suspend fun getsum(
-        @Path("id") id : Int
+        @Path("id") id : String
     ): Response<Pokesummary>
 
 

@@ -14,7 +14,7 @@ class Viewmodelapi (val repo : Apirepo): ViewModel(){
     val listapirespon : MutableLiveData<Response<Pokemon>> = MutableLiveData()
     val sumapirespon : MutableLiveData<Response<Pokesummary>> = MutableLiveData()
 
-    fun getdata(id : Int){
+    fun getdata(id : String){
         viewModelScope.launch{
             val data = repo.getsum(id)
             sumapirespon.value = data
