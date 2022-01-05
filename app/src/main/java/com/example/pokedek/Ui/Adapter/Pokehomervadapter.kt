@@ -1,4 +1,4 @@
-package com.example.pokedek.Ui
+package com.example.pokedek.Ui.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import com.example.pokedek.Model.Room.Entity.Pokemonlist
 import com.example.pokedek.R
 import kotlinx.android.synthetic.main.cv_pokehom.view.*
 
-class Rvpokehomadapter: RecyclerView.Adapter<Rvpokehomadapter.viewholder>() {
+class Pokehomervadapter: RecyclerView.Adapter<Pokehomervadapter.viewholder>() {
 
     var datalist = emptyList<Pokemonlist>()
 

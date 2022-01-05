@@ -18,7 +18,7 @@ Fallbacktodestructive nee when db migrate to new version
 */
 
 
-@Database(entities = [Pokemonlist::class], version = 2, exportSchema = false)
+@Database(entities = [Pokemonlist::class], version = 3, exportSchema = false)
 abstract class Pokedb : RoomDatabase(){
     abstract fun Pokedao() : Pokedao
 

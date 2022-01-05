@@ -1,4 +1,4 @@
-package com.example.pokedek
+package com.example.pokedek.Ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Pokemonlist
-import com.example.pokedek.Ui.Rvpokehomadapter
+import com.example.pokedek.R
+import com.example.pokedek.Ui.Adapter.Pokehomervadapter
 import com.example.pokedek.Viewmodel.Apiviewmodel
 import com.example.pokedek.Viewmodel.Roomviewmodel
 import com.example.pokedek.Viewmodel.Vmodelfactory
@@ -32,7 +33,7 @@ class Homefragment : Fragment() {
         roomviewmodel = ViewModelProvider(this).get(Roomviewmodel::class.java)
 
         listsum = arrayListOf()
-        val adapter = Rvpokehomadapter()
+        val adapter = Pokehomervadapter()
         val recview = view.recpokehom
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(context)
@@ -48,7 +49,9 @@ class Homefragment : Fragment() {
 
                         val sum = Pokemonlist(
                             sumrespon.body()?.name.toString(),
-                            sumrespon.body()?.sprites!!.other.officialArtwork.frontDefault
+                            sumrespon.body()?.sprites!!.other.officialArtwork.frontDefault,
+                            sumrespon.body()?.height.toString(),
+                            sumrespon.body()?.weight.toString()
                         )
                         roomviewmodel.insertpoke(sum)
                     }

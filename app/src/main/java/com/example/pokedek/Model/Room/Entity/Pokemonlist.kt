@@ -11,4 +11,6 @@ data class Pokemonlist(
     @PrimaryKey(autoGenerate = false)
     val nama : String,
     val link : String,
+    val tinggi : String,
+    val berat : String
 ): Parcelable
