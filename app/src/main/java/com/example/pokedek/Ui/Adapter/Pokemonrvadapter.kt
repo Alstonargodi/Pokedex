@@ -3,9 +3,12 @@ package com.example.pokedek.Ui.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Room.Entity.Pokemonlist
 import com.example.pokedek.R
+import com.example.pokedek.Ui.PokemonfragmentDirections
 import kotlinx.android.synthetic.main.cv_pokemon.view.*
 
 class Pokemonrvadapter : RecyclerView.Adapter<Pokemonrvadapter.viewholder>() {
@@ -22,6 +25,15 @@ class Pokemonrvadapter : RecyclerView.Adapter<Pokemonrvadapter.viewholder>() {
         holder.itemView.tvpokemon_name.text = item.nama
         holder.itemView.tvpokemon_height.text = item.tinggi
         holder.itemView.tvpokemon_width.text = item.berat
+
+        Glide.with(holder.itemView.context)
+            .asBitmap()
+            .load(item.link)
+            .into(holder.itemView.imgpokemon_detail)
+
+        holder.itemView.tvpokemon_name.setOnClickListener {
+            holder.itemView.findNavController().navigate(PokemonfragmentDirections.actionPokemonToPokemondetailfragment(item.nama,item.link))
+        }
 
     }
 

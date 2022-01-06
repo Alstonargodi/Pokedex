@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Pokemonlist
@@ -36,13 +37,16 @@ class Pokemonfragment : Fragment() {
 
         //room
         roomviewmodel = ViewModelProvider(this).get(Roomviewmodel::class.java)
-
         roomviewmodel.readpokelist.observe(viewLifecycleOwner, Observer { responpoke->
             adapter.setdata(responpoke)
         })
 
 
-        return  view
+        view.btn_menu.setOnClickListener {
+            findNavController().navigate(PokemonfragmentDirections.actionPokemonToFragmenthome())
+        }
+
+        return view
     }
 
 

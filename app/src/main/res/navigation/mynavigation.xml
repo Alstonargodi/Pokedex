@@ -18,10 +18,40 @@
         <action
             android:id="@+id/action_fragmenthome_to_pokemon"
             app:destination="@id/pokemon" />
+        <action
+            android:id="@+id/action_fragmenthome_to_searchfragment"
+            app:destination="@id/searchfragment" />
     </fragment>
     <fragment
         android:id="@+id/pokemon"
         android:name="com.example.pokedek.Ui.Pokemonfragment"
         android:label="fragment_pokemon"
-        tools:layout="@layout/fragment_pokemon" />
+        tools:layout="@layout/fragment_pokemon" >
+        <action
+            android:id="@+id/action_pokemon_to_fragmenthome"
+            app:destination="@id/fragmenthome" />
+        <action
+            android:id="@+id/action_pokemon_to_pokemondetailfragment"
+            app:destination="@id/pokemondetailfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemondetailfragment"
+        android:name="com.example.pokedek.Pokemondetailfragment"
+        android:label="fragment_pokemondetailfragment"
+        tools:layout="@layout/fragment_pokemondetailfragment" >
+        <action
+            android:id="@+id/action_pokemondetailfragment_to_pokemon"
+            app:destination="@id/pokemon" />
+        <argument
+            android:name="pokemonname"
+            app:argType="string" />
+        <argument
+            android:name="link"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchfragment"
+        android:name="com.example.pokedek.Searchfragment"
+        android:label="fragment_searchfragment"
+        tools:layout="@layout/fragment_searchfragment" />
 </navigation>

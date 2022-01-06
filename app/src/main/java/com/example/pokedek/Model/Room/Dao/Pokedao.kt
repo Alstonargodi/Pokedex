@@ -19,6 +19,6 @@ abstract class Pokedao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertpokelist(Pokemonlist : Pokemonlist)
 
-    @Query("select*from pokemonlist")
+    @Query("select*from pokemonlist order by nama asc")
     abstract fun readpokelist(): LiveData<List<Pokemonlist>>
 }
