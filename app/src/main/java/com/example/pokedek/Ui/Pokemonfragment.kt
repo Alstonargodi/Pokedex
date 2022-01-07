@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -34,6 +36,10 @@ class Pokemonfragment : Fragment() {
         val adapter = Pokemonrvadapter()
         recview.adapter = adapter
         recview.layoutManager= LinearLayoutManager(context)
+
+
+        recview.animate().start()
+
 
         //room
         roomviewmodel = ViewModelProvider(this).get(Roomviewmodel::class.java)
