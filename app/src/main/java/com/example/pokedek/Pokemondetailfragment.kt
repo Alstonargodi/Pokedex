@@ -70,13 +70,17 @@ class Pokemondetailfragment : Fragment() {
                 view.tvdetail_pokem_sdef.setText(sdef!!.toString())
                 view.tvdetail_pokem_spd.setText(spd!!.toString())
 
-
+                //base stat card
                 view.statsbar_HP.progress = HP!!
                 view.statsbar_ATK.progress = atk!!
                 view.statsbar_def.progress = def!!
                 view.statsbar_satk.progress = satk!!
                 view.statsbar_sdef.progress = sdef!!
                 view.statsbar_spd.progress = spd!!
+
+
+
+
             }
 
         })

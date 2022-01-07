@@ -67,6 +67,10 @@ class Homefragment : Fragment() {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToPokemon())
         }
 
+        view.btn_gofind.setOnClickListener {
+            findNavController().navigate(HomefragmentDirections.actionFragmenthomeToSearchfragment())
+        }
+
         return view
     }
 
