@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="plain">#A3A2A0</color>
+    <color name="pokemon">#FFA726</color>
+    <color name="item">#29B6F6</color>
+    <color name="nature">#2CDAB1</color>
+    <color name="berry">#9F5BBA</color>
+
 </resources>

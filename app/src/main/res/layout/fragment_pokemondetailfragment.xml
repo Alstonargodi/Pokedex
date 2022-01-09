@@ -522,7 +522,7 @@
             android:layout_height="41dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="80dp"
             android:fontFamily="@font/poppinsbold"
             android:gravity="center|left"
             android:text="Pokemon"
@@ -547,6 +547,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/back" />
+
+        <Button
+            android:id="@+id/btn_fav"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bookmark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvdetail_pokem_name"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

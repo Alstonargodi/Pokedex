@@ -3,28 +3,50 @@ package com.example.pokedek.Viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedek.Model.Api.Berry.BerryList.Berrylist
+import com.example.pokedek.Model.Api.Pokemon.Pokeablity.Pokeablty
 import com.example.pokedek.Model.Api.Repo.Apirepo
-import com.example.pokedek.Model.Api.Pokemonsum.Pokesummary
-import com.example.pokedek.Model.Api.pokemonlist.Pokemon
+import com.example.pokedek.Model.Api.Pokemon.Pokemonsum.Pokesummary
+import com.example.pokedek.Model.Api.Pokemon.pokemonlist.Pokemonlist
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class Apiviewmodel (val repo : Apirepo): ViewModel(){
-    val listapirespon : MutableLiveData<Response<Pokemon>> = MutableLiveData()
-    val sumapirespon : MutableLiveData<Response<Pokesummary>> = MutableLiveData()
 
-    fun getdata(id : String){
+    val pokelistrespon : MutableLiveData<Response<Pokemonlist>> = MutableLiveData()
+    val pokesumrespon : MutableLiveData<Response<Pokesummary>> = MutableLiveData()
+    val pokeabtrespon : MutableLiveData<Response<Pokeablty>> = MutableLiveData()
+
+    val berrylistrespon : MutableLiveData<Response<Berrylist>> = MutableLiveData()
+
+
+    //pokemon
+    fun getpokelist(){
+        viewModelScope.launch {
+            pokelistrespon.value = repo.getlist()
+        }
+    }
+    fun getpokesum(id : String){
         viewModelScope.launch{
             val data = repo.getsum(id)
-            sumapirespon.value = data
+            pokesumrespon.value = data
+        }
+    }
+    fun getpokeabt(id: String){
+        viewModelScope.launch {
+            val datadua = repo.getability(id)
+            pokeabtrespon.value = datadua
         }
     }
 
-    fun getlist(){
+    //berry
+    fun getberrylist(){
         viewModelScope.launch {
-            val data = repo.getlist()
-            listapirespon.value = data
+            berrylistrespon.value = repo.getberrylist()
         }
     }
+
+
+
 
 }

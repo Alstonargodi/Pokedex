@@ -38,13 +38,13 @@ class Homefragment : Fragment() {
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(context)
 
-        apiviewmodel.getlist()
-        apiviewmodel.listapirespon.observe(viewLifecycleOwner, Observer { listrespon->
+        apiviewmodel.getpokelist()
+        apiviewmodel.pokelistrespon.observe(viewLifecycleOwner, Observer { listrespon->
             val data = listrespon.body()?.results
             for(i in 0 until data!!.size){
                 val nama = data[i].name
-                apiviewmodel.getdata(nama)
-                apiviewmodel.sumapirespon.observe(viewLifecycleOwner, Observer { sumrespon ->
+                apiviewmodel.getpokesum(nama)
+                apiviewmodel.pokesumrespon.observe(viewLifecycleOwner, Observer { sumrespon ->
                     if (sumrespon.isSuccessful){
 
                         val sum = Pokemonlist(
