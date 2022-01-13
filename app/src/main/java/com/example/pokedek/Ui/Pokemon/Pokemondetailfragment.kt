@@ -1,8 +1,7 @@
-package com.example.pokedek
+package com.example.pokedek.Ui.Pokemon
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,25 +9,27 @@ import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Api.Repo.Apirepo
+import com.example.pokedek.R
 import com.example.pokedek.Viewmodel.Apiviewmodel
 import com.example.pokedek.Viewmodel.Vmodelfactory
 import kotlinx.android.synthetic.main.fragment_pokemondetailfragment.view.*
 
-
 class Pokemondetailfragment : Fragment() {
     lateinit var apiviewmodel: Apiviewmodel
 
+    private var moveslist= arrayListOf<String>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_pokemondetailfragment, container, false)
 
+        moveslist = arrayListOf()
         val repo = Apirepo()
         val vmodel = Vmodelfactory(repo)
         apiviewmodel = ViewModelProvider(this,vmodel).get(Apiviewmodel::class.java)
@@ -82,9 +83,7 @@ class Pokemondetailfragment : Fragment() {
                 view.statsbar_sdef.progress = sdef!!
                 view.statsbar_spd.progress = spd!!
 
-
-
-                //todo favorite fragment
+                //ability pokemon dialog
                 view.tvdetail_pokem_absatu.setOnClickListener {
                     val dialog = Abilitydetail_bottomfragment()
                     val sm = ( activity as AppCompatActivity).supportFragmentManager
@@ -95,13 +94,30 @@ class Pokemondetailfragment : Fragment() {
                     dialog.setArguments(args)
                     dialog.show(sm,"abtdialog")
                 }
+
+                //moves pokemon dialog
+                view.tvdetail_pokem_moves.setOnClickListener {
+                    val dialog = Movesdetail_bottomfragment()
+                    val sm = ( activity as AppCompatActivity).supportFragmentManager
+
+                    val args = Bundle()
+                    args.putString("nama",name)
+                    dialog.setArguments(args)
+                    dialog.show(sm,"movesdialog")
+                }
+
             }
         })
 
-
+        //todo favorite btn
         view.btn_fav.setOnClickListener {
             view.btn_fav.setBackgroundResource(R.drawable.bk_full)
         }
+
+        view.btnhom_back.setOnClickListener {
+            findNavController().navigate(PokemondetailfragmentDirections.actionPokemondetailfragmentToSearchfragment())
+        }
+
         return view
     }
 

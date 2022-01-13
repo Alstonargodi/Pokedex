@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.pokedek.Model.Room.Dao.Pokedao
-import com.example.pokedek.Model.Room.Entity.Pokemonlist
+import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 
 /*
 Room database

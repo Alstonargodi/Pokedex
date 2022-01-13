@@ -16,11 +16,10 @@ object Retrofitbuilder {
         pokemonbuild.create(Getdataapi::class.java)
     }
 
-
     //pokemon summary
     val pokemsum by lazy {
         Retrofit.Builder()
-            .baseUrl(Constant.basepoke)
+            .baseUrl(Constant.base)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -31,7 +30,7 @@ object Retrofitbuilder {
     //pokemon ability
     val pokeabt by lazy {
         Retrofit.Builder()
-            .baseUrl(Constant.basepokeabt)
+            .baseUrl(Constant.base)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -40,6 +39,16 @@ object Retrofitbuilder {
         pokeabt.create(Getdataapi::class.java)
     }
 
+    //pokemon moves
+    val pokemoves by lazy {
+        Retrofit.Builder()
+            .baseUrl(Constant.base)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+    val getpokemoves : Getdataapi by lazy {
+        pokemoves.create(Getdataapi::class.java)
+    }
 
     //berrylist
     val berylazy by lazy {
@@ -51,6 +60,31 @@ object Retrofitbuilder {
 
     val getberrylist : Getdataapi by lazy {
         berylazy.create(Getdataapi::class.java)
+    }
+
+    //berrysum
+    val berrysum by lazy {
+        Retrofit.Builder()
+            .baseUrl(Constant.base)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    val getberrysum : Getdataapi by lazy {
+        berrysum.create(Getdataapi::class.java)
+    }
+
+
+    //itemsum
+    val itemsum by lazy {
+        Retrofit.Builder()
+            .baseUrl(Constant.base)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    val getitemsum : Getdataapi by lazy {
+        itemsum.create(Getdataapi::class.java)
     }
 
 }

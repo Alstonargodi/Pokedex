@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Pokemondetailfragment">
+    tools:context=".Ui.Pokemon.Pokemondetailfragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +25,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="200dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="94dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginEnd="100dp"
                 android:fontFamily="@font/poppinslight"
                 android:gravity="center"
@@ -57,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="100dp"
                 android:fontFamily="@font/poppinslight"
                 android:gravity="center"
@@ -75,7 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -259,23 +258,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv">
-
-                <ProgressBar
-                    android:id="@+id/statsbar_HP"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="220dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
-                    android:max="200"
-                    android:progressTint="#42A5F5"
-                    app:layout_constraintStart_toEndOf="@+id/tvhp"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
                     android:id="@+id/statsbar_ATK"
@@ -283,11 +269,81 @@
                     android:layout_width="220dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:max="200"
                     android:progressTint="#42A5F5"
                     app:layout_constraintStart_toEndOf="@+id/tvhp2"
                     app:layout_constraintTop_toBottomOf="@+id/statsbar_HP" />
+
+                <TextView
+                    android:id="@+id/tvdetail_pokem_atk"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/poppinslight"
+                    android:gravity="center"
+                    android:text="ATK"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/statsbar_ATK"
+                    app:layout_constraintTop_toBottomOf="@+id/tvdetail_pokem_hp" />
+
+                <TextView
+                    android:id="@+id/tvhp2"
+                    android:layout_width="40dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:gravity="center"
+                    android:text="ATK"
+                    android:textColor="#29B6F6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvhp" />
+
+                <TextView
+                    android:id="@+id/tvhp"
+                    android:layout_width="40dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppinsbold"
+                    android:gravity="center"
+                    android:text="HP"
+                    android:textColor="#29B6F6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvdetail_pokem_moves" />
+
+                <ProgressBar
+                    android:id="@+id/statsbar_HP"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="220dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:max="200"
+                    android:progressTint="#42A5F5"
+                    app:layout_constraintStart_toEndOf="@+id/tvhp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvdetail_pokem_moves" />
+
+                <TextView
+                    android:id="@+id/tvdetail_pokem_hp"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/poppinslight"
+                    android:gravity="center"
+                    android:text="hp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/statsbar_HP"
+                    app:layout_constraintTop_toBottomOf="@+id/tvdetail_pokem_moves" />
 
                 <ProgressBar
                     android:id="@+id/statsbar_def"
@@ -295,7 +351,7 @@
                     android:layout_width="220dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:max="200"
                     android:progressTint="#42A5F5"
                     app:layout_constraintStart_toEndOf="@+id/tvhp3"
@@ -307,7 +363,7 @@
                     android:layout_width="220dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:max="200"
                     android:progressTint="#42A5F5"
                     app:layout_constraintStart_toEndOf="@+id/tvhp4"
@@ -319,7 +375,7 @@
                     android:layout_width="220dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:max="200"
                     android:progressTint="#42A5F5"
                     app:layout_constraintStart_toEndOf="@+id/tvhp5"
@@ -331,50 +387,18 @@
                     android:layout_width="220dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="16dp"
                     android:max="200"
                     android:progressTint="#42A5F5"
                     app:layout_constraintStart_toEndOf="@+id/tvhp6"
                     app:layout_constraintTop_toBottomOf="@+id/statsbar_sdef" />
 
                 <TextView
-                    android:id="@+id/tvdetail_pokem_hp"
-                    android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/poppinslight"
-                    android:gravity="center"
-                    android:text="hp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/statsbar_HP"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvdetail_pokem_atk"
-                    android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/poppinslight"
-                    android:gravity="center"
-                    android:text="ATK"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/statsbar_ATK"
-                    app:layout_constraintTop_toBottomOf="@+id/tvdetail_pokem_hp" />
-
-                <TextView
                     android:id="@+id/tvdetail_pokem_def"
                     android:layout_width="0dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/poppinslight"
                     android:gravity="center"
@@ -390,7 +414,7 @@
                     android:layout_width="0dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/poppinslight"
                     android:gravity="center"
@@ -406,7 +430,7 @@
                     android:layout_width="0dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/poppinslight"
                     android:gravity="center"
@@ -422,49 +446,23 @@
                     android:layout_width="0dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/poppinslight"
                     android:gravity="center"
                     android:text="spd"
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/statsbar_spd"
                     app:layout_constraintTop_toBottomOf="@+id/tvdetail_pokem_sdef" />
-
-                <TextView
-                    android:id="@+id/tvhp"
-                    android:layout_width="40dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:gravity="center"
-                    android:text="HP"
-                    android:textColor="#29B6F6"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvhp2"
-                    android:layout_width="40dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppinsbold"
-                    android:gravity="center"
-                    android:text="ATK"
-                    android:textColor="#29B6F6"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvhp" />
 
                 <TextView
                     android:id="@+id/tvhp3"
                     android:layout_width="40dp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="12dp"
                     android:fontFamily="@font/poppinsbold"
                     android:gravity="center"
                     android:text="DEF"
@@ -476,7 +474,7 @@
                     android:id="@+id/tvhp4"
                     android:layout_width="40dp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/poppinsbold"
                     android:gravity="center"
@@ -489,8 +487,8 @@
                     android:id="@+id/tvhp5"
                     android:layout_width="40dp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppinsbold"
                     android:gravity="center"
                     android:text="SDEF"
@@ -502,16 +500,31 @@
                     android:id="@+id/tvhp6"
                     android:layout_width="40dp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="22dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:fontFamily="@font/poppinsbold"
                     android:gravity="center"
                     android:text="SPD"
                     android:textColor="#29B6F6"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvhp5" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvhp5"
+                    app:layout_constraintVertical_bias="0.13999999" />
+
+                <TextView
+                    android:id="@+id/tvdetail_pokem_moves"
+                    android:layout_width="0dp"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center|left"
+                    android:text="Moves"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -531,11 +544,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.22"
-            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintStart_toEndOf="@+id/btnhom_back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/btnhom_back"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -577,5 +590,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
         app:layout_constraintVertical_bias="0.13999999" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.example.pokedek.Model.Room.Repo
 
 import androidx.lifecycle.LiveData
 import com.example.pokedek.Model.Room.Dao.Pokedao
-import com.example.pokedek.Model.Room.Entity.Pokemonlist
+import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 
 /*
  Repo class

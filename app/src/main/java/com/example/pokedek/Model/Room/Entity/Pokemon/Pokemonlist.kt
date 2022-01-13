@@ -1,4 +1,4 @@
-package com.example.pokedek.Model.Room.Entity
+package com.example.pokedek.Model.Room.Entity.Pokemon
 
 import android.os.Parcelable
 import androidx.room.Entity

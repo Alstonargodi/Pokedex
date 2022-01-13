@@ -1,4 +1,4 @@
-package com.example.pokedek.Ui.Adapter
+package com.example.pokedek.Ui.Pokemon.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.Model.Room.Entity.Pokemonlist
+import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 import com.example.pokedek.R
-import com.example.pokedek.Ui.PokemonfragmentDirections
+import com.example.pokedek.Ui.Pokemon.PokemonfragmentDirections
 import kotlinx.android.synthetic.main.cv_pokemon.view.*
 
 class Pokemonrvadapter : RecyclerView.Adapter<Pokemonrvadapter.viewholder>() {
