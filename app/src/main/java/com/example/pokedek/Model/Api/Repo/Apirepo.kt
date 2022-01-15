@@ -13,8 +13,8 @@ import retrofit2.Response
 class Apirepo() {
 
     //pokemon
-    suspend fun getlist(): Response<Pokemonlist>{
-        return Retrofitbuilder.getpokemonlist.getlist()
+    suspend fun getlist(page : Int,limit : Int): Response<Pokemonlist>{
+        return Retrofitbuilder.getpokemonlist.getlist(page,limit)
     }
     suspend fun getsum(id : String):Response<Pokesummary>{
         return Retrofitbuilder.getpokesum.getsum(id)
@@ -27,8 +27,8 @@ class Apirepo() {
     }
 
     //berry
-    suspend fun getberrylist(): Response<Berrylist>{
-        return Retrofitbuilder.getberrylist.getberrylist()
+    suspend fun getberrylist(page : Int,limit : Int): Response<Berrylist>{
+        return Retrofitbuilder.getberrylist.getberrylist(page,limit)
     }
     suspend fun getberrysum(id : String): Response<Berrysum>{
         return Retrofitbuilder.getberrysum.getberrysum(id)

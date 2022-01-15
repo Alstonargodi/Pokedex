@@ -68,5 +68,26 @@
         android:id="@+id/berryfragment"
         android:name="com.example.pokedek.Ui.Berry.Berryfragment"
         android:label="fragment_berryfragment"
-        tools:layout="@layout/fragment_berryfragment" />
+        tools:layout="@layout/fragment_berryfragment" >
+        <action
+            android:id="@+id/action_berryfragment_to_berrydetailfragment"
+            app:destination="@id/berrydetailfragment" />
+        <action
+            android:id="@+id/action_berryfragment_to_fragmenthome"
+            app:destination="@id/fragmenthome" />
+    </fragment>
+    <fragment
+        android:id="@+id/berrydetailfragment"
+        android:name="com.example.pokedek.Berrydetailfragment"
+        android:label="fragment_berrydetailfragment"
+        tools:layout="@layout/fragment_berrydetailfragment" >
+        <action
+            android:id="@+id/action_berrydetailfragment_to_berryfragment"
+            app:destination="@id/berryfragment" />
+        <argument android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="link"
+            app:argType="string" />
+    </fragment>
 </navigation>

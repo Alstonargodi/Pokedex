@@ -63,7 +63,7 @@ class Homefragment : Fragment() {
         isloading = true
         view?.pbar_pokehome?.visibility = View.VISIBLE
 
-        apiviewmodel.getpokelist()
+        apiviewmodel.getpokelist(0,5)
         apiviewmodel.pokelistrespon.observe(viewLifecycleOwner, Observer { listrespon->
             if(listrespon.isSuccessful){
                 val data = listrespon.body()?.results
@@ -79,8 +79,14 @@ class Homefragment : Fragment() {
                                 sumrespon.body()?.height.toString(),
                                 sumrespon.body()?.weight.toString()
                             )
-                            roomviewmodel.insertpoke(sum)
+
+                            listsum.add(sum)
+                            adapter.setdata(listsum)
+                            view?.pbar_pokehome?.visibility = View.INVISIBLE
                         }else{
+                            view?.recpokehom?.setPadding(10,20,10,20)
+                            view?.recpokehom?.setBackgroundResource(R.drawable.emptyview)
+                            view?.pbar_pokehome?.visibility = View.INVISIBLE
                             Log.d("homepoke","cannot retrive sum data")
                         }
                     })
@@ -89,19 +95,6 @@ class Homefragment : Fragment() {
                 Log.d("homepoke","cannot retrive list data")
             }
         })
-
-        roomviewmodel.readpokelist.observe(viewLifecycleOwner, Observer {  roomrespon ->
-            if (roomrespon.isNullOrEmpty()){
-                Log.d("Room home","Room data is empty")
-                view?.recpokehom?.setPadding(10,20,10,20)
-                view?.recpokehom?.setBackgroundResource(R.drawable.emptyview)
-                view?.pbar_pokehome?.visibility = View.INVISIBLE
-            }else{
-                adapter.setdata(roomrespon)
-                view?.pbar_pokehome?.visibility = View.INVISIBLE
-            }
-        })
-
     }
 
 }

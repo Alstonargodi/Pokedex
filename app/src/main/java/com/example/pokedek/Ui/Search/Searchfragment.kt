@@ -77,7 +77,7 @@ class Searchfragment : Fragment() {
         val vmf = Vmodelfactory(repo)
         apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
 
-        apiviewmodel.getberrylist()
+        apiviewmodel.getberrylist(0,10)
         apiviewmodel.berrylistrespon.observe(viewLifecycleOwner, Observer { responberry->
             Log.d("berryrespon",responberry.body()?.results?.get(0)!!.name)
         })

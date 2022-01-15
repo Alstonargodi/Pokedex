@@ -13,14 +13,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 //"https://pokeapi.co/api/v2"
-
 interface Getdataapi {
 
     //Pokemon list
     @GET("pokemon")
     suspend fun getlist(
-        @Query("offset") off : Int = 5,
-        @Query("limit") limit : Int = 5,
+        @Query("offset") off : Int,
+        @Query("limit") limit : Int,
     ): Response<Pokemonlist>
 
     //Pokemon Summary
@@ -42,9 +41,13 @@ interface Getdataapi {
     ): Response<Pokemoves>
 
 
+
     //Berry list
     @GET("berry")
-    suspend fun getberrylist():Response<Berrylist>
+    suspend fun getberrylist(
+        @Query("offset") off : Int,
+        @Query("limit") limit : Int,
+    ):Response<Berrylist>
 
 
     //berrysum

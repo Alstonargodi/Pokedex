@@ -27,9 +27,9 @@ class Apiviewmodel (val repo : Apirepo): ViewModel(){
     val itemsumrespon : MutableLiveData<Response<Itemsum>> = MutableLiveData()
 
     //pokemon
-    fun getpokelist(){
+    fun getpokelist(page: Int,limit: Int){
         viewModelScope.launch {
-            pokelistrespon.value = repo.getlist()
+            pokelistrespon.value = repo.getlist(page, limit)
         }
     }
     fun getpokesum(id : String){
@@ -48,11 +48,10 @@ class Apiviewmodel (val repo : Apirepo): ViewModel(){
         }
     }
 
-
     //berry
-    fun getberrylist(){
+    fun getberrylist(page: Int,limit: Int){
         viewModelScope.launch {
-            berrylistrespon.value = repo.getberrylist()
+            berrylistrespon.value = repo.getberrylist(page, limit)
         }
     }
 

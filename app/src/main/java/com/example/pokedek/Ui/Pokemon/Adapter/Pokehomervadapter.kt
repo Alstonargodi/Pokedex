@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.cv_pokehom.view.*
 
 class Pokehomervadapter: RecyclerView.Adapter<Pokehomervadapter.viewholder>() {
 
-    var datalist = emptyList<Pokemonlist>()
+    var datalist = emptyList<Pokemonlist>().distinct()
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
 
@@ -34,7 +34,7 @@ class Pokehomervadapter: RecyclerView.Adapter<Pokehomervadapter.viewholder>() {
     }
 
     fun setdata(data : List<Pokemonlist>){
-        datalist = data
+        datalist = data.distinct()
         notifyDataSetChanged()
     }
 }

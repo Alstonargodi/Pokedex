@@ -12,7 +12,7 @@ import com.example.pokedek.Ui.Pokemon.PokemonfragmentDirections
 import kotlinx.android.synthetic.main.cv_pokemon.view.*
 
 class Pokemonrvadapter : RecyclerView.Adapter<Pokemonrvadapter.viewholder>() {
-    var datalist = emptyList<Pokemonlist>()
+    var datalist = emptyList<Pokemonlist>().distinct()
 
     class viewholder(view : View):RecyclerView.ViewHolder(view)
 
@@ -42,7 +42,7 @@ class Pokemonrvadapter : RecyclerView.Adapter<Pokemonrvadapter.viewholder>() {
     }
 
     fun setdata(data : List<Pokemonlist>){
-        datalist = data
+        datalist = data.distinct()
         notifyDataSetChanged()
     }
 

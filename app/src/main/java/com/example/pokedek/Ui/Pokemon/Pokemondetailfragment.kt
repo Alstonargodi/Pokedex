@@ -115,7 +115,7 @@ class Pokemondetailfragment : Fragment() {
         }
 
         view.btnhom_back.setOnClickListener {
-            findNavController().navigate(PokemondetailfragmentDirections.actionPokemondetailfragmentToSearchfragment())
+            findNavController().navigate(PokemondetailfragmentDirections.actionPokemondetailfragmentToPokemon())
         }
 
         return view
