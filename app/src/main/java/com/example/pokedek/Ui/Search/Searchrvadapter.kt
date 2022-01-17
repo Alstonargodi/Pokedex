@@ -1,37 +1,76 @@
 package com.example.pokedek.Ui.Search
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemondetail
-import com.example.pokedek.Model.Room.Entity.Search.Searchlist
 import com.example.pokedek.R
+import com.example.pokedek.databinding.CvrecSearchBinding
 import kotlinx.android.synthetic.main.cvrec_search.view.*
+import java.util.*
 import kotlin.collections.ArrayList
 
-class Searchrvadapter: RecyclerView.Adapter<Searchrvadapter.viewholder>() {
-    var datalist = ArrayList<Searchlist>().distinct()
+class Searchrvadapter(private var datalist : ArrayList<String>): RecyclerView.Adapter<RecyclerView.ViewHolder>(),Filterable {
 
+    var arrList = ArrayList<String>()
+    lateinit var mContext: Context
 
-    class viewholder(view : View): RecyclerView.ViewHolder(view) {}
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewholder {
-        return viewholder(LayoutInflater.from(parent.context).inflate(R.layout.cvrec_search,parent,false))
+    class CountryHolder(var viewBinding: CvrecSearchBinding) : RecyclerView.ViewHolder(viewBinding.root)
+    init {
+        arrList = datalist
     }
 
-    override fun onBindViewHolder(holder: viewholder, position: Int) {
-        val item = datalist[position]
-        holder.itemView.tv_listsearch.text = item.name
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val binding = CvrecSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val sch = CountryHolder(binding)
+        mContext = parent.context
+        return sch
     }
 
     override fun getItemCount(): Int {
-        return datalist.size
+        return arrList.size
     }
 
-    fun setdata(list : ArrayList<Searchlist>){
-        datalist = list.distinct()
-        notifyDataSetChanged()
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val countryHolder = holder as CountryHolder
+        countryHolder.viewBinding.tvListsearch.text = arrList[position]
     }
+
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                var charsearch = p0.toString()
+                if (charsearch.isEmpty()){
+                    arrList = datalist
+                }else{
+                    val resultlist = ArrayList<String>()
+                    for (row in datalist){
+                        if (row.lowercase(Locale.ROOT).contains(charsearch.lowercase(Locale.ROOT))){
+                            resultlist.add(row)
+                        }
+                    }
+                    arrList = resultlist
+                }
+                val filterresult = FilterResults()
+                filterresult.values = arrList
+                return filterresult
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+                arrList = p1?.values as ArrayList<String>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
+
 
 }
