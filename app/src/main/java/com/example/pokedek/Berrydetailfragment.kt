@@ -66,7 +66,9 @@ class Berrydetailfragment : Fragment() {
         apiviewmodel.itemsumrespon.observe(viewLifecycleOwner, Observer { itemberry ->
             if (itemberry.isSuccessful){
                 val effect = itemberry.body()?.effectEntries?.get(0)?.effect.toString()
+                val cost = itemberry.body()?.cost.toString()
                 binding.tvdetailBerryEffect.setText(effect)
+                binding.tvdetailBerryCost.setText(cost)
             }else{
                 Log.d("itemberry","cannot get data itemberry")
             }

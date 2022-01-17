@@ -30,6 +30,9 @@ class Apiviewmodel (val repo : Apirepo): ViewModel(){
     fun getpokelist(page: Int,limit: Int){
         viewModelScope.launch {
             pokelistrespon.value = repo.getlist(page, limit)
+            when(pokelistrespon){
+
+            }
         }
     }
     fun getpokesum(id : String){
