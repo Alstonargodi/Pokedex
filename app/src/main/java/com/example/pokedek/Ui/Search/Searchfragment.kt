@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,11 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Search.Searchlist
 import com.example.pokedek.R
-import com.example.pokedek.Viewmodel.Apiviewmodel
-import com.example.pokedek.Viewmodel.Vmodelfactory
+import com.example.pokedek.Viewmodel.Api.Apiviewmodel
+import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.databinding.FragmentSearchfragmentBinding
 import kotlinx.android.synthetic.main.fragment_searchfragment.view.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class Searchfragment : Fragment() {

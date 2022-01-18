@@ -1,4 +1,4 @@
-package com.example.pokedek.Viewmodel
+package com.example.pokedek.Viewmodel.Api
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

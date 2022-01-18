@@ -14,10 +14,8 @@ import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 import com.example.pokedek.R
 import com.example.pokedek.Ui.Pokemon.Adapter.Pokemonrvadapter
-import com.example.pokedek.Viewmodel.Apiviewmodel
-import com.example.pokedek.Viewmodel.Roomviewmodel
-import com.example.pokedek.Viewmodel.Vmodelfactory
-import kotlinx.android.synthetic.main.fragment_fragmenthome.view.*
+import com.example.pokedek.Viewmodel.Api.Apiviewmodel
+import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import kotlinx.android.synthetic.main.fragment_pokemon.view.*
 
 

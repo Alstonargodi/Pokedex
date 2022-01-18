@@ -15,8 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.R
-import com.example.pokedek.Viewmodel.Apiviewmodel
-import com.example.pokedek.Viewmodel.Vmodelfactory
+import com.example.pokedek.Viewmodel.Api.Apiviewmodel
+import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import kotlinx.android.synthetic.main.fragment_pokemondetailfragment.view.*
 
 class Pokemondetailfragment : Fragment() {

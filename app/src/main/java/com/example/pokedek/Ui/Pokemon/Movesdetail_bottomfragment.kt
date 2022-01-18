@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonmoves
 import com.example.pokedek.Ui.Pokemon.Adapter.Pokemonmovesrvadapter
-import com.example.pokedek.Viewmodel.Apiviewmodel
-import com.example.pokedek.Viewmodel.Vmodelfactory
+import com.example.pokedek.Viewmodel.Api.Apiviewmodel
+import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.databinding.MovesdetailbottomfragmentBinding
 
 class Movesdetail_bottomfragment : BottomSheetDialogFragment() {

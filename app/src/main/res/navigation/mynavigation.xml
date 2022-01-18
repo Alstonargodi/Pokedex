@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_fragmenthome_to_berryfragment"
             app:destination="@id/berryfragment" />
+        <action
+            android:id="@+id/action_fragmenthome_to_favoritefragment"
+            app:destination="@id/favoritefragment" />
     </fragment>
     <fragment
         android:id="@+id/pokemon"
@@ -51,6 +54,12 @@
         <action
             android:id="@+id/action_pokemondetailfragment_to_searchfragment"
             app:destination="@id/searchfragment" />
+        <action
+            android:id="@+id/action_pokemondetailfragment_to_abilitydetail_bottomfragment"
+            app:destination="@id/abilitydetail_bottomfragment" />
+        <action
+            android:id="@+id/action_pokemondetailfragment_to_movesdetail_bottomfragment"
+            app:destination="@id/movesdetail_bottomfragment" />
     </fragment>
     <fragment
         android:id="@+id/searchfragment"
@@ -78,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/berrydetailfragment"
-        android:name="com.example.pokedek.Berrydetailfragment"
+        android:name="com.example.pokedek.Ui.Berry.Berrydetailfragment"
         android:label="fragment_berrydetailfragment"
         tools:layout="@layout/fragment_berrydetailfragment" >
         <action
@@ -87,4 +96,24 @@
         <argument android:name="name"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/favoritefragment"
+        android:name="com.example.pokedek.Favoritefragment"
+        android:label="fragment_favoritefragment"
+        tools:layout="@layout/fragment_favoritefragment" />
+    <fragment
+        android:id="@+id/abilitydetail_bottomfragment"
+        android:name="com.example.pokedek.Ui.Pokemon.Abilitydetail_bottomfragment"
+        android:label="abilitydetailbottomfragment"
+        tools:layout="@layout/abilitydetailbottomfragment" />
+    <fragment
+        android:id="@+id/movesdetail_bottomfragment"
+        android:name="com.example.pokedek.Ui.Pokemon.Movesdetail_bottomfragment"
+        android:label="movesdetailbottomfragment"
+        tools:layout="@layout/movesdetailbottomfragment" />
+    <activity
+        android:id="@+id/splashscreen"
+        android:name="com.example.pokedek.Splashscreen"
+        android:label="activity_splashscreen"
+        tools:layout="@layout/activity_splashscreen" />
 </navigation>

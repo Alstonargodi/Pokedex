@@ -1,4 +1,4 @@
-package com.example.pokedek
+package com.example.pokedek.Ui.Berry
 
 import android.os.Bundle
 import android.util.Log
@@ -11,11 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Api.Repo.Apirepo
-import com.example.pokedek.Model.Room.Entity.Berry.Berrylist
-import com.example.pokedek.Viewmodel.Apiviewmodel
-import com.example.pokedek.Viewmodel.Vmodelfactory
+import com.example.pokedek.Viewmodel.Api.Apiviewmodel
+import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.databinding.FragmentBerrydetailfragmentBinding
-import com.example.pokedek.databinding.FragmentBerryfragmentBinding
 
 
 class Berrydetailfragment : Fragment() {

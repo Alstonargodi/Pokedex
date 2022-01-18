@@ -11,14 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.Model.Api.Berry.Berysum.Berrysum
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Berry.Berrylist
-import com.example.pokedek.R
-import com.example.pokedek.Viewmodel.Apiviewmodel
-import com.example.pokedek.Viewmodel.Vmodelfactory
+import com.example.pokedek.Viewmodel.Api.Apiviewmodel
+import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.databinding.FragmentBerryfragmentBinding
-import kotlinx.android.synthetic.main.fragment_berryfragment.view.*
 
 class Berryfragment : Fragment() {
     private var _binding: FragmentBerryfragmentBinding? = null
