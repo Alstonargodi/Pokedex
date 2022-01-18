@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedek.R
 import com.example.pokedek.databinding.CvrecSearchBinding
@@ -22,14 +23,14 @@ class Searchrvadapter(private var datalist : ArrayList<String>): RecyclerView.Ad
     var arrList = ArrayList<String>()
     lateinit var mContext: Context
 
-    class CountryHolder(var viewBinding: CvrecSearchBinding) : RecyclerView.ViewHolder(viewBinding.root)
+    class RecHolder(var viewBinding: CvrecSearchBinding) : RecyclerView.ViewHolder(viewBinding.root)
     init {
         arrList = datalist
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = CvrecSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val sch = CountryHolder(binding)
+        val sch = RecHolder(binding)
         mContext = parent.context
         return sch
     }
@@ -39,8 +40,21 @@ class Searchrvadapter(private var datalist : ArrayList<String>): RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val countryHolder = holder as CountryHolder
+        val countryHolder = holder as RecHolder
         countryHolder.viewBinding.tvListsearch.text = arrList[position]
+
+        holder.viewBinding.tvListsearch.setOnClickListener {
+            val name = arrList[position]
+
+            if (name.contains("pokemon")){
+                val filname = name.replace("pokemon","").filter { !it.isWhitespace() }
+                holder.itemView.findNavController().navigate(SearchfragmentDirections.actionSearchfragmentToPokemondetailfragment(filname))
+
+            }else if (name.contains("-berry")){
+                val filname = name
+                holder.itemView.findNavController().navigate(SearchfragmentDirections.actionSearchfragmentToBerrydetailfragment(filname))
+            }
+        }
     }
 
     override fun getFilter(): Filter {

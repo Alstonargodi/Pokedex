@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Api.Repo.Apirepo
+import com.example.pokedek.Model.Room.Entity.Berry.Berrylist
 import com.example.pokedek.Viewmodel.Apiviewmodel
 import com.example.pokedek.Viewmodel.Vmodelfactory
 import com.example.pokedek.databinding.FragmentBerrydetailfragmentBinding
@@ -36,12 +37,9 @@ class Berrydetailfragment : Fragment() {
         apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
 
         val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
-        val link = BerrydetailfragmentArgs.fromBundle(requireArguments()).link
+
         binding.tvdetailBerryName.setText(nama)
-        Glide.with(requireContext())
-            .asBitmap()
-            .load(link)
-            .into(binding.imgdetailBerry)
+
 
         binding.btnhomBackBerry.setOnClickListener {
             findNavController().navigate(BerrydetailfragmentDirections.actionBerrydetailfragmentToBerryfragment())
@@ -55,25 +53,28 @@ class Berrydetailfragment : Fragment() {
     fun getberrydetail(){
 
         val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
-        val link = BerrydetailfragmentArgs.fromBundle(requireArguments()).link
         binding.tvdetailBerryName.setText(nama)
-        Glide.with(requireContext())
-            .asBitmap()
-            .load(link)
-            .into(binding.imgdetailBerry)
 
         apiviewmodel.getitemsum(nama)
         apiviewmodel.itemsumrespon.observe(viewLifecycleOwner, Observer { itemberry ->
             if (itemberry.isSuccessful){
                 val effect = itemberry.body()?.effectEntries?.get(0)?.effect.toString()
                 val cost = itemberry.body()?.cost.toString()
+                val link = itemberry.body()?.sprites?.default.toString()
+
                 binding.tvdetailBerryEffect.setText(effect)
                 binding.tvdetailBerryCost.setText(cost)
+
+                Glide.with(requireContext())
+                    .asBitmap()
+                    .load(link)
+                    .into(binding.imgdetailBerry)
             }else{
                 Log.d("itemberry","cannot get data itemberry")
             }
         })
-
     }
+
+
 
 }

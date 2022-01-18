@@ -81,6 +81,7 @@ class Pokemonfragment : Fragment() {
                             arrayList.add(sum)
                             adapter.setdata(arrayList)
                             view?.progressbarpoke?.visibility = View.INVISIBLE
+
                         }else{
                             view?.recyclerviewpoke?.setPadding(10,20,10,20)
                             view?.recyclerviewpoke?.setBackgroundResource(R.drawable.emptyview)

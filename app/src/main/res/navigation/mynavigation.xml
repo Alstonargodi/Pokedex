@@ -48,9 +48,6 @@
         <argument
             android:name="pokemonname"
             app:argType="string" />
-        <argument
-            android:name="link"
-            app:argType="string" />
         <action
             android:id="@+id/action_pokemondetailfragment_to_searchfragment"
             app:destination="@id/searchfragment" />
@@ -63,6 +60,9 @@
         <action
             android:id="@+id/action_searchfragment_to_pokemondetailfragment"
             app:destination="@id/pokemondetailfragment" />
+        <action
+            android:id="@+id/action_searchfragment_to_berrydetailfragment"
+            app:destination="@id/berrydetailfragment" />
     </fragment>
     <fragment
         android:id="@+id/berryfragment"
@@ -85,9 +85,6 @@
             android:id="@+id/action_berrydetailfragment_to_berryfragment"
             app:destination="@id/berryfragment" />
         <argument android:name="name"
-            app:argType="string" />
-        <argument
-            android:name="link"
             app:argType="string" />
     </fragment>
 </navigation>

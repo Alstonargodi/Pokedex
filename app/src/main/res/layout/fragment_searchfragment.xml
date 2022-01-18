@@ -19,12 +19,12 @@
             android:id="@+id/constraintLayout6"
             android:layout_width="0dp"
             android:layout_height="49dp"
-            android:background="#CBC9C9"
+            android:background="#C4C3C3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <SearchView
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/etsearch_fragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -36,40 +36,58 @@
                 android:backgroundTint="#EDE9E9"
                 android:hint="Find pokemon"
                 android:padding="4dp"
+                android:textCursorDrawable="@null"
                 android:textSize="16sp"
+                app:iconifiedByDefault="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryBackground="@null" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout8"
             android:layout_width="0dp"
             android:layout_height="37dp"
-            android:background="#EEEEEE"
+            android:background="#F2F0F0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
 
             <TextView
                 android:id="@+id/btn_kat_poke"
-                android:layout_width="86dp"
+                android:layout_width="75dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:text="Pokemon"
                 android:textColor="#A3A2A0"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_kat_all"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/btn_kat_all"
+                android:layout_width="75dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="4dp"
+                android:gravity="center"
+                android:text="All"
+                android:textColor="#A3A2A0"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/btn_kat_item"
-                android:layout_width="86dp"
+                android:layout_width="75dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:text="item"
                 android:textColor="#A3A2A0"
@@ -81,9 +99,9 @@
 
             <TextView
                 android:id="@+id/btn_kat_nature"
-                android:layout_width="86dp"
+                android:layout_width="75dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:text="nature"
                 android:textColor="#A3A2A0"
@@ -95,13 +113,17 @@
 
             <TextView
                 android:id="@+id/btn_kat_berry"
-                android:layout_width="86dp"
-                android:layout_height="0dp"
+                android:layout_width="75dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="5dp"
                 android:gravity="center"
                 android:text="berry"
                 android:textColor="#A3A2A0"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/btn_kat_nature"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />

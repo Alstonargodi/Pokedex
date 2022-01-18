@@ -1,6 +1,7 @@
 package com.example.pokedek.Ui.Search
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -29,9 +31,6 @@ class Searchfragment : Fragment() {
     lateinit var apiviewmodel: Apiviewmodel
     lateinit var adapter : Searchrvadapter
 
-    private var isrefresh = false
-    private var choice = ""
-
     private var datalist = ArrayList<String>()
     @SuppressLint("ResourceAsColor")
     override fun onCreateView(
@@ -47,9 +46,8 @@ class Searchfragment : Fragment() {
         apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
 
 
-
-
-        binding.etsearchFragment.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        //searchview
+        binding.etsearchFragment.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
@@ -60,7 +58,13 @@ class Searchfragment : Fragment() {
                 }
         })
 
-        pokemonlist()
+        val textviewsrc = binding.etsearchFragment.findViewById<TextView>(R.id.search_src_text)
+        textviewsrc.setTextColor(Color.WHITE)
+
+
+
+
+        listall()
 
         binding.btnKatPoke.setOnClickListener {
             datalist.clear()
@@ -71,15 +75,14 @@ class Searchfragment : Fragment() {
             view.btn_kat_item.setTextColor(R.color.plain)
         }
 
-
-        view.btn_kat_nature.setOnClickListener {
+        binding.btnKatNature.setOnClickListener {
             view.btn_kat_nature.setTextColor(R.color.nature)
             view.btn_kat_poke.setTextColor(R.color.plain)
             view.btn_kat_berry.setTextColor(R.color.plain)
             view.btn_kat_item.setTextColor(R.color.plain)
         }
 
-        view.btn_kat_berry.setOnClickListener {
+        binding.btnKatBerry.setOnClickListener {
             val name = binding.etsearchFragment.toString()
             if (name.isNotEmpty()){
                 berrysearch(name)
@@ -92,15 +95,26 @@ class Searchfragment : Fragment() {
             view.btn_kat_item.setTextColor(R.color.plain)
         }
 
-        view.btn_kat_item.setOnClickListener {
+        binding.btnKatItem.setOnClickListener {
             view.btn_kat_item.setTextColor(R.color.item)
             view.btn_kat_nature.setTextColor(R.color.plain)
             view.btn_kat_berry.setTextColor(R.color.plain)
             view.btn_kat_item.setTextColor(R.color.plain)
         }
 
-
         return view
+    }
+
+    @SuppressLint("ResourceAsColor")
+    fun listall(){
+        binding.btnKatPoke.setTextColor(R.color.white)
+        binding.btnKatBerry.setTextColor(R.color.white)
+        binding.btnKatNature.setTextColor(R.color.white)
+        binding.btnKatItem.setTextColor(R.color.white)
+        binding.btnKatAll.setTextColor(R.color.black)
+
+        pokemonlist()
+        berrylist()
     }
 
     //pokemon
@@ -111,7 +125,7 @@ class Searchfragment : Fragment() {
                 val name = psumsearch.body()?.name
                 val link = psumsearch.body()?.sprites!!.other.officialArtwork.frontDefault
 
-                findNavController().navigate(SearchfragmentDirections.actionSearchfragmentToPokemondetailfragment(name.toString(),link.toString()))
+                findNavController().navigate(SearchfragmentDirections.actionSearchfragmentToPokemondetailfragment(name.toString()))
             }else{
                 Log.d("sumsearchrespom","not success")
             }
@@ -121,21 +135,22 @@ class Searchfragment : Fragment() {
         //adapter
         val recview = binding.recviewSearch
         recview.layoutManager = LinearLayoutManager(requireContext())
-//        binding.pbarSearchpoke.visibility = View.VISIBLE
-        apiviewmodel.getpokelist(0,30)
+        binding.pbarSearchpoke.visibility = View.VISIBLE
+
+        apiviewmodel.getpokelist(0,1000)
         apiviewmodel.pokelistrespon.observe(viewLifecycleOwner, Observer {  plistsearch ->
             try {
                 if (plistsearch.isSuccessful){
 
                     val data = plistsearch.body()?.results
                     for (i in data!!.indices){
-                        val nama = data[i].name
+                        val nama = data[i].name + " pokemon"
 
                         val list= Searchlist(
                             nama
                         )
                         datalist.add(nama)
-//                        binding.pbarSearchpoke.visibility = View.INVISIBLE
+                        binding.pbarSearchpoke.visibility = View.INVISIBLE
                         adapter = Searchrvadapter(datalist)
                         recview.adapter = adapter
                     }
@@ -158,22 +173,26 @@ class Searchfragment : Fragment() {
         })
     }
     fun berrylist(){
-//        binding.pbarSearchpoke.visibility = View.VISIBLE
-        apiviewmodel.getberrylist(0,10)
+        binding.pbarSearchpoke.visibility = View.VISIBLE
+        val recview = binding.recviewSearch
+        recview.layoutManager = LinearLayoutManager(requireContext())
+
+        apiviewmodel.getberrylist(0,1000)
         apiviewmodel.berrylistrespon.observe(viewLifecycleOwner, Observer { blistsearch ->
             try {
                 if (blistsearch.isSuccessful){
                     val data = blistsearch.body()?.results
                     for (i in data!!.indices){
-                        val name = data[i].name
+                        val name = data[i].name + "-berry"
 
                         val list = Searchlist(
                             name
                         )
 
                         datalist.add(name)
-//                        binding.pbarSearchpoke.visibility = View.INVISIBLE
-//                        adapter.setdata(datalist)
+                        binding.pbarSearchpoke.visibility = View.INVISIBLE
+                        adapter = Searchrvadapter(datalist)
+                        recview.adapter = adapter
                     }
                 }
             }catch (e : Exception){
@@ -191,23 +210,4 @@ class Searchfragment : Fragment() {
     }
 
 
-    //test
-    private fun getListOfCountries() {
-
-
-        val isoCountryCodes = Locale.getISOCountries()
-        val countryListWithEmojis = ArrayList<String>()
-        for (countryCode in isoCountryCodes) {
-            val locale = Locale("", countryCode)
-            val countryName = locale.displayCountry
-            val flagOffset = 0x1F1E6
-            val asciiOffset = 0x41
-            val firstChar = Character.codePointAt(countryCode, 0) - asciiOffset + flagOffset
-            val secondChar = Character.codePointAt(countryCode, 1) - asciiOffset + flagOffset
-            val flag =
-                (String(Character.toChars(firstChar)) + String(Character.toChars(secondChar)))
-            countryListWithEmojis.add("$countryName $flag")
-        }
-
-    }
 }

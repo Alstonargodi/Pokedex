@@ -32,7 +32,7 @@ class Pokemonrvadapter : RecyclerView.Adapter<Pokemonrvadapter.viewholder>() {
             .into(holder.itemView.imgpokemon_detail)
 
         holder.itemView.tvpokemon_name.setOnClickListener {
-            holder.itemView.findNavController().navigate(PokemonfragmentDirections.actionPokemonToPokemondetailfragment(item.nama,item.link))
+            holder.itemView.findNavController().navigate(PokemonfragmentDirections.actionPokemonToPokemondetailfragment(item.nama))
         }
 
     }

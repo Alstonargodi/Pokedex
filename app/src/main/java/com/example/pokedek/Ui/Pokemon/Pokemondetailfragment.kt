@@ -35,14 +35,7 @@ class Pokemondetailfragment : Fragment() {
         apiviewmodel = ViewModelProvider(this,vmodel).get(Apiviewmodel::class.java)
 
         val name = PokemondetailfragmentArgs.fromBundle(requireArguments()).pokemonname
-        val link = PokemondetailfragmentArgs.fromBundle(requireArguments()).link
         view.tvdetail_pokem_name.setText(name)
-
-        Glide.with(requireContext())
-            .asBitmap()
-            .load(link)
-            .into(view.imgdetail_pokem)
-
 
         apiviewmodel.getpokesum(name)
         apiviewmodel.pokesumrespon.observe(viewLifecycleOwner, Observer { respon ->
@@ -59,6 +52,12 @@ class Pokemondetailfragment : Fragment() {
                 val satk = respon.body()?.stats?.get(3)?.baseStat
                 val sdef = respon.body()?.stats?.get(4)?.baseStat
                 val spd = respon.body()?.stats?.get(5)?.baseStat
+                val link = respon.body()?.sprites!!.other.officialArtwork.frontDefault
+
+                Glide.with(requireContext())
+                    .asBitmap()
+                    .load(link)
+                    .into(view.imgdetail_pokem)
 
                 //first card
                 view.tvdetail_pokem_types.setText(types)
