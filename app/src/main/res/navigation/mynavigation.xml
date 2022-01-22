@@ -98,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritefragment"
-        android:name="com.example.pokedek.Favoritefragment"
+        android:name="com.example.pokedek.Ui.Favorite.Favoritefragment"
         android:label="fragment_favoritefragment"
         tools:layout="@layout/fragment_favoritefragment" />
     <fragment

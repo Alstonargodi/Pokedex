@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Search.Searchlist
 import com.example.pokedek.R
+import com.example.pokedek.Ui.Search.Adapter.Searchrvadapter
 import com.example.pokedek.Viewmodel.Api.Apiviewmodel
 import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.databinding.FragmentSearchfragmentBinding

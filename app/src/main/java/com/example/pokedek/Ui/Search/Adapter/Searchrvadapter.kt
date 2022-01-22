@@ -1,9 +1,6 @@
-package com.example.pokedek.Ui.Search
+package com.example.pokedek.Ui.Search.Adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +10,7 @@ import android.widget.Filterable
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedek.R
+import com.example.pokedek.Ui.Search.SearchfragmentDirections
 import com.example.pokedek.databinding.CvrecSearchBinding
 import kotlinx.android.synthetic.main.cvrec_search.view.*
 import java.util.*

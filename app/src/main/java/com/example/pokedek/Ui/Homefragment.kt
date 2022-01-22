@@ -17,6 +17,7 @@ import com.example.pokedek.Ui.Pokemon.Adapter.Pokehomervadapter
 import com.example.pokedek.Viewmodel.Api.Apiviewmodel
 import com.example.pokedek.Viewmodel.Roomviewmodel
 import com.example.pokedek.Viewmodel.Api.Vmodelfactory
+import com.example.pokedek.databinding.FragmentFragmenthomeBinding
 import kotlinx.android.synthetic.main.fragment_fragmenthome.view.*
 
 
@@ -25,11 +26,14 @@ class Homefragment : Fragment() {
     lateinit var roomviewmodel: Roomviewmodel
     lateinit var adapter : Pokehomervadapter
 
-    private var isloading = false
+    private var _binding: FragmentFragmenthomeBinding? = null
+    private val binding get() = _binding!!
 
+    private var isloading = false
     var listsum = ArrayList<Pokemonlist>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_fragmenthome, container, false)
+        _binding = FragmentFragmenthomeBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         val repo = Apirepo()
         var Vmodelfac = Vmodelfactory(repo)
@@ -44,16 +48,20 @@ class Homefragment : Fragment() {
 
         getpokemonlist()
 
-        view.btn_pokelist.setOnClickListener {
+        binding.btnPokelist.setOnClickListener {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToPokemon())
         }
 
-        view.btn_gofind.setOnClickListener {
+        binding.btnGofind.setOnClickListener {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToSearchfragment())
         }
 
-        view.btnhome_berry.setOnClickListener {
+        binding.btnhomeBerry.setOnClickListener {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToBerryfragment())
+        }
+
+        binding.btnGofav.setOnClickListener {
+            findNavController().navigate(HomefragmentDirections.actionFragmenthomeToFavoritefragment())
         }
 
         return view
@@ -61,7 +69,7 @@ class Homefragment : Fragment() {
 
     fun getpokemonlist(){
         isloading = true
-        view?.pbar_pokehome?.visibility = View.VISIBLE
+        binding.pbarPokehome.visibility = View.VISIBLE
 
         apiviewmodel.getpokelist(0,5)
         apiviewmodel.pokelistrespon.observe(viewLifecycleOwner, Observer { listrespon->
@@ -82,11 +90,11 @@ class Homefragment : Fragment() {
 
                             listsum.add(sum)
                             adapter.setdata(listsum)
-                            view?.pbar_pokehome?.visibility = View.INVISIBLE
+                            binding.pbarPokehome.visibility = View.INVISIBLE
                         }else{
-                            view?.recpokehom?.setPadding(10,20,10,20)
-                            view?.recpokehom?.setBackgroundResource(R.drawable.emptyview)
-                            view?.pbar_pokehome?.visibility = View.INVISIBLE
+                            binding.recpokehom.setPadding(10,20,10,20)
+                            binding.recpokehom.setBackgroundResource(R.drawable.emptyview)
+                            binding.pbarPokehome.visibility = View.INVISIBLE
                             Log.d("homepoke","cannot retrive sum data")
                         }
                     })
