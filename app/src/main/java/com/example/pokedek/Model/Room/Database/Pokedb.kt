@@ -1,10 +1,11 @@
-package com.example.pokedek.Model.Room
+package com.example.pokedek.Model.Room.Database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.pokedek.Model.Room.Dao.Pokedao
+import com.example.pokedek.Model.Room.Entity.Favorite.Favoritelist
 import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 
 /*
@@ -17,8 +18,7 @@ This helps make sure the value o
 Fallbacktodestructive nee when db migrate to new version
 */
 
-
-@Database(entities = [Pokemonlist::class], version = 3, exportSchema = false)
+@Database(entities = [Pokemonlist::class,Favoritelist::class], version = 4, exportSchema = false)
 abstract class Pokedb : RoomDatabase(){
     abstract fun Pokedao() : Pokedao
 
@@ -26,14 +26,14 @@ abstract class Pokedb : RoomDatabase(){
         @Volatile
         private var minstance : Pokedb? = null
 
-        fun setdb(context: Context): Pokedb{
+        fun setdb(context: Context): Pokedb {
             val tempins = minstance
             if (tempins != null){
                 return tempins
             }else{
                 synchronized(this){
-                    val instance = Room.databaseBuilder(context.applicationContext,Pokedb::class.java,"dbpoke")
-                        .fallbackToDestructiveMigration().build()
+                    val instance = Room.databaseBuilder(context.applicationContext,
+                        Pokedb::class.java,"dbpoke").fallbackToDestructiveMigration().build()
                     minstance = instance
                     return instance
                 }

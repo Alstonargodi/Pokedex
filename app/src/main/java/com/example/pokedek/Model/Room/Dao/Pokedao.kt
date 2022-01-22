@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.pokedek.Model.Room.Entity.Favorite.Favoritelist
 import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 
  /*
@@ -20,4 +21,13 @@ abstract class Pokedao {
 
     @Query("select*from pokemonlist order by nama asc")
     abstract fun readpokelist(): LiveData<List<Pokemonlist>>
+
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun insertFavorit(favoritelist: Favoritelist)
+
+    @Query("select*from tabelfavorit order by date asc")
+    abstract fun readfavoritlist() : LiveData<List<Favoritelist>>
+
+
 }

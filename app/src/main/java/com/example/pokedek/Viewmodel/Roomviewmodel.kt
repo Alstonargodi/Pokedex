@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
-import com.example.pokedek.Model.Room.Pokedb
+import com.example.pokedek.Model.Room.Database.Pokedb
 import com.example.pokedek.Model.Room.Repo.Pokerepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
