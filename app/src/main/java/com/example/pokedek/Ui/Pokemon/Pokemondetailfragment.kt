@@ -9,12 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Api.Repo.Apirepo
+import com.example.pokedek.Model.Room.Entity.Favorite.Favoritelist
 import com.example.pokedek.R
 import com.example.pokedek.Viewmodel.Api.Apiviewmodel
 import com.example.pokedek.Viewmodel.Api.Vmodelfactory
@@ -22,6 +24,8 @@ import com.example.pokedek.Viewmodel.Roomviewmodel
 import com.example.pokedek.databinding.FragmentPokemondetailfragmentBinding
 import kotlinx.android.synthetic.main.fragment_pokemondetailfragment.view.*
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 class Pokemondetailfragment : Fragment() {
     lateinit var apiviewmodel: Apiviewmodel
@@ -120,17 +124,17 @@ class Pokemondetailfragment : Fragment() {
                         dialog.show(sm,"movesdialog")
                     }
 
+                    //todo favorite btn
+                    binding.btnFav.setOnClickListener {
+                        view.btn_fav.setBackgroundResource(R.drawable.bk_full)
+                        addtofavorite(name, link)
+                    }
+
                 }
             }catch (e : Exception){
                 Log.d("pokemondetail",e.toString())
             }
         })
-
-        //todo favorite btn
-        binding.btnFav.setOnClickListener {
-            view.btn_fav.setBackgroundResource(R.drawable.bk_full)
-
-        }
 
         binding.btnhomBack.setOnClickListener {
             findNavController().navigate(PokemondetailfragmentDirections.actionPokemondetailfragmentToPokemon())
@@ -146,7 +150,22 @@ class Pokemondetailfragment : Fragment() {
         animation.start()
     }
 
-    fun addtofavorite(){
+    fun addtofavorite(name : String,link : String){
+
+        //currrent date
+        val date = SimpleDateFormat("dd/m/yyy")
+        val current = date.format(Date())
+
+
+        val flist= Favoritelist(
+            name,
+            "pokemon",
+            current.toString(),
+            link
+        )
+
+        Toast.makeText(context,"Add $name as Favorite",Toast.LENGTH_SHORT).show()
+        roomviewmodel.insertfav(flist)
 
 
     }
