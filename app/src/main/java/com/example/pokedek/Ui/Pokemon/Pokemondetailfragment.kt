@@ -22,6 +22,7 @@ import com.example.pokedek.Viewmodel.Api.Apiviewmodel
 import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.Viewmodel.Roomviewmodel
 import com.example.pokedek.databinding.FragmentPokemondetailfragmentBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_pokemondetailfragment.view.*
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -34,10 +35,14 @@ class Pokemondetailfragment : Fragment() {
     private var _binding : FragmentPokemondetailfragmentBinding? = null
     private val binding get() = _binding!!
 
+    private var canadd : Boolean = false
     private var moveslist= arrayListOf<String>()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPokemondetailfragmentBinding.inflate(inflater,container,false)
         val view = binding.root
@@ -50,8 +55,6 @@ class Pokemondetailfragment : Fragment() {
 
         //Room
         roomviewmodel = ViewModelProvider(this).get(Roomviewmodel::class.java)
-
-
         val name = PokemondetailfragmentArgs.fromBundle(requireArguments()).pokemonname
         binding.tvdetailPokemName.setText(name)
 
@@ -143,6 +146,10 @@ class Pokemondetailfragment : Fragment() {
         return view
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     fun ProgressBar.smoothProgress(percent: Int = 80){
         val animation = ObjectAnimator.ofInt(this, "progress", percent)
         animation.duration = 400
@@ -153,22 +160,17 @@ class Pokemondetailfragment : Fragment() {
     fun addtofavorite(name : String,link : String){
 
         //currrent date
-        val date = SimpleDateFormat("dd/m/yyy")
+        val date = SimpleDateFormat("d/MMM/YYY")
         val current = date.format(Date())
-
-
         val flist= Favoritelist(
             name,
+            0,
             "pokemon",
             current.toString(),
             link
         )
 
-        Toast.makeText(context,"Add $name as Favorite",Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.root,"Add $name as Favorite",Snackbar.LENGTH_SHORT).show()
         roomviewmodel.insertfav(flist)
-
-
     }
-
-
 }

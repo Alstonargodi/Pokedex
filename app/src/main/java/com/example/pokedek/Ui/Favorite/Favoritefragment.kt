@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.Model.Room.Entity.Favorite.Favoritelist
+import com.example.pokedek.R
 import com.example.pokedek.Ui.Favorite.Adapter.Favoritervadapter
 import com.example.pokedek.Viewmodel.Roomviewmodel
 import com.example.pokedek.databinding.FragmentFavoritefragmentBinding
@@ -21,9 +22,13 @@ class Favoritefragment : Fragment() {
 
     lateinit var roomviewmodel: Roomviewmodel
     lateinit var adapter : Favoritervadapter
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+
+    override fun onStart() {
+        favoritelist()
+        super.onStart()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFavoritefragmentBinding.inflate(inflater,container,false)
 
@@ -41,13 +46,12 @@ class Favoritefragment : Fragment() {
     }
 
     fun favoritelist(){
-
-        roomviewmodel.readfavlist.observe(viewLifecycleOwner, Observer { favrespon ->
+        roomviewmodel.readfavlistbynew.observe(viewLifecycleOwner, Observer { favrespon ->
             try {
                 if (favrespon.isNotEmpty()){
                     adapter.setdata(favrespon)
-                }else{
-
+                }else if (favrespon.isEmpty()){
+                    binding.Favoriterecylerview.setBackgroundResource(R.drawable.emptyview)
                 }
             }catch (e : Exception){
                 Log.d("favoritelist",e.toString())

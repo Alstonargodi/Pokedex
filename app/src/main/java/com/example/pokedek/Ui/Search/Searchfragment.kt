@@ -60,9 +60,6 @@ class Searchfragment : Fragment() {
         val textviewsrc = binding.etsearchFragment.findViewById<TextView>(R.id.search_src_text)
         textviewsrc.setTextColor(Color.WHITE)
 
-
-
-
         listall()
 
         binding.btnKatPoke.setOnClickListener {

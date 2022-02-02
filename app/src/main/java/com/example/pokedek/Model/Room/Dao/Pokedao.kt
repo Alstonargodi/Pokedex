@@ -26,8 +26,8 @@ abstract class Pokedao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertFavorit(favoritelist: Favoritelist)
 
-    @Query("select*from tabelfavorit order by date asc")
-    abstract fun readfavoritlist() : LiveData<List<Favoritelist>>
 
+    @Query("select*from tabelfavorit order by number asc")
+    abstract fun readfavoritlistbynew() : LiveData<List<Favoritelist>>
 
 }

@@ -14,13 +14,13 @@ import kotlinx.coroutines.launch
 class Roomviewmodel(application: Application): AndroidViewModel(application) {
     val Pokerepo : Pokerepo
     val readpokelist : LiveData<List<Pokemonlist>>
-    val readfavlist : LiveData<List<Favoritelist>>
+    val readfavlistbynew : LiveData<List<Favoritelist>>
 
     init {
         val pokedao = Pokedb.setdb(application).Pokedao()
         Pokerepo = Pokerepo(pokedao)
         readpokelist = Pokerepo.readpoke
-        readfavlist = Pokerepo.readfav
+        readfavlistbynew = Pokerepo.readfavbynew
     }
 
     fun insertpoke(pokemonlist: Pokemonlist){

@@ -29,6 +29,11 @@ class Berryfragment : Fragment() {
     private var limit : Int = 12
     private var isloading = false
     private var datalist = ArrayList<Berrylist>()
+
+    override fun onStart() {
+        super.onStart()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
