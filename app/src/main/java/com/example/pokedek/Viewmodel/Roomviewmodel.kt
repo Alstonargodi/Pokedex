@@ -15,12 +15,14 @@ class Roomviewmodel(application: Application): AndroidViewModel(application) {
     val Pokerepo : Pokerepo
     val readpokelist : LiveData<List<Pokemonlist>>
     val readfavlistbynew : LiveData<List<Favoritelist>>
+    val readfavlistbyold : LiveData<List<Favoritelist>>
 
     init {
         val pokedao = Pokedb.setdb(application).Pokedao()
         Pokerepo = Pokerepo(pokedao)
         readpokelist = Pokerepo.readpoke
         readfavlistbynew = Pokerepo.readfavbynew
+        readfavlistbyold = Pokerepo.readfavbyold
     }
 
     fun insertpoke(pokemonlist: Pokemonlist){

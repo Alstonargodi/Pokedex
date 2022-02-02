@@ -27,7 +27,10 @@ abstract class Pokedao {
     abstract fun insertFavorit(favoritelist: Favoritelist)
 
 
-    @Query("select*from tabelfavorit order by number asc")
+    @Query("select*from tabelfavorit order by number asc") //terkecil
+    abstract fun readfavoritlistbyold() : LiveData<List<Favoritelist>>
+
+    @Query("select*from tabelfavorit order by number desc") //terbesar
     abstract fun readfavoritlistbynew() : LiveData<List<Favoritelist>>
 
 }

@@ -13,6 +13,7 @@ import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 class Pokerepo(val dao : Pokedao) {
     val readpoke : LiveData<List<Pokemonlist>> = dao.readpokelist()
     val readfavbynew : LiveData<List<Favoritelist>> = dao.readfavoritlistbynew()
+    val readfavbyold : LiveData<List<Favoritelist>> = dao.readfavoritlistbyold()
 
     fun insertpoke(pokelist : Pokemonlist){
         dao.insertpokelist(pokelist)
