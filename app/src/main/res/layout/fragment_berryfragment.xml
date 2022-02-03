@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".Ui.Berry.Berryfragment">
 
 
     <ScrollView
         android:id="@+id/scrollView4"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,9 +64,9 @@
                     android:id="@+id/recvhiwberry"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="20dp"
                     android:paddingLeft="3dp"
                     android:paddingRight="3dp"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -17,16 +17,20 @@
         tools:layout="@layout/fragment_fragmenthome" >
         <action
             android:id="@+id/action_fragmenthome_to_pokemon"
-            app:destination="@id/pokemon" />
+            app:destination="@id/pokemon"
+            app:enterAnim="@anim/slide_upy" />
         <action
             android:id="@+id/action_fragmenthome_to_searchfragment"
-            app:destination="@id/searchfragment" />
+            app:destination="@id/searchfragment"
+            app:enterAnim="@anim/slide_downy" />
         <action
             android:id="@+id/action_fragmenthome_to_berryfragment"
-            app:destination="@id/berryfragment" />
+            app:destination="@id/berryfragment"
+            app:enterAnim="@anim/slide_upy" />
         <action
             android:id="@+id/action_fragmenthome_to_favoritefragment"
-            app:destination="@id/favoritefragment" />
+            app:destination="@id/favoritefragment"
+            app:enterAnim="@anim/slide_downy" />
     </fragment>
     <fragment
         android:id="@+id/pokemon"
@@ -38,7 +42,8 @@
             app:destination="@id/fragmenthome" />
         <action
             android:id="@+id/action_pokemon_to_pokemondetailfragment"
-            app:destination="@id/pokemondetailfragment" />
+            app:destination="@id/pokemondetailfragment"
+            app:enterAnim="@anim/slide_rightx" />
     </fragment>
     <fragment
         android:id="@+id/pokemondetailfragment"
@@ -47,7 +52,8 @@
         tools:layout="@layout/fragment_pokemondetailfragment" >
         <action
             android:id="@+id/action_pokemondetailfragment_to_pokemon"
-            app:destination="@id/pokemon" />
+            app:destination="@id/pokemon"
+            app:enterAnim="@anim/slide_leftx" />
         <argument
             android:name="pokemonname"
             app:argType="string" />

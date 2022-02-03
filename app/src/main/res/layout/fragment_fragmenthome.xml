@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".Ui.Homefragment">
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
+        android:scrollbars="none"
         android:layout_height="900dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="220dp"
                 android:background="@drawable/homebg"
-                android:backgroundTint="#F1F0F0"
+                android:backgroundTint="#EAE9E9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

@@ -104,6 +104,10 @@ class Pokemondetailfragment : Fragment() {
                     binding.statsbarSdef.progress = sdef!!
                     binding.statsbarSpd.progress = spd!!
 
+                    ObjectAnimator.ofInt(binding.statsbarHP,"progress",80)
+                        .setDuration(400)
+                        .start()
+
                     //ability pokemon dialog
                     binding.tvdetailPokemAbsatu.setOnClickListener {
                         val dialog = Abilitydetail_bottomfragment()

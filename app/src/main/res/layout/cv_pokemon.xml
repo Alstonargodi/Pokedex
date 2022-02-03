@@ -40,6 +40,7 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/poppinsbold"
                     android:gravity="center|left"
                     android:text="Name"
                     android:textColor="#FFFFFF"

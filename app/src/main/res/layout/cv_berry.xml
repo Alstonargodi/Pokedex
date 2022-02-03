@@ -17,10 +17,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            app:cardCornerRadius="10dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#9F5BBA">
+                android:background="#BAABDA">
 
                 <TextView
                     android:id="@+id/tvberry_name"
@@ -39,9 +39,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:gravity="center|left"
+                    android:fontFamily="@font/poppinsbold"
+                    android:gravity="center"
                     android:text="Name"
                     android:textColor="#FFFFFF"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -49,14 +51,17 @@
                 <ImageView
                     android:id="@+id/imgberry_list"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/tvberry_name"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.538"
                     tools:srcCompat="@tools:sample/avatars" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
