@@ -7,4 +7,13 @@
         <item>New Items</item>
         <item>Old Items</item>
     </string-array>
+
+    <string-array name="pokemonsort">
+        <item>Name</item>
+        <item>Weight</item>
+        <item>Height</item>
+        <item>Hp</item>
+        <item>Speed</item>
+        <item>Attack</item>
+    </string-array>
 </resources>

@@ -12,5 +12,8 @@ data class Pokemonlist(
     val nama : String,
     val link : String,
     val tinggi : String,
-    val berat : String
+    val berat : String,
+    val hp : String,
+    val attack : String,
+    val speed : String,
 ): Parcelable

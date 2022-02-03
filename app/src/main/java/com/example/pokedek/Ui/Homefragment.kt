@@ -85,7 +85,10 @@ class Homefragment : Fragment() {
                                 sumrespon.body()?.name.toString(),
                                 sumrespon.body()?.sprites!!.other.officialArtwork.frontDefault,
                                 sumrespon.body()?.height.toString(),
-                                sumrespon.body()?.weight.toString()
+                                sumrespon.body()?.weight.toString(),
+                                sumrespon.body()?.stats?.get(0)?.baseStat.toString(), //hp
+                                sumrespon.body()?.stats?.get(1)?.baseStat.toString(), //atk
+                                sumrespon.body()?.stats?.get(5)?.baseStat.toString(), //spd
                             )
 
                             listsum.add(sum)
