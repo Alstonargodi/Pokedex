@@ -1,16 +1,16 @@
 package com.example.pokedek.Ui.Pokemon
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -23,8 +23,8 @@ import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.Viewmodel.Roomviewmodel
 import com.example.pokedek.databinding.FragmentPokemondetailfragmentBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_fragmenthome.*
 import kotlinx.android.synthetic.main.fragment_pokemondetailfragment.view.*
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -83,30 +83,53 @@ class Pokemondetailfragment : Fragment() {
 
                     //first card
                     binding.tvdetailPokemTypes.setText(types)
-                    binding.tvdetailPokemWeight.setText(weight!!)
-                    binding.tvdetailPokemHeight.setText(height)
+                    val tvweight = ValueAnimator.ofInt(0,weight.toInt()).setDuration(500)
+                    tvweight.addUpdateListener { binding.tvdetailPokemWeight.setText(it.animatedValue.toString()) }
+                    tvweight.start()
+
+                    val tvheigh = ValueAnimator.ofInt(0,height.toInt()).setDuration(500)
+                    tvheigh.addUpdateListener { binding.tvdetailPokemHeight.setText(it.animatedValue.toString()) }
+                    tvheigh.start()
+
                     binding.tvdetailPokemAbsatu.setText(absatu)
                     binding.tvdetailPokemAbdua.setText(abdua)
 
                     //second card
-                    binding.tvdetailPokemHp.setText(HP!!.toString())
-                    binding.tvdetailPokemAtk.setText(atk!!.toString())
-                    binding.tvdetailPokemDef.setText(def!!.toString())
-                    binding.tvdetailPokemSatk.setText(satk!!.toString())
-                    binding.tvdetailPokemSdef.setText(sdef!!.toString())
-                    binding.tvdetailPokemSpd.setText(spd!!.toString())
+                    val tvhp = ValueAnimator.ofInt(0,HP!!).setDuration(500)
+                    tvhp.addUpdateListener { binding.tvdetailPokemHp.setText(it.animatedValue.toString()) }
+                    tvhp.start()
+
+                    val tvatk = ValueAnimator.ofInt(0,atk!!).setDuration(500)
+                    tvatk.addUpdateListener { binding.tvdetailPokemAtk.setText(it.animatedValue.toString()) }
+                    tvatk.start()
+
+                    val tvdef = ValueAnimator.ofInt(0,def!!).setDuration(500)
+                    tvdef.addUpdateListener { binding.tvdetailPokemDef.setText(it.animatedValue.toString()) }
+                    tvdef.start()
+
+                    val tvsatk = ValueAnimator.ofInt(0,satk!!).setDuration(500)
+                    tvsatk.addUpdateListener { binding.tvdetailPokemSatk.setText(it.animatedValue.toString()) }
+                    tvsatk.start()
+
+                    val tvsdef = ValueAnimator.ofInt(0,sdef!!).setDuration(500)
+                    tvsdef.addUpdateListener { binding.tvdetailPokemSdef.setText(it.animatedValue.toString()) }
+                    tvsdef.start()
+
+                    val tvspd = ValueAnimator.ofInt(0,spd!!).setDuration(500)
+                    tvspd.addUpdateListener { binding.tvdetailPokemSpd.setText(it.animatedValue.toString()) }
+                    tvspd.start()
+
+
 
                     //base stat card
-                    binding.statsbarHP.progress = HP!!
-                    binding.statsbarATK.progress = atk!!
-                    binding.statsbarDef.progress = def!!
-                    binding.statsbarSatk.progress = satk!!
-                    binding.statsbarSdef.progress = sdef!!
-                    binding.statsbarSpd.progress = spd!!
+                    ObjectAnimator.ofInt(binding.statsbarHP,"progress",HP!!).setDuration(500).start()
+                    ObjectAnimator.ofInt(binding.statsbarATK,"progress",atk!!).setDuration(500).start()
+                    ObjectAnimator.ofInt(binding.statsbarSatk,"progress",satk!!).setDuration(500).start()
+                    ObjectAnimator.ofInt(binding.statsbarDef,"progress",def!!).setDuration(500).start()
+                    ObjectAnimator.ofInt(binding.statsbarSdef,"progress",sdef!!).setDuration(500).start()
+                    ObjectAnimator.ofInt(binding.statsbarSpd,"progress",spd!!).setDuration(500).start()
 
-                    ObjectAnimator.ofInt(binding.statsbarHP,"progress",80)
-                        .setDuration(400)
-                        .start()
+
 
                     //ability pokemon dialog
                     binding.tvdetailPokemAbsatu.setOnClickListener {

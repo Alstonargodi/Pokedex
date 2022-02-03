@@ -39,7 +39,8 @@
         tools:layout="@layout/fragment_pokemon" >
         <action
             android:id="@+id/action_pokemon_to_fragmenthome"
-            app:destination="@id/fragmenthome" />
+            app:destination="@id/fragmenthome"
+            app:enterAnim="@anim/slide_downy" />
         <action
             android:id="@+id/action_pokemon_to_pokemondetailfragment"
             app:destination="@id/pokemondetailfragment"
