@@ -1,4 +1,4 @@
-package com.example.pokedek.Ui.Berry
+package com.example.pokedek.Ui.Berry.Adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Room.Entity.Berry.Berrylist
 import com.example.pokedek.R
+import com.example.pokedek.Ui.Berry.BerryfragmentDirections
 import kotlinx.android.synthetic.main.cv_berry.view.*
 
 class Berryrvadapter: RecyclerView.Adapter<Berryrvadapter.viewholder>() {

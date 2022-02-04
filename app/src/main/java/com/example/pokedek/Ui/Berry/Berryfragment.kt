@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Berry.Berrylist
+import com.example.pokedek.Ui.Berry.Adapter.Berryrvadapter
 import com.example.pokedek.Viewmodel.Api.Apiviewmodel
 import com.example.pokedek.Viewmodel.Api.Vmodelfactory
 import com.example.pokedek.databinding.FragmentBerryfragmentBinding
@@ -61,7 +62,6 @@ class Berryfragment : Fragment() {
                 val pastvisible = layoutManager.findFirstCompletelyVisibleItemPosition()
                 val itemtotal = adapter.itemCount
 
-                page++
                 super.onScrolled(recyclerView, dx, dy)
             }
         })

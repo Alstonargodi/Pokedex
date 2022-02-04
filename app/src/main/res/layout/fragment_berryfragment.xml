@@ -32,32 +32,35 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/btnhom_back_errymain"
-                    android:layout_width="0dp"
-                    android:layout_height="22dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="300dp"
-                    android:text="Menu"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.101"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
                     android:id="@+id/textView16"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginTop="22dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/poppinsbold"
                     android:gravity="right"
                     android:text="Berry"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/btnhom_back_errymain"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/btnhom_back_errymain"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="200dp"
+                    android:gravity="center|left"
+                    android:text="Menu"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
