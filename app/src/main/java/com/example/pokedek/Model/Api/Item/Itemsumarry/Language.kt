@@ -1,9 +1,9 @@
-package com.example.pokedek.Model.Api.Item
+package com.example.pokedek.Model.Api.Item.Itemsumarry
 
 
 import com.google.gson.annotations.SerializedName
 
-class Pokemon(
+class Language(
     @SerializedName("name")
     var name: String,
     @SerializedName("url")

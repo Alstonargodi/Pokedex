@@ -24,17 +24,18 @@
             android:layout_height="900dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
+                android:id="@+id/Headerlayout"
                 android:layout_width="0dp"
-                android:layout_height="220dp"
+                android:layout_height="200dp"
                 android:background="@drawable/homebg"
                 android:backgroundTint="#EAE9E9"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout7"
+                    android:id="@+id/Toplayout"
                     android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:background="@drawable/homebg"
@@ -87,19 +88,20 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView4"
-                    android:layout_width="0dp"
-                    android:layout_height="41dp"
-                    android:layout_marginStart="220dp"
-                    android:layout_marginEnd="18dp"
+                    android:id="@+id/Btn_item"
+                    android:layout_width="118dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
                     app:cardBackgroundColor="#577BC1"
                     app:cardCornerRadius="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/Misclayout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.87"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
-                    app:layout_constraintVertical_bias="0.13">
+                    app:layout_constraintHorizontal_bias="0.092"
+                    app:layout_constraintStart_toEndOf="@+id/btn_pokelist"
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
+                    app:layout_constraintVertical_bias="0.121">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -107,7 +109,7 @@
 
                         <TextView
                             android:id="@+id/itemdua"
-                            android:layout_width="93dp"
+                            android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:fontFamily="@font/poppinsbold"
                             android:gravity="center"
@@ -118,38 +120,42 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="0dp"
+                            android:id="@+id/imageView3"
+                            android:layout_width="41dp"
                             android:layout_height="0dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:tint="#EAE8E8"
+                            android:layout_marginStart="95dp"
+                            android:layout_marginEnd="-20dp"
+                            android:src="@drawable/ball"
+                            android:tint="#FCFCFC"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.835"
-                            app:layout_constraintStart_toEndOf="@+id/itemdua"
+                            app:layout_constraintEnd_toEndOf="@+id/itemdua"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="@+id/itemdua"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0"
-                            app:srcCompat="@drawable/ball" />
+                            app:layout_constraintVertical_bias="0.0" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btn_pokelist"
-                    android:layout_width="0dp"
-                    android:layout_height="41dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_width="118dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="220dp"
+                    android:layout_marginBottom="20dp"
                     app:cardBackgroundColor="#FF72C7EE"
                     app:cardCornerRadius="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/Misclayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout7"
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
                     app:layout_constraintVertical_bias="0.13">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -159,9 +165,7 @@
                         <TextView
                             android:id="@+id/itemsatu"
                             android:layout_width="0dp"
-                            android:layout_height="41dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="50dp"
+                            android:layout_height="0dp"
                             android:fontFamily="@font/poppinsbold"
                             android:gravity="center"
                             android:text="Pokemon"
@@ -174,42 +178,58 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="0dp"
+                            android:id="@+id/imageView2"
+                            android:layout_width="41dp"
                             android:layout_height="0dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:tint="#FFFFFF"
+                            android:layout_marginStart="95dp"
+                            android:layout_marginEnd="-20dp"
+                            android:src="@drawable/ball"
+                            android:tint="#FEFEFE"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/itemsatu"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ball" />
+                            app:layout_constraintVertical_bias="0.0" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/btnhome_berry"
-                    android:layout_width="0dp"
-                    android:layout_height="41dp"
-                    android:layout_marginStart="220dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_width="118dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
                     app:cardBackgroundColor="#9C51E0"
                     app:cardCornerRadius="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/Misclayout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.87"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView4"
-                    app:layout_constraintVertical_bias="0.38">
+                    app:layout_constraintStart_toEndOf="@+id/Btn_item"
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
+                    app:layout_constraintVertical_bias="0.119">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="41dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="95dp"
+                            android:layout_marginEnd="-20dp"
+                            android:src="@drawable/ball"
+                            android:tint="#FCFCFC"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="@+id/itemdua"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
                         <TextView
                             android:id="@+id/itemempat"
-                            android:layout_width="90dp"
+                            android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:fontFamily="@font/poppinsbold"
                             android:gravity="center"
@@ -218,77 +238,57 @@
                             android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintHorizontal_bias="0.111"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/imageView6"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:tint="#FFFFFF"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/itemempat"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ball" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView7"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Misclayout"
                     android:layout_width="0dp"
-                    android:layout_height="41dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="220dp"
-                    app:cardBackgroundColor="#8BDB81"
-                    app:cardCornerRadius="10dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="70dp"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_pokelist"
-                    app:layout_constraintVertical_bias="0.38">
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
+                    app:layout_constraintVertical_bias="1.0">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_compare"
+                        android:layout_width="115dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#FF9F45"
+                        app:cardCornerRadius="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="2dp">
 
-                        <TextView
-                            android:id="@+id/itemtiga"
-                            android:layout_width="96dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="50dp"
-                            android:fontFamily="@font/poppinsbold"
-                            android:gravity="center"
-                            android:text="Nature"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#FF9F45">
 
-                        <ImageView
-                            android:id="@+id/imageView5"
-                            android:layout_width="49dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:tint="#FFFFFF"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/itemtiga"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ball" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:id="@+id/textView17"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/poppinsbold"
+                                android:gravity="center"
+                                android:text="Compare"
+                                android:textColor="#F2F1F1"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -300,28 +300,28 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="150dp"
                 android:fontFamily="@font/poppinslight"
-                android:text="Meet the pokemon"
+                android:text="All pokemon"
                 android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/Headerlayout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recpokehom"
                 android:layout_width="0dp"
                 android:layout_height="900dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                app:spanCount="2"
-                tools:itemCount="10"
-                tools:listitem="@layout/cv_pokehom"
+                android:layout_marginEnd="15dp"
                 android:layoutAnimation="@anim/layout_anim"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:spanCount="2"
+                tools:itemCount="10"
+                tools:listitem="@layout/cv_pokehom" />
 
             <ProgressBar
                 android:id="@+id/pbar_pokehome"

@@ -76,6 +76,16 @@ object Retrofitbuilder {
 
 
     //itemsum
+    val itemlist by lazy{
+        Retrofit.Builder()
+            .baseUrl(Constant.base)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+    val getitemlist : Getdataapi by lazy {
+        itemsum.create(Getdataapi::class.java)
+    }
+
     val itemsum by lazy {
         Retrofit.Builder()
             .baseUrl(Constant.base)

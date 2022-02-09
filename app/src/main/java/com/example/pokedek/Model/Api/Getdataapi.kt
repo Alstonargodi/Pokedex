@@ -2,7 +2,8 @@ package com.example.pokedek.Model.Api
 
 import com.example.pokedek.Model.Api.Berry.BerryList.Berrylist
 import com.example.pokedek.Model.Api.Berry.Berysum.Berrysum
-import com.example.pokedek.Model.Api.Item.Itemsum
+import com.example.pokedek.Model.Api.Item.Itemlist.Itemlist
+import com.example.pokedek.Model.Api.Item.Itemsumarry.Itemsum
 import com.example.pokedek.Model.Api.Pokemon.Pokeablity.Pokeablty
 import com.example.pokedek.Model.Api.Pokemon.Pokemonsum.Pokesummary
 import com.example.pokedek.Model.Api.Pokemon.Pokemoves.Pokemoves
@@ -41,7 +42,6 @@ interface Getdataapi {
     ): Response<Pokemoves>
 
 
-
     //Berry list
     @GET("berry")
     suspend fun getberrylist(
@@ -56,6 +56,13 @@ interface Getdataapi {
         @Path("idbe") idbe : String
     ): Response<Berrysum>
 
+
+    //itemlist
+    @GET("item")
+    suspend fun getitemlist(
+        @Query("offset") off : Int,
+        @Query("limit") limit : Int,
+    ): Response<Itemlist>
 
     //item sum
     @GET("item/{idi}/")

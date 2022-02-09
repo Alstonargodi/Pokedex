@@ -2,7 +2,8 @@ package com.example.pokedek.Model.Api.Repo
 
 import com.example.pokedek.Model.Api.Berry.BerryList.Berrylist
 import com.example.pokedek.Model.Api.Berry.Berysum.Berrysum
-import com.example.pokedek.Model.Api.Item.Itemsum
+import com.example.pokedek.Model.Api.Item.Itemlist.Itemlist
+import com.example.pokedek.Model.Api.Item.Itemsumarry.Itemsum
 import com.example.pokedek.Model.Api.Pokemon.Pokeablity.Pokeablty
 import com.example.pokedek.Model.Api.Pokemon.Pokemonsum.Pokesummary
 import com.example.pokedek.Model.Api.Pokemon.Pokemoves.Pokemoves
@@ -35,6 +36,10 @@ class Apirepo() {
     }
 
     //item
+    suspend fun getitemlist(page: Int,limit: Int): Response<Itemlist>{
+        return Retrofitbuilder.getitemlist.getitemlist(page,limit)
+    }
+
     suspend fun getitemsum(id : String): Response<Itemsum>{
         return Retrofitbuilder.getitemsum.getitemsum(id)
     }

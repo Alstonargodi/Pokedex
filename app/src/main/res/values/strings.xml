@@ -16,4 +16,10 @@
         <item>Speed</item>
         <item>Attack</item>
     </string-array>
+
+    <string-array name="itemsort">
+        <item>all</item>
+        <item>Berries</item>
+        <item>Pokeballs</item>
+    </string-array>
 </resources>
