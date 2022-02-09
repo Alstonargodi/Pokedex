@@ -1,5 +1,7 @@
 package com.example.pokedek.Ui.Favorite
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -40,7 +42,6 @@ class Favoritefragment : Fragment() {
 
         binding.Wishlistspinner.onItemSelectedListener = object : AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener{
             override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {}
-
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 var item = p0?.getItemAtPosition(p2)
                 when(item){
@@ -52,14 +53,22 @@ class Favoritefragment : Fragment() {
                     }
                 }
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 favoritelistnew()
             }
+        }
 
+        binding.btnTogglesort.setOnClickListener {
+            binding.Wishlistspinner.visibility =
+                if (binding.Wishlistspinner.visibility == View.GONE)
+                    View.VISIBLE
+                else
+                    View.GONE
         }
         //room
         roomviewmodel = ViewModelProvider(this).get(Roomviewmodel::class.java)
+
+        favoritelistnew()
 
         return binding.root
     }

@@ -29,9 +29,9 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout10"
+                    android:id="@+id/Topbarlayout"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="850dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -46,8 +46,8 @@
                         android:layout_width="36dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="10dp"
-                        android:background="@drawable/back"
-                        android:backgroundTint="#626060"
+                        android:background="@drawable/ic_back"
+                        android:backgroundTint="#B3B7B9"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -56,25 +56,35 @@
                         android:id="@+id/textView2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="20dp"
                         android:fontFamily="@font/poppinsbold"
                         android:gravity="center"
-                        android:text="Wishlist"
+                        android:text="Favorite list"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_togglesort"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/button"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="1.0" />
+
+                    <Button
+                        android:id="@+id/btn_togglesort"
+                        android:layout_width="32dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/ic_sort"
+                        android:backgroundTint="#D1CFCF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/Favoriterecylerview"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -86,15 +96,17 @@
                 <Spinner
                     android:id="@+id/Wishlistspinner"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="200dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:entries="@array/sortfavorite"
                     android:textAlignment="center"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
+                    app:layout_constraintTop_toBottomOf="@+id/Topbarlayout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
