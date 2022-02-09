@@ -93,7 +93,6 @@ class Pokemonfragment : Fragment() {
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 pokemonlistsortname()
             }
-
         }
 
         pokemonlistsortname()

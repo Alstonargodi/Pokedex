@@ -2,13 +2,20 @@ package com.example.pokedek.Ui.Pokemon
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.app.Dialog
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -156,7 +163,7 @@ class Pokemondetailfragment : Fragment() {
 
                     //todo favorite btn
                     binding.btnFav.setOnClickListener {
-                        view.btn_fav.setBackgroundResource(R.drawable.bk_full)
+                        binding.btnFav.setBackgroundResource(R.drawable.bk_full)
                         addtofavorite(name, link)
                     }
 
@@ -184,20 +191,33 @@ class Pokemondetailfragment : Fragment() {
         animation.start()
     }
 
-    fun addtofavorite(name : String,link : String){
+
+    fun addtofavorite(name : String, link : String){
+
+        var dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.succesadddialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
 
         //currrent date
         val date = SimpleDateFormat("d/MMM/YYY")
         val current = date.format(Date())
         val flist= Favoritelist(
-            name,
             0,
+            name,
             "pokemon",
             current.toString(),
             link
         )
 
-        Snackbar.make(binding.root,"Add $name as Favorite",Snackbar.LENGTH_SHORT).show()
+        object  : CountDownTimer(1000, 1000){
+            override fun onTick(p0: Long) {
+                dialog.show()
+            }
+            override fun onFinish() {
+                dialog.dismiss()
+            }
+        }.start()
+
         roomviewmodel.insertfav(flist)
     }
 }

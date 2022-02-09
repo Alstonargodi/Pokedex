@@ -21,7 +21,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            app:cardBackgroundColor="#FFCE4B"
+            app:cardBackgroundColor="#FF72C7EE"
             app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,13 +77,16 @@
                         android:layout_height="0dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginEnd="-60dp"
+                        android:backgroundTint="#F9F9F9"
+                        android:foregroundTint="#F4F0F0"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/homepoke_name"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/ball" />
+                        app:srcCompat="@drawable/ball"
+                        app:tint="#FFFFFF" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

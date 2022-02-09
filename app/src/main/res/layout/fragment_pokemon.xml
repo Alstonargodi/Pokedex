@@ -16,6 +16,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="-300dp"
         android:src="@drawable/ball"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,47 +48,20 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tvsort"
-                    android:layout_width="165dp"
+                    android:id="@+id/tva"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="25dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:text="Pokemon"
+                    android:textAlignment="gravity"
+                    android:textColor="#FF72C7EE"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintEnd_toStartOf="@+id/tvsort"
+                    app:layout_constraintHorizontal_bias="0.945"
                     app:layout_constraintStart_toEndOf="@+id/btn_menu"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/btn_menu"
-                    android:layout_width="76dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center|left"
-                    android:text="Menu"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerviewpoke"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layoutAnimation="@anim/layout_anim"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layhide"
-                    app:layout_constraintVertical_bias="0.0" />
 
                 <ProgressBar
                     android:id="@+id/progressbarpoke"
@@ -103,6 +77,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/recyclerviewpoke" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewpoke"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layoutAnimation="@anim/layout_anim"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layhide"
+                    app:layout_constraintVertical_bias="0.0" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layhide"
                     android:layout_width="0dp"
@@ -116,7 +105,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvsort">
+                    app:layout_constraintTop_toBottomOf="@+id/tva">
 
 
                     <Spinner
@@ -147,6 +136,29 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btn_menu"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/ic_back"
+                    android:backgroundTint="#B3B7B9"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/tvsort"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/ic_sort"
+                    android:backgroundTint="#B3B7B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

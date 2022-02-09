@@ -18,7 +18,7 @@ This helps make sure the value o
 Fallbacktodestructive nee when db migrate to new version
 */
 
-@Database(entities = [Pokemonlist::class,Favoritelist::class], version = 19, exportSchema = false)
+@Database(entities = [Pokemonlist::class,Favoritelist::class], version = 20, exportSchema = false)
 abstract class Pokedb : RoomDatabase(){
     abstract fun Pokedao() : Pokedao
 
