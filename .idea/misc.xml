@@ -12,7 +12,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_berry.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_cardfavorite.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_flavourberry.xml" value="0.5" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_item.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_item.xml" value="0.67" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_pokehom.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_pokemon.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_pokemoves.xml" value="0.5" />
@@ -25,7 +25,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_fragmenthome.xml" value="0.9" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_item.xml" value="0.4565619223659889" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_movesdetail_bottomfragment_list_dialog.xml" value="0.27807971014492755" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_pokemon.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_pokemon.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_pokemondetailfragment.xml" value="0.22" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_searchfragment.xml" value="0.20618556701030927" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/movesdetailbottomfragment.xml" value="0.5" />
