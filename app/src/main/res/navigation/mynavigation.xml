@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_fragmenthome_to_compare"
             app:destination="@id/compare" />
+        <action
+            android:id="@+id/action_fragmenthome_to_item"
+            app:destination="@id/item" />
     </fragment>
     <fragment
         android:id="@+id/pokemon"
@@ -137,7 +140,10 @@
     </fragment>
     <fragment
         android:id="@+id/item"
-        android:name="com.example.pokedek.Item"
-        android:label="fragment_item"
-        tools:layout="@layout/fragment_item" />
+        android:name="com.example.pokedek.Ui.Item.Item"
+        android:label="fragment_item">
+        <action
+            android:id="@+id/action_item_to_fragmenthome"
+            app:destination="@id/fragmenthome" />
+    </fragment>
 </navigation>

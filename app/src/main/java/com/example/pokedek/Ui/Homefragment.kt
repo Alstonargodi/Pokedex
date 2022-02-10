@@ -67,6 +67,10 @@ class Homefragment : Fragment() {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToFavoritefragment())
         }
 
+        binding.BtnItem.setOnClickListener {
+            findNavController().navigate(HomefragmentDirections.actionFragmenthomeToItem())
+        }
+
         return view
     }
 
