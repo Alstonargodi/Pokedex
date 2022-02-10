@@ -76,7 +76,6 @@ class Berryfragment : Fragment() {
     }
 
     fun getberrylist(){
-        Log.d("berrylist","berrylist")
         apiviewmodel.getberrylist(0,page)
         apiviewmodel.berrylistrespon.observe(viewLifecycleOwner, Observer { berrylist->
             if (berrylist.isSuccessful){

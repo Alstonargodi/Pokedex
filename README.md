@@ -1,2 +1,3 @@
-# pokedek
-Find your favorit pokemon
+# pokedex
+A pokemon wikipedia
+

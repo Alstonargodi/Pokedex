@@ -3,12 +3,14 @@ package com.example.pokedek.Ui.Item.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.Model.Api.Item.Itemlist.Itemlist
 import com.example.pokedek.Model.Api.Item.Itemlist.Result
 import com.example.pokedek.Model.Room.Entity.Item.ItemList
 import com.example.pokedek.R
+import com.example.pokedek.Ui.Item.ItemDirections
 import kotlinx.android.synthetic.main.cv_item.view.*
 
 class Itemrvadapter : RecyclerView.Adapter<Itemrvadapter.viewholder>() {
@@ -29,6 +31,15 @@ class Itemrvadapter : RecyclerView.Adapter<Itemrvadapter.viewholder>() {
         Glide.with(holder.itemView.context)
             .load(item.link)
             .into(holder.itemView.item_image)
+
+        holder.itemView.Childlayout.setOnClickListener {
+            holder.itemView.findNavController().navigate(ItemDirections.actionItemToItemdetail(
+                item.nama,
+                item.link,
+                item.effect,
+                item.type
+            ))
+        }
     }
 
     override fun getItemCount(): Int {

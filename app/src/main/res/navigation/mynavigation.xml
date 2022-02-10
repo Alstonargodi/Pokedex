@@ -36,7 +36,8 @@
             app:destination="@id/compare" />
         <action
             android:id="@+id/action_fragmenthome_to_item"
-            app:destination="@id/item" />
+            app:destination="@id/item"
+            app:enterAnim="@anim/slide_upy" />
     </fragment>
     <fragment
         android:id="@+id/pokemon"
@@ -144,6 +145,31 @@
         android:label="fragment_item">
         <action
             android:id="@+id/action_item_to_fragmenthome"
-            app:destination="@id/fragmenthome" />
+            app:destination="@id/fragmenthome"
+            app:enterAnim="@anim/slide_downy" />
+        <action
+            android:id="@+id/action_item_to_itemdetail"
+            app:destination="@id/itemdetail"
+            app:enterAnim="@anim/slide_rightx" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemdetail"
+        android:name="com.example.pokedek.Ui.Item.Itemdetail"
+        android:label="fragment_itemdetail"
+        tools:layout="@layout/fragment_itemdetail" >
+        <action
+            android:id="@+id/action_itemdetail_to_item"
+            app:destination="@id/item"
+            app:enterAnim="@anim/slide_leftx" />
+        <argument android:name="nama"
+            app:argType="string" />
+        <argument android:name="link"
+            app:argType="string" />
+        <argument
+            android:name="effect"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -8,5 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class ItemList(
     var nama : String,
     var link : String,
-    var type : String
+    var type : String,
+    var effect : String
 ) : Parcelable

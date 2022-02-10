@@ -127,7 +127,6 @@ class Pokemondetailfragment : Fragment() {
                     tvspd.start()
 
 
-
                     //base stat card
                     ObjectAnimator.ofInt(binding.statsbarHP,"progress",HP!!).setDuration(500).start()
                     ObjectAnimator.ofInt(binding.statsbarATK,"progress",atk!!).setDuration(500).start()
@@ -135,7 +134,6 @@ class Pokemondetailfragment : Fragment() {
                     ObjectAnimator.ofInt(binding.statsbarDef,"progress",def!!).setDuration(500).start()
                     ObjectAnimator.ofInt(binding.statsbarSdef,"progress",sdef!!).setDuration(500).start()
                     ObjectAnimator.ofInt(binding.statsbarSpd,"progress",spd!!).setDuration(500).start()
-
 
 
                     //ability pokemon dialog

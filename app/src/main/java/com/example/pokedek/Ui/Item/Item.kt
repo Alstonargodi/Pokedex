@@ -117,7 +117,8 @@ class Item : Fragment() {
                                     val fetch = ItemList(
                                         responsum.body()?.name.toString(),
                                         responsum.body()?.sprites?.default.toString(),
-                                        responsum.body()?.category?.name.toString()
+                                        responsum.body()?.category?.name.toString(),
+                                        responsum.body()?.effectEntries?.get(0)?.effect.toString()
                                     )
 
                                     if(type.contains(cari)){
