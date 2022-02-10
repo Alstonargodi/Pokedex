@@ -20,6 +20,7 @@
     <string-array name="itemsort">
         <item>all</item>
         <item>Berries</item>
+        <item>Apricorn</item>
         <item>Pokeballs</item>
     </string-array>
 </resources>
