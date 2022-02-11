@@ -25,7 +25,15 @@ Navigation refers to the interactions that allow users to navigate across, into,
 |--|--|
 | At begining there is animate pokemon logo  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_135239.png?alt=media&token=71ce4102-7b88-4e4b-afa2-9137e7e61048 ) |
 | Home |  |
-|The 3 buttons will lead directly to the pokemon berry fragments and items  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220209_161849.png?alt=media&token=3f950131-ef54-42e0-b7bc-e4dd3b59ba9c) |
+|The 3 buttons directly to the pokemon berry fragments and items  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220209_161849.png?alt=media&token=3f950131-ef54-42e0-b7bc-e4dd3b59ba9c) |
+| pokemon |  |
+| There is a list about pokemon and their description like name height and weight  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155141.png?alt=media&token=18342728-03dc-4983-b370-fc5197583b38) |
+| We also can sort the pokemon list by clicking sort button on the right top side and choosing what kind of sort we want |![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155150.png?alt=media&token=403de23a-9536-49dc-ab75-bad45b23b252)  |
+| When click one of the list we can see more detail about the pokemon character | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155200.png?alt=media&token=aa211962-a346-410b-b66b-81d0e7a4afb3) |
+| when click on abilites will show more detail about the effect of abilities |   ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_160712.png?alt=media&token=c3b9d7a6-80fe-4ce6-9c68-c5a22b965e40) |
+|  |  |
+|  |  |
+
 
 
 
