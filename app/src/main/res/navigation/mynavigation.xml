@@ -33,7 +33,7 @@
             app:enterAnim="@anim/slide_downy" />
         <action
             android:id="@+id/action_fragmenthome_to_compare"
-            app:destination="@id/compare" />
+            app:destination="@id/Compare" />
         <action
             android:id="@+id/action_fragmenthome_to_item"
             app:destination="@id/item"
@@ -131,10 +131,9 @@
         android:label="activity_splashscreen"
         tools:layout="@layout/activity_splashscreen" />
     <fragment
-        android:id="@+id/compare"
-        android:name="com.example.pokedek.Compare"
-        android:label="fragment_compare"
-        tools:layout="@layout/fragment_compare" >
+        android:id="@+id/Compare"
+        android:name="com.example.pokedek.Ui.Compare.Compare"
+        android:label="fragment_compare">
         <action
             android:id="@+id/action_compare_to_fragmenthome"
             app:destination="@id/fragmenthome" />

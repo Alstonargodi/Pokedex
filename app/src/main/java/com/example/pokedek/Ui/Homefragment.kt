@@ -79,6 +79,10 @@ class Homefragment : Fragment() {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToItem())
         }
 
+        binding.btnCompare.setOnClickListener {
+            findNavController().navigate(HomefragmentDirections.actionFragmenthomeToCompare())
+        }
+
 
         getpokemonlist(0,5)
         adaptersize()
