@@ -10,7 +10,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedek.Model.Api.Repo.Apirepo
 import com.example.pokedek.Model.Room.Entity.Pokemon.Pokemonlist
 import com.example.pokedek.R
@@ -27,10 +30,16 @@ class Homefragment : Fragment() {
     lateinit var roomviewmodel: Roomviewmodel
     lateinit var adapter : Pokehomervadapter
 
-    private var _binding: FragmentFragmenthomeBinding? = null
-    private val binding get() = _binding!!
+    companion object{
+        private var _binding: FragmentFragmenthomeBinding? = null
+        private val binding get() = _binding!!
 
-    private var isloading = false
+        private var page = 0
+        private var limit = 0
+        private var isloading = false
+    }
+
+
     var listsum = ArrayList<Pokemonlist>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentFragmenthomeBinding.inflate(inflater, container, false)
@@ -43,11 +52,10 @@ class Homefragment : Fragment() {
 
         listsum = arrayListOf()
         adapter = Pokehomervadapter()
-        val recview = view.recpokehom
+        val recview = binding.recpokehom
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(context)
 
-        getpokemonlist()
 
         binding.btnPokelist.setOnClickListener {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToPokemon())
@@ -71,10 +79,19 @@ class Homefragment : Fragment() {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToItem())
         }
 
+        binding.recpokehom.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                var visibleitemcount = LinearLayoutManager(requireContext()).childCount
+
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+
         return view
     }
 
-    fun getpokemonlist(){
+
+    fun getpokemonlist(page : Int, limit : Int){
         isloading = true
         binding.pbarPokehome.visibility = View.VISIBLE
 

@@ -30,7 +30,8 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/sucess"
-            app:lottie_speed="2.5">
+            app:lottie_speed="2.5"
+            >
 
         </com.airbnb.lottie.LottieAnimationView>
 
