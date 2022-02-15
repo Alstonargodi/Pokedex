@@ -20,7 +20,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#BAABDA">
+                android:background="#B667F1">
 
                 <TextView
                     android:id="@+id/tvberry_name"
@@ -51,7 +51,7 @@
                 <ImageView
                     android:id="@+id/imgberry_list"
                     android:layout_width="0dp"
-                    android:layout_height="55dp"
+                    android:layout_height="0dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
                     android:paddingTop="2dp"

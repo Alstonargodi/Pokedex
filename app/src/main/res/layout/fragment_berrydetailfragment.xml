@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BAABDA"
+    android:background="#B667F1"
     tools:context=".Ui.Berry.Berrydetailfragment">
 
 
@@ -169,7 +169,8 @@
                 android:fontFamily="@font/poppinslight"
                 android:text="Flavour"
                 android:textColor="#8762D6"
-                android:textSize="16sp"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -179,10 +180,10 @@
                 android:id="@+id/Berryrecview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -194,11 +195,11 @@
         <ImageView
             android:id="@+id/btnhom_back_berry"
             android:layout_width="0dp"
-            android:layout_height="37dp"
+            android:layout_height="35dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="340dp"
-            android:src="@drawable/back"
+            android:src="@drawable/ic_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -206,29 +207,25 @@
         <TextView
             android:id="@+id/tvdetail_berry_name"
             android:layout_width="0dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="80dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="18dp"
             android:fontFamily="@font/poppinsbold"
             android:gravity="center"
             android:text="Berryname"
             android:textColor="#EDECEC"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView10"
             app:layout_constraintStart_toEndOf="@+id/btnhom_back_berry"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView10"
-            android:layout_width="0dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="35dp"
+            android:layout_width="30dp"
+            android:layout_height="34dp"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/bookmark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvdetail_berry_name"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView

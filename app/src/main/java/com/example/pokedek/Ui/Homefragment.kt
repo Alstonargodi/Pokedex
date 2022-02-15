@@ -79,14 +79,9 @@ class Homefragment : Fragment() {
             findNavController().navigate(HomefragmentDirections.actionFragmenthomeToItem())
         }
 
-        binding.recpokehom.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                var visibleitemcount = LinearLayoutManager(requireContext()).childCount
 
-                super.onScrolled(recyclerView, dx, dy)
-            }
-        })
-
+        getpokemonlist(0,5)
+        adaptersize()
         return view
     }
 
@@ -117,6 +112,8 @@ class Homefragment : Fragment() {
 
                             listsum.add(sum)
                             adapter.setdata(listsum)
+                            var total = listsum.size
+                            Log.d("pagenumber",total.toString())
                             binding.pbarPokehome.visibility = View.INVISIBLE
                         }else{
                             binding.recpokehom.setPadding(10,20,10,20)
@@ -131,5 +128,26 @@ class Homefragment : Fragment() {
             }
         })
     }
+
+
+    fun adaptersize(){
+        binding.recpokehom.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                var visibleitemcount = LinearLayoutManager(requireContext()).childCount
+                var pastvisibleitem = LinearLayoutManager(requireContext()).findFirstCompletelyVisibleItemPosition()
+                var total = adapter.itemCount
+
+                if (!isloading){
+                    if ((visibleitemcount + pastvisibleitem) > total){
+                        page++
+                        Log.d("pagenumber",page.toString())
+                    }
+                }
+
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+    }
+
 
 }

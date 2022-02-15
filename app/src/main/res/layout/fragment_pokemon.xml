@@ -99,9 +99,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="20dp"
-                    android:background="#E3E1E1"
                     android:padding="2dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -111,10 +110,10 @@
                     <Spinner
                         android:id="@+id/Pokespin"
                         android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:background="#FFFFFF"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="#E3E4E5"
                         android:entries="@array/pokemonsort"
                         android:gravity="center"
                         android:textAlignment="center"
@@ -128,10 +127,11 @@
                         android:id="@+id/textView3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:text="Sortby"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="italic"
+                        android:textColor="#FF72C7EE"
+                        android:textStyle="bold|italic"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -144,7 +144,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="4dp"
                     android:background="@drawable/ic_back"
-                    android:backgroundTint="#B3B7B9"
+                    android:backgroundTint="#ADAEAF"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,7 +155,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/ic_sort"
-                    android:backgroundTint="#B3B7B9"
+                    android:backgroundTint="#ADAEAF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
