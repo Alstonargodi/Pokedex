@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEF2FF"
     tools:context=".Ui.Favorite.Favoritefragment">
 
 
@@ -47,7 +48,7 @@
                         android:layout_height="0dp"
                         android:layout_marginStart="10dp"
                         android:background="@drawable/ic_back"
-                        android:backgroundTint="#B3B7B9"
+                        android:backgroundTint="#D1CECE"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +60,7 @@
                         android:fontFamily="@font/poppinsbold"
                         android:gravity="center"
                         android:text="Favorite list"
+                        android:textColor="#FA6555"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btn_togglesort"
@@ -73,7 +75,7 @@
                         android:layout_height="0dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/ic_sort"
-                        android:backgroundTint="#D1CFCF"
+                        android:backgroundTint="#FFD1CECE"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -84,8 +86,8 @@
                     android:id="@+id/Favoriterecylerview"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="25dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
