@@ -30,6 +30,7 @@ class Favoritervadapter: RecyclerView.Adapter<Favoritervadapter.viewhold>() {
         val holder = holder as viewhold
         val item = listdata[position]
         holder.view.FavnameTvcardfav.text = item.name
+        holder.view.FavtypeTvcardfav.text = item.type
 
         Glide.with(holder.itemView.context)
             .asBitmap()
