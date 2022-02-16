@@ -25,10 +25,13 @@ class Roomviewmodel(application: Application): AndroidViewModel(application) {
         readfavlistbyold = Pokerepo.readfavbyold
     }
 
-    fun insertpoke(pokemonlist: Pokemonlist){
-        viewModelScope.launch(Dispatchers.IO) {
-            Pokerepo.insertpoke(pokemonlist)
-        }
+
+    fun readnew(cari : String): LiveData<List<Favoritelist>>{
+        return Pokerepo.readnew(cari)
+    }
+
+    fun readold(cari : String): LiveData<List<Favoritelist>>{
+        return Pokerepo.readold(cari)
     }
 
     fun insertfav(favoritelist: Favoritelist){

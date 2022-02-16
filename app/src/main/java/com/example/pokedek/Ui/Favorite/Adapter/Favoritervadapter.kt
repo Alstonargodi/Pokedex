@@ -13,7 +13,7 @@ import com.example.pokedek.Ui.Search.Adapter.Searchrvadapter
 import com.example.pokedek.databinding.CvCardfavoriteBinding
 import com.example.pokedek.databinding.CvrecSearchBinding
 
-class Favoritervadapter: RecyclerView.Adapter<Favoritervadapter.viewhold>() {
+class Favoritervadapter(): RecyclerView.Adapter<Favoritervadapter.viewhold>() {
     var listdata = emptyList<Favoritelist>().distinct()
     lateinit var mContext: Context
 
@@ -29,6 +29,7 @@ class Favoritervadapter: RecyclerView.Adapter<Favoritervadapter.viewhold>() {
     override fun onBindViewHolder(holder: viewhold, position: Int) {
         val holder = holder as viewhold
         val item = listdata[position]
+
         holder.view.FavnameTvcardfav.text = item.name
         holder.view.FavtypeTvcardfav.text = item.type
 

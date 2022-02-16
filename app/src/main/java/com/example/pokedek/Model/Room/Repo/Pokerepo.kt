@@ -15,6 +15,15 @@ class Pokerepo(val dao : Pokedao) {
     val readfavbynew : LiveData<List<Favoritelist>> = dao.readfavoritlistbynew()
     val readfavbyold : LiveData<List<Favoritelist>> = dao.readfavoritlistbyold()
 
+    fun readnew(cari : String): LiveData<List<Favoritelist>>{
+        return dao.readnew(cari)
+    }
+
+    fun readold(cari : String): LiveData<List<Favoritelist>>{
+        return dao.readold(cari)
+    }
+
+
     fun insertpoke(pokelist : Pokemonlist){
         dao.insertpokelist(pokelist)
     }
