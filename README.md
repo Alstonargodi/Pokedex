@@ -24,9 +24,9 @@ Navigation refers to the interactions that allow users to navigate across, into,
 
 | splashscreen |  |
 |--|--|
-| At begining there is animate pokemon logo  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FSplashscreen.gif?alt=media&token=9ad5b0ac-d0ef-4046-8087-f6952009d5d2 ) |
+| At begining there is animate pokemon logo  | ![](https://i.ibb.co/HxC8WL7/Splashscreen.gif) |
 | Home |  |
-|The 3 buttons directly to the pokemon berry fragments and items  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2Fpokemonfrag.gif?alt=media&token=54f1461c-ecfc-4aa3-a631-32f21348aa8b) |
+|The 3 buttons directly to the pokemon berry fragments and items  | ![](https://i.ibb.co/pJsDCyR/pokemonfrag.gif) |
 | pokemon |  |
 | There is a list about pokemon and their description like name height and weight  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155141.png?alt=media&token=18342728-03dc-4983-b370-fc5197583b38) |
 | We also can sort the pokemon list by clicking sort button on the right top side and choosing what kind of sort we want |![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155150.png?alt=media&token=403de23a-9536-49dc-ab75-bad45b23b252)  |
