@@ -1,3 +1,4 @@
+
 # Pokedex
 
 A pokemon wiki application that provides information about the world of pokemon such as characters, evolution and they food, also in this application comparisons between characters with one another
@@ -23,9 +24,9 @@ Navigation refers to the interactions that allow users to navigate across, into,
 
 | splashscreen |  |
 |--|--|
-| At begining there is animate pokemon logo  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_135239.png?alt=media&token=71ce4102-7b88-4e4b-afa2-9137e7e61048 ) |
+| At begining there is animate pokemon logo  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FSplashscreen.gif?alt=media&token=9ad5b0ac-d0ef-4046-8087-f6952009d5d2 ) |
 | Home |  |
-|The 3 buttons directly to the pokemon berry fragments and items  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220209_161849.png?alt=media&token=3f950131-ef54-42e0-b7bc-e4dd3b59ba9c) |
+|The 3 buttons directly to the pokemon berry fragments and items  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2Fpokemonfrag.gif?alt=media&token=54f1461c-ecfc-4aa3-a631-32f21348aa8b) |
 | pokemon |  |
 | There is a list about pokemon and their description like name height and weight  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155141.png?alt=media&token=18342728-03dc-4983-b370-fc5197583b38) |
 | We also can sort the pokemon list by clicking sort button on the right top side and choosing what kind of sort we want |![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155150.png?alt=media&token=403de23a-9536-49dc-ab75-bad45b23b252)  |
