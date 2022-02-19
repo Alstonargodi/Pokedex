@@ -20,7 +20,7 @@ Glide is a fast and efficient image loading library for Android focused on smoot
  - Navigation
 Navigation refers to the interactions that allow users to navigate across, into, and back out from the different pieces of content within your app
 
-### 📱 Screenshot
+### 📱 Inside
 
 | splashscreen |  |
 |--|--|
