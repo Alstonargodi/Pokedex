@@ -26,12 +26,10 @@ Navigation refers to the interactions that allow users to navigate across, into,
 |--|--|
 | At begining there is animate pokemon logo  | <img src="https://github.com/Alstonargodi/pokedek/blob/master/Splashscreen.gif" width="250" height="500"/> |
 | Home |  |
-|The 3 buttons directly to the pokemon berry fragments and items  | <img src="https://github.com/Alstonargodi/pokedek/blob/master/Splashscreen.gif" width="250" height="500"/> |
+|The 3 buttons directly to the pokemon berry fragments and items  | <img src="https://github.com/Alstonargodi/pokedek/blob/master/homefrag.gif" width="250" height="500"/> |
 | pokemon |  |
-| There is a list about pokemon and their description like name height and weight  | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155141.png?alt=media&token=18342728-03dc-4983-b370-fc5197583b38) |
-| We also can sort the pokemon list by clicking sort button on the right top side and choosing what kind of sort we want |![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155150.png?alt=media&token=403de23a-9536-49dc-ab75-bad45b23b252)  |
-| When click one of the list we can see more detail about the pokemon character | ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_155200.png?alt=media&token=aa211962-a346-410b-b66b-81d0e7a4afb3) |
-| when click on abilites will show more detail about the effect of abilities |   ![](https://firebasestorage.googleapis.com/v0/b/tes2-3df69.appspot.com/o/Pokedex%2FScreenshot_20220211_160712.png?alt=media&token=c3b9d7a6-80fe-4ce6-9c68-c5a22b965e40) |
+| There is a list about pokemon and their description like name height and weight | <img src="https://github.com/Alstonargodi/pokedek/blob/master/pokemonfrag.gif" width="250" height="500"/> |
+| When click one of the list we can see more detail about the pokemon character|<img src="https://github.com/Alstonargodi/pokedek/blob/master/pokedetailfrag.gif" width="250" height="500"/> |
 |  |  |
 |  |  |
 
