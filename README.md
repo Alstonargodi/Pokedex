@@ -4,6 +4,18 @@ A pokemon wiki application that provides information about the world of pokemon 
 ### 🎯Point
 
 With this project I can performe how to fecth a pokemon data from [Pokeapi](https://pokeapi.co/docs/v2) and considering the api quite complicated for me because every data branch especially with evolution on each character, Also in this project I learn how to use animation and transition from moving to another page.
+ - [x] Splash screen
+ - [x] Home
+ - [x] Api
+ - [x] Local
+ - [x] Pokemon 
+ - [x] Search
+ - [x] Animation
+ - [x] Berry
+ - [x] Favorite
+ - [x] item
+ - [ ] Pagination
+ - [ ] Compare
 
 ### 📦 Others 
 
