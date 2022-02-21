@@ -14,4 +14,10 @@
     <color name="nature">#2CDAB1</color>
     <color name="berry">#9F5BBA</color>
 
+    <color name="detailtop">#FA6555</color>
+    <color name="detailtopoke">#FF72C7EE</color>
+    <color name="detailtopberry">#B667F1</color>
+    <color name="detailtopitem">#577BC1</color>
+    <color name="detailbot">#8C9E9D9D</color>
+
 </resources>

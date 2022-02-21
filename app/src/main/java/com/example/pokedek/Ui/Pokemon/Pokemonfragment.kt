@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.AdapterView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -53,6 +54,7 @@ class Pokemonfragment : Fragment() {
 
         binding.btnMenu.setOnClickListener {
             findNavController().navigate(PokemonfragmentDirections.actionPokemonToFragmenthome())
+            requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtop)
         }
 
         binding.tvsort.setOnClickListener {
@@ -96,6 +98,7 @@ class Pokemonfragment : Fragment() {
         }
 
         pokemonlistsortname()
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtopoke)
 
         return view
     }

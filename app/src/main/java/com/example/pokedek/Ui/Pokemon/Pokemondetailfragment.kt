@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -174,6 +175,8 @@ class Pokemondetailfragment : Fragment() {
         binding.btnhomBack.setOnClickListener {
             findNavController().navigate(PokemondetailfragmentDirections.actionPokemondetailfragmentToPokemon())
         }
+
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtopoke)
 
         return view
     }

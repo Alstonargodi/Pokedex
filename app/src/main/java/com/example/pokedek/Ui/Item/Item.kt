@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -39,6 +40,7 @@ class Item : Fragment() {
 
         binding.btnitemBackhome.setOnClickListener {
             findNavController().navigate(ItemDirections.actionItemToFragmenthome())
+            requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtop)
         }
 
         //adapter
@@ -90,7 +92,7 @@ class Item : Fragment() {
 
         readitem("",10)
 
-
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtopitem)
 
         return view
     }

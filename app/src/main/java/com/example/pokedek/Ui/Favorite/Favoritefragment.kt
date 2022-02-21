@@ -48,7 +48,12 @@ class Favoritefragment : Fragment() {
                     View.GONE
         }
 
-        binding.tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener{
+        binding.tablayout.addTab(binding.tablayout.newTab().setText("all"))
+        binding.tablayout.addTab(binding.tablayout.newTab().setText("Pokemon"))
+        binding.tablayout.addTab(binding.tablayout.newTab().setText("Item"))
+        binding.tablayout.addTab(binding.tablayout.newTab().setText("Berry"))
+
+        binding.tablayout.setOnTabSelectedListener(object : OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val position = tab?.position
                 when(position){
@@ -58,13 +63,17 @@ class Favoritefragment : Fragment() {
                     }
                     1->{
                         type = "pokemon"
+                        Log.d("tab","2")
                         favoritelistnew("pokemon")
                     }
                     2->{
                         type = "item"
                         favoritelistnew("item")
                     }
-
+                    3->{
+                        type = "berry"
+                        favoritelistnew("berry")
+                    }
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
