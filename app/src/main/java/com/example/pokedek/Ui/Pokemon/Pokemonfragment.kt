@@ -37,6 +37,7 @@ class Pokemonfragment : Fragment() {
         val view =  binding.root
 
 
+
         //recyclerview
         arrayList = arrayListOf()
         val recview= view.recyclerviewpoke
@@ -175,11 +176,14 @@ class Pokemonfragment : Fragment() {
                                 sumrespon.body()?.stats?.get(5)?.baseStat.toString(), //spd
                             )
 
+
                             sumrespon.body()?.stats?.get(0)?.baseStat //hp
                             sumrespon.body()?.stats?.get(1)?.baseStat //atk
                             sumrespon.body()?.stats?.get(5)?.baseStat //spd
 
                             arrayList.add(sum)
+                            arrayList.sortedBy { it.attack }
+                            arrayList.sortedBy { it.attack }
                             adapter.setdata(arrayList.sortedBy { it.tinggi })
                             view?.progressbarpoke?.visibility = View.INVISIBLE
 

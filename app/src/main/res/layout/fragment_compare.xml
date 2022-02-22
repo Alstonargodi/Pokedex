@@ -25,14 +25,14 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="50dp"
             android:fontFamily="@font/poppinsbold"
             android:gravity="center"
             android:text="Gelut room"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,29 +50,59 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="204dp"
-                android:background="#E8E6E6">
+                android:layout_height="match_parent"
+                android:background="#E5E3E3">
 
                 <Button
-                    android:id="@+id/button2"
-                    android:layout_width="222dp"
+                    android:id="@+id/btnfavorite"
+                    android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="#C6C1C1"
+                    android:fontFamily="@font/poppinsbold"
                     android:text="favorite"
+                    android:textColor="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                <Button
+                    android:id="@+id/btnlist"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="#FF72C7EE"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="List"
+                    android:textColor="#FFFEFE"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnfavorite"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="50dp"
+                    android:fontFamily="@font/poppinslight"
+                    android:gravity="center"
+                    android:text="Pick From"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.398"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="222dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="28dp"
-                    android:text="List"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.494"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -105,7 +135,7 @@
             <androidx.constraintlayout.motion.widget.MotionLayout
                 android:id="@+id/motilayer"
                 android:layout_width="match_parent"
-                android:layout_height="208dp"
+                android:layout_height="match_parent"
                 app:layoutDescription="@xml/fragment_compare_scene"
                 tools:showPaths="true">
 

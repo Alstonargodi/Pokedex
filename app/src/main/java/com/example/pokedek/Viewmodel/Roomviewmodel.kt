@@ -26,6 +26,9 @@ class Roomviewmodel(application: Application): AndroidViewModel(application) {
     }
 
 
+
+
+
     fun readnew(cari : String): LiveData<List<Favoritelist>>{
         return Pokerepo.readnew(cari)
     }
