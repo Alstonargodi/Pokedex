@@ -12,7 +12,7 @@
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/fragmenthome"
-        android:name="com.example.pokedek.Ui.Homefragment"
+        android:name="com.example.pokedek.view.HomeFragment"
         android:label="fragment_fragmenthome"
         tools:layout="@layout/fragment_fragmenthome" >
         <action
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/pokemon"
-        android:name="com.example.pokedek.Ui.Pokemon.Pokemonfragment"
+        android:name="com.example.pokedek.view.pokemon.PokemonFragment"
         android:label="fragment_pokemon"
         tools:layout="@layout/fragment_pokemon" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/pokemondetailfragment"
-        android:name="com.example.pokedek.Ui.Pokemon.Pokemondetailfragment"
+        android:name="com.example.pokedek.view.pokemon.Pokemondetailfragment"
         android:label="fragment_pokemondetailfragment"
         tools:layout="@layout/fragment_pokemondetailfragment" >
         <action
@@ -77,7 +77,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchfragment"
-        android:name="com.example.pokedek.Ui.Search.Searchfragment"
+        android:name="com.example.pokedek.view.Search.Searchfragment"
         android:label="fragment_searchfragment"
         tools:layout="@layout/fragment_searchfragment" >
         <action
@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/berryfragment"
-        android:name="com.example.pokedek.Ui.Berry.Berryfragment"
+        android:name="com.example.pokedek.view.Berry.Berryfragment"
         android:label="fragment_berryfragment"
         tools:layout="@layout/fragment_berryfragment" >
         <action
@@ -101,7 +101,7 @@
     </fragment>
     <fragment
         android:id="@+id/berrydetailfragment"
-        android:name="com.example.pokedek.Ui.Berry.Berrydetailfragment"
+        android:name="com.example.pokedek.view.Berry.Berrydetailfragment"
         android:label="fragment_berrydetailfragment"
         tools:layout="@layout/fragment_berrydetailfragment" >
         <action
@@ -112,17 +112,17 @@
     </fragment>
     <fragment
         android:id="@+id/favoritefragment"
-        android:name="com.example.pokedek.Ui.Favorite.Favoritefragment"
+        android:name="com.example.pokedek.view.Favorite.Favoritefragment"
         android:label="fragment_favoritefragment"
         tools:layout="@layout/fragment_favoritefragment" />
     <fragment
         android:id="@+id/abilitydetail_bottomfragment"
-        android:name="com.example.pokedek.Ui.Pokemon.Abilitydetail_bottomfragment"
+        android:name="com.example.pokedek.view.pokemon.Abilitydetail_bottomfragment"
         android:label="abilitydetailbottomfragment"
         tools:layout="@layout/abilitydetailbottomfragment" />
     <fragment
         android:id="@+id/movesdetail_bottomfragment"
-        android:name="com.example.pokedek.Ui.Pokemon.Movesdetail_bottomfragment"
+        android:name="com.example.pokedek.view.pokemon.Movesdetail_bottomfragment"
         android:label="movesdetailbottomfragment"
         tools:layout="@layout/movesdetailbottomfragment" />
     <activity
@@ -132,15 +132,18 @@
         tools:layout="@layout/activity_splashscreen" />
     <fragment
         android:id="@+id/Compare"
-        android:name="com.example.pokedek.Ui.Compare.Compare"
+        android:name="com.example.pokedek.view.Compare.Compare"
         android:label="fragment_compare">
         <action
             android:id="@+id/action_compare_to_fragmenthome"
             app:destination="@id/fragmenthome" />
+        <action
+            android:id="@+id/action_Compare_to_listPokemon"
+            app:destination="@id/listPokemon" />
     </fragment>
     <fragment
         android:id="@+id/item"
-        android:name="com.example.pokedek.Ui.Item.Item"
+        android:name="com.example.pokedek.view.Item.Item"
         android:label="fragment_item">
         <action
             android:id="@+id/action_item_to_fragmenthome"
@@ -153,7 +156,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemdetail"
-        android:name="com.example.pokedek.Ui.Item.Itemdetail"
+        android:name="com.example.pokedek.view.Item.Itemdetail"
         android:label="fragment_itemdetail"
         tools:layout="@layout/fragment_itemdetail" >
         <action
@@ -170,5 +173,14 @@
         <argument
             android:name="type"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/listPokemon"
+        android:name="com.example.pokedek.ListPokemon"
+        android:label="fragment_list_pokemon"
+        tools:layout="@layout/fragment_list_pokemon" >
+        <action
+            android:id="@+id/action_listPokemon_to_Compare"
+            app:destination="@id/Compare" />
     </fragment>
 </navigation>

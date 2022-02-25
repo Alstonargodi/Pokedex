@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEF2FF"
-    tools:context=".Ui.Berry.Berryfragment">
+    tools:context=".view.Berry.Berryfragment">
 
 
     <ScrollView

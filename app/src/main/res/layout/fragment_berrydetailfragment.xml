@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B667F1"
-    tools:context=".Ui.Berry.Berrydetailfragment">
+    tools:context=".view.Berry.Berrydetailfragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
