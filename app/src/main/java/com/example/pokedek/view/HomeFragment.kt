@@ -78,7 +78,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-
         getPokemonList()
         getDataCount()
         return binding.root
@@ -94,8 +93,7 @@ class HomeFragment : Fragment() {
             if (listRespon.isSuccessful) {
                 val data = listRespon.body()?.results
                 for (i in 0 until data!!.size) {
-                    val nama = data[i].name
-                    apiViewModel.getpokesum(nama)
+                    apiViewModel.getpokesum(data[i].name)
                     apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { sumRespon ->
                         if (sumRespon.isSuccessful) {
                             sumRespon.body()?.apply {
@@ -113,19 +111,15 @@ class HomeFragment : Fragment() {
                             adapter.setdata(listsum)
                             binding.pbarPokehome.visibility = View.INVISIBLE
                         } else {
-                            binding.recpokehom.setPadding(10, 20, 10, 20)
-                            binding.recpokehom.setBackgroundResource(R.drawable.emptyview)
-                            binding.pbarPokehome.visibility = View.INVISIBLE
-                            Log.d(EXTRA_NAME, "cannot retrive sum data")
+                            setEmptyView()
                         }
                     }
                 }
             } else {
-                Log.d(EXTRA_NAME, "cannot retrive list data")
+                setEmptyView()
             }
         }
     }
-
 
     private fun getDataCount(){
         binding.recpokehom.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -144,6 +138,15 @@ class HomeFragment : Fragment() {
                 super.onScrolled(recyclerView, dx, dy)
             }
         })
+    }
+
+    private fun setEmptyView(){
+        binding.recpokehom.apply {
+            setPadding(10, 20, 10, 20)
+            setBackgroundResource(R.drawable.emptyview)
+        }
+        binding.pbarPokehome.visibility = View.INVISIBLE
+        Log.d(EXTRA_NAME, "cannot retrive sum data")
     }
 
 
