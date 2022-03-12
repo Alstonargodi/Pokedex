@@ -106,12 +106,12 @@
         tools:layout="@layout/fragment_favoritefragment" />
     <fragment
         android:id="@+id/abilitydetail_bottomfragment"
-        android:name="com.example.pokedek.view.pokemon.Abilitydetail_bottomfragment"
+        android:name="com.example.pokedek.view.pokemon.PokemonAbilityFragment"
         android:label="abilitydetailbottomfragment"
         tools:layout="@layout/abilitydetailbottomfragment" />
     <fragment
         android:id="@+id/movesdetail_bottomfragment"
-        android:name="com.example.pokedek.view.pokemon.Movesdetail_bottomfragment"
+        android:name="com.example.pokedek.view.pokemon.PokemonMovesFragment"
         android:label="movesdetailbottomfragment"
         tools:layout="@layout/movesdetailbottomfragment" />
     <activity

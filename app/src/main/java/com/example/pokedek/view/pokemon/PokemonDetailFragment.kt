@@ -10,50 +10,42 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.DecelerateInterpolator
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.example.pokedek.modedl.Room.Entity.Favorite.Favoritelist
 import com.example.pokedek.R
+import com.example.pokedek.databinding.FragmentPokemondetailfragmentBinding
+import com.example.pokedek.modedl.Room.Entity.Favorite.Favoritelist
 import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Roomviewmodel
-import com.example.pokedek.databinding.FragmentPokemondetailfragmentBinding
-import kotlinx.android.synthetic.main.fragment_pokemondetailfragment.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PokemonDetailFragment : Fragment() {
-    companion object{
-        const val EXTRA_NAME = "progress"
-    }
     private val apiViewModel by viewModels<Apiviewmodel>()
-    private lateinit var localViewModel: Roomviewmodel
+    private val localViewModel by viewModels<Roomviewmodel>()
 
     private lateinit var binding : FragmentPokemondetailfragmentBinding
-    private var moveslist= arrayListOf<String>()
 
+    private var name = ""
+    private var link = ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentPokemondetailfragmentBinding.inflate(inflater,container,false)
 
-        //Api
-        moveslist = arrayListOf()
 
-        //Room
-        localViewModel = ViewModelProvider(this)[Roomviewmodel::class.java]
         val data = PokemonDetailFragmentArgs.fromBundle(requireArguments()).dataDetail
         binding.tvdetailPokemName.text = data.name
+        name = data.name
 
         apiViewModel.getPokemonSummary(data.name)
-        apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { respon ->
-            respon.body()?.apply {
+        apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { responDetail ->
+            responDetail.body()?.apply {
                 binding.apply {
+                    link = sprites.other.officialArtwork.frontDefault
 
                     Glide.with(requireContext())
                         .asBitmap()
@@ -62,85 +54,78 @@ class PokemonDetailFragment : Fragment() {
 
                     //First Card
                     tvdetailPokemTypes.text = types[0].type.name
-                    val tvWieght = ValueAnimator.ofInt(0, weight).setDuration(500)
-                    tvWieght.addUpdateListener { tvdetailPokemWeight.text = it.animatedValue.toString() }
-                    tvWieght.start()
+                    val tvWeight = ValueAnimator.ofInt(0, weight).setDuration(500)
+                    tvWeight.addUpdateListener { tvdetailPokemWeight.text = it.animatedValue.toString() }
+                    tvWeight.start()
 
-                    val tvheigh = ValueAnimator.ofInt(0, height).setDuration(500)
-                    tvheigh.addUpdateListener { tvdetailPokemHeight.text = it.animatedValue.toString() }
-                    tvheigh.start()
+                    val tvHeight = ValueAnimator.ofInt(0, height).setDuration(500)
+                    tvHeight.addUpdateListener { tvdetailPokemHeight.text = it.animatedValue.toString() }
+                    tvHeight.start()
 
                     abilities.apply {
                         tvdetailPokemAbsatu.text = get(0).ability.name
                         tvdetailPokemAbdua.text = get(1).ability.name
 
                         tvdetailPokemAbsatu.setOnClickListener {
-                            val dialog = Abilitydetail_bottomfragment()
-                            val sm = (activity as AppCompatActivity).supportFragmentManager
+                            val abilityDialog = PokemonAbilityFragment()
+                            val supportManager = (activity as AppCompatActivity).supportFragmentManager
 
                             val args = Bundle()
-                            args.putString("ABTOne",get(0).ability.name)
-                            args.putString("ABTTwo",get(1).ability.name)
-                            dialog.arguments = args
-                            dialog.show(sm, "abtdialog")
+                            args.putString(EXTRA_ABTONE,get(0).ability.name)
+                            args.putString(EXTRA_ABTWO,get(1).ability.name)
+                            abilityDialog.arguments = args
+                            abilityDialog.show(supportManager, EXTRA_ABTDETAIL)
                         }
-                    }
-
-
-                    btnFav.setOnClickListener {
-                        binding.btnFav.setBackgroundResource(R.drawable.bk_full)
-                        addtofavorite(data.name,sprites.other.officialArtwork.frontDefault)
                     }
 
                     //Second Card
                     stats.apply {
-                        val tvhp = ValueAnimator.ofInt(0,get(0).baseStat).setDuration(500)
+                        val tvHealth = ValueAnimator.ofInt(0,get(0).baseStat).setDuration(500)
                         ObjectAnimator.ofInt(statsbarHP,EXTRA_NAME,get(0).baseStat).setDuration(500).start()
-                        tvhp.addUpdateListener { tvdetailPokemHp.text = it.animatedValue.toString() }
-                        tvhp.start()
+                        tvHealth.addUpdateListener { tvdetailPokemHp.text = it.animatedValue.toString() }
+                        tvHealth.start()
 
-                        val tvatk = ValueAnimator.ofInt(0,get(1).baseStat).setDuration(500)
+                        val tvAttack = ValueAnimator.ofInt(0,get(1).baseStat).setDuration(500)
                         ObjectAnimator.ofInt(statsbarATK,EXTRA_NAME,get(1).baseStat).setDuration(500).start()
-                        tvatk.addUpdateListener { tvdetailPokemAtk.text = it.animatedValue.toString() }
-                        tvatk.start()
+                        tvAttack.addUpdateListener { tvdetailPokemAtk.text = it.animatedValue.toString() }
+                        tvAttack.start()
 
-                        val tvdef = ValueAnimator.ofInt(0,get(2).baseStat).setDuration(500)
+                        val tvDefence = ValueAnimator.ofInt(0,get(2).baseStat).setDuration(500)
                         ObjectAnimator.ofInt(statsbarDef,EXTRA_NAME,get(2).baseStat).setDuration(500).start()
-                        tvdef.addUpdateListener { tvdetailPokemDef.text = it.animatedValue.toString() }
-                        tvdef.start()
+                        tvDefence.addUpdateListener { tvdetailPokemDef.text = it.animatedValue.toString() }
+                        tvDefence.start()
 
-                        val tvsatk = ValueAnimator.ofInt(0,get(3).baseStat).setDuration(500)
+                        val tvsAttack = ValueAnimator.ofInt(0,get(3).baseStat).setDuration(500)
                         ObjectAnimator.ofInt(statsbarSatk,EXTRA_NAME,get(3).baseStat).setDuration(500).start()
-                        tvsatk.addUpdateListener { tvdetailPokemSatk.text = it.animatedValue.toString() }
-                        tvsatk.start()
+                        tvsAttack.addUpdateListener { tvdetailPokemSatk.text = it.animatedValue.toString() }
+                        tvsAttack.start()
 
-                        val tvsdef = ValueAnimator.ofInt(0,get(4).baseStat).setDuration(500)
+                        val tvsDefence = ValueAnimator.ofInt(0,get(4).baseStat).setDuration(500)
                         ObjectAnimator.ofInt(statsbarSdef,EXTRA_NAME,get(4).baseStat).setDuration(500).start()
-                        tvsdef.addUpdateListener { tvdetailPokemSdef.text = it.animatedValue.toString() }
-                        tvsdef.start()
+                        tvsDefence.addUpdateListener { tvdetailPokemSdef.text = it.animatedValue.toString() }
+                        tvsDefence.start()
 
-                        val tvspd = ValueAnimator.ofInt(0,get(5).baseStat).setDuration(500)
+                        val tvSpeed = ValueAnimator.ofInt(0,get(5).baseStat).setDuration(500)
                         ObjectAnimator.ofInt(statsbarSpd,EXTRA_NAME,get(5).baseStat).setDuration(500).start()
-                        tvspd.addUpdateListener { tvdetailPokemSpd.text = it.animatedValue.toString() }
-                        tvspd.start()
+                        tvSpeed.addUpdateListener { tvdetailPokemSpd.text = it.animatedValue.toString() }
+                        tvSpeed.start()
                     }
                 }
             }
 
             //moves pokemon dialog
             binding.tvdetailPokemMoves.setOnClickListener {
-                val dialog = Movesdetail_bottomfragment()
-                val sm = (activity as AppCompatActivity).supportFragmentManager
+                val dialog = PokemonMovesFragment()
+                val supportFragmentManager = (activity as AppCompatActivity).supportFragmentManager
 
                 val args = Bundle()
-                args.putString("nama", data.name)
+                args.putString(EXTRA_NAME, data.name)
                 dialog.arguments = args
-                dialog.show(sm, "movesdialog")
+                dialog.show(supportFragmentManager,EXTRA_MOVEDETAIL)
             }
 
         }
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtopoke)
-        setValueDetail()
 
         return binding.root
     }
@@ -151,50 +136,46 @@ class PokemonDetailFragment : Fragment() {
             findNavController().navigate(PokemonDetailFragmentDirections.actionPokemondetailfragmentToPokemon())
         }
 
+        binding.btnFav.setOnClickListener {
+            binding.btnFav.setBackgroundResource(R.drawable.bk_full)
+            setFavorite()
+        }
+
     }
 
-
-    fun ProgressBar.smoothProgress(percent: Int = 80){
-        val animation = ObjectAnimator.ofInt(this, "progress", percent)
-        animation.duration = 400
-        animation.interpolator = DecelerateInterpolator()
-        animation.start()
-    }
 
 
     @SuppressLint("SimpleDateFormat")
-    fun addtofavorite(name : String, link : String){
-
-        var dialog = Dialog(requireContext())
+    private fun setFavorite(){
+        val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.succesadddialog)
         dialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
 
-        //currrent date
-        val date = SimpleDateFormat("d/MMM/yyy")
-        val current = date.format(Date())
-        val flist= Favoritelist(
+        val dateFormat = SimpleDateFormat("d/MMM/yyy")
+        val currentDate = dateFormat.format(Date())
+
+        val favoriteTemp= Favoritelist(
             0,
             name,
             "pokemon",
-            current.toString(),
+            currentDate.toString(),
             link
         )
 
-        object  : CountDownTimer(1000, 1000){
-            override fun onTick(p0: Long) {
-                dialog.show()
-            }
-            override fun onFinish() {
-                dialog.dismiss()
-            }
+        object: CountDownTimer(1000, 1000){
+            override fun onTick(p0: Long) { dialog.show() }
+            override fun onFinish() { dialog.dismiss() }
         }.start()
 
-        localViewModel.insertfav(flist)
+        localViewModel.insertfav(favoriteTemp)
     }
 
-
-    private fun setValueDetail(){
-        val data = PokemonDetailFragmentArgs.fromBundle(requireArguments()).dataDetail
-
+    companion object{
+        const val EXTRA_NAME = "progress"
+        const val EXTRA_ABTONE = "abilityone"
+        const val EXTRA_ABTWO = "abilitytwo"
+        const val EXTRA_ABTDETAIL = "abtdialog"
+        const val EXTRA_MOVEDETAIL = "movedetail"
     }
+
 }

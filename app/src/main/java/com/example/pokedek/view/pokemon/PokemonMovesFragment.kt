@@ -15,7 +15,7 @@ import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.MovesdetailbottomfragmentBinding
 
-class Movesdetail_bottomfragment : BottomSheetDialogFragment() {
+class PokemonMovesFragment : BottomSheetDialogFragment() {
     lateinit var  apiviewmodel: Apiviewmodel
 
     private var _binding: MovesdetailbottomfragmentBinding? = null
