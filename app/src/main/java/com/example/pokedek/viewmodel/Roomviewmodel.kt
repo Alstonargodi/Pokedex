@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonlist
+import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
 import com.example.pokedek.modedl.Room.Database.Pokedb
 import com.example.pokedek.modedl.Room.Entity.Favorite.Favoritelist
 import com.example.pokedek.modedl.Room.Repo.Pokerepo
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class Roomviewmodel(application: Application): AndroidViewModel(application) {
     val Pokerepo : Pokerepo
-    val readpokelist : LiveData<List<Pokemonlist>>
+    val readpokelist : LiveData<List<PokemonSum>>
     val readfavlistbynew : LiveData<List<Favoritelist>>
     val readfavlistbyold : LiveData<List<Favoritelist>>
 

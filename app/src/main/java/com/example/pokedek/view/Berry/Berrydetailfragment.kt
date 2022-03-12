@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.pokedek.modedl.Api.Repo.ApiRepo
+import com.example.pokedek.modedl.remote.ApiRepository
 import com.example.pokedek.modedl.Room.Entity.Berry.Flavourberrylist
 import com.example.pokedek.R
 import com.example.pokedek.view.Berry.Adapter.Berryflavourrvadapter
@@ -44,7 +44,7 @@ class Berrydetailfragment : Fragment() {
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(context)
         //api
-        val repo = ApiRepo()
+        val repo = ApiRepository()
         val vmf = VModelFactory(repo)
         apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
 

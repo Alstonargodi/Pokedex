@@ -110,28 +110,16 @@
                             android:layout_height="0dp"
                             android:fontFamily="@font/poppinsbold"
                             android:gravity="center"
+                            android:padding="5dp"
                             android:text="Item"
+                            app:drawableTint="#65FFFFFF"
                             android:textColor="#FEFEFE"
                             android:textSize="16sp"
+                            app:drawableRightCompat="@drawable/ic_pokenal"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="41dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="95dp"
-                            android:layout_marginEnd="-20dp"
-                            android:src="@drawable/ball"
-                            android:tint="#FCFCFC"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/itemdua"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toStartOf="@+id/itemdua"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0" />
 
@@ -161,33 +149,23 @@
 
                         <TextView
                             android:id="@+id/itemsatu"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="117dp"
+                            android:layout_height="35dp"
+                            android:backgroundTint="#FFFEFE"
                             android:fontFamily="@font/poppinsbold"
                             android:gravity="center"
+                            android:padding="5dp"
                             android:text="Pokemon"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
+                            app:drawableTint="#65FFFFFF"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="41dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="95dp"
-                            android:layout_marginEnd="-20dp"
-                            android:src="@drawable/ball"
-                            android:tint="#FEFEFE"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
+                            app:layout_constraintVertical_bias="0.0"
+                            app:drawableRightCompat="@drawable/ic_pokenal"
+                            />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -209,30 +187,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="41dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="95dp"
-                            android:layout_marginEnd="-20dp"
-                            android:src="@drawable/ball"
-                            android:tint="#FCFCFC"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toStartOf="@+id/itemdua"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
                         <TextView
                             android:id="@+id/itemempat"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:fontFamily="@font/poppinsbold"
                             android:gravity="center"
+                            android:padding="5dp"
                             android:text="Berry"
+                            app:drawableTint="#65FFFFFF"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp"
+                            app:drawableRightCompat="@drawable/ic_pokenal"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.111"

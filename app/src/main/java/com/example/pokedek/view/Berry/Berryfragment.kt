@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.modedl.Api.Repo.ApiRepo
+import com.example.pokedek.modedl.remote.ApiRepository
 import com.example.pokedek.modedl.Room.Entity.Berry.Berrylist
 import com.example.pokedek.R
 import com.example.pokedek.view.Berry.Adapter.Berryrvadapter
@@ -46,7 +46,7 @@ class Berryfragment : Fragment() {
 
         //api
         datalist = arrayListOf()
-        val repo = ApiRepo()
+        val repo = ApiRepository()
         val vmodelfactory = VModelFactory(repo)
         apiviewmodel = ViewModelProvider(this,vmodelfactory).get(Apiviewmodel::class.java)
 
@@ -102,7 +102,7 @@ class Berryfragment : Fragment() {
                 val nama = berrysum.body()?.item?.name.toString()
                 getberrysummore(nama)
             }else{
-                Log.d("getberrysum","fail to fetch")
+                Log.d("GETBERRYSUM","fail to fetch")
             }
         })
     }

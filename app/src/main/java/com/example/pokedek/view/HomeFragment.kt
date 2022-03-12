@@ -11,14 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.modedl.Api.Repo.ApiRepo
-import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonlist
+import com.example.pokedek.modedl.remote.ApiRepository
+import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
 import com.example.pokedek.R
-import com.example.pokedek.view.pokemon.Adapter.PokeHomeRvAdapter
+
 import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Roomviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.FragmentFragmenthomeBinding
+import com.example.pokedek.view.pokemon.adapter.PokeHomeRvAdapter
 
 
 class HomeFragment : Fragment() {
@@ -38,12 +39,12 @@ class HomeFragment : Fragment() {
 
     private var page = 0
     private var isLoading = false
-    private var listsum = ArrayList<Pokemonlist>()
+    private var listsum = ArrayList<PokemonSum>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentFragmenthomeBinding.inflate(inflater, container, false)
 
-        val repo = ApiRepo()
+        val repo = ApiRepository()
         val vModelFactory = VModelFactory(repo)
         apiViewModel = ViewModelProvider(this,vModelFactory)[Apiviewmodel::class.java]
         roomViewModel = ViewModelProvider(this)[Roomviewmodel::class.java]
@@ -88,35 +89,36 @@ class HomeFragment : Fragment() {
         isLoading = true
         binding.pbarPokehome.visibility = View.VISIBLE
 
-        apiViewModel.getpokelist(PAGE, LIMIT)
+        apiViewModel.getPokemonList(PAGE, LIMIT)
         apiViewModel.pokelistrespon.observe(viewLifecycleOwner) { listRespon ->
-            if (listRespon.isSuccessful) {
-                val data = listRespon.body()?.results
-                for (i in 0 until data!!.size) {
-                    apiViewModel.getpokesum(data[i].name)
-                    apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { sumRespon ->
-                        if (sumRespon.isSuccessful) {
-                            sumRespon.body()?.apply {
-                                val sum = Pokemonlist(
-                                    name,
-                                    sprites.other.officialArtwork.frontDefault,
-                                    height.toString(),
-                                    weight.toString(),
-                                    stats[0].baseStat.toString(), //hp
-                                    stats[1].baseStat.toString(), //atk
-                                    stats[5].baseStat.toString(), //spd
-                                )
-                                listsum.add(sum)
-                            }
-                            adapter.setdata(listsum)
-                            binding.pbarPokehome.visibility = View.INVISIBLE
-                        } else {
-                            setEmptyView()
+            val data = listRespon.results
+            for (element in data) {
+                apiViewModel.getPokemonSummary(element.name)
+                apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { sumRespon ->
+                    if (sumRespon.isSuccessful) {
+                        sumRespon.body()?.apply {
+                            val sum = PokemonSum(
+                                name,
+                                sprites.other.officialArtwork.frontDefault,
+                                height.toString(),
+                                weight.toString(),
+                                stats[0].baseStat.toString(), //hp
+                                stats[1].baseStat.toString(), //atk
+                                stats[5].baseStat.toString(), //spd
+                                types[0].type.name,
+                                abilities[0].ability.name,
+                                abilities[1].ability.name,
+                                stats[3].baseStat.toString(),
+                                stats[4].baseStat.toString(),
+                            )
+                            listsum.add(sum)
                         }
+                        adapter.setdata(listsum)
+                        binding.pbarPokehome.visibility = View.INVISIBLE
+                    } else {
+                        setEmptyView()
                     }
                 }
-            } else {
-                setEmptyView()
             }
         }
     }

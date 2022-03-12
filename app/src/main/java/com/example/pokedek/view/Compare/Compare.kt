@@ -24,7 +24,7 @@ class Compare : Fragment() {
 
 
         bind.btnlist.setOnClickListener {
-            findNavController().navigate(CompareDirections.actionCompareToListPokemon())
+//            findNavController().navigate(CompareDirections.actionCompareToListPokemon())
         }
 
     }

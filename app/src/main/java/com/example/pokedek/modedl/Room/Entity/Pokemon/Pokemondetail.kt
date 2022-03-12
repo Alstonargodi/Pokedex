@@ -1,6 +1,6 @@
 package com.example.pokedek.modedl.Room.Entity.Pokemon
 
-import com.example.pokedek.modedl.Api.Pokemon.Pokemonsum.Ability
+import com.example.pokedek.modedl.remote.pokemonreponse.Pokemonsum.Ability
 
 data class Pokemondetail(
     val name: String,

@@ -50,12 +50,11 @@
             app:enterAnim="@anim/slide_downy" />
         <action
             android:id="@+id/action_pokemon_to_pokemondetailfragment"
-            app:destination="@id/pokemondetailfragment"
-            app:enterAnim="@anim/slide_rightx" />
+            app:destination="@id/pokemondetailfragment" />
     </fragment>
     <fragment
         android:id="@+id/pokemondetailfragment"
-        android:name="com.example.pokedek.view.pokemon.Pokemondetailfragment"
+        android:name="com.example.pokedek.view.pokemon.PokemonDetailFragment"
         android:label="fragment_pokemondetailfragment"
         tools:layout="@layout/fragment_pokemondetailfragment" >
         <action
@@ -63,8 +62,8 @@
             app:destination="@id/pokemon"
             app:enterAnim="@anim/slide_leftx" />
         <argument
-            android:name="pokemonname"
-            app:argType="string" />
+            android:name="DataDetail"
+            app:argType="com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum" />
         <action
             android:id="@+id/action_pokemondetailfragment_to_searchfragment"
             app:destination="@id/searchfragment" />
@@ -77,24 +76,14 @@
     </fragment>
     <fragment
         android:id="@+id/searchfragment"
-        android:name="com.example.pokedek.view.Search.Searchfragment"
+        android:name="com.example.pokedek.view.search.Searchfragment"
         android:label="fragment_searchfragment"
-        tools:layout="@layout/fragment_searchfragment" >
-        <action
-            android:id="@+id/action_searchfragment_to_pokemondetailfragment"
-            app:destination="@id/pokemondetailfragment" />
-        <action
-            android:id="@+id/action_searchfragment_to_berrydetailfragment"
-            app:destination="@id/berrydetailfragment" />
-    </fragment>
+        tools:layout="@layout/fragment_searchfragment" />
     <fragment
         android:id="@+id/berryfragment"
         android:name="com.example.pokedek.view.Berry.Berryfragment"
         android:label="fragment_berryfragment"
         tools:layout="@layout/fragment_berryfragment" >
-        <action
-            android:id="@+id/action_berryfragment_to_berrydetailfragment"
-            app:destination="@id/berrydetailfragment" />
         <action
             android:id="@+id/action_berryfragment_to_fragmenthome"
             app:destination="@id/fragmenthome" />
@@ -137,9 +126,6 @@
         <action
             android:id="@+id/action_compare_to_fragmenthome"
             app:destination="@id/fragmenthome" />
-        <action
-            android:id="@+id/action_Compare_to_listPokemon"
-            app:destination="@id/listPokemon" />
     </fragment>
     <fragment
         android:id="@+id/item"
@@ -149,10 +135,6 @@
             android:id="@+id/action_item_to_fragmenthome"
             app:destination="@id/fragmenthome"
             app:enterAnim="@anim/slide_downy" />
-        <action
-            android:id="@+id/action_item_to_itemdetail"
-            app:destination="@id/itemdetail"
-            app:enterAnim="@anim/slide_rightx" />
     </fragment>
     <fragment
         android:id="@+id/itemdetail"

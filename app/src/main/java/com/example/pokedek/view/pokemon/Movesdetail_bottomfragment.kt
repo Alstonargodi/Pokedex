@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.pokedek.modedl.Api.Repo.ApiRepo
+import com.example.pokedek.modedl.remote.ApiRepository
 import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonmoves
-import com.example.pokedek.view.pokemon.Adapter.Pokemonmovesrvadapter
+import com.example.pokedek.view.pokemon.adapter.Pokemonmovesrvadapter
 import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.MovesdetailbottomfragmentBinding
@@ -26,7 +26,7 @@ class Movesdetail_bottomfragment : BottomSheetDialogFragment() {
         _binding = MovesdetailbottomfragmentBinding.inflate(inflater, container, false)
 
         //viewmodel
-        val repo = ApiRepo()
+        val repo = ApiRepository()
         val vmf = VModelFactory(repo)
         apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
 
@@ -39,7 +39,7 @@ class Movesdetail_bottomfragment : BottomSheetDialogFragment() {
         val nama = arguments?.getString("nama")
 
         movelist = arrayListOf()
-        apiviewmodel.getpokesum(nama!!)
+        apiviewmodel.getPokemonSummary(nama!!)
         apiviewmodel.pokesumrespon.observe(viewLifecycleOwner, Observer { respon ->
             if (respon.isSuccessful){
                 //moves pokemon

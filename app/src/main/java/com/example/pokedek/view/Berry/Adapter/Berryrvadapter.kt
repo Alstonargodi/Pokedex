@@ -32,7 +32,7 @@ class Berryrvadapter: RecyclerView.Adapter<Berryrvadapter.viewholder>() {
             .into(holder.itemView.imgberry_list)
 
         holder.itemView.tvberry_name.setOnClickListener {
-            holder.itemView.findNavController().navigate(BerryfragmentDirections.actionBerryfragmentToBerrydetailfragment(item.name))
+//            holder.itemView.findNavController().navigate(BerryfragmentDirections.actionBerryfragmentToBerrydetailfragment(item.name))
         }
     }
 

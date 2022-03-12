@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.pokedek.modedl.Api.Repo.ApiRepo
+import com.example.pokedek.modedl.remote.ApiRepository
 import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.AbilitydetailbottomfragmentBinding
@@ -28,17 +28,17 @@ class Abilitydetail_bottomfragment : BottomSheetDialogFragment() {
     ): View? {
         _binding = AbilitydetailbottomfragmentBinding.inflate(inflater, container, false)
 
-        val nama = arguments?.getString("nama")
-        val namadua = arguments?.getString("namadua")
+        val nama = arguments?.getString("ABTOne")
+        val namadua = arguments?.getString("ABTTwo")
 
-        val repo = ApiRepo()
+        val repo = ApiRepository()
         val vmf = VModelFactory(repo)
         apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
 
         binding.AbdetailName.setText(nama)
         binding.AbdetailEffectDUA.setText(namadua)
 
-        apiviewmodel.getpokeabt(nama!!)
+        apiviewmodel.getPokemonAbilty(nama!!)
         apiviewmodel.pokeabtrespon.observe(viewLifecycleOwner, Observer { responabt ->
             if (responabt.isSuccessful){
                 val effect = responabt.body()?.effectEntries?.get(1)?.effect.toString()
@@ -50,7 +50,7 @@ class Abilitydetail_bottomfragment : BottomSheetDialogFragment() {
             }
         })
 
-        apiviewmodel.getpokeabt(namadua!!)
+        apiviewmodel.getPokemonAbilty(namadua!!)
         apiviewmodel.pokeabtrespon.observe(viewLifecycleOwner, Observer { responabt ->
             if (responabt.isSuccessful){
                 val effect = responabt.body()?.effectEntries?.get(1)?.effect.toString()

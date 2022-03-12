@@ -1,9 +1,9 @@
 package com.example.pokedek.modedl.Room.Repo
 
 import androidx.lifecycle.LiveData
-import com.example.pokedek.modedl.Room.Dao.Pokedao
+import com.example.pokedek.modedl.Room.dao.Pokedao
 import com.example.pokedek.modedl.Room.Entity.Favorite.Favoritelist
-import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonlist
+import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
 
 /*
  Repo class
@@ -11,7 +11,7 @@ import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonlist
  */
 
 class Pokerepo(val dao : Pokedao) {
-    val readpoke : LiveData<List<Pokemonlist>> = dao.readpokelist()
+    val readpoke : LiveData<List<PokemonSum>> = dao.readpokelist()
     val readfavbynew : LiveData<List<Favoritelist>> = dao.readfavoritlistbynew()
     val readfavbyold : LiveData<List<Favoritelist>> = dao.readfavoritlistbyold()
 
@@ -24,7 +24,7 @@ class Pokerepo(val dao : Pokedao) {
     }
 
 
-    fun insertpoke(pokelist : Pokemonlist){
+    fun insertpoke(pokelist : PokemonSum){
         dao.insertpokelist(pokelist)
     }
 

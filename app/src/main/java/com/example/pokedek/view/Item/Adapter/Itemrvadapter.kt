@@ -31,12 +31,12 @@ class Itemrvadapter : RecyclerView.Adapter<Itemrvadapter.viewholder>() {
             .into(holder.itemView.item_image)
 
         holder.itemView.Childlayout.setOnClickListener {
-            holder.itemView.findNavController().navigate(ItemDirections.actionItemToItemdetail(
-                item.nama,
-                item.link,
-                item.effect,
-                item.type
-            ))
+//            holder.itemView.findNavController().navigate(ItemDirections.actionItemToItemdetail(
+//                item.nama,
+//                item.link,
+//                item.effect,
+//                item.type
+//            ))
         }
     }
 

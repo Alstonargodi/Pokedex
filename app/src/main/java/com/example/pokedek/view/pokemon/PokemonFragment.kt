@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
-import com.example.pokedek.modedl.Api.Repo.ApiRepo
-import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonlist
-import com.example.pokedek.view.pokemon.Adapter.Pokemonrvadapter
+import com.example.pokedek.modedl.remote.ApiRepository
+import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
+import com.example.pokedek.view.pokemon.adapter.PokemonRvAdapter
 import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 
@@ -33,31 +34,29 @@ class PokemonFragment : Fragment() {
         const val EXTRA_NAME = "PokemonFragment"
     }
 
-    lateinit var apiViewModel: Apiviewmodel
-    private var _binding: FragmentPokemonBinding? = null
-    private val binding get() = _binding!!
+    private val apiViewModel by viewModels<Apiviewmodel>()
+
+    private lateinit var binding: FragmentPokemonBinding
+
 
     private var isLoading= false
-    private var adapter = Pokemonrvadapter()
-    private var dataList = ArrayList<Pokemonlist>()
+    private var adapter = PokemonRvAdapter()
+    private var dataList = ArrayList<PokemonSum>()
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPokemonBinding.inflate(inflater, container, false)
+        binding = FragmentPokemonBinding.inflate(inflater, container, false)
 
         dataList = arrayListOf()
         val recView = binding.recyclerviewpoke
-        adapter = Pokemonrvadapter()
+        adapter = PokemonRvAdapter()
         recView.adapter = adapter
         recView.layoutManager= LinearLayoutManager(context)
         recView.animate().start()
 
-        val repo = ApiRepo()
-        val vmFac = VModelFactory(repo)
-        apiViewModel = ViewModelProvider(this,vmFac)[Apiviewmodel::class.java]
 
         return binding.root
     }
@@ -86,16 +85,16 @@ class PokemonFragment : Fragment() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     when(p0?.getItemAtPosition(p2)){
                         "Name"->{
-                            adapter.setdata(dataList.sortedBy { it.nama })
+                            adapter.setdata(dataList.sortedBy { it.name })
                         }
                         "Weight"->{
-                            adapter.setdata(dataList.sortedBy { it.berat })
+                            adapter.setdata(dataList.sortedBy { it.weight })
                         }
                         "Height"->{
-                            adapter.setdata(dataList.sortedBy { it.tinggi })
+                            adapter.setdata(dataList.sortedBy { it.height })
                         }
                         "Hp"->{
-                            adapter.setdata(dataList.sortedBy { it.hp })
+                            adapter.setdata(dataList.sortedBy { it.power })
                         }
                         "Speed"->{
                             adapter.setdata(dataList.sortedBy { it.speed })
@@ -120,37 +119,36 @@ class PokemonFragment : Fragment() {
         isLoading = true
         binding.progressbarpoke.visibility = View.VISIBLE
 
-        apiViewModel.getpokelist(PAGE, LIMIT)
+        apiViewModel.getPokemonList(PAGE, LIMIT)
         apiViewModel.pokelistrespon.observe(viewLifecycleOwner) { ListRespon ->
-            if(ListRespon.isSuccessful){
-                val data = ListRespon.body()?.results
-                for(i in 0 until data!!.size){
-                    apiViewModel.getpokesum(data[i].name)
-
-                    apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { SumRespon ->
-                        if (SumRespon.isSuccessful){
-                            SumRespon.body()?.apply {
-                                val sum = Pokemonlist(
-                                    name,
-                                    sprites.other.officialArtwork.frontDefault,
-                                    height.toString(),
-                                    weight.toString(),
-                                    stats[0].baseStat.toString(), //hp
-                                    stats[1].baseStat.toString(), //atk
-                                    stats[5].baseStat.toString(), //spd
-                                )
-                                dataList.add(sum)
-                                adapter.setdata(dataList.sortedBy { it.nama })
-                                binding.progressbarpoke.visibility = View.INVISIBLE
-                            }
-
-                        }else{
-                            setEmptyView()
+            val data = ListRespon.results
+            for(element in data){
+                apiViewModel.getPokemonSummary(element.name)
+                apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { SumRespon ->
+                    if (SumRespon.isSuccessful){
+                        SumRespon.body()?.apply {
+                            val sum = PokemonSum(
+                                name,
+                                sprites.other.officialArtwork.frontDefault,
+                                height.toString(),
+                                weight.toString(),
+                                stats[0].baseStat.toString(), //hp
+                                stats[1].baseStat.toString(), //atk
+                                stats[5].baseStat.toString(), //spd
+                                types[0].type.name,
+                                abilities[0].ability.name,
+                                abilities[1].ability.name,
+                                stats[3].baseStat.toString(),
+                                stats[4].baseStat.toString(),
+                            )
+                            dataList.add(sum)
+                            adapter.setdata(dataList.sortedBy { it.name })
+                            binding.progressbarpoke.visibility = View.INVISIBLE
                         }
+                    }else{
+                        setEmptyView()
                     }
                 }
-            }else{
-                setEmptyView()
             }
         }
     }

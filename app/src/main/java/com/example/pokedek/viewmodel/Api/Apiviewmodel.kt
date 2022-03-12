@@ -1,79 +1,110 @@
 package com.example.pokedek.viewmodel.Api
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedek.modedl.Api.Berry.BerryList.Berrylist
-import com.example.pokedek.modedl.Api.Berry.Berysum.Berrysum
-import com.example.pokedek.modedl.Api.Item.Itemlist.Itemlist
-import com.example.pokedek.modedl.Api.Item.Itemsumarry.Itemsum
-import com.example.pokedek.modedl.Api.Pokemon.Pokeablity.Pokeablty
-import com.example.pokedek.modedl.Api.Repo.ApiRepo
-import com.example.pokedek.modedl.Api.Pokemon.Pokemonsum.Pokesummary
-import com.example.pokedek.modedl.Api.Pokemon.Pokemoves.Pokemoves
-import com.example.pokedek.modedl.Api.Pokemon.pokemonlist.Pokemonlist
+import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
+import com.example.pokedek.modedl.remote.berryresponse.berrylistresponse.BerryListResponse
+import com.example.pokedek.modedl.remote.berryresponse.berrysumresponse.BerrySumResponse
+import com.example.pokedek.modedl.remote.itemresponse.itemlistresponse.Itemlist
+import com.example.pokedek.modedl.remote.itemresponse.itemsumreponse.Itemsum
+import com.example.pokedek.modedl.remote.pokemonreponse.pokemonabilityresponse.Pokeablty
+import com.example.pokedek.modedl.remote.ApiRepository
+import com.example.pokedek.modedl.remote.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.modedl.remote.pokemonreponse.Pokemoves.Pokemoves
+import com.example.pokedek.modedl.remote.pokemonreponse.pokemonlist.Pokemonlist
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
-class Apiviewmodel (val repo : ApiRepo): ViewModel(){
-
-    val pokelistrespon : MutableLiveData<Response<Pokemonlist>> = MutableLiveData()
+class Apiviewmodel : ViewModel(){
+    val pokelistrespon : MutableLiveData<Pokemonlist> = MutableLiveData()
     val pokesumrespon : MutableLiveData<Response<Pokesummary>> = MutableLiveData()
     val pokeabtrespon : MutableLiveData<Response<Pokeablty>> = MutableLiveData()
     val pokemovesrespon : MutableLiveData<Response<Pokemoves>> = MutableLiveData()
 
-    val berrylistrespon : MutableLiveData<Response<Berrylist>> = MutableLiveData()
-    val berrysumrespon : MutableLiveData<Response<Berrysum>> = MutableLiveData()
+    val berrylistrespon : MutableLiveData<Response<BerryListResponse>> = MutableLiveData()
+    val berrysumrespon : MutableLiveData<Response<BerrySumResponse>> = MutableLiveData()
 
     val itemlistrespon : MutableLiveData<Response<Itemlist>> = MutableLiveData()
     val itemsumrespon : MutableLiveData<Response<Itemsum>> = MutableLiveData()
 
     //pokemon
-    fun getpokelist(page: Int,limit: Int){
+    fun getPokemonList(page: Int, limit: Int){
         viewModelScope.launch {
-            pokelistrespon.value = repo.getlist(page, limit)
+            ApiRepository().getListPokemon(page, limit).enqueue(object : Callback<Pokemonlist>{
+                override fun onResponse(call: Call<Pokemonlist>, response: Response<Pokemonlist>) {
+                   pokelistrespon.value = response.body()
+                }
+
+                override fun onFailure(call: Call<Pokemonlist>, t: Throwable) {
+                    Log.d("pokemon",t.message.toString())
+                }
+
+            })
         }
     }
 
-    fun getpokesum(id : String){
+    fun getPokemonSummary(name : String){
         viewModelScope.launch{
-            pokesumrespon.value = repo.getsum(id)
+            ApiRepository().getSumPokemon(name).enqueue(object : Callback<Pokesummary>{
+                override fun onResponse(call: Call<Pokesummary>, response: Response<Pokesummary>) {
+                    if (response.isSuccessful)
+                        pokesumrespon.value = response
+                    else
+                        Log.d("PokemonSummary",response.message())
+                }
+                override fun onFailure(call: Call<Pokesummary>, t: Throwable) {
+                    Log.d("PokemonSummary",t.message.toString())
+                }
+            })
         }
     }
-    fun getpokeabt(id: String){
+    fun getPokemonAbilty(name: String){
         viewModelScope.launch {
-            pokeabtrespon.value = repo.getability(id)
+            ApiRepository().getAbilityPokemon(name).enqueue(object : Callback<Pokeablty>{
+                override fun onResponse(call: Call<Pokeablty>, response: Response<Pokeablty>) {
+                    pokeabtrespon.value = response
+                }
+
+                override fun onFailure(call: Call<Pokeablty>, t: Throwable) {
+                    Log.d("pokemon",t.message.toString())
+                }
+            })
         }
     }
     fun getpokemoves(id: String){
         viewModelScope.launch {
-            pokemovesrespon.value = repo.getmoves(id)
+            pokemovesrespon.value = ApiRepository().getMovesPokemon(id)
         }
     }
 
     //berry
     fun getberrylist(page: Int,limit: Int){
         viewModelScope.launch {
-            berrylistrespon.value = repo.getberrylist(page, limit)
+            berrylistrespon.value = ApiRepository().getListBerry(page, limit)
         }
     }
 
     fun getberrysum(id:String){
         viewModelScope.launch {
-            berrysumrespon.value = repo.getberrysum(id)
+            berrysumrespon.value = ApiRepository().getSumBerry(id)
         }
     }
 
     //item
     fun getitemlist(page: Int,limit: Int){
         viewModelScope.launch {
-            itemlistrespon.value = repo.getitemlist(page, limit)
+            itemlistrespon.value = ApiRepository().getListItem(page, limit)
         }
     }
 
     fun getitemsum(id: String){
         viewModelScope.launch {
-            itemsumrespon.value = repo.getitemsum(id)
+            itemsumrespon.value = ApiRepository().getSumItem(id)
         }
     }
 
