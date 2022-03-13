@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/fragmenthome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".view.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:scrollbars="none"
+        android:layout_height="900dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.006">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="900dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Headerlayout"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:background="@drawable/homebg"
+                android:backgroundTint="#EAE9E9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Toplayout"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/homebg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="172dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/pokelight" />
+
+                    <ImageView
+                        android:id="@+id/btn_gofind"
+                        android:layout_width="40dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginBottom="12dp"
+                        android:padding="1dp"
+                        android:src="@drawable/find"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#FFFFFF" />
+
+                    <ImageView
+                        android:id="@+id/btn_gofav"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="12dp"
+                        android:padding="1dp"
+                        android:src="@drawable/bk"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/btn_gofind"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="#F7F7F7" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/Btn_item"
+                    android:layout_width="118dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="#577BC1"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/Misclayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.092"
+                    app:layout_constraintStart_toEndOf="@+id/btn_pokelist"
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
+                    app:layout_constraintVertical_bias="0.121">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/itemdua"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Item"
+                            app:drawableTint="#65FFFFFF"
+                            android:textColor="#FEFEFE"
+                            android:textSize="16sp"
+                            app:drawableRightCompat="@drawable/ic_pokenal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btn_pokelist"
+                    android:layout_width="118dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="220dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="#FF72C7EE"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/Misclayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
+                    app:layout_constraintVertical_bias="0.13">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/itemsatu"
+                            android:layout_width="117dp"
+                            android:layout_height="35dp"
+                            android:backgroundTint="#FFFEFE"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Pokemon"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            app:drawableTint="#65FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:drawableRightCompat="@drawable/ic_pokenal"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnhome_berry"
+                    android:layout_width="118dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="#B667F1"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/Misclayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Btn_item"
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
+                    app:layout_constraintVertical_bias="0.119">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/itemempat"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:fontFamily="@font/poppinsbold"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Berry"
+                            app:drawableTint="#65FFFFFF"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            app:drawableRightCompat="@drawable/ic_pokenal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.111"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Misclayout"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="70dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Toplayout"
+                    app:layout_constraintVertical_bias="1.0">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_compare"
+                        android:layout_width="115dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="#FF9F45"
+                        app:cardCornerRadius="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#FF9F45">
+
+                            <TextView
+                                android:id="@+id/textView17"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/poppinsbold"
+                                android:gravity="center"
+                                android:text="Compare"
+                                android:textColor="#F2F1F1"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/poppinslight"
+                android:text="All pokemon"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Headerlayout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recpokehom"
+                android:layout_width="0dp"
+                android:layout_height="900dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layoutAnimation="@anim/layout_anim"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:spanCount="2"
+                tools:itemCount="10"
+                tools:listitem="@layout/cv_pokehom" />
+
+            <ProgressBar
+                android:id="@+id/pbar_pokehome"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="#FA6555"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/recpokehom"
+                app:layout_constraintVertical_bias="0.26999998" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

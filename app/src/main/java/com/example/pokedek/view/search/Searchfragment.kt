@@ -9,16 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokedek.modedl.remote.ApiRepository
-import com.example.pokedek.modedl.Room.Entity.Search.Searchlist
+import com.example.pokedek.model.remote.ApiRepository
+import com.example.pokedek.model.Room.Entity.Search.Searchlist
 import com.example.pokedek.R
 import com.example.pokedek.view.search.Adapter.Searchrvadapter
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.FragmentSearchfragmentBinding
+import com.example.pokedek.viewmodel.Api.Apiviewmodel
+import com.example.pokedek.viewmodel.Api.PokemonViewModel
 import kotlinx.android.synthetic.main.fragment_searchfragment.view.*
 import kotlin.collections.ArrayList
 
@@ -26,7 +27,8 @@ class Searchfragment : Fragment() {
     private var _binding: FragmentSearchfragmentBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var apiviewmodel: Apiviewmodel
+    private val pokeViewModel by viewModels<PokemonViewModel>()
+    private val berryViewModel by viewModels<Apiviewmodel>()
     lateinit var adapter : Searchrvadapter
 
     private var datalist = ArrayList<String>()
@@ -41,7 +43,7 @@ class Searchfragment : Fragment() {
         //api
         val repo = ApiRepository()
         val vmf = VModelFactory(repo)
-        apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
+
 
 
         //searchview
@@ -114,8 +116,8 @@ class Searchfragment : Fragment() {
 
     //pokemon
     fun pokemonsearch(id : String){
-        apiviewmodel.getPokemonSummary(id)
-        apiviewmodel.pokesumrespon.observe(viewLifecycleOwner, Observer { psumsearch ->
+        pokeViewModel.getPokemonSummary(id)
+        pokeViewModel.pokesumrespon.observe(viewLifecycleOwner, Observer { psumsearch ->
             if (psumsearch.isSuccessful){
                 val name = psumsearch.body()?.name
                 val link = psumsearch.body()?.sprites!!.other.officialArtwork.frontDefault
@@ -132,7 +134,7 @@ class Searchfragment : Fragment() {
         recview.layoutManager = LinearLayoutManager(requireContext())
         binding.pbarSearchpoke.visibility = View.VISIBLE
 
-        apiviewmodel.getPokemonList(0,1000)
+        pokeViewModel.getPokemonList(0,1000)
 //        apiviewmodel.pokelistrespon.observe(viewLifecycleOwner, Observer {  plistsearch ->
 //            try {
 //                if (plistsearch.isSuccessful){
@@ -158,8 +160,8 @@ class Searchfragment : Fragment() {
 
     //berry
     fun berrysearch(id: String){
-        apiviewmodel.getberrysum(id)
-        apiviewmodel.berrysumrespon.observe(viewLifecycleOwner, Observer { bsumserach ->
+        berryViewModel.getberrysum(id)
+        berryViewModel.berrysumrespon.observe(viewLifecycleOwner, Observer { bsumserach ->
             if (bsumserach.isSuccessful){
                 Log.d("berry",bsumserach.body()?.name.toString())
             }else{
@@ -172,8 +174,8 @@ class Searchfragment : Fragment() {
         val recview = binding.recviewSearch
         recview.layoutManager = LinearLayoutManager(requireContext())
 
-        apiviewmodel.getberrylist(0,1000)
-        apiviewmodel.berrylistrespon.observe(viewLifecycleOwner, Observer { blistsearch ->
+        berryViewModel.getberrylist(0,1000)
+        berryViewModel.berrylistrespon.observe(viewLifecycleOwner, Observer { blistsearch ->
             try {
                 if (blistsearch.isSuccessful){
                     val data = blistsearch.body()?.results
@@ -196,13 +198,13 @@ class Searchfragment : Fragment() {
         })
     }
 
-    fun itemsearch(id : String){
-        apiviewmodel.getitemsum(id)
-        apiviewmodel.itemsumrespon.observe(viewLifecycleOwner, Observer { itsumsearch ->
-
-
-        })
-    }
+//    fun itemsearch(id : String){
+//        pokeViewModel.getitemsum(id)
+//        pokeViewModel.itemsumrespon.observe(viewLifecycleOwner, Observer { itsumsearch ->
+//
+//
+//        })
+//    }
 
 
 }

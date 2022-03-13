@@ -14,7 +14,7 @@
         android:id="@+id/fragmenthome"
         android:name="com.example.pokedek.view.HomeFragment"
         android:label="fragment_fragmenthome"
-        tools:layout="@layout/fragment_fragmenthome" >
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_fragmenthome_to_pokemon"
             app:destination="@id/pokemon"
@@ -63,7 +63,7 @@
             app:enterAnim="@anim/slide_leftx" />
         <argument
             android:name="DataDetail"
-            app:argType="com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum" />
+            app:argType="com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary" />
         <action
             android:id="@+id/action_pokemondetailfragment_to_searchfragment"
             app:destination="@id/searchfragment" />
@@ -81,22 +81,26 @@
         tools:layout="@layout/fragment_searchfragment" />
     <fragment
         android:id="@+id/berryfragment"
-        android:name="com.example.pokedek.view.Berry.Berryfragment"
+        android:name="com.example.pokedek.view.berry.BerryFragment"
         android:label="fragment_berryfragment"
-        tools:layout="@layout/fragment_berryfragment" >
+        tools:layout="@layout/fragment_berry" >
+        <action
+            android:id="@+id/action_berryfragment_to_berrydetailfragment"
+            app:destination="@id/berrydetailfragment" />
         <action
             android:id="@+id/action_berryfragment_to_fragmenthome"
             app:destination="@id/fragmenthome" />
     </fragment>
     <fragment
         android:id="@+id/berrydetailfragment"
-        android:name="com.example.pokedek.view.Berry.Berrydetailfragment"
+        android:name="com.example.pokedek.view.berry.Berrydetailfragment"
         android:label="fragment_berrydetailfragment"
-        tools:layout="@layout/fragment_berrydetailfragment" >
+        tools:layout="@layout/fragment_berrydetail">
         <action
             android:id="@+id/action_berrydetailfragment_to_berryfragment"
             app:destination="@id/berryfragment" />
-        <argument android:name="name"
+        <argument
+            android:name="name"
             app:argType="string" />
     </fragment>
     <fragment

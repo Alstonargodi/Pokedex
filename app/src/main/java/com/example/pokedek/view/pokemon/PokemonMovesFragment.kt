@@ -6,68 +6,63 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.pokedek.modedl.remote.ApiRepository
-import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonmoves
+import androidx.fragment.app.viewModels
+import com.example.pokedek.model.Room.Entity.Pokemon.PokemonMoves
 import com.example.pokedek.view.pokemon.adapter.Pokemonmovesrvadapter
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
-import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.MovesdetailbottomfragmentBinding
+import com.example.pokedek.viewmodel.Api.PokemonViewModel
 
 class PokemonMovesFragment : BottomSheetDialogFragment() {
-    lateinit var  apiviewmodel: Apiviewmodel
 
-    private var _binding: MovesdetailbottomfragmentBinding? = null
-    private val binding get() = _binding!!
+    private val pokeViewModel by viewModels<PokemonViewModel>()
 
-    private var movelist = arrayListOf<Pokemonmoves>()
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = MovesdetailbottomfragmentBinding.inflate(inflater, container, false)
 
-        //viewmodel
-        val repo = ApiRepository()
-        val vmf = VModelFactory(repo)
-        apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
+    private lateinit var binding : MovesdetailbottomfragmentBinding
 
-        //adapter
+    private var movelist = arrayListOf<PokemonMoves>()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = MovesdetailbottomfragmentBinding.inflate(inflater, container, false)
+
+
         val adapter = Pokemonmovesrvadapter()
-        val recview = binding.recviewMovesdetail
-        recview.adapter = adapter
-        recview.layoutManager = LinearLayoutManager(requireContext())
+        val recView = binding.recviewMovesdetail
+        recView.adapter = adapter
+        recView.layoutManager = LinearLayoutManager(requireContext())
 
-        val nama = arguments?.getString("nama")
+        val nama = arguments?.getString(PokemonDetailFragment.EXTRA_NAME)
 
         movelist = arrayListOf()
-        apiviewmodel.getPokemonSummary(nama!!)
-        apiviewmodel.pokesumrespon.observe(viewLifecycleOwner, Observer { respon ->
-            if (respon.isSuccessful){
+        pokeViewModel.apply {
+            getPokemonSummary(nama!!)
+            pokesumrespon.observe(viewLifecycleOwner) { responData ->
                 //moves pokemon
-                val mov = respon.body()?.moves
-                for (i in mov!!.indices){
+                val mov = responData.body()?.moves
+                for (i in mov!!.indices) {
                     val move = mov[i].move.name
 
-                    apiviewmodel.getpokemoves(move)
-                    apiviewmodel.pokemovesrespon.observe(viewLifecycleOwner, Observer { moves ->
-                        if (moves.isSuccessful){
-                            val effect = moves.body()?.effectEntries?.get(0)?.effect
-                            val shorteffect = moves.body()?.effectEntries?.get(0)?.shortEffect
+                    getPokemonMoves(move)
+                    pokemovesrespon.observe(viewLifecycleOwner) { moves ->
+                        val entries = moves.body()?.effectEntries
+                        for (i in entries!!.indices){
+                            val effectMain = entries[i].effect
+                            val effectShort = entries[i].shortEffect
 
-                            val datamoves = Pokemonmoves(
-                                effect.toString(),
+                            val datamoves = PokemonMoves(
+                                effectMain,
                                 "",
-                                shorteffect.toString()
+                                effectShort
                             )
 
                             movelist.add(datamoves)
                             val filter = movelist.distinct()
                             adapter.setdata(filter)
-
                         }
-                    })
+
+                    }
                 }
             }
-        })
+        }
+
         return binding.root
     }
 

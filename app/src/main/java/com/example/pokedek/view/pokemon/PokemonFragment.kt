@@ -9,39 +9,25 @@ import android.widget.AdapterView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
-import com.example.pokedek.modedl.remote.ApiRepository
-import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
+import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 import com.example.pokedek.view.pokemon.adapter.PokemonRvAdapter
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
-import com.example.pokedek.viewmodel.Api.VModelFactory
+import com.example.pokedek.viewmodel.Api.PokemonViewModel
 
 class PokemonFragment : Fragment() {
 
-    companion object{
-        const val PAGE = 0
-        const val LIMIT = 10
 
-        const val LEFT = 10
-        const val TOP = 20
-        const val RIGHT = 10
-        const val BOTTOM = 20
-
-        const val EXTRA_NAME = "PokemonFragment"
-    }
-
-    private val apiViewModel by viewModels<Apiviewmodel>()
+    private val apiViewModel by viewModels<PokemonViewModel>()
 
     private lateinit var binding: FragmentPokemonBinding
 
 
     private var isLoading= false
     private var adapter = PokemonRvAdapter()
-    private var dataList = ArrayList<PokemonSum>()
+    private var dataList = ArrayList<PokemonSummary>()
 
 
     override fun onCreateView(
@@ -127,7 +113,7 @@ class PokemonFragment : Fragment() {
                 apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { SumRespon ->
                     if (SumRespon.isSuccessful){
                         SumRespon.body()?.apply {
-                            val sum = PokemonSum(
+                            val sum = PokemonSummary(
                                 name,
                                 sprites.other.officialArtwork.frontDefault,
                                 height.toString(),
@@ -160,5 +146,17 @@ class PokemonFragment : Fragment() {
         }
         binding.progressbarpoke.visibility = View.INVISIBLE
         Log.d(EXTRA_NAME, "cannot retrive sum data")
+    }
+
+    companion object{
+        const val PAGE = 0
+        const val LIMIT = 10
+
+        const val LEFT = 10
+        const val TOP = 20
+        const val RIGHT = 10
+        const val BOTTOM = 20
+
+        const val EXTRA_NAME = "PokemonFragment"
     }
 }

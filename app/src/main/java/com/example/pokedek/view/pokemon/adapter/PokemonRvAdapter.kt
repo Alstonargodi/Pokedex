@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
+import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 import com.example.pokedek.R
 import com.example.pokedek.view.pokemon.PokemonFragmentDirections
 import kotlinx.android.synthetic.main.cv_pokemon.view.*
 
 class PokemonRvAdapter : RecyclerView.Adapter<PokemonRvAdapter.viewHolder>() {
-    private var datalist = emptyList<PokemonSum>().distinct()
+    private var datalist = emptyList<PokemonSummary>().distinct()
 
     class viewHolder(view : View):RecyclerView.ViewHolder(view)
 
@@ -41,7 +41,7 @@ class PokemonRvAdapter : RecyclerView.Adapter<PokemonRvAdapter.viewHolder>() {
         return datalist.size
     }
 
-    fun setdata(data : List<PokemonSum>){
+    fun setdata(data : List<PokemonSummary>){
         datalist = data.distinct()
         notifyDataSetChanged()
     }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.modedl.Room.Entity.Item.ItemList
+import com.example.pokedek.model.Room.Entity.Item.ItemList
 import com.example.pokedek.R
 import com.example.pokedek.view.Item.ItemDirections
 import kotlinx.android.synthetic.main.cv_item.view.*

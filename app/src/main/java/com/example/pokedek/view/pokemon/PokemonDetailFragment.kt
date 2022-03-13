@@ -18,14 +18,15 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemondetailfragmentBinding
-import com.example.pokedek.modedl.Room.Entity.Favorite.Favoritelist
+import com.example.pokedek.model.Room.Entity.Favorite.Favoritelist
 import com.example.pokedek.viewmodel.Api.Apiviewmodel
+import com.example.pokedek.viewmodel.Api.PokemonViewModel
 import com.example.pokedek.viewmodel.Roomviewmodel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PokemonDetailFragment : Fragment() {
-    private val apiViewModel by viewModels<Apiviewmodel>()
+    private val apiViewModel by viewModels<PokemonViewModel>()
     private val localViewModel by viewModels<Roomviewmodel>()
 
     private lateinit var binding : FragmentPokemondetailfragmentBinding

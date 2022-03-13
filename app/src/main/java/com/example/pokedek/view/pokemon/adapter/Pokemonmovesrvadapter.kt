@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.modedl.Room.Entity.Pokemon.Pokemonmoves
+import com.example.pokedek.model.Room.Entity.Pokemon.PokemonMoves
 import com.example.pokedek.R
 import kotlinx.android.synthetic.main.cv_pokemoves.view.*
 
 class Pokemonmovesrvadapter: RecyclerView.Adapter<Pokemonmovesrvadapter.viewholder>() {
-    var moveslist = emptyList<Pokemonmoves>()
+    var moveslist = emptyList<PokemonMoves>()
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
 
@@ -27,7 +27,7 @@ class Pokemonmovesrvadapter: RecyclerView.Adapter<Pokemonmovesrvadapter.viewhold
         return moveslist.size
     }
 
-    fun setdata(list : List<Pokemonmoves>){
+    fun setdata(list : List<PokemonMoves>){
         moveslist = list
         notifyDataSetChanged()
     }

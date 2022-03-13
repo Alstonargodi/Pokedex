@@ -7,18 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.lifecycle.ViewModelProvider
-import com.example.pokedek.modedl.remote.ApiRepository
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
-import com.example.pokedek.viewmodel.Api.VModelFactory
+import androidx.fragment.app.viewModels
 import com.example.pokedek.databinding.AbilitydetailbottomfragmentBinding
 import com.example.pokedek.view.pokemon.PokemonDetailFragment.Companion.EXTRA_ABTONE
 import com.example.pokedek.view.pokemon.PokemonDetailFragment.Companion.EXTRA_ABTWO
+import com.example.pokedek.viewmodel.Api.PokemonViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class PokemonAbilityFragment : BottomSheetDialogFragment() {
-    lateinit var apiviewmodel: Apiviewmodel
+    private val apiviewmodel by viewModels<PokemonViewModel>()
 
     private var _binding: AbilitydetailbottomfragmentBinding? = null
     private val binding get() = _binding!!
@@ -32,9 +30,7 @@ class PokemonAbilityFragment : BottomSheetDialogFragment() {
         val nama = arguments?.getString(EXTRA_ABTONE)
         val namadua = arguments?.getString(EXTRA_ABTWO)
 
-        val repo = ApiRepository()
-        val vmf = VModelFactory(repo)
-        apiviewmodel = ViewModelProvider(this,vmf)[Apiviewmodel::class.java]
+
 
         binding.AbdetailName.text = nama
         binding.AbdetailEffectDUA.text = namadua

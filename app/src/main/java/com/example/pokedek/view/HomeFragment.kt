@@ -7,19 +7,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.modedl.remote.ApiRepository
-import com.example.pokedek.modedl.Room.Entity.Pokemon.PokemonSum
+import com.example.pokedek.model.remote.ApiRepository
+import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 import com.example.pokedek.R
+import com.example.pokedek.databinding.FragmentHomeBinding
 
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Roomviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
-import com.example.pokedek.databinding.FragmentFragmenthomeBinding
 import com.example.pokedek.view.pokemon.adapter.PokeHomeRvAdapter
+import com.example.pokedek.viewmodel.Api.PokemonViewModel
 
 
 class HomeFragment : Fragment() {
@@ -30,23 +31,22 @@ class HomeFragment : Fragment() {
         const val EXTRA_NAME = "HomeFragment"
     }
 
-    private var _binding: FragmentFragmenthomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var apiViewModel: Apiviewmodel
+    private val apiViewModel by viewModels<PokemonViewModel>()
     private lateinit var roomViewModel: Roomviewmodel
     private lateinit var adapter : PokeHomeRvAdapter
 
     private var page = 0
     private var isLoading = false
-    private var listsum = ArrayList<PokemonSum>()
+    private var listsum = ArrayList<PokemonSummary>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentFragmenthomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val repo = ApiRepository()
         val vModelFactory = VModelFactory(repo)
-        apiViewModel = ViewModelProvider(this,vModelFactory)[Apiviewmodel::class.java]
         roomViewModel = ViewModelProvider(this)[Roomviewmodel::class.java]
 
         listsum = arrayListOf()
@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
                 apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { sumRespon ->
                     if (sumRespon.isSuccessful) {
                         sumRespon.body()?.apply {
-                            val sum = PokemonSum(
+                            val sum = PokemonSummary(
                                 name,
                                 sprites.other.officialArtwork.frontDefault,
                                 height.toString(),

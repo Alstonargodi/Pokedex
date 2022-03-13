@@ -12,8 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokedek.modedl.remote.ApiRepository
-import com.example.pokedek.modedl.Room.Entity.Item.ItemList
+import com.example.pokedek.model.remote.ApiRepository
+import com.example.pokedek.model.Room.Entity.Item.ItemList
 import com.example.pokedek.R
 import com.example.pokedek.view.Item.Adapter.Itemrvadapter
 import com.example.pokedek.viewmodel.Api.Apiviewmodel
