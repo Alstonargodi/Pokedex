@@ -1,4 +1,4 @@
-package com.example.pokedek.view.Item
+package com.example.pokedek.view.item
 
 import android.os.Bundle
 import android.util.Log
@@ -8,22 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokedek.model.remote.ApiRepository
 import com.example.pokedek.model.Room.Entity.Item.ItemList
 import com.example.pokedek.R
-import com.example.pokedek.view.Item.Adapter.Itemrvadapter
+import com.example.pokedek.view.item.adapter.Itemrvadapter
 import com.example.pokedek.viewmodel.Api.ItemViewModel
-import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.FragmentItemBinding
 import java.lang.Exception
 
 
-class Item : Fragment() {
-    lateinit var itemViewModel: ItemViewModel
+class ItemFragment : Fragment() {
+
+    private val  itemViewModel by viewModels<ItemViewModel>()
+
+
     lateinit var binding : FragmentItemBinding
     lateinit var adapter : Itemrvadapter
 
@@ -33,26 +34,22 @@ class Item : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentItemBinding.inflate(layoutInflater)
         val view = binding.root
 
         binding.btnitemBackhome.setOnClickListener {
-            findNavController().navigate(ItemDirections.actionItemToFragmenthome())
+//            findNavController().navigate(ItemFragmentDirections.actionItemToFragmenthome())
             requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtop)
         }
 
-        //adapter
+
         Itemlistsum = arrayListOf()
         adapter = Itemrvadapter()
         val recview = binding.Recviewitem
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(requireContext())
 
-        //viewmodel
-        val repo = ApiRepository()
-        val vmfactory = VModelFactory(repo)
-        itemViewModel = ViewModelProvider(this,vmfactory).get(ItemViewModel::class.java)
 
         binding.btnItemsort.setOnClickListener {
             binding.Sortlayout.visibility =

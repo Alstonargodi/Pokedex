@@ -1,16 +1,18 @@
-package com.example.pokedek.view.berry.Adapter
+package com.example.pokedek.view.berry.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.model.Room.Entity.Berry.Berrylist
 import com.example.pokedek.R
+import com.example.pokedek.view.berry.BerryFragmentDirections
 import kotlinx.android.synthetic.main.cv_berry.view.*
 
-class Berryrvadapter: RecyclerView.Adapter<Berryrvadapter.viewholder>() {
+class BerryRecviewAdapter: RecyclerView.Adapter<BerryRecviewAdapter.viewholder>() {
 
     var berrylist = ArrayList<Berrylist>().distinct()
 
@@ -30,7 +32,7 @@ class Berryrvadapter: RecyclerView.Adapter<Berryrvadapter.viewholder>() {
             .into(holder.itemView.imgberry_list)
 
         holder.itemView.tvberry_name.setOnClickListener {
-//            holder.itemView.findNavController().navigate(BerryfragmentDirections.actionBerryfragmentToBerrydetailfragment(item.name))
+            holder.itemView.findNavController().navigate(BerryFragmentDirections.actionBerryfragmentToBerrydetailfragment(item.name))
         }
     }
 

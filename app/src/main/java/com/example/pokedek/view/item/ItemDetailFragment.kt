@@ -1,4 +1,4 @@
-package com.example.pokedek.view.Item
+package com.example.pokedek.view.item
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,7 @@ import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentItemdetailBinding
 
 
-class Itemdetail : Fragment() {
+class ItemDetailFragment : Fragment() {
     lateinit var binding : FragmentItemdetailBinding
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class Itemdetail : Fragment() {
 
 
         binding.btnItemhome.setOnClickListener {
-            findNavController().navigate(ItemdetailDirections.actionItemdetailToItem())
+//            findNavController().navigate(ItemDetailFragmentDirections.actionItemdetailToItem())
         }
 
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.detailtopitem)

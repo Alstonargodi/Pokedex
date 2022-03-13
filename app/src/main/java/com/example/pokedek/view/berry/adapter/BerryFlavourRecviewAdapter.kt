@@ -1,4 +1,4 @@
-package com.example.pokedek.view.berry.Adapter
+package com.example.pokedek.view.berry.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,17 +8,17 @@ import com.example.pokedek.model.Room.Entity.Berry.Flavourberrylist
 import com.example.pokedek.R
 import kotlinx.android.synthetic.main.cv_flavourberry.view.*
 
-class Berryflavourrvadapter: RecyclerView.Adapter<Berryflavourrvadapter.viewholder>() {
+class BerryFlavourRecviewAdapter: RecyclerView.Adapter<BerryFlavourRecviewAdapter.viewholder>() {
 
     var flavourlist = emptyList<Flavourberrylist>().distinct()
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Berryflavourrvadapter.viewholder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BerryFlavourRecviewAdapter.viewholder {
         return viewholder(LayoutInflater.from(parent.context).inflate(R.layout.cv_flavourberry,parent,false))
     }
 
-    override fun onBindViewHolder(holder: Berryflavourrvadapter.viewholder, position: Int) {
+    override fun onBindViewHolder(holder: BerryFlavourRecviewAdapter.viewholder, position: Int) {
         val item = flavourlist[position]
 
         holder.itemView.Berryflavour_name.text = item.name

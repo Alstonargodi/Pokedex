@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -17,46 +16,44 @@ import com.example.pokedek.model.remote.ApiRepository
 import com.example.pokedek.model.Room.Entity.Berry.Flavourberrylist
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentBerrydetailBinding
-import com.example.pokedek.view.berry.Adapter.Berryflavourrvadapter
+import com.example.pokedek.view.berry.adapter.BerryFlavourRecviewAdapter
 import com.example.pokedek.viewmodel.Api.BerryViewModel
 import com.example.pokedek.viewmodel.Api.ItemViewModel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import java.lang.Exception
 
 
-class Berrydetailfragment : Fragment() {
+class BerryDetailFragment : Fragment() {
     private var _binding: FragmentBerrydetailBinding? = null
     private val binding get() = _binding!!
 
     private val berryViewModel by viewModels<BerryViewModel>()
     private val itemViewModel by viewModels<ItemViewModel>()
 
-    lateinit var adapter : Berryflavourrvadapter
+    lateinit var adapter : BerryFlavourRecviewAdapter
     private var berryflavlist = ArrayList<Flavourberrylist>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding =  FragmentBerrydetailBinding.inflate(inflater, container, false)
         val view = binding.root
 
         //flavour
         berryflavlist = arrayListOf()
-        adapter = Berryflavourrvadapter()
+        adapter = BerryFlavourRecviewAdapter()
         val recview = binding.Berryrecview
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(context)
-        //api
-        val repo = ApiRepository()
-        val vmf = VModelFactory(repo)
 
 
-        val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
+
+        val nama = BerryDetailFragmentArgs.fromBundle(requireArguments()).name
         binding.tvdetailBerryName.text = nama
 
         binding.btnhomBackBerry.setOnClickListener {
-            findNavController().navigate(BerrydetailfragmentDirections.actionBerrydetailfragmentToBerryfragment())
+            findNavController().navigate(BerryDetailFragmentDirections.actionBerrydetailfragmentToBerryfragment())
         }
 
         getberrydetail()
@@ -68,13 +65,13 @@ class Berrydetailfragment : Fragment() {
     }
 
     fun getberrydetail(){
-        val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
+        val nama = BerryDetailFragmentArgs.fromBundle(requireArguments()).name
         binding.tvdetailBerryName.setText(nama)
 
         itemViewModel.getSummaryItem(nama)
-        itemViewModel.itemSumRespon.observe(viewLifecycleOwner, Observer { itemberry ->
+        itemViewModel.itemSumRespon.observe(viewLifecycleOwner) { itemberry ->
             try {
-                if (itemberry.isSuccessful){
+                if (itemberry.isSuccessful) {
                     val link = itemberry.body()?.sprites?.default.toString()
                     val effect = itemberry.body()?.effectEntries?.get(0)?.effect.toString()
                     val cost = itemberry.body()?.cost.toString()
@@ -86,22 +83,22 @@ class Berrydetailfragment : Fragment() {
                         .asBitmap()
                         .load(link)
                         .into(binding.imgdetailBerry)
-                }else{
-                    Log.d("berrydetail","cannot get data itemberry")
+                } else {
+                    Log.d("berrydetail", "cannot get data itemberry")
                 }
-            }catch (e : Exception){
-                Log.d("berrydetail","$e")
+            } catch (e: Exception) {
+                Log.d("berrydetail", "$e")
             }
-        })
+        }
     }
 
     fun getberrysum(){
-        val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
+        val nama = BerryDetailFragmentArgs.fromBundle(requireArguments()).name
         val filter = nama.replace("-berry","").filter { !it.isWhitespace() }
         berryViewModel.getSumBerry(filter)
-        berryViewModel.berrySumRespon.observe(viewLifecycleOwner, Observer { berrysum->
+        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
             try {
-                if (berrysum.isSuccessful){
+                if (berrysum.isSuccessful) {
                     val size = berrysum.body()?.size.toString()
                     val power = berrysum.body()?.naturalGiftPower.toString()
                     val flavour = berrysum.body()?.flavors
@@ -109,7 +106,7 @@ class Berrydetailfragment : Fragment() {
                     binding.tvdetailBerrySize.setText(size)
                     binding.tvdetailBerryPower.setText(power)
 
-                    for (i in flavour!!.indices ){
+                    for (i in flavour!!.indices) {
                         val name = flavour[i].flavor.name
                         val poten = flavour[i].potency.toString()
 
@@ -122,13 +119,13 @@ class Berrydetailfragment : Fragment() {
                         adapter.setdata(berryflavlist.sortedByDescending { it.potecny })
 
                     }
-                }else{
-                    Log.d("berrysum","fail fetch berry data")
+                } else {
+                    Log.d("berrysum", "fail fetch berry data")
                 }
-            }catch (e : Exception){
-                Log.d("berrysum","$e")
+            } catch (e: Exception) {
+                Log.d("berrysum", "$e")
             }
-        })
+        }
     }
 
 }

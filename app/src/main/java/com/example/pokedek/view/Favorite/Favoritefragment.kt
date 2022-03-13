@@ -50,7 +50,7 @@ class Favoritefragment : Fragment() {
 
         binding.tablayout.addTab(binding.tablayout.newTab().setText("all"))
         binding.tablayout.addTab(binding.tablayout.newTab().setText("Pokemon"))
-        binding.tablayout.addTab(binding.tablayout.newTab().setText("Item"))
+        binding.tablayout.addTab(binding.tablayout.newTab().setText("ItemFragment"))
         binding.tablayout.addTab(binding.tablayout.newTab().setText("Berry"))
 
         binding.tablayout.setOnTabSelectedListener(object : OnTabSelectedListener{

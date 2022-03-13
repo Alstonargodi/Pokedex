@@ -28,8 +28,8 @@ class ApiRepository() {
     fun getSumBerry(id : String): Call<BerrySumResponse> = getApiService().getBerrySummary(id)
 
     //item
-    suspend fun getListItem(page: Int, limit: Int): Response<Itemlist> = getApiService().getitemlist(page,limit)
+    fun getListItem(page: Int, limit: Int): Call<Itemlist> = getApiService().getItemList(page,limit)
 
-    suspend fun getSumItem(id : String): Response<Itemsum> = getApiService().getitemsum(id)
+    fun getSumItem(id : String): Call<Itemsum> = getApiService().getitemsum(id)
 
 }

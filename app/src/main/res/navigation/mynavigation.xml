@@ -93,14 +93,14 @@
     </fragment>
     <fragment
         android:id="@+id/berrydetailfragment"
-        android:name="com.example.pokedek.view.berry.Berrydetailfragment"
+        android:name="com.example.pokedek.view.berry.BerryDetailFragment"
         android:label="fragment_berrydetailfragment"
         tools:layout="@layout/fragment_berrydetail">
         <action
             android:id="@+id/action_berrydetailfragment_to_berryfragment"
             app:destination="@id/berryfragment" />
         <argument
-            android:name="name"
+            android:name="Name"
             app:argType="string" />
     </fragment>
     <fragment
@@ -133,16 +133,19 @@
     </fragment>
     <fragment
         android:id="@+id/item"
-        android:name="com.example.pokedek.view.Item.Item"
+        android:name="com.example.pokedek.view.item.ItemFragment"
         android:label="fragment_item">
         <action
             android:id="@+id/action_item_to_fragmenthome"
             app:destination="@id/fragmenthome"
             app:enterAnim="@anim/slide_downy" />
+        <action
+            android:id="@+id/action_item_to_itemdetail"
+            app:destination="@id/itemdetail" />
     </fragment>
     <fragment
         android:id="@+id/itemdetail"
-        android:name="com.example.pokedek.view.Item.Itemdetail"
+        android:name="com.example.pokedek.view.item.ItemDetailFragment"
         android:label="fragment_itemdetail"
         tools:layout="@layout/fragment_itemdetail" >
         <action

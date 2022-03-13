@@ -48,18 +48,18 @@ interface ApiService {
 
 
 
-    //itemlist
+    //ItemFragment
     @GET("item")
-    suspend fun getitemlist(
+    fun getItemList(
         @Query("offset") off : Int,
         @Query("limit") limit : Int,
-    ): Response<Itemlist>
+    ): Call<Itemlist>
 
-    //item sum
+
     @GET("item/{idi}/")
-    suspend fun getitemsum(
+    fun getitemsum(
         @Path("idi") idi : String
-    ): Response<Itemsum>
+    ): Call<Itemsum>
 
 
 }

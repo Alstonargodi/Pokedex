@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.model.Room.Entity.Berry.Berrylist
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentBerryBinding
-import com.example.pokedek.view.berry.Adapter.Berryrvadapter
+import com.example.pokedek.view.berry.adapter.BerryRecviewAdapter
 import com.example.pokedek.viewmodel.Api.BerryViewModel
 import com.example.pokedek.viewmodel.Api.ItemViewModel
 
@@ -23,7 +23,7 @@ class BerryFragment : Fragment() {
     private val berryViewModel by viewModels<BerryViewModel>()
     private val itemViewModel by viewModels<ItemViewModel>()
 
-    private lateinit var adapter : Berryrvadapter
+    private lateinit var adapter : BerryRecviewAdapter
 
     private lateinit var layoutManager : LinearLayoutManager
     private var page : Int = 0
@@ -38,18 +38,19 @@ class BerryFragment : Fragment() {
     ): View {
         binding =  FragmentBerryBinding.inflate(inflater, container, false)
 
-
         layoutManager = LinearLayoutManager(requireContext())
-        adapter = Berryrvadapter()
+        adapter = BerryRecviewAdapter()
         val recview = binding.recvhiwberry
         recview.adapter = adapter
         recview.layoutManager = LinearLayoutManager(requireContext())
 
 
+        itemViewModel.isLoading.observe(viewLifecycleOwner){
+            isLoading(it)
+        }
         getBerryList()
 
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.detailtopberry)
-
         return binding.root
     }
 
@@ -69,7 +70,7 @@ class BerryFragment : Fragment() {
                 val berrname = responBerry.body()?.results
                 for (i in berrname!!.indices) {
                     val nameberry = berrname[i].name
-                    getBerrySum(nameberry)
+                    getSummaryItem(nameberry)
                 }
             } else {
                 Log.d(extra_name, "berrylistnotresponding")
@@ -105,9 +106,12 @@ class BerryFragment : Fragment() {
         }
     }
 
+    private fun isLoading(isLoading: Boolean){
+        binding.Berryprogress.visibility = if (isLoading)  View.VISIBLE  else  View.GONE
+    }
+
     companion object{
         const val extra_name = "BerryFragment"
-
     }
 
 }

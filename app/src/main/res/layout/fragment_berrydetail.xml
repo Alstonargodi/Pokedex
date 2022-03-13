@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/berrydetailfragment"
     android:background="#B667F1"
-    tools:context=".view.berry.Berrydetailfragment">
+    tools:context=".view.berry.BerryDetailFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
