@@ -35,19 +35,17 @@ interface ApiService {
     fun getMovesPokemon(@Path("name") name : String): Call<Pokemoves>
 
 
-    //Berry list
+    //Berry
     @GET("berry")
-    suspend fun getberrylist(
+    fun getBerryList(
         @Query("offset") off : Int,
         @Query("limit") limit : Int,
-    ):Response<BerryListResponse>
+    ):Call<BerryListResponse>
 
 
-    //berrysum
-    @GET("berry/{idbe}/")
-    suspend fun getberrysum(
-        @Path("idbe") idbe : String
-    ): Response<BerrySumResponse>
+    @GET("berry/{name}/")
+    fun getBerrySummary(@Path("name") name : String): Call<BerrySumResponse>
+
 
 
     //itemlist

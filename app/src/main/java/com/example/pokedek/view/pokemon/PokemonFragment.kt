@@ -18,12 +18,9 @@ import com.example.pokedek.view.pokemon.adapter.PokemonRvAdapter
 import com.example.pokedek.viewmodel.Api.PokemonViewModel
 
 class PokemonFragment : Fragment() {
-
-
     private val apiViewModel by viewModels<PokemonViewModel>()
 
     private lateinit var binding: FragmentPokemonBinding
-
 
     private var isLoading= false
     private var adapter = PokemonRvAdapter()

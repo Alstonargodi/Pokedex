@@ -7,27 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokedek.model.remote.ApiRepository
 import com.example.pokedek.model.Room.Entity.Berry.Berrylist
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentBerryBinding
 import com.example.pokedek.view.berry.Adapter.Berryrvadapter
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
-import com.example.pokedek.viewmodel.Api.VModelFactory
+import com.example.pokedek.viewmodel.Api.BerryViewModel
+import com.example.pokedek.viewmodel.Api.ItemViewModel
 
 class BerryFragment : Fragment() {
 
     private lateinit var binding : FragmentBerryBinding
 
-    private lateinit var apiViewModel: Apiviewmodel
+    private val berryViewModel by viewModels<BerryViewModel>()
+    private val itemViewModel by viewModels<ItemViewModel>()
+
     private lateinit var adapter : Berryrvadapter
 
     private lateinit var layoutManager : LinearLayoutManager
-    private var page : Int = 5
+    private var page : Int = 0
     private var limit : Int = 12
 
 
@@ -38,13 +37,6 @@ class BerryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding =  FragmentBerryBinding.inflate(inflater, container, false)
-
-
-        //api
-        dataList = arrayListOf()
-        val repo = ApiRepository()
-        val vmodelfactory = VModelFactory(repo)
-        apiViewModel = ViewModelProvider(this,vmodelfactory)[Apiviewmodel::class.java]
 
 
         layoutManager = LinearLayoutManager(requireContext())
@@ -71,8 +63,8 @@ class BerryFragment : Fragment() {
     }
 
     private fun getBerryList(){
-        apiViewModel.getberrylist(page, limit)
-        apiViewModel.berrylistrespon.observe(viewLifecycleOwner) { responBerry ->
+        berryViewModel.getListBerry(page, limit)
+        berryViewModel.berryListRespon.observe(viewLifecycleOwner) { responBerry ->
             if (responBerry.isSuccessful) {
                 val berrname = responBerry.body()?.results
                 for (i in berrname!!.indices) {
@@ -86,36 +78,36 @@ class BerryFragment : Fragment() {
     }
 
     private fun getBerrySum(id : String){
-        apiViewModel.getberrysum(id)
-        apiViewModel.berrysumrespon.observe(viewLifecycleOwner, Observer { berrysum ->
-            if (berrysum.isSuccessful){
+        berryViewModel.getSumBerry(id)
+        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
+            if (berrysum.isSuccessful) {
                 val nama = berrysum.body()?.item?.name.toString()
-                getberrysummore(nama)
-            }else{
-                Log.d(extra_name,"fail to fetch")
+                getSummaryItem(nama)
+            } else {
+                Log.d(extra_name, "fail to fetch")
             }
-        })
+        }
     }
 
-    fun getberrysummore(id: String){
-        apiViewModel.getitemsum(id)
-        apiViewModel.itemsumrespon.observe(viewLifecycleOwner, Observer { berrysum ->
-            var name = berrysum.body()?.name.toString()
-            var link = berrysum.body()?.sprites?.default.toString()
+    fun getSummaryItem(name: String){
+        itemViewModel.getSummaryItem(name)
+        itemViewModel.itemSumRespon.observe(viewLifecycleOwner) { berrysum ->
+            val name = berrysum.body()?.name.toString()
+            val link = berrysum.body()?.sprites?.default.toString()
 
-            var databer = Berrylist(
+            val dataTemp = Berrylist(
                 name,
                 link
             )
 
-            dataList.add(databer)
-            val filter = dataList
+            dataList.add(dataTemp)
             adapter.setdata(dataList)
-        })
+        }
     }
 
     companion object{
         const val extra_name = "BerryFragment"
+
     }
 
 }

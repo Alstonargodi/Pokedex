@@ -18,17 +18,20 @@ import com.example.pokedek.R
 import com.example.pokedek.view.search.Adapter.Searchrvadapter
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.FragmentSearchfragmentBinding
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
+import com.example.pokedek.viewmodel.Api.BerryViewModel
+import com.example.pokedek.viewmodel.Api.ItemViewModel
 import com.example.pokedek.viewmodel.Api.PokemonViewModel
 import kotlinx.android.synthetic.main.fragment_searchfragment.view.*
 import kotlin.collections.ArrayList
 
-class Searchfragment : Fragment() {
+class SearchFragment : Fragment() {
     private var _binding: FragmentSearchfragmentBinding? = null
     private val binding get() = _binding!!
 
     private val pokeViewModel by viewModels<PokemonViewModel>()
-    private val berryViewModel by viewModels<Apiviewmodel>()
+    private val berryViewModel by viewModels<BerryViewModel>()
+    private val itemViewModel by viewModels<ItemViewModel>()
+
     lateinit var adapter : Searchrvadapter
 
     private var datalist = ArrayList<String>()
@@ -135,7 +138,7 @@ class Searchfragment : Fragment() {
         binding.pbarSearchpoke.visibility = View.VISIBLE
 
         pokeViewModel.getPokemonList(0,1000)
-//        apiviewmodel.pokelistrespon.observe(viewLifecycleOwner, Observer {  plistsearch ->
+//        pokeViewModel.pokelistrespon.observe(viewLifecycleOwner, Observer {  plistsearch ->
 //            try {
 //                if (plistsearch.isSuccessful){
 //
@@ -160,8 +163,8 @@ class Searchfragment : Fragment() {
 
     //berry
     fun berrysearch(id: String){
-        berryViewModel.getberrysum(id)
-        berryViewModel.berrysumrespon.observe(viewLifecycleOwner, Observer { bsumserach ->
+        berryViewModel.getSumBerry(id)
+        berryViewModel.berrySumRespon.observe(viewLifecycleOwner, Observer { bsumserach ->
             if (bsumserach.isSuccessful){
                 Log.d("berry",bsumserach.body()?.name.toString())
             }else{
@@ -174,8 +177,8 @@ class Searchfragment : Fragment() {
         val recview = binding.recviewSearch
         recview.layoutManager = LinearLayoutManager(requireContext())
 
-        berryViewModel.getberrylist(0,1000)
-        berryViewModel.berrylistrespon.observe(viewLifecycleOwner, Observer { blistsearch ->
+        berryViewModel.getListBerry(0,1000)
+        berryViewModel.berryListRespon.observe(viewLifecycleOwner, Observer { blistsearch ->
             try {
                 if (blistsearch.isSuccessful){
                     val data = blistsearch.body()?.results

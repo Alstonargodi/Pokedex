@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemondetailfragmentBinding
 import com.example.pokedek.model.Room.Entity.Favorite.Favoritelist
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
 import com.example.pokedek.viewmodel.Api.PokemonViewModel
 import com.example.pokedek.viewmodel.Roomviewmodel
 import java.text.SimpleDateFormat

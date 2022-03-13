@@ -19,6 +19,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_pokemoves.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cvrec_search.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_abilitydetail_bottomfragment_list_dialog.xml" value="0.3359375" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_berry.xml" value="0.3111413043478261" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_berrydetail.xml" value="0.2328125" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_berrydetailfragment.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_berryfragment.xml" value="0.22" />
@@ -35,6 +36,8 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_searchfragment.xml" value="0.20618556701030927" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/movesdetailbottomfragment.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/succesadddialog.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3195" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3195" />
       </map>
     </option>
   </component>

@@ -23,9 +23,9 @@ class ApiRepository() {
     fun getMovesPokemon(id: String): Call<Pokemoves> = getApiService().getMovesPokemon(id)
 
     //berry
-    suspend fun getListBerry(page : Int, limit : Int) = getApiService().getberrylist(page,limit)
+    fun getListBerry(page : Int, limit : Int) = getApiService().getBerryList(page,limit)
 
-    suspend fun getSumBerry(id : String): Response<BerrySumResponse> = getApiService().getberrysum(id)
+    fun getSumBerry(id : String): Call<BerrySumResponse> = getApiService().getBerrySummary(id)
 
     //item
     suspend fun getListItem(page: Int, limit: Int): Response<Itemlist> = getApiService().getitemlist(page,limit)

@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchfragment"
-        android:name="com.example.pokedek.view.search.Searchfragment"
+        android:name="com.example.pokedek.view.search.SearchFragment"
         android:label="fragment_searchfragment"
         tools:layout="@layout/fragment_searchfragment" />
     <fragment

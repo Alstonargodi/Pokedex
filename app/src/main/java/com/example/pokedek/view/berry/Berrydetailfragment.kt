@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,7 +18,8 @@ import com.example.pokedek.model.Room.Entity.Berry.Flavourberrylist
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentBerrydetailBinding
 import com.example.pokedek.view.berry.Adapter.Berryflavourrvadapter
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
+import com.example.pokedek.viewmodel.Api.BerryViewModel
+import com.example.pokedek.viewmodel.Api.ItemViewModel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import java.lang.Exception
 
@@ -26,7 +28,9 @@ class Berrydetailfragment : Fragment() {
     private var _binding: FragmentBerrydetailBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var apiviewmodel: Apiviewmodel
+    private val berryViewModel by viewModels<BerryViewModel>()
+    private val itemViewModel by viewModels<ItemViewModel>()
+
     lateinit var adapter : Berryflavourrvadapter
     private var berryflavlist = ArrayList<Flavourberrylist>()
 
@@ -46,7 +50,7 @@ class Berrydetailfragment : Fragment() {
         //api
         val repo = ApiRepository()
         val vmf = VModelFactory(repo)
-        apiviewmodel = ViewModelProvider(this,vmf).get(Apiviewmodel::class.java)
+
 
         val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
         binding.tvdetailBerryName.text = nama
@@ -67,8 +71,8 @@ class Berrydetailfragment : Fragment() {
         val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
         binding.tvdetailBerryName.setText(nama)
 
-        apiviewmodel.getitemsum(nama)
-        apiviewmodel.itemsumrespon.observe(viewLifecycleOwner, Observer { itemberry ->
+        itemViewModel.getSummaryItem(nama)
+        itemViewModel.itemSumRespon.observe(viewLifecycleOwner, Observer { itemberry ->
             try {
                 if (itemberry.isSuccessful){
                     val link = itemberry.body()?.sprites?.default.toString()
@@ -94,8 +98,8 @@ class Berrydetailfragment : Fragment() {
     fun getberrysum(){
         val nama = BerrydetailfragmentArgs.fromBundle(requireArguments()).name
         val filter = nama.replace("-berry","").filter { !it.isWhitespace() }
-        apiviewmodel.getberrysum(filter)
-        apiviewmodel.berrysumrespon.observe(viewLifecycleOwner, Observer { berrysum->
+        berryViewModel.getSumBerry(filter)
+        berryViewModel.berrySumRespon.observe(viewLifecycleOwner, Observer { berrysum->
             try {
                 if (berrysum.isSuccessful){
                     val size = berrysum.body()?.size.toString()

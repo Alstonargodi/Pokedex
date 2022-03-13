@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedek.model.remote.ApiRepository
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
+import com.example.pokedek.viewmodel.Api.ItemViewModel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.FragmentListPokemonBinding
 
 
 class ListPokemon : Fragment() {
     lateinit var bind : FragmentListPokemonBinding
-    lateinit var apiviewmodel : Apiviewmodel
+    lateinit var itemViewModel : ItemViewModel
 
 
     override fun onCreateView(
@@ -24,7 +24,7 @@ class ListPokemon : Fragment() {
         bind = FragmentListPokemonBinding.inflate(layoutInflater)
         val repo = ApiRepository()
         val vmfac = VModelFactory(repo)
-        apiviewmodel = ViewModelProvider(this,vmfac).get(Apiviewmodel::class.java)
+        itemViewModel = ViewModelProvider(this,vmfac).get(ItemViewModel::class.java)
 
 
         return bind.root

@@ -16,14 +16,14 @@ import com.example.pokedek.model.remote.ApiRepository
 import com.example.pokedek.model.Room.Entity.Item.ItemList
 import com.example.pokedek.R
 import com.example.pokedek.view.Item.Adapter.Itemrvadapter
-import com.example.pokedek.viewmodel.Api.Apiviewmodel
+import com.example.pokedek.viewmodel.Api.ItemViewModel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.databinding.FragmentItemBinding
 import java.lang.Exception
 
 
 class Item : Fragment() {
-    lateinit var apiviewmodel: Apiviewmodel
+    lateinit var itemViewModel: ItemViewModel
     lateinit var binding : FragmentItemBinding
     lateinit var adapter : Itemrvadapter
 
@@ -52,7 +52,7 @@ class Item : Fragment() {
         //viewmodel
         val repo = ApiRepository()
         val vmfactory = VModelFactory(repo)
-        apiviewmodel = ViewModelProvider(this,vmfactory).get(Apiviewmodel::class.java)
+        itemViewModel = ViewModelProvider(this,vmfactory).get(ItemViewModel::class.java)
 
         binding.btnItemsort.setOnClickListener {
             binding.Sortlayout.visibility =
@@ -99,16 +99,16 @@ class Item : Fragment() {
     fun readitem(cari: String,item : Int){
         binding.itemprogressbar.visibility = View.VISIBLE
 
-        apiviewmodel.getitemlist(0,item)
-        apiviewmodel.itemlistrespon.observe(viewLifecycleOwner, Observer { responlist ->
+        itemViewModel.getListItem(0,item)
+        itemViewModel.itemListRespon.observe(viewLifecycleOwner, Observer { responlist ->
             try {
                 if (responlist.isSuccessful){
                     val data = responlist.body()?.results
                     for (i in data!!.indices){
                         val nama = data[i].name
 
-                        apiviewmodel.getitemsum(nama)
-                        apiviewmodel.itemsumrespon.observe(viewLifecycleOwner, Observer { responsum ->
+                        itemViewModel.getSummaryItem(nama)
+                        itemViewModel.itemSumRespon.observe(viewLifecycleOwner, Observer { responsum ->
                             try {
                                 if (responsum.isSuccessful){
 
