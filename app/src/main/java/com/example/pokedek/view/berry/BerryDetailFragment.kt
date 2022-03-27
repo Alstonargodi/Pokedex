@@ -57,7 +57,7 @@ class BerryDetailFragment : Fragment() {
         }
 
         getberrydetail()
-        getberrysum()
+//        getberrysum()
 
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.detailtopberry)
 
@@ -68,7 +68,7 @@ class BerryDetailFragment : Fragment() {
         val nama = BerryDetailFragmentArgs.fromBundle(requireArguments()).name
         binding.tvdetailBerryName.setText(nama)
 
-        itemViewModel.getSummaryItem(nama)
+//        itemViewModel.getSummaryItem(nama)
         itemViewModel.itemSumRespon.observe(viewLifecycleOwner) { itemberry ->
             try {
                 if (itemberry.isSuccessful) {
@@ -92,40 +92,40 @@ class BerryDetailFragment : Fragment() {
         }
     }
 
-    fun getberrysum(){
-        val nama = BerryDetailFragmentArgs.fromBundle(requireArguments()).name
-        val filter = nama.replace("-berry","").filter { !it.isWhitespace() }
-        berryViewModel.getSumBerry(filter)
-        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
-            try {
-                if (berrysum.isSuccessful) {
-                    val size = berrysum.body()?.size.toString()
-                    val power = berrysum.body()?.naturalGiftPower.toString()
-                    val flavour = berrysum.body()?.flavors
-
-                    binding.tvdetailBerrySize.setText(size)
-                    binding.tvdetailBerryPower.setText(power)
-
-                    for (i in flavour!!.indices) {
-                        val name = flavour[i].flavor.name
-                        val poten = flavour[i].potency.toString()
-
-                        val data = Flavourberrylist(
-                            name,
-                            poten
-                        )
-
-                        berryflavlist.add(data)
-                        adapter.setdata(berryflavlist.sortedByDescending { it.potecny })
-
-                    }
-                } else {
-                    Log.d("berrysum", "fail fetch berry data")
-                }
-            } catch (e: Exception) {
-                Log.d("berrysum", "$e")
-            }
-        }
-    }
+//    fun getberrysum(){
+//        val nama = BerryDetailFragmentArgs.fromBundle(requireArguments()).name
+//        val filter = nama.replace("-berry","").filter { !it.isWhitespace() }
+//        berryViewModel.getSumBerry(filter)
+//        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
+//            try {
+//                if (berrysum.isSuccessful) {
+//                    val size = berrysum.body()?.size.toString()
+//                    val power = berrysum.body()?.naturalGiftPower.toString()
+//                    val flavour = berrysum.body()?.flavors
+//
+//                    binding.tvdetailBerrySize.setText(size)
+//                    binding.tvdetailBerryPower.setText(power)
+//
+//                    for (i in flavour!!.indices) {
+//                        val name = flavour[i].flavor.name
+//                        val poten = flavour[i].potency.toString()
+//
+//                        val data = Flavourberrylist(
+//                            name,
+//                            poten
+//                        )
+//
+//                        berryflavlist.add(data)
+//                        adapter.setdata(berryflavlist.sortedByDescending { it.potecny })
+//
+//                    }
+//                } else {
+//                    Log.d("berrysum", "fail fetch berry data")
+//                }
+//            } catch (e: Exception) {
+//                Log.d("berrysum", "$e")
+//            }
+//        }
+//    }
 
 }

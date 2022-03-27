@@ -22,9 +22,7 @@ class ListPokemon : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         bind = FragmentListPokemonBinding.inflate(layoutInflater)
-        val repo = ApiRepository()
-        val vmfac = VModelFactory(repo)
-        itemViewModel = ViewModelProvider(this,vmfac).get(ItemViewModel::class.java)
+
 
 
         return bind.root

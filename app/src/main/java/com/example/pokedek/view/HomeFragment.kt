@@ -9,51 +9,41 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.model.remote.ApiRepository
-import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentHomeBinding
-
+import com.example.pokedek.model.remote.Fetchstatus
+import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
 import com.example.pokedek.viewmodel.Roomviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.view.pokemon.adapter.PokeHomeRvAdapter
 import com.example.pokedek.viewmodel.Api.PokemonViewModel
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
-
-    companion object{
-        const val PAGE = 0
-        const val LIMIT = 10
-        const val EXTRA_NAME = "HomeFragment"
-    }
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val apiViewModel by viewModels<PokemonViewModel>()
+    private val apiViewModel : PokemonViewModel by viewModels{
+        VModelFactory.getInstance()
+    }
     private lateinit var roomViewModel: Roomviewmodel
     private lateinit var adapter : PokeHomeRvAdapter
 
     private var page = 0
     private var isLoading = false
-    private var listsum = ArrayList<PokemonSummary>()
+
+    private var listsum = ArrayList<Pokesummary>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val repo = ApiRepository()
-        val vModelFactory = VModelFactory(repo)
-        roomViewModel = ViewModelProvider(this)[Roomviewmodel::class.java]
 
-        listsum = arrayListOf()
-        adapter = PokeHomeRvAdapter()
-        val recview = binding.recpokehom
-        recview.adapter = adapter
-        recview.layoutManager = LinearLayoutManager(context)
+        roomViewModel = ViewModelProvider(this)[Roomviewmodel::class.java]
 
 
         binding.apply {
@@ -79,48 +69,44 @@ class HomeFragment : Fragment() {
             }
         }
 
-        getPokemonList()
+        lifecycleScope.launch {
+            getPokemonList()
+        }
+
         getDataCount()
         return binding.root
     }
 
 
-    private fun getPokemonList(){
+    private suspend fun getPokemonList(){
         isLoading = true
         binding.pbarPokehome.visibility = View.VISIBLE
 
-        apiViewModel.getPokemonList(PAGE, LIMIT)
-        apiViewModel.pokelistrespon.observe(viewLifecycleOwner) { listRespon ->
-            val data = listRespon.results
-            for (element in data) {
-                apiViewModel.getPokemonSummary(element.name)
-                apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { sumRespon ->
-                    if (sumRespon.isSuccessful) {
-                        sumRespon.body()?.apply {
-                            val sum = PokemonSummary(
-                                name,
-                                sprites.other.officialArtwork.frontDefault,
-                                height.toString(),
-                                weight.toString(),
-                                stats[0].baseStat.toString(), //hp
-                                stats[1].baseStat.toString(), //atk
-                                stats[5].baseStat.toString(), //spd
-                                types[0].type.name,
-                                abilities[0].ability.name,
-                                abilities[1].ability.name,
-                                stats[3].baseStat.toString(),
-                                stats[4].baseStat.toString(),
-                            )
-                            listsum.add(sum)
-                        }
-                        adapter.setdata(listsum)
-                        binding.pbarPokehome.visibility = View.INVISIBLE
-                    } else {
-                        setEmptyView()
-                    }
+        apiViewModel.getListPokemon(PAGE, LIMIT).observe(viewLifecycleOwner){ status->
+            when(status){
+                is Fetchstatus.Loading->{
+                    binding.pbarPokehome.visibility = View.VISIBLE
                 }
+                is Fetchstatus.Sucess->{
+                    binding.pbarPokehome.visibility = View.GONE
+                    listsum.add(status.data)
+                    showPokemonList(listsum.distinct())
+                }
+                is Fetchstatus.Error ->{
+                    Log.d("Home Fragment",status.error)
+                }
+                else -> {}
             }
         }
+    }
+
+
+    private fun showPokemonList(data : List<Pokesummary>){
+        adapter = PokeHomeRvAdapter(data)
+        val recview = binding.recpokehom
+        recview.adapter = adapter
+        recview.layoutManager = LinearLayoutManager(context)
+
     }
 
     private fun getDataCount(){
@@ -151,5 +137,11 @@ class HomeFragment : Fragment() {
         Log.d(EXTRA_NAME, "cannot retrive sum data")
     }
 
+
+    companion object{
+        const val PAGE = 0
+        const val LIMIT = 10
+        const val EXTRA_NAME = "HomeFragment"
+    }
 
 }

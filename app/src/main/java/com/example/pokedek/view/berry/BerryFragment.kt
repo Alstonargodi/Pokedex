@@ -48,7 +48,7 @@ class BerryFragment : Fragment() {
         itemViewModel.isLoading.observe(viewLifecycleOwner){
             isLoading(it)
         }
-        getBerryList()
+//        getBerryList()
 
         requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.detailtopberry)
         return binding.root
@@ -63,48 +63,48 @@ class BerryFragment : Fragment() {
 
     }
 
-    private fun getBerryList(){
-        berryViewModel.getListBerry(page, limit)
-        berryViewModel.berryListRespon.observe(viewLifecycleOwner) { responBerry ->
-            if (responBerry.isSuccessful) {
-                val berrname = responBerry.body()?.results
-                for (i in berrname!!.indices) {
-                    val nameberry = berrname[i].name
-                    getSummaryItem(nameberry)
-                }
-            } else {
-                Log.d(extra_name, "berrylistnotresponding")
-            }
-        }
-    }
+//    private fun getBerryList(){
+//        berryViewModel.getListBerry(page, limit)
+//        berryViewModel.berryListRespon.observe(viewLifecycleOwner) { responBerry ->
+//            if (responBerry.isSuccessful) {
+//                val berrname = responBerry.body()?.results
+//                for (i in berrname!!.indices) {
+//                    val nameberry = berrname[i].name
+//                    getBerrySum(nameberry)
+//                }
+//            } else {
+//                Log.d(extra_name, "berrylistnotresponding")
+//            }
+//        }
+//    }
+//
+//    private fun getBerrySum(id : String){
+//        berryViewModel.getSumBerry(id)
+//        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
+//            if (berrysum.isSuccessful) {
+//                val nama = berrysum.body()?.item?.name.toString()
+//                getSummaryItem(nama)
+//            } else {
+//                Log.d(extra_name, "fail to fetch")
+//            }
+//        }
+//    }
 
-    private fun getBerrySum(id : String){
-        berryViewModel.getSumBerry(id)
-        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
-            if (berrysum.isSuccessful) {
-                val nama = berrysum.body()?.item?.name.toString()
-                getSummaryItem(nama)
-            } else {
-                Log.d(extra_name, "fail to fetch")
-            }
-        }
-    }
-
-    fun getSummaryItem(name: String){
-        itemViewModel.getSummaryItem(name)
-        itemViewModel.itemSumRespon.observe(viewLifecycleOwner) { berrysum ->
-            val name = berrysum.body()?.name.toString()
-            val link = berrysum.body()?.sprites?.default.toString()
-
-            val dataTemp = Berrylist(
-                name,
-                link
-            )
-
-            dataList.add(dataTemp)
-            adapter.setdata(dataList)
-        }
-    }
+//    fun getSummaryItem(name: String){
+//        itemViewModel.getSummaryItem(name)
+//        itemViewModel.itemSumRespon.observe(viewLifecycleOwner) { berrysum ->
+//            val name = berrysum.body()?.name.toString()
+//            val link = berrysum.body()?.sprites?.default.toString()
+//
+//            val dataTemp = Berrylist(
+//                name,
+//                link
+//            )
+//
+//            dataList.add(dataTemp)
+//            adapter.setdata(dataList)
+//        }
+//    }
 
     private fun isLoading(isLoading: Boolean){
         binding.Berryprogress.visibility = if (isLoading)  View.VISIBLE  else  View.GONE

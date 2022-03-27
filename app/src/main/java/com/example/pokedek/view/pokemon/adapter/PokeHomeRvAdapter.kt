@@ -7,11 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 import com.example.pokedek.R
+import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
 import kotlinx.android.synthetic.main.cv_pokehom.view.*
 
-class PokeHomeRvAdapter: RecyclerView.Adapter<PokeHomeRvAdapter.viewholder>() {
-
-    var datalist = emptyList<PokemonSummary>().distinct()
+class PokeHomeRvAdapter(private val data : List<Pokesummary>): RecyclerView.Adapter<PokeHomeRvAdapter.viewholder>() {
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
 
@@ -20,21 +19,17 @@ class PokeHomeRvAdapter: RecyclerView.Adapter<PokeHomeRvAdapter.viewholder>() {
     }
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
-        val item = datalist[position]
+        val item = data[position]
         holder.itemView.homepoke_name.text = item.name
 
         Glide.with(holder.itemView.context)
             .asBitmap()
-            .load(item.image)
+            .load(item.sprites.other.officialArtwork.frontDefault)
             .into(holder.itemView.homepoke_img)
     }
 
-    override fun getItemCount(): Int {
-        return datalist.size
-    }
+    override fun getItemCount(): Int = data.size
 
-    fun setdata(data : List<PokemonSummary>){
-        datalist = data.distinct()
-        notifyDataSetChanged()
-    }
+
+
 }

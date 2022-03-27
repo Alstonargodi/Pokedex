@@ -15,5 +15,7 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowEnterTransition">@transition/explode</item>
         <item name="android:windowExitTransition">@transition/explode</item>
+        <!--?xml version="1.0" encoding="UTF-8"?-->
+
     </style>
 </resources>

@@ -41,7 +41,7 @@ class PokemonDetailFragment : Fragment() {
         binding.tvdetailPokemName.text = data.name
         name = data.name
 
-        apiViewModel.getPokemonSummary(data.name)
+//        apiViewModel.getPokemonSummary(data.name)
         apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { responDetail ->
             responDetail.body()?.apply {
                 binding.apply {

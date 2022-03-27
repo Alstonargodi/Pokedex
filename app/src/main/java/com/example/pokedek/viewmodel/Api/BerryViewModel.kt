@@ -5,29 +5,33 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedek.model.remote.itemresponse.itemlistresponse.Itemlist
-import com.example.pokedek.model.remote.itemresponse.itemsumreponse.Itemsum
 import com.example.pokedek.model.remote.ApiRepository
+import com.example.pokedek.model.remote.berryresponse.berrylistresponse.BerryListResponse
+import com.example.pokedek.model.remote.berryresponse.berrysumresponse.BerrySumResponse
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ItemViewModel : ViewModel(){
-
-    val itemListRespon : MutableLiveData<Response<Itemlist>> = MutableLiveData()
-    val itemSumRespon : MutableLiveData<Response<Itemsum>> = MutableLiveData()
+class BerryViewModel: ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> = _isLoading
 
-//    fun getListItem(page: Int, limit: Int){
+    val berryListRespon : MutableLiveData<Response<BerryListResponse>> = MutableLiveData()
+    val berrySumRespon : MutableLiveData<Response<BerrySumResponse>> = MutableLiveData()
+
+    //berry
+//    fun getListBerry(page: Int, limit: Int){
 //        _isLoading.value = true
 //        viewModelScope.launch {
-//            ApiRepository().getListItem(page, limit).enqueue( object : Callback<Itemlist>{
-//                override fun onResponse(call: Call<Itemlist>, response: Response<Itemlist>) {
+//            ApiRepository().getListBerry(page, limit).enqueue(object : Callback<BerryListResponse>{
+//                override fun onResponse(
+//                    call: Call<BerryListResponse>,
+//                    response: Response<BerryListResponse>
+//                ) {
 //                   if (response.isSuccessful){
-//                        itemListRespon.value = response
+//                       berryListRespon.value = response
 //                       _isLoading.value = false
 //                   }else{
 //                       Log.d(TAG,response.message())
@@ -35,28 +39,32 @@ class ItemViewModel : ViewModel(){
 //                   }
 //                }
 //
-//                override fun onFailure(call: Call<Itemlist>, t: Throwable) {
+//                override fun onFailure(call: Call<BerryListResponse>, t: Throwable) {
 //                    Log.d(TAG,t.message.toString())
 //                    _isLoading.value = false
 //                }
+//
 //            })
 //        }
 //    }
 //
-//    fun getSummaryItem(name: String){
+//    fun getSumBerry(name:String){
 //        _isLoading.value = true
 //        viewModelScope.launch {
-//            ApiRepository().getSumItem(name).enqueue(object : Callback<Itemsum>{
-//                override fun onResponse(call: Call<Itemsum>, response: Response<Itemsum>) {
+//            ApiRepository().getSumBerry(name).enqueue(object : Callback<BerrySumResponse> {
+//                override fun onResponse(
+//                    call: Call<BerrySumResponse>,
+//                    response: Response<BerrySumResponse>
+//                ) {
 //                    if (response.isSuccessful){
-//                        itemSumRespon.value = response
+//                        berrySumRespon.value = response
 //                        _isLoading.value = false
 //                    }else{
 //                        Log.d(TAG,response.message())
-//                        _isLoading.value = false
 //                    }
 //                }
-//                override fun onFailure(call: Call<Itemsum>, t: Throwable) {
+//
+//                override fun onFailure(call: Call<BerrySumResponse>, t: Throwable) {
 //                    Log.d(TAG,t.message.toString())
 //                    _isLoading.value = false
 //                }

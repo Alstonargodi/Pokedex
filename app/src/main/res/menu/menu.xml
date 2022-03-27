@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Home"
+        android:id="@+id/rumah"
+        android:fontFamily="@font/poppinsbold"
+        android:icon="@drawable/baseline_catching_pokemon_black_24dp"
+        >
+    </item>
+    <item
+        android:title="Find"
+        android:id="@+id/search"
+        android:fontFamily="@font/poppinsbold"
+        android:icon="@drawable/baseline_search_24"
+        >
+    </item>
+    <item
+        android:title="Favorite"
+        android:id="@+id/favorite"
+        android:fontFamily="@font/poppinsbold"
+        android:icon="@drawable/baseline_collections_bookmark_24"
+        >
+    </item>
+</menu>

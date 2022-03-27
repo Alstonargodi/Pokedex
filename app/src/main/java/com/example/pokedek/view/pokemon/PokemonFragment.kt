@@ -102,38 +102,38 @@ class PokemonFragment : Fragment() {
         isLoading = true
         binding.progressbarpoke.visibility = View.VISIBLE
 
-        apiViewModel.getPokemonList(PAGE, LIMIT)
-        apiViewModel.pokelistrespon.observe(viewLifecycleOwner) { ListRespon ->
-            val data = ListRespon.results
-            for(element in data){
-                apiViewModel.getPokemonSummary(element.name)
-                apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { SumRespon ->
-                    if (SumRespon.isSuccessful){
-                        SumRespon.body()?.apply {
-                            val sum = PokemonSummary(
-                                name,
-                                sprites.other.officialArtwork.frontDefault,
-                                height.toString(),
-                                weight.toString(),
-                                stats[0].baseStat.toString(), //hp
-                                stats[1].baseStat.toString(), //atk
-                                stats[5].baseStat.toString(), //spd
-                                types[0].type.name,
-                                abilities[0].ability.name,
-                                abilities[1].ability.name,
-                                stats[3].baseStat.toString(),
-                                stats[4].baseStat.toString(),
-                            )
-                            dataList.add(sum)
-                            adapter.setdata(dataList.sortedBy { it.name })
-                            binding.progressbarpoke.visibility = View.INVISIBLE
-                        }
-                    }else{
-                        setEmptyView()
-                    }
-                }
-            }
-        }
+//        apiViewModel.getPokemonList(PAGE, LIMIT)
+//        apiViewModel.pokelistrespon.observe(viewLifecycleOwner) { ListRespon ->
+//            val data = ListRespon.results
+//            for(element in data){
+//                apiViewModel.getPokemonSummary(element.name)
+//                apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { SumRespon ->
+//                    if (SumRespon.isSuccessful){
+//                        SumRespon.body()?.apply {
+//                            val sum = PokemonSummary(
+//                                name,
+//                                sprites.other.officialArtwork.frontDefault,
+//                                height.toString(),
+//                                weight.toString(),
+//                                stats[0].baseStat.toString(), //hp
+//                                stats[1].baseStat.toString(), //atk
+//                                stats[5].baseStat.toString(), //spd
+//                                types[0].type.name,
+//                                abilities[0].ability.name,
+//                                abilities[1].ability.name,
+//                                stats[3].baseStat.toString(),
+//                                stats[4].baseStat.toString(),
+//                            )
+//                            dataList.add(sum)
+//                            adapter.setdata(dataList.sortedBy { it.name })
+//                            binding.progressbarpoke.visibility = View.INVISIBLE
+//                        }
+//                    }else{
+//                        setEmptyView()
+//                    }
+//                }
+//            }
+//        }
     }
 
     private fun setEmptyView(){

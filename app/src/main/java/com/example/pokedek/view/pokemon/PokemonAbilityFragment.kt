@@ -35,24 +35,24 @@ class PokemonAbilityFragment : BottomSheetDialogFragment() {
         binding.AbdetailName.text = nama
         binding.AbdetailEffectDUA.text = namadua
 
-        apiviewmodel.getPokemonAbilty(nama!!)
-        apiviewmodel.pokeabtrespon.observe(viewLifecycleOwner) { responAbility ->
-            val effectSum = responAbility.body()?.effectEntries?.get(1)?.effect.toString()
-            val effectDetail = responAbility.body()?.effectEntries?.get(1)?.shortEffect.toString()
-
-            "$effectSum\n$effectDetail".also { binding.AbdetailEffect.text = it }
-
-        }
-
-        apiviewmodel.getPokemonAbilty(namadua!!)
-        apiviewmodel.pokeabtrespon.observe(viewLifecycleOwner) { responabt ->
-            if (responabt.isSuccessful) {
-                val effectSum = responabt.body()?.effectEntries?.get(1)?.effect.toString()
-                val effectDetail = responabt.body()?.effectEntries?.get(1)?.shortEffect.toString()
-
-                "$effectSum\n$effectDetail".also { binding.AbdetailEffectDUA.text = it }
-            }
-        }
+//        apiviewmodel.getPokemonAbilty(nama!!)
+//        apiviewmodel.pokeabtrespon.observe(viewLifecycleOwner) { responAbility ->
+//            val effectSum = responAbility.body()?.effectEntries?.get(1)?.effect.toString()
+//            val effectDetail = responAbility.body()?.effectEntries?.get(1)?.shortEffect.toString()
+//
+//            "$effectSum\n$effectDetail".also { binding.AbdetailEffect.text = it }
+//
+//        }
+//
+//        apiviewmodel.getPokemonAbilty(namadua!!)
+//        apiviewmodel.pokeabtrespon.observe(viewLifecycleOwner) { responabt ->
+//            if (responabt.isSuccessful) {
+//                val effectSum = responabt.body()?.effectEntries?.get(1)?.effect.toString()
+//                val effectDetail = responabt.body()?.effectEntries?.get(1)?.shortEffect.toString()
+//
+//                "$effectSum\n$effectDetail".also { binding.AbdetailEffectDUA.text = it }
+//            }
+//        }
 
         return binding.root
     }

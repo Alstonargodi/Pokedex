@@ -19,13 +19,13 @@ interface ApiService {
 
     //Pokemon
     @GET("pokemon")
-    fun getListPokemon(
+    suspend fun getListPokemon(
         @Query("offset") off : Int,
         @Query("limit") limit : Int,
-    ): Call<Pokemonlist>
+    ): Pokemonlist
 
     @GET("pokemon/{name}/")
-    fun getSummaryPokemon(@Path("name") name : String): Call<Pokesummary>
+    suspend fun getSummaryPokemon(@Path("name") name : String): Pokesummary
 
 
     @GET("ability/{name}/")

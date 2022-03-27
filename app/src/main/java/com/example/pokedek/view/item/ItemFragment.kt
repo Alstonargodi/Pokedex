@@ -96,54 +96,54 @@ class ItemFragment : Fragment() {
     fun readitem(cari: String,item : Int){
         binding.itemprogressbar.visibility = View.VISIBLE
 
-        itemViewModel.getListItem(0,item)
-        itemViewModel.itemListRespon.observe(viewLifecycleOwner, Observer { responlist ->
-            try {
-                if (responlist.isSuccessful){
-                    val data = responlist.body()?.results
-                    for (i in data!!.indices){
-                        val nama = data[i].name
-
-                        itemViewModel.getSummaryItem(nama)
-                        itemViewModel.itemSumRespon.observe(viewLifecycleOwner, Observer { responsum ->
-                            try {
-                                if (responsum.isSuccessful){
-
-                                    val name = responsum.body()?.name.toString()
-                                    val type = responsum.body()?.category?.name.toString()
-
-                                    val fetch = ItemList(
-                                        responsum.body()?.name.toString(),
-                                        responsum.body()?.sprites?.default.toString(),
-                                        responsum.body()?.category?.name.toString(),
-                                        responsum.body()?.effectEntries?.get(0)?.effect.toString()
-                                    )
-
-                                    if(type.contains(cari)){
-                                        Itemlistsum.add(fetch)
-                                        adapter.setdata(Itemlistsum)
-                                        binding.itemprogressbar.visibility = View.GONE
-                                    }else if (cari.isEmpty()){
-                                        Itemlistsum.add(fetch)
-                                        adapter.setdata(Itemlistsum)
-                                        binding.itemprogressbar.visibility = View.GONE
-                                    }
-
-                                }else{
-                                    Log.d("itemsum","cannot fetch data")
-                                }
-                            }catch (e : Exception){
-                                Log.d("itemsum",e.toString())
-                            }
-                        })
-                    }
-                }else{
-                    Log.d("itemlist","cannot fetch data")
-                }
-            }catch (e : Exception){
-                Log.d("itemlist",e.toString())
-            }
-        })
+//        itemViewModel.getListItem(0,item)
+//        itemViewModel.itemListRespon.observe(viewLifecycleOwner, Observer { responlist ->
+//            try {
+//                if (responlist.isSuccessful){
+//                    val data = responlist.body()?.results
+//                    for (i in data!!.indices){
+//                        val nama = data[i].name
+//
+//                        itemViewModel.getSummaryItem(nama)
+//                        itemViewModel.itemSumRespon.observe(viewLifecycleOwner, Observer { responsum ->
+//                            try {
+//                                if (responsum.isSuccessful){
+//
+//                                    val name = responsum.body()?.name.toString()
+//                                    val type = responsum.body()?.category?.name.toString()
+//
+//                                    val fetch = ItemList(
+//                                        responsum.body()?.name.toString(),
+//                                        responsum.body()?.sprites?.default.toString(),
+//                                        responsum.body()?.category?.name.toString(),
+//                                        responsum.body()?.effectEntries?.get(0)?.effect.toString()
+//                                    )
+//
+//                                    if(type.contains(cari)){
+//                                        Itemlistsum.add(fetch)
+//                                        adapter.setdata(Itemlistsum)
+//                                        binding.itemprogressbar.visibility = View.GONE
+//                                    }else if (cari.isEmpty()){
+//                                        Itemlistsum.add(fetch)
+//                                        adapter.setdata(Itemlistsum)
+//                                        binding.itemprogressbar.visibility = View.GONE
+//                                    }
+//
+//                                }else{
+//                                    Log.d("itemsum","cannot fetch data")
+//                                }
+//                            }catch (e : Exception){
+//                                Log.d("itemsum",e.toString())
+//                            }
+//                        })
+//                    }
+//                }else{
+//                    Log.d("itemlist","cannot fetch data")
+//                }
+//            }catch (e : Exception){
+//                Log.d("itemlist",e.toString())
+//            }
+//        })
     }
 
 

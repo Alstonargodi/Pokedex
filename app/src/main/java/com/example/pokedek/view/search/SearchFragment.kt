@@ -44,8 +44,7 @@ class SearchFragment : Fragment() {
         val view = binding.root
 
         //api
-        val repo = ApiRepository()
-        val vmf = VModelFactory(repo)
+
 
 
 
@@ -61,8 +60,8 @@ class SearchFragment : Fragment() {
                 }
         })
 
-        val textviewsrc = binding.etsearchFragment.findViewById<TextView>(R.id.search_src_text)
-        textviewsrc.setTextColor(Color.WHITE)
+//       val textviewsrc = binding.etsearchFragment.findViewById<TextView>(R.id.search_src_text)
+//        textviewsrc.setTextColor(Color.WHITE)
 
         listall()
 
@@ -85,10 +84,10 @@ class SearchFragment : Fragment() {
         binding.btnKatBerry.setOnClickListener {
             val name = binding.etsearchFragment.toString()
             if (name.isNotEmpty()){
-                berrysearch(name)
+//                berrysearch(name)
             }
             datalist.clear()
-            berrylist()
+//            berrylist()
             view.btn_kat_berry.setTextColor(R.color.berry)
             view.btn_kat_poke.setTextColor(R.color.plain)
             view.btn_kat_nature.setTextColor(R.color.plain)
@@ -114,30 +113,30 @@ class SearchFragment : Fragment() {
         binding.btnKatAll.setTextColor(R.color.black)
 
         pokemonlist()
-        berrylist()
+//        berrylist()
     }
 
     //pokemon
-    fun pokemonsearch(id : String){
-        pokeViewModel.getPokemonSummary(id)
-        pokeViewModel.pokesumrespon.observe(viewLifecycleOwner, Observer { psumsearch ->
-            if (psumsearch.isSuccessful){
-                val name = psumsearch.body()?.name
-                val link = psumsearch.body()?.sprites!!.other.officialArtwork.frontDefault
-
-//                findNavController().navigate(SearchfragmentDirections.actionSearchfragmentToPokemondetailfragment(name.toString()))
-            }else{
-                Log.d("sumsearchrespom","not success")
-            }
-        })
-    }
+//    fun pokemonsearch(id : String){
+//        pokeViewModel.getPokemonSummary(id)
+//        pokeViewModel.pokesumrespon.observe(viewLifecycleOwner, Observer { psumsearch ->
+//            if (psumsearch.isSuccessful){
+//                val name = psumsearch.body()?.name
+//                val link = psumsearch.body()?.sprites!!.other.officialArtwork.frontDefault
+//
+////                findNavController().navigate(SearchfragmentDirections.actionSearchfragmentToPokemondetailfragment(name.toString()))
+//            }else{
+//                Log.d("sumsearchrespom","not success")
+//            }
+//        })
+//    }
     fun pokemonlist(){
         //adapter
         val recview = binding.recviewSearch
         recview.layoutManager = LinearLayoutManager(requireContext())
         binding.pbarSearchpoke.visibility = View.VISIBLE
 
-        pokeViewModel.getPokemonList(0,1000)
+//        pokeViewModel.getPokemonList(0,1000)
 //        pokeViewModel.pokelistrespon.observe(viewLifecycleOwner, Observer {  plistsearch ->
 //            try {
 //                if (plistsearch.isSuccessful){
@@ -162,44 +161,44 @@ class SearchFragment : Fragment() {
     }
 
     //berry
-    fun berrysearch(id: String){
-        berryViewModel.getSumBerry(id)
-        berryViewModel.berrySumRespon.observe(viewLifecycleOwner, Observer { bsumserach ->
-            if (bsumserach.isSuccessful){
-                Log.d("berry",bsumserach.body()?.name.toString())
-            }else{
-                Log.d("sumsearchrespom","not success")
-            }
-        })
-    }
-    fun berrylist(){
-        binding.pbarSearchpoke.visibility = View.VISIBLE
-        val recview = binding.recviewSearch
-        recview.layoutManager = LinearLayoutManager(requireContext())
-
-        berryViewModel.getListBerry(0,1000)
-        berryViewModel.berryListRespon.observe(viewLifecycleOwner, Observer { blistsearch ->
-            try {
-                if (blistsearch.isSuccessful){
-                    val data = blistsearch.body()?.results
-                    for (i in data!!.indices){
-                        val name = data[i].name + "-berry"
-
-                        val list = Searchlist(
-                            name
-                        )
-
-                        datalist.add(name)
-                        binding.pbarSearchpoke.visibility = View.INVISIBLE
-                        adapter = Searchrvadapter(datalist)
-                        recview.adapter = adapter
-                    }
-                }
-            }catch (e : Exception){
-                Log.d("list",e.toString())
-            }
-        })
-    }
+//    fun berrysearch(id: String){
+//        berryViewModel.getSumBerry(id)
+//        berryViewModel.berrySumRespon.observe(viewLifecycleOwner, Observer { bsumserach ->
+//            if (bsumserach.isSuccessful){
+//                Log.d("berry",bsumserach.body()?.name.toString())
+//            }else{
+//                Log.d("sumsearchrespom","not success")
+//            }
+//        })
+//    }
+//    fun berrylist(){
+//        binding.pbarSearchpoke.visibility = View.VISIBLE
+//        val recview = binding.recviewSearch
+//        recview.layoutManager = LinearLayoutManager(requireContext())
+//
+//        berryViewModel.getListBerry(0,1000)
+//        berryViewModel.berryListRespon.observe(viewLifecycleOwner, Observer { blistsearch ->
+//            try {
+//                if (blistsearch.isSuccessful){
+//                    val data = blistsearch.body()?.results
+//                    for (i in data!!.indices){
+//                        val name = data[i].name + "-berry"
+//
+//                        val list = Searchlist(
+//                            name
+//                        )
+//
+//                        datalist.add(name)
+//                        binding.pbarSearchpoke.visibility = View.INVISIBLE
+//                        adapter = Searchrvadapter(datalist)
+//                        recview.adapter = adapter
+//                    }
+//                }
+//            }catch (e : Exception){
+//                Log.d("list",e.toString())
+//            }
+//        })
+//    }
 
 //    fun itemsearch(id : String){
 //        pokeViewModel.getitemsum(id)

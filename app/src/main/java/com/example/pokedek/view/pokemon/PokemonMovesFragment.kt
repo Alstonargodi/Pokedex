@@ -32,36 +32,36 @@ class PokemonMovesFragment : BottomSheetDialogFragment() {
         val nama = arguments?.getString(PokemonDetailFragment.EXTRA_NAME)
 
         movelist = arrayListOf()
-        pokeViewModel.apply {
-            getPokemonSummary(nama!!)
-            pokesumrespon.observe(viewLifecycleOwner) { responData ->
-                //moves pokemon
-                val mov = responData.body()?.moves
-                for (i in mov!!.indices) {
-                    val move = mov[i].move.name
-
-                    getPokemonMoves(move)
-                    pokemovesrespon.observe(viewLifecycleOwner) { moves ->
-                        val entries = moves.body()?.effectEntries
-                        for (i in entries!!.indices){
-                            val effectMain = entries[i].effect
-                            val effectShort = entries[i].shortEffect
-
-                            val datamoves = PokemonMoves(
-                                effectMain,
-                                "",
-                                effectShort
-                            )
-
-                            movelist.add(datamoves)
-                            val filter = movelist.distinct()
-                            adapter.setdata(filter)
-                        }
-
-                    }
-                }
-            }
-        }
+//        pokeViewModel.apply {
+//            getPokemonSummary(nama!!)
+//            pokesumrespon.observe(viewLifecycleOwner) { responData ->
+//                //moves pokemon
+//                val mov = responData.body()?.moves
+//                for (i in mov!!.indices) {
+//                    val move = mov[i].move.name
+//
+//                    getPokemonMoves(move)
+//                    pokemovesrespon.observe(viewLifecycleOwner) { moves ->
+//                        val entries = moves.body()?.effectEntries
+//                        for (i in entries!!.indices){
+//                            val effectMain = entries[i].effect
+//                            val effectShort = entries[i].shortEffect
+//
+//                            val datamoves = PokemonMoves(
+//                                effectMain,
+//                                "",
+//                                effectShort
+//                            )
+//
+//                            movelist.add(datamoves)
+//                            val filter = movelist.distinct()
+//                            adapter.setdata(filter)
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
 
         return binding.root
     }
