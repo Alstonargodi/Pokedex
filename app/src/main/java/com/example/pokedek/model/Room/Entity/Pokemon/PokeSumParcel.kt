@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity(tableName = "pokemonlist")
-data class PokemonSummary(
+data class PokeSumParcel(
     @PrimaryKey(autoGenerate = false)
     val name : String,
     val image : String,

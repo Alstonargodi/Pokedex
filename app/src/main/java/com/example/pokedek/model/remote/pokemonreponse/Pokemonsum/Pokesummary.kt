@@ -1,7 +1,11 @@
 package com.example.pokedek.model.remote.pokemonreponse.Pokemonsum
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
+
 
 class Pokesummary(
     @SerializedName("abilities")
@@ -40,4 +44,4 @@ class Pokesummary(
     var types: List<Type>,
     @SerializedName("weight")
     var weight: Int
-)
+): Serializable

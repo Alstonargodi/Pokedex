@@ -50,16 +50,12 @@ class BerryFragment : Fragment() {
         }
 //        getBerryList()
 
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.detailtopberry)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnhomBackErrymain.setOnClickListener {
-//            findNavController().navigate(BerryFragmentDirections.actionBerryfragmentToFragmenthome())
-            requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtop)
-        }
+
 
     }
 

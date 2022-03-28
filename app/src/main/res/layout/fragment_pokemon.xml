@@ -4,25 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEF2FF"
     tools:context=".view.pokemon.PokemonFragment">
 
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="0dp"
-        android:layout_height="525dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="-300dp"
-        android:src="@drawable/ball"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,7 +25,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="900dp"
-                android:layout_marginTop="0dp"
                 android:background="#22FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,16 +35,14 @@
                     android:id="@+id/tva"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:gravity="center"
                     android:text="Pokemon"
-                    android:textAlignment="gravity"
                     android:textColor="#FF72C7EE"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toStartOf="@+id/tvsort"
-                    app:layout_constraintHorizontal_bias="0.945"
-                    app:layout_constraintStart_toEndOf="@+id/btn_menu"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
@@ -82,7 +64,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -138,17 +120,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <Button
-                    android:id="@+id/btn_menu"
-                    android:layout_width="35dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/ic_back"
-                    android:backgroundTint="#ADAEAF"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
                     android:id="@+id/tvsort"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -162,5 +133,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

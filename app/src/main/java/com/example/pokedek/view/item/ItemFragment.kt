@@ -38,11 +38,6 @@ class ItemFragment : Fragment() {
         binding = FragmentItemBinding.inflate(layoutInflater)
         val view = binding.root
 
-        binding.btnitemBackhome.setOnClickListener {
-//            findNavController().navigate(ItemFragmentDirections.actionItemToFragmenthome())
-            requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtop)
-        }
-
 
         Itemlistsum = arrayListOf()
         adapter = Itemrvadapter()
@@ -88,7 +83,6 @@ class ItemFragment : Fragment() {
 
         readitem("",10)
 
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtopitem)
 
         return view
     }

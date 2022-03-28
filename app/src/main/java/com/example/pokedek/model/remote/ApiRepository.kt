@@ -1,11 +1,7 @@
 package com.example.pokedek.model.remote
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
-import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 import com.example.pokedek.model.remote.berryresponse.berrysumresponse.BerrySumResponse
 import com.example.pokedek.model.remote.itemresponse.itemlistresponse.Itemlist
 import com.example.pokedek.model.remote.itemresponse.itemsumreponse.Itemsum
@@ -13,12 +9,7 @@ import com.example.pokedek.model.remote.pokemonreponse.pokemonabilityresponse.Po
 import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
 import com.example.pokedek.model.remote.pokemonreponse.Pokemoves.Pokemoves
 import com.example.pokedek.model.remote.ApiConfig.getApiService
-import com.example.pokedek.model.remote.pokemonreponse.pokemonlist.Pokemonlist
-import com.example.pokedek.model.remote.pokemonreponse.pokemonlist.Result
-import com.example.pokedek.view.utils.AppExecutors
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.lang.Exception
 
 class ApiRepository (
@@ -42,6 +33,8 @@ class ApiRepository (
     fun getAbilityPokemon(id: String): Call<Pokeablty> = getApiService().getAbilityPokemon(id)
 
     fun getMovesPokemon(id: String): Call<Pokemoves> = getApiService().getMovesPokemon(id)
+
+
 
     //berry
     fun getListBerry(page : Int, limit : Int) = getApiService().getBerryList(page,limit)

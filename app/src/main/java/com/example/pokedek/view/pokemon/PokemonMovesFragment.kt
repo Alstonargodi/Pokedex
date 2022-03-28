@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.pokedek.model.Room.Entity.Pokemon.PokemonMoves
+import com.example.pokedek.model.Room.Entity.Pokemon.PokeMoveParcel
 import com.example.pokedek.view.pokemon.adapter.Pokemonmovesrvadapter
 import com.example.pokedek.databinding.MovesdetailbottomfragmentBinding
 import com.example.pokedek.viewmodel.Api.PokemonViewModel
@@ -19,7 +19,7 @@ class PokemonMovesFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding : MovesdetailbottomfragmentBinding
 
-    private var movelist = arrayListOf<PokemonMoves>()
+    private var movelist = arrayListOf<PokeMoveParcel>()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = MovesdetailbottomfragmentBinding.inflate(inflater, container, false)
 
@@ -47,7 +47,7 @@ class PokemonMovesFragment : BottomSheetDialogFragment() {
 //                            val effectMain = entries[i].effect
 //                            val effectShort = entries[i].shortEffect
 //
-//                            val datamoves = PokemonMoves(
+//                            val datamoves = PokeMoveParcel(
 //                                effectMain,
 //                                "",
 //                                effectShort

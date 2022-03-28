@@ -6,25 +6,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
-import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
+import com.example.pokedek.model.Room.Entity.Pokemon.PokeParcelSum
+import com.example.pokedek.model.remote.Fetchstatus
+import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.view.HomeFragmentDirections
 import com.example.pokedek.view.pokemon.adapter.PokemonRvAdapter
 import com.example.pokedek.viewmodel.Api.PokemonViewModel
+import com.example.pokedek.viewmodel.Api.VModelFactory
+import kotlinx.coroutines.launch
 
 class PokemonFragment : Fragment() {
-    private val apiViewModel by viewModels<PokemonViewModel>()
-
     private lateinit var binding: FragmentPokemonBinding
 
+    private val apiViewModel : PokemonViewModel by viewModels{
+        VModelFactory.getInstance()
+    }
+
     private var isLoading= false
-    private var adapter = PokemonRvAdapter()
-    private var dataList = ArrayList<PokemonSummary>()
+
+    private var dataList = ArrayList<Pokesummary>()
 
 
     override fun onCreateView(
@@ -34,12 +41,11 @@ class PokemonFragment : Fragment() {
         binding = FragmentPokemonBinding.inflate(inflater, container, false)
 
         dataList = arrayListOf()
-        val recView = binding.recyclerviewpoke
-        adapter = PokemonRvAdapter()
-        recView.adapter = adapter
-        recView.layoutManager= LinearLayoutManager(context)
-        recView.animate().start()
 
+
+        lifecycleScope.launch {
+            getPokemonList()
+        }
 
         return binding.root
     }
@@ -49,10 +55,6 @@ class PokemonFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            btnMenu.setOnClickListener {
-                findNavController().navigate(PokemonFragmentDirections.actionPokemonToFragmenthome())
-                requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtop)
-            }
 
             tvsort.setOnClickListener {
                 binding.layhide.visibility =
@@ -68,73 +70,74 @@ class PokemonFragment : Fragment() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     when(p0?.getItemAtPosition(p2)){
                         "Name"->{
-                            adapter.setdata(dataList.sortedBy { it.name })
+                            showPokemonList(dataList.sortedBy { it.name })
                         }
                         "Weight"->{
-                            adapter.setdata(dataList.sortedBy { it.weight })
+                            showPokemonList(dataList.sortedBy { it.weight })
                         }
                         "Height"->{
-                            adapter.setdata(dataList.sortedBy { it.height })
+                            showPokemonList(dataList.sortedBy { it.height })
                         }
                         "Hp"->{
-                            adapter.setdata(dataList.sortedBy { it.power })
+                            showPokemonList(dataList.sortedBy { it.stats[0].baseStat })
                         }
                         "Speed"->{
-                            adapter.setdata(dataList.sortedBy { it.speed })
+                            showPokemonList(dataList.sortedBy { it.stats[5].baseStat })
                         }
                         "Attack"->{
-                            adapter.setdata(dataList.sortedBy { it.attack })
+                            showPokemonList(dataList.sortedBy { it.stats[1].baseStat })
                         }
                     }
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
-                    getPokemonList()
+                    showPokemonList(dataList.sortedBy { it.name })
                 }
             }
         }
-
-        getPokemonList()
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtopoke)
     }
 
-    private fun getPokemonList(){
+    private suspend fun getPokemonList(){
         isLoading = true
         binding.progressbarpoke.visibility = View.VISIBLE
 
-//        apiViewModel.getPokemonList(PAGE, LIMIT)
-//        apiViewModel.pokelistrespon.observe(viewLifecycleOwner) { ListRespon ->
-//            val data = ListRespon.results
-//            for(element in data){
-//                apiViewModel.getPokemonSummary(element.name)
-//                apiViewModel.pokesumrespon.observe(viewLifecycleOwner) { SumRespon ->
-//                    if (SumRespon.isSuccessful){
-//                        SumRespon.body()?.apply {
-//                            val sum = PokemonSummary(
-//                                name,
-//                                sprites.other.officialArtwork.frontDefault,
-//                                height.toString(),
-//                                weight.toString(),
-//                                stats[0].baseStat.toString(), //hp
-//                                stats[1].baseStat.toString(), //atk
-//                                stats[5].baseStat.toString(), //spd
-//                                types[0].type.name,
-//                                abilities[0].ability.name,
-//                                abilities[1].ability.name,
-//                                stats[3].baseStat.toString(),
-//                                stats[4].baseStat.toString(),
-//                            )
-//                            dataList.add(sum)
-//                            adapter.setdata(dataList.sortedBy { it.name })
-//                            binding.progressbarpoke.visibility = View.INVISIBLE
-//                        }
-//                    }else{
-//                        setEmptyView()
-//                    }
-//                }
-//            }
-//        }
+        apiViewModel.getListPokemon(PAGE, LIMIT).observe(viewLifecycleOwner){status->
+            when(status){
+                is Fetchstatus.Loading->{
+                    binding.progressbarpoke.visibility = View.VISIBLE
+                }
+                is Fetchstatus.Sucess->{
+                    binding.progressbarpoke.visibility = View.GONE
+                    dataList.add(status.data)
+                    showPokemonList(dataList.sortedBy { it.name })
+                }
+                is Fetchstatus.Error ->{
+                    setEmptyView()
+                    Log.d("Home Fragment",status.error)
+                }
+                else -> {}
+            }
+        }
     }
+
+    private fun showPokemonList(data : List<Pokesummary>){
+        val adapter = PokemonRvAdapter(data)
+        val recView = binding.recyclerviewpoke
+        recView.adapter = adapter
+        recView.layoutManager= LinearLayoutManager(context)
+        recView.animate().start()
+
+        adapter.onClickDetail(object : PokemonRvAdapter.OnItemClickDetail{
+            override fun onItemClickDetail(data: Pokesummary) {
+                goToDetailPokemon(data)
+            }
+        })
+    }
+
+    private fun goToDetailPokemon(data : Pokesummary){
+            findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToPokemondetailfragment(data))
+    }
+
 
     private fun setEmptyView(){
         binding.recyclerviewpoke.apply {
@@ -147,7 +150,7 @@ class PokemonFragment : Fragment() {
 
     companion object{
         const val PAGE = 0
-        const val LIMIT = 10
+        const val LIMIT = 5
 
         const val LEFT = 10
         const val TOP = 20

@@ -28,9 +28,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val apiViewModel : PokemonViewModel by viewModels{
-        VModelFactory.getInstance()
-    }
+    private val apiViewModel : PokemonViewModel by viewModels{ VModelFactory.getInstance() }
+    private lateinit var pagerAdapter : SectionPageAdapter
     private lateinit var roomViewModel: Roomviewmodel
     private lateinit var adapter : PokeHomeRvAdapter
 
@@ -45,35 +44,21 @@ class HomeFragment : Fragment() {
 
         roomViewModel = ViewModelProvider(this)[Roomviewmodel::class.java]
 
-
-        binding.apply {
-            btnPokelist.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToPokemon())
-            }
-            btnGofind.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToSearchfragment())
-            }
-            btnhomeBerry.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToBerryfragment())
-            }
-            btnGofav.setOnClickListener {
-                val options = ActivityOptions.makeSceneTransitionAnimation(requireActivity())
-                options.toBundle()
-                findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToFavoritefragment())
-            }
-            BtnItem.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToItem())
-            }
-            btnCompare.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToCompare())
-            }
-        }
-
         lifecycleScope.launch {
             getPokemonList()
         }
 
-        getDataCount()
+        setPagerAdapter(0)
+        binding.PokemonCard.setOnClickListener {
+            setPagerAdapter(0)
+        }
+
+        binding.BerryCard.setOnClickListener {
+            setPagerAdapter(1)
+        }
+
+
+//        getDataCount()
         return binding.root
     }
 
@@ -90,9 +75,10 @@ class HomeFragment : Fragment() {
                 is Fetchstatus.Sucess->{
                     binding.pbarPokehome.visibility = View.GONE
                     listsum.add(status.data)
-                    showPokemonList(listsum.distinct())
+//                    showPokemonList(listsum.distinct())
                 }
                 is Fetchstatus.Error ->{
+//                    setEmptyView()
                     Log.d("Home Fragment",status.error)
                 }
                 else -> {}
@@ -101,47 +87,36 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun showPokemonList(data : List<Pokesummary>){
-        adapter = PokeHomeRvAdapter(data)
-        val recview = binding.recpokehom
-        recview.adapter = adapter
-        recview.layoutManager = LinearLayoutManager(context)
+//    private fun showPokemonList(data : List<Pokesummary>){
+//        adapter = PokeHomeRvAdapter(data)
+//        val recview = binding.recpokehom
+//        recview.adapter = adapter
+//        recview.layoutManager = LinearLayoutManager(context)
+//
+//    }
+//
 
-    }
+//
+//    private fun setEmptyView(){
+//        binding.recpokehom.apply {
+//            setPadding(10, 20, 10, 20)
+//            setBackgroundResource(R.drawable.emptyview)
+//        }
+//        binding.pbarPokehome.visibility = View.INVISIBLE
+//        Log.d(EXTRA_NAME, "cannot retrive sum data")
+//    }
 
-    private fun getDataCount(){
-        binding.recpokehom.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val visibleitemcount = LinearLayoutManager(requireContext()).childCount
-                val pastvisibleitem = LinearLayoutManager(requireContext()).findFirstCompletelyVisibleItemPosition()
-                val total = adapter.itemCount
-
-                if (!isLoading){
-                    if ((visibleitemcount + pastvisibleitem) > total){
-                        page++
-                        Log.d("pagenumber",page.toString())
-                    }
-                }
-
-                super.onScrolled(recyclerView, dx, dy)
-            }
-        })
-    }
-
-    private fun setEmptyView(){
-        binding.recpokehom.apply {
-            setPadding(10, 20, 10, 20)
-            setBackgroundResource(R.drawable.emptyview)
-        }
-        binding.pbarPokehome.visibility = View.INVISIBLE
-        Log.d(EXTRA_NAME, "cannot retrive sum data")
+    private fun setPagerAdapter(number : Int){
+        pagerAdapter = SectionPageAdapter(requireActivity())
+        val viewpager = binding.recpokehom
+        viewpager.adapter = pagerAdapter
+        viewpager.currentItem = number
     }
 
 
     companion object{
         const val PAGE = 0
         const val LIMIT = 10
-        const val EXTRA_NAME = "HomeFragment"
     }
 
 }

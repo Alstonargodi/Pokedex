@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEF2FF"
     tools:context=".view.berry.BerryFragment">
 
 
@@ -25,7 +24,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="900dp"
-                android:background="#EFEEEE"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -37,14 +35,15 @@
                     android:id="@+id/textView16"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppinsbold"
-                    android:gravity="center"
+                    android:gravity="center_horizontal|left"
                     android:text="Berry"
                     android:textColor="#B667F1"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toStartOf="@+id/button5"
-                    app:layout_constraintStart_toEndOf="@+id/btnhom_back_errymain"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -63,21 +62,10 @@
                     tools:listitem="@layout/cv_berry" />
 
                 <Button
-                    android:id="@+id/btnhom_back_errymain"
-                    android:layout_width="35dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/ic_back"
-                    android:backgroundTint="#A0A1A2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
                     android:id="@+id/button5"
                     android:layout_width="35dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/ic_sort"
                     android:backgroundTint="#A0A1A2"

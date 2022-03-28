@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.pokedek.model.Room.dao.Pokedao
 import com.example.pokedek.model.Room.Entity.Favorite.Favoritelist
-import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
+import com.example.pokedek.model.Room.Entity.Pokemon.PokeSumParcel
 
 /*
 Room database
@@ -18,7 +18,7 @@ This helps make sure the value o
 Fallbacktodestructive nee when db migrate to new version
 */
 
-@Database(entities = [PokemonSummary::class,Favoritelist::class], version = 21, exportSchema = false)
+@Database(entities = [PokeSumParcel::class,Favoritelist::class], version = 21, exportSchema = false)
 abstract class Pokedb : RoomDatabase(){
     abstract fun Pokedao() : Pokedao
 

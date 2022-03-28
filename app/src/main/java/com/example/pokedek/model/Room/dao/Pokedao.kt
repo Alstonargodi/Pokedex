@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.pokedek.model.Room.Entity.Favorite.Favoritelist
-import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
+import com.example.pokedek.model.Room.Entity.Pokemon.PokeSumParcel
 
  /*
  Dao
@@ -17,14 +17,14 @@ import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 abstract class Pokedao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertpokelist(PokemonSummary : PokemonSummary)
+    abstract fun insertpokelist(PokeSumParcel : PokeSumParcel)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertFavorit(favoritelist: Favoritelist)
 
     //read data favorit
     @Query("select*from pokemonlist order by name asc")
-    abstract fun readpokelist(): LiveData<List<PokemonSummary>>
+    abstract fun readpokelist(): LiveData<List<PokeSumParcel>>
 
 
     @Query("select*from tabelfavorit order by number asc") //terkecil

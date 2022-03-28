@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.model.Room.Entity.Pokemon.PokemonSummary
 import com.example.pokedek.R
 import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
 import kotlinx.android.synthetic.main.cv_pokehom.view.*
