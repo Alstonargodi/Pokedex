@@ -94,7 +94,7 @@ class ItemFragment : Fragment() {
 //        itemViewModel.itemListRespon.observe(viewLifecycleOwner, Observer { responlist ->
 //            try {
 //                if (responlist.isSuccessful){
-//                    val data = responlist.body()?.results
+//                    val data = responlist.body()?.berryListResults
 //                    for (i in data!!.indices){
 //                        val nama = data[i].name
 //

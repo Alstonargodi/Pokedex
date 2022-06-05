@@ -1,16 +1,10 @@
 package com.example.pokedek.viewmodel.Api
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.pokedek.model.remote.ApiRepository
-import com.example.pokedek.model.remote.berryresponse.berrylistresponse.BerryListResponse
-import com.example.pokedek.model.remote.berryresponse.berrysumresponse.BerrySumResponse
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
+import com.example.pokedek.model.remote.response.berryresponse.berrylistresponse.BerryListResponse
+import com.example.pokedek.model.remote.response.berryresponse.berrysummaryresponse.BerrySummaryResponse
 import retrofit2.Response
 
 class BerryViewModel: ViewModel() {
@@ -19,7 +13,7 @@ class BerryViewModel: ViewModel() {
     val isLoading : LiveData<Boolean> = _isLoading
 
     val berryListRespon : MutableLiveData<Response<BerryListResponse>> = MutableLiveData()
-    val berrySumRespon : MutableLiveData<Response<BerrySumResponse>> = MutableLiveData()
+    val berrySummaryRespon : MutableLiveData<Response<BerrySummaryResponse>> = MutableLiveData()
 
     //berry
 //    fun getListBerry(page: Int, limit: Int){
@@ -51,20 +45,20 @@ class BerryViewModel: ViewModel() {
 //    fun getSumBerry(name:String){
 //        _isLoading.value = true
 //        viewModelScope.launch {
-//            ApiRepository().getSumBerry(name).enqueue(object : Callback<BerrySumResponse> {
+//            ApiRepository().getSumBerry(name).enqueue(object : Callback<BerrySummaryResponse> {
 //                override fun onResponse(
-//                    call: Call<BerrySumResponse>,
-//                    response: Response<BerrySumResponse>
+//                    call: Call<BerrySummaryResponse>,
+//                    response: Response<BerrySummaryResponse>
 //                ) {
 //                    if (response.isSuccessful){
-//                        berrySumRespon.value = response
+//                        berrySummaryRespon.value = response
 //                        _isLoading.value = false
 //                    }else{
 //                        Log.d(TAG,response.message())
 //                    }
 //                }
 //
-//                override fun onFailure(call: Call<BerrySumResponse>, t: Throwable) {
+//                override fun onFailure(call: Call<BerrySummaryResponse>, t: Throwable) {
 //                    Log.d(TAG,t.message.toString())
 //                    _isLoading.value = false
 //                }

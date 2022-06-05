@@ -2,12 +2,12 @@ package com.example.pokedek.model.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.example.pokedek.model.remote.berryresponse.berrysumresponse.BerrySumResponse
-import com.example.pokedek.model.remote.itemresponse.itemlistresponse.Itemlist
-import com.example.pokedek.model.remote.itemresponse.itemsumreponse.Itemsum
-import com.example.pokedek.model.remote.pokemonreponse.pokemonabilityresponse.Pokeablty
-import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
-import com.example.pokedek.model.remote.pokemonreponse.Pokemoves.Pokemoves
+import com.example.pokedek.model.remote.response.berryresponse.berrysummaryresponse.BerrySummaryResponse
+import com.example.pokedek.model.remote.response.itemresponse.itemlistresponse.Itemlist
+import com.example.pokedek.model.remote.response.itemresponse.itemsummaryresponse.ItemSummaryResponse
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.Pokeablty
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemoves.Pokemoves
 import com.example.pokedek.model.remote.ApiConfig.getApiService
 import retrofit2.Call
 import java.lang.Exception
@@ -39,12 +39,12 @@ class ApiRepository (
     //berry
     fun getListBerry(page : Int, limit : Int) = getApiService().getBerryList(page,limit)
 
-    fun getSumBerry(id : String): Call<BerrySumResponse> = getApiService().getBerrySummary(id)
+    fun getSumBerry(id : String): Call<BerrySummaryResponse> = getApiService().getBerrySummary(id)
 
     //item
     fun getListItem(page: Int, limit: Int): Call<Itemlist> = getApiService().getItemList(page,limit)
 
-    fun getSumItem(id : String): Call<Itemsum> = getApiService().getitemsum(id)
+    fun getSumItem(id : String): Call<ItemSummaryResponse> = getApiService().getitemsum(id)
 
 
     companion object{

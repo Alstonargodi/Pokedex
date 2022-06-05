@@ -1,15 +1,11 @@
 package com.example.pokedek.view.pokemon.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.R
 import com.example.pokedek.databinding.CvPokemonBinding
-import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
-import com.example.pokedek.view.HomeFragmentDirections
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
 import kotlinx.android.synthetic.main.cv_pokemon.view.*
 
 class PokemonRvAdapter(private val dataList : List<Pokesummary>) : RecyclerView.Adapter<PokemonRvAdapter.viewHolder>() {

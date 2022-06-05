@@ -96,7 +96,7 @@ class BerryDetailFragment : Fragment() {
 //        val nama = BerryDetailFragmentArgs.fromBundle(requireArguments()).name
 //        val filter = nama.replace("-berry","").filter { !it.isWhitespace() }
 //        berryViewModel.getSumBerry(filter)
-//        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
+//        berryViewModel.berrySummaryRespon.observe(viewLifecycleOwner) { berrysum ->
 //            try {
 //                if (berrysum.isSuccessful) {
 //                    val size = berrysum.body()?.size.toString()

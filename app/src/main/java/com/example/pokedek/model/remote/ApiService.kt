@@ -1,15 +1,14 @@
 package com.example.pokedek.model.remote
 
-import com.example.pokedek.model.remote.berryresponse.berrylistresponse.BerryListResponse
-import com.example.pokedek.model.remote.berryresponse.berrysumresponse.BerrySumResponse
-import com.example.pokedek.model.remote.itemresponse.itemlistresponse.Itemlist
-import com.example.pokedek.model.remote.itemresponse.itemsumreponse.Itemsum
-import com.example.pokedek.model.remote.pokemonreponse.pokemonabilityresponse.Pokeablty
-import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
-import com.example.pokedek.model.remote.pokemonreponse.Pokemoves.Pokemoves
-import com.example.pokedek.model.remote.pokemonreponse.pokemonlist.Pokemonlist
+import com.example.pokedek.model.remote.response.berryresponse.berrylistresponse.BerryListResponse
+import com.example.pokedek.model.remote.response.berryresponse.berrysummaryresponse.BerrySummaryResponse
+import com.example.pokedek.model.remote.response.itemresponse.itemlistresponse.Itemlist
+import com.example.pokedek.model.remote.response.itemresponse.itemsummaryresponse.ItemSummaryResponse
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.Pokeablty
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemoves.Pokemoves
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlist.Pokemonlist
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -44,7 +43,7 @@ interface ApiService {
 
 
     @GET("berry/{name}/")
-    fun getBerrySummary(@Path("name") name : String): Call<BerrySumResponse>
+    fun getBerrySummary(@Path("name") name : String): Call<BerrySummaryResponse>
 
 
 
@@ -59,7 +58,7 @@ interface ApiService {
     @GET("item/{idi}/")
     fun getitemsum(
         @Path("idi") idi : String
-    ): Call<Itemsum>
+    ): Call<ItemSummaryResponse>
 
 
 }

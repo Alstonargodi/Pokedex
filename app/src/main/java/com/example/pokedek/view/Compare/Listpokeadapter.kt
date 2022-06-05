@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.model.remote.itemresponse.itemsumreponse.Pokemon
+import com.example.pokedek.model.remote.response.itemresponse.itemsummaryresponse.Pokemon
 import com.example.pokedek.R
 
 class Listpokeadapter: RecyclerView.Adapter<Listpokeadapter.viewholder>() {

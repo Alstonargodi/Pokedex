@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.R
-import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
 import kotlinx.android.synthetic.main.cv_pokehom.view.*
 
 class PokeHomeRvAdapter(private val data : List<Pokesummary>): RecyclerView.Adapter<PokeHomeRvAdapter.viewholder>() {
@@ -22,7 +22,6 @@ class PokeHomeRvAdapter(private val data : List<Pokesummary>): RecyclerView.Adap
         holder.itemView.homepoke_name.text = item.name
 
         Glide.with(holder.itemView.context)
-            .asBitmap()
             .load(item.sprites.other.officialArtwork.frontDefault)
             .into(holder.itemView.homepoke_img)
     }

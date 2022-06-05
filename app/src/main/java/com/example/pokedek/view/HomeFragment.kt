@@ -1,6 +1,5 @@
 package com.example.pokedek.view
 
-import android.app.ActivityOptions
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,13 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentHomeBinding
 import com.example.pokedek.model.remote.Fetchstatus
-import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
 import com.example.pokedek.viewmodel.Roomviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.view.pokemon.adapter.PokeHomeRvAdapter

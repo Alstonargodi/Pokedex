@@ -13,9 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
-import com.example.pokedek.model.Room.Entity.Pokemon.PokeParcelSum
 import com.example.pokedek.model.remote.Fetchstatus
-import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
 import com.example.pokedek.view.HomeFragmentDirections
 import com.example.pokedek.view.pokemon.adapter.PokemonRvAdapter
 import com.example.pokedek.viewmodel.Api.PokemonViewModel

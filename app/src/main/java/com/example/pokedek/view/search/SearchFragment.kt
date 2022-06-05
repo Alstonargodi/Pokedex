@@ -141,7 +141,7 @@ class SearchFragment : Fragment() {
 //            try {
 //                if (plistsearch.isSuccessful){
 //
-//                    val data = plistsearch.body()?.results
+//                    val data = plistsearch.body()?.berryListResults
 //                    for (i in data!!.indices){
 //                        val nama = data[i].name + " pokemon"
 //
@@ -163,7 +163,7 @@ class SearchFragment : Fragment() {
     //berry
 //    fun berrysearch(id: String){
 //        berryViewModel.getSumBerry(id)
-//        berryViewModel.berrySumRespon.observe(viewLifecycleOwner, Observer { bsumserach ->
+//        berryViewModel.berrySummaryRespon.observe(viewLifecycleOwner, Observer { bsumserach ->
 //            if (bsumserach.isSuccessful){
 //                Log.d("berry",bsumserach.body()?.name.toString())
 //            }else{
@@ -180,7 +180,7 @@ class SearchFragment : Fragment() {
 //        berryViewModel.berryListRespon.observe(viewLifecycleOwner, Observer { blistsearch ->
 //            try {
 //                if (blistsearch.isSuccessful){
-//                    val data = blistsearch.body()?.results
+//                    val data = blistsearch.body()?.berryListResults
 //                    for (i in data!!.indices){
 //                        val name = data[i].name + "-berry"
 //

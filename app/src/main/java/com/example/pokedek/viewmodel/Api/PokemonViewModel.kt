@@ -1,17 +1,12 @@
 package com.example.pokedek.viewmodel.Api
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.pokedek.model.remote.ApiRepository
-import com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary
-import com.example.pokedek.model.remote.pokemonreponse.Pokemoves.Pokemoves
-import com.example.pokedek.model.remote.pokemonreponse.pokemonabilityresponse.Pokeablty
-import com.example.pokedek.model.remote.pokemonreponse.pokemonlist.Pokemonlist
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.Pokemoves.Pokemoves
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.Pokeablty
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlist.Pokemonlist
 import retrofit2.Response
 
 class PokemonViewModel(private val apiRepository: ApiRepository): ViewModel() {

@@ -63,7 +63,7 @@ class BerryFragment : Fragment() {
 //        berryViewModel.getListBerry(page, limit)
 //        berryViewModel.berryListRespon.observe(viewLifecycleOwner) { responBerry ->
 //            if (responBerry.isSuccessful) {
-//                val berrname = responBerry.body()?.results
+//                val berrname = responBerry.body()?.berryListResults
 //                for (i in berrname!!.indices) {
 //                    val nameberry = berrname[i].name
 //                    getBerrySum(nameberry)
@@ -76,7 +76,7 @@ class BerryFragment : Fragment() {
 //
 //    private fun getBerrySum(id : String){
 //        berryViewModel.getSumBerry(id)
-//        berryViewModel.berrySumRespon.observe(viewLifecycleOwner) { berrysum ->
+//        berryViewModel.berrySummaryRespon.observe(viewLifecycleOwner) { berrysum ->
 //            if (berrysum.isSuccessful) {
 //                val nama = berrysum.body()?.item?.name.toString()
 //                getSummaryItem(nama)

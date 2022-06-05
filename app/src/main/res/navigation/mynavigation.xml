@@ -66,7 +66,7 @@
             app:enterAnim="@anim/slide_leftx" />
         <argument
             android:name="PokemonData"
-            app:argType="com.example.pokedek.model.remote.pokemonreponse.Pokemonsum.Pokesummary" />
+            app:argType="com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary" />
         <action
             android:id="@+id/action_pokemondetailfragment_to_searchfragment"
             app:destination="@id/searchfragment" />

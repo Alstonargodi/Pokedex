@@ -50,7 +50,6 @@ class PokemonDetailFragment : Fragment() {
                 link = sprites.other.officialArtwork.frontDefault
 
                 Glide.with(requireContext())
-                    .asBitmap()
                     .load(sprites.other.officialArtwork.frontDefault)
                     .into(imgdetailPokem)
 
