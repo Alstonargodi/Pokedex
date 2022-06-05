@@ -2,13 +2,12 @@ package com.example.pokedek
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.pokedek.databinding.ActivityMainBinding
-import com.example.pokedek.view.Favorite.Favoritefragment
-import com.example.pokedek.view.HomeFragment
-import com.example.pokedek.view.search.SearchFragment
+import com.example.pokedek.view.fragment.favorite.Favoritefragment
+import com.example.pokedek.view.fragment.home.HomeFragment
+import com.example.pokedek.view.fragment.search.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding

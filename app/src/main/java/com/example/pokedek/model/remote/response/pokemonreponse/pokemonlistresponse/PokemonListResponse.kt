@@ -10,7 +10,7 @@ class Pokemonlist(
     var next: String,
     @SerializedName("previous")
     var previous: Any,
-    @SerializedName("berryListResults")
+    @SerializedName("results")
     var results: List<PokemonListResult>
 )
 

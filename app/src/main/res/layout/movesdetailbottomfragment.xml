@@ -8,7 +8,7 @@
     android:clipToPadding="false"
     android:paddingTop="@dimen/list_item_spacing_half"
     android:paddingBottom="@dimen/list_item_spacing_half"
-    tools:context=".view.pokemon.PokemonMovesFragment"
+    tools:context=".view.fragment.pokemon.PokemonMovesFragment"
      >
 
     <androidx.recyclerview.widget.RecyclerView

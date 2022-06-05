@@ -24,14 +24,16 @@ interface ApiService {
     ): Pokemonlist
 
     @GET("pokemon/{name}/")
-    suspend fun getSummaryPokemon(@Path("name") name : String): PokemonSummaryResponse
-
+    suspend fun getSummaryPokemon(@Path("name") name : String):
+            PokemonSummaryResponse
 
     @GET("ability/{name}/")
-    fun getAbilityPokemon(@Path("name") name : String): Call<PokemonAbilityResponse>
+    fun getAbilityPokemon(@Path("name") name : String):
+            Call<PokemonAbilityResponse>
 
     @GET("move/{name}/")
-    fun getMovesPokemon(@Path("name") name : String): Call<PokemonMovesResponse>
+    fun getMovesPokemon(@Path("name") name : String):
+            Call<PokemonMovesResponse>
 
 
     //Berry
