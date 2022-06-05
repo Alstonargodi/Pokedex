@@ -4,10 +4,10 @@ import com.example.pokedek.model.remote.response.berryresponse.berrylistresponse
 import com.example.pokedek.model.remote.response.berryresponse.berrysummaryresponse.BerrySummaryResponse
 import com.example.pokedek.model.remote.response.itemresponse.itemlistresponse.Itemlist
 import com.example.pokedek.model.remote.response.itemresponse.itemsummaryresponse.ItemSummaryResponse
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.Pokeablty
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemoves.Pokemoves
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlist.Pokemonlist
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.PokemonAbilityResponse
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonmovesresponse.PokemonMovesResponse
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.Pokemonlist
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,14 +24,14 @@ interface ApiService {
     ): Pokemonlist
 
     @GET("pokemon/{name}/")
-    suspend fun getSummaryPokemon(@Path("name") name : String): Pokesummary
+    suspend fun getSummaryPokemon(@Path("name") name : String): PokemonSummaryResponse
 
 
     @GET("ability/{name}/")
-    fun getAbilityPokemon(@Path("name") name : String): Call<Pokeablty>
+    fun getAbilityPokemon(@Path("name") name : String): Call<PokemonAbilityResponse>
 
     @GET("move/{name}/")
-    fun getMovesPokemon(@Path("name") name : String): Call<Pokemoves>
+    fun getMovesPokemon(@Path("name") name : String): Call<PokemonMovesResponse>
 
 
     //Berry

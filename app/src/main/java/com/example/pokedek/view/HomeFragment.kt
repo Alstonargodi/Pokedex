@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.pokedek.databinding.FragmentHomeBinding
 import com.example.pokedek.model.remote.Fetchstatus
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.viewmodel.Roomviewmodel
 import com.example.pokedek.viewmodel.Api.VModelFactory
 import com.example.pokedek.view.pokemon.adapter.PokeHomeRvAdapter
@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
     private var page = 0
     private var isLoading = false
 
-    private var listsum = ArrayList<Pokesummary>()
+    private var listsum = ArrayList<PokemonSummaryResponse>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -82,7 +82,7 @@ class HomeFragment : Fragment() {
     }
 
 
-//    private fun showPokemonList(data : List<Pokesummary>){
+//    private fun showPokemonList(data : List<PokemonSummaryResponse>){
 //        adapter = PokeHomeRvAdapter(data)
 //        val recview = binding.recpokehom
 //        recview.adapter = adapter

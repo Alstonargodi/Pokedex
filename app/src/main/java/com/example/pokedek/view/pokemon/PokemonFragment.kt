@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
 import com.example.pokedek.model.remote.Fetchstatus
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.view.HomeFragmentDirections
 import com.example.pokedek.view.pokemon.adapter.PokemonRvAdapter
 import com.example.pokedek.viewmodel.Api.PokemonViewModel
@@ -30,7 +30,7 @@ class PokemonFragment : Fragment() {
 
     private var isLoading= false
 
-    private var dataList = ArrayList<Pokesummary>()
+    private var dataList = ArrayList<PokemonSummaryResponse>()
 
 
     override fun onCreateView(
@@ -119,7 +119,7 @@ class PokemonFragment : Fragment() {
         }
     }
 
-    private fun showPokemonList(data : List<Pokesummary>){
+    private fun showPokemonList(data : List<PokemonSummaryResponse>){
         val adapter = PokemonRvAdapter(data)
         val recView = binding.recyclerviewpoke
         recView.adapter = adapter
@@ -127,13 +127,13 @@ class PokemonFragment : Fragment() {
         recView.animate().start()
 
         adapter.onClickDetail(object : PokemonRvAdapter.OnItemClickDetail{
-            override fun onItemClickDetail(data: Pokesummary) {
+            override fun onItemClickDetail(data: PokemonSummaryResponse) {
                 goToDetailPokemon(data)
             }
         })
     }
 
-    private fun goToDetailPokemon(data : Pokesummary){
+    private fun goToDetailPokemon(data : PokemonSummaryResponse){
             findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToPokemondetailfragment(data))
     }
 

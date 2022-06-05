@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.databinding.CvPokemonBinding
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import kotlinx.android.synthetic.main.cv_pokemon.view.*
 
-class PokemonRvAdapter(private val dataList : List<Pokesummary>) : RecyclerView.Adapter<PokemonRvAdapter.viewHolder>() {
+class PokemonRvAdapter(private val dataList : List<PokemonSummaryResponse>) : RecyclerView.Adapter<PokemonRvAdapter.viewHolder>() {
     private lateinit var onItemClickDetail : OnItemClickDetail
 
     class viewHolder(var binding : CvPokemonBinding):RecyclerView.ViewHolder(binding.root)
@@ -44,7 +44,7 @@ class PokemonRvAdapter(private val dataList : List<Pokesummary>) : RecyclerView.
 
 
     interface OnItemClickDetail{
-        fun onItemClickDetail(data : Pokesummary)
+        fun onItemClickDetail(data : PokemonSummaryResponse)
     }
 
 

@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.R
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import kotlinx.android.synthetic.main.cv_pokehom.view.*
 
-class PokeHomeRvAdapter(private val data : List<Pokesummary>): RecyclerView.Adapter<PokeHomeRvAdapter.viewholder>() {
+class PokeHomeRvAdapter(private val data : List<PokemonSummaryResponse>): RecyclerView.Adapter<PokeHomeRvAdapter.viewholder>() {
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}
 

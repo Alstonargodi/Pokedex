@@ -5,9 +5,9 @@ import androidx.lifecycle.liveData
 import com.example.pokedek.model.remote.response.berryresponse.berrysummaryresponse.BerrySummaryResponse
 import com.example.pokedek.model.remote.response.itemresponse.itemlistresponse.Itemlist
 import com.example.pokedek.model.remote.response.itemresponse.itemsummaryresponse.ItemSummaryResponse
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.Pokeablty
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemonsum.Pokesummary
-import com.example.pokedek.model.remote.response.pokemonreponse.Pokemoves.Pokemoves
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.PokemonAbilityResponse
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonmovesresponse.PokemonMovesResponse
 import com.example.pokedek.model.remote.ApiConfig.getApiService
 import retrofit2.Call
 import java.lang.Exception
@@ -17,7 +17,7 @@ class ApiRepository (
     ) {
 
     //pokemon
-    suspend fun getListPokemon(page : Int, limit : Int): LiveData<Fetchstatus<Pokesummary>> = liveData {
+    suspend fun getListPokemon(page : Int, limit : Int): LiveData<Fetchstatus<PokemonSummaryResponse>> = liveData {
         emit(Fetchstatus.Loading)
         try {
             apiService.getListPokemon(page,limit).results.forEach {
@@ -30,9 +30,9 @@ class ApiRepository (
     }
 
 
-    fun getAbilityPokemon(id: String): Call<Pokeablty> = getApiService().getAbilityPokemon(id)
+    fun getAbilityPokemon(id: String): Call<PokemonAbilityResponse> = getApiService().getAbilityPokemon(id)
 
-    fun getMovesPokemon(id: String): Call<Pokemoves> = getApiService().getMovesPokemon(id)
+    fun getMovesPokemon(id: String): Call<PokemonMovesResponse> = getApiService().getMovesPokemon(id)
 
 
 
