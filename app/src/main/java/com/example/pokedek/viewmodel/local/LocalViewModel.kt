@@ -4,21 +4,21 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.pokedek.model.local.Entity.Pokemon.PokeSumParcel
-import com.example.pokedek.model.local.Database.Pokedb
-import com.example.pokedek.model.local.Entity.Favorite.Favoritelist
+import com.example.pokedek.model.local.entity.pokemon.PokemonFavorite
+import com.example.pokedek.model.local.databaseconfig.DatabaseConfig
+import com.example.pokedek.model.local.entity.Favorite.Favoritelist
 import com.example.pokedek.model.repository.LocalRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LocalViewModel(application: Application): AndroidViewModel(application) {
     val LocalRepository : LocalRepository
-    val readpokelist : LiveData<List<PokeSumParcel>>
+    val readpokelist : LiveData<List<PokemonFavorite>>
     val readfavlistbynew : LiveData<List<Favoritelist>>
     val readfavlistbyold : LiveData<List<Favoritelist>>
 
     init {
-        val pokedao = Pokedb.setdb(application).Pokedao()
+        val pokedao = DatabaseConfig.setDatabase(application).LocalDao()
         LocalRepository = LocalRepository(pokedao)
         readpokelist = LocalRepository.readpoke
         readfavlistbynew = LocalRepository.readfavbynew

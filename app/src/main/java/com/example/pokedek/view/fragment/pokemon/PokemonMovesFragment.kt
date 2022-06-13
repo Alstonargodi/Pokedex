@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.pokedek.model.local.Entity.Pokemon.PokeMoveParcel
+import com.example.pokedek.model.local.entity.pokemon.PokeMoveParcel
 import com.example.pokedek.view.fragment.pokemon.adapter.Pokemonmovesrvadapter
 import com.example.pokedek.databinding.MovesdetailbottomfragmentBinding
 import com.example.pokedek.viewmodel.remote.PokemonViewModel

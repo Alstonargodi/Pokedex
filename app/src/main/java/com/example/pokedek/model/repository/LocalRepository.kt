@@ -1,17 +1,17 @@
 package com.example.pokedek.model.repository
 
 import androidx.lifecycle.LiveData
-import com.example.pokedek.model.local.dao.Pokedao
-import com.example.pokedek.model.local.Entity.Favorite.Favoritelist
-import com.example.pokedek.model.local.Entity.Pokemon.PokeSumParcel
+import com.example.pokedek.model.local.dao.LocalDao
+import com.example.pokedek.model.local.entity.Favorite.Favoritelist
+import com.example.pokedek.model.local.entity.pokemon.PokemonFavorite
 
 /*
  Repo class
  for insert data with entity to db otherwise read data method
  */
 
-class LocalRepository(val dao : Pokedao) {
-    val readpoke : LiveData<List<PokeSumParcel>> = dao.readpokelist()
+class LocalRepository(val dao : LocalDao) {
+    val readpoke : LiveData<List<PokemonFavorite>> = dao.readpokelist()
     val readfavbynew : LiveData<List<Favoritelist>> = dao.readfavoritlistbynew()
     val readfavbyold : LiveData<List<Favoritelist>> = dao.readfavoritlistbyold()
 
@@ -24,7 +24,7 @@ class LocalRepository(val dao : Pokedao) {
     }
 
 
-    fun insertpoke(pokelist : PokeSumParcel){
+    fun insertpoke(pokelist : PokemonFavorite){
         dao.insertpokelist(pokelist)
     }
 

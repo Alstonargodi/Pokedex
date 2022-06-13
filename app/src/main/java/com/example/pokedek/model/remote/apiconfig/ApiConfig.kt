@@ -1,13 +1,15 @@
-package com.example.pokedek.model.remote
+package com.example.pokedek.model.remote.apiconfig
 
 import com.example.pokedek.BuildConfig
+import com.example.pokedek.model.remote.apiservice.ApiService
+import com.example.pokedek.model.remote.utils.Utils
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    fun getApiService(): ApiService{
+    fun getApiService(): ApiService {
         val loggingInterceptor =
             if (BuildConfig.DEBUG)
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)

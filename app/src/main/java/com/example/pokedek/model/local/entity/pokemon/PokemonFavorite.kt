@@ -1,4 +1,4 @@
-package com.example.pokedek.model.local.Entity.Pokemon
+package com.example.pokedek.model.local.entity.pokemon
 
 import android.os.Parcelable
 import androidx.room.Entity
@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "pokemonlist")
-data class PokeSumParcel(
+@Entity(tableName = "PokemonFavoriteTable")
+data class PokemonFavorite(
     @PrimaryKey(autoGenerate = false)
     val name : String,
     val image : String,

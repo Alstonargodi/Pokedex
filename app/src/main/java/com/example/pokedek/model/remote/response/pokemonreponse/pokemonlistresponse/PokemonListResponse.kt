@@ -3,7 +3,7 @@ package com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresp
 
 import com.google.gson.annotations.SerializedName
 
-class Pokemonlist(
+class PokemonListRespon(
     @SerializedName("count")
     var count: Int,
     @SerializedName("next")
@@ -11,12 +11,12 @@ class Pokemonlist(
     @SerializedName("previous")
     var previous: Any,
     @SerializedName("results")
-    var results: List<PokemonListResult>
+    var results: ArrayList<PokemonListResult>
 )
 
 class PokemonListResult(
     @SerializedName("name")
     var name: String,
     @SerializedName("url")
-    var url: String
+    var url: String,
 )

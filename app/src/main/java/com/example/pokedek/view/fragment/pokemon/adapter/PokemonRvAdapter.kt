@@ -1,50 +1,65 @@
 package com.example.pokedek.view.fragment.pokemon.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.databinding.CvPokemonBinding
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListRespon
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import kotlinx.android.synthetic.main.cv_pokemon.view.*
 
-class PokemonRvAdapter(private val dataList : List<PokemonSummaryResponse>) : RecyclerView.Adapter<PokemonRvAdapter.viewHolder>() {
+class PokemonRvAdapter : PagingDataAdapter<PokemonListResult, PokemonRvAdapter.ViewHolder>(DIFF_CALLBACK) {
+
     private lateinit var onItemClickDetail : OnItemClickDetail
 
-    class viewHolder(var binding : CvPokemonBinding):RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(var binding : CvPokemonBinding):RecyclerView.ViewHolder(binding.root){
+        fun bind(item : PokemonListResult, id : Int){
+            binding.tvpokemonName.text = item.name
+            Log.d("Pokemon Fragment",item.name.toString())
+
+            val imgUrl =
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png"
+            Glide.with(binding.root)
+                .asBitmap()
+                .load(imgUrl)
+                .into(binding.imgpokemonDetail)
+        }
+    }
 
     fun onClickDetail(onClickDetail: OnItemClickDetail){
         this.onItemClickDetail = onClickDetail
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder =
-        viewHolder(CvPokemonBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder(CvPokemonBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
 
-    override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        val item = dataList[position]
-        holder.itemView.tvpokemon_name.text = item.name
-        holder.itemView.tvpokemon_height.text = item.height.toString()
-        holder.itemView.tvpokemon_width.text = item.weight.toString()
-
-        Glide.with(holder.itemView.context)
-            .asBitmap()
-            .load(item.sprites.other.officialArtwork.frontDefault)
-            .into(holder.itemView.imgpokemon_detail)
-
-        holder.itemView.tvpokemon_name.setOnClickListener {
-//            holder.itemView.findNavController().navigate(HomeFragmentDirections.actionFragmenthomeToPokemondetailfragment(item.name))
-
-
-            onItemClickDetail.onItemClickDetail(item)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        if (item != null) {
+            holder.bind(item,position)
         }
-
     }
-
-    override fun getItemCount(): Int = dataList.size
 
 
     interface OnItemClickDetail{
         fun onItemClickDetail(data : PokemonSummaryResponse)
+    }
+
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PokemonListResult>() {
+            override fun areItemsTheSame(oldItem: PokemonListResult, newItem: PokemonListResult): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: PokemonListResult, newItem: PokemonListResult): Boolean {
+                return oldItem.name == newItem.name
+            }
+        }
     }
 
 

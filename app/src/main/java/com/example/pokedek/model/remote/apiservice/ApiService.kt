@@ -1,4 +1,4 @@
-package com.example.pokedek.model.remote
+package com.example.pokedek.model.remote.apiservice
 
 import com.example.pokedek.model.remote.response.berryresponse.berrylistresponse.BerryListResponse
 import com.example.pokedek.model.remote.response.berryresponse.berrysummaryresponse.BerrySummaryResponse
@@ -7,7 +7,8 @@ import com.example.pokedek.model.remote.response.itemresponse.itemsummaryrespons
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.PokemonAbilityResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonmovesresponse.PokemonMovesResponse
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.Pokemonlist
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListRespon
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,7 +22,14 @@ interface ApiService {
     suspend fun getListPokemon(
         @Query("offset") off : Int,
         @Query("limit") limit : Int,
-    ): Pokemonlist
+    ): PokemonListRespon
+
+    @GET("pokemon")
+    suspend fun getPokemonList(
+        @Query("offset") off : Int,
+        @Query("limit") limit : Int,
+    ): PokemonListRespon
+
 
     @GET("pokemon/{name}/")
     suspend fun getSummaryPokemon(@Path("name") name : String):

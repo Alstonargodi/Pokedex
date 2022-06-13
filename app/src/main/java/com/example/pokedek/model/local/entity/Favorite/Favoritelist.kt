@@ -1,4 +1,4 @@
-package com.example.pokedek.model.local.Entity.Favorite
+package com.example.pokedek.model.local.entity.Favorite
 
 import android.os.Parcelable
 import androidx.room.Entity

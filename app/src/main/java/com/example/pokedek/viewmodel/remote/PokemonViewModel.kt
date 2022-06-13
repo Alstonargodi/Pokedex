@@ -1,24 +1,33 @@
 package com.example.pokedek.viewmodel.remote
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.pokedek.model.repository.RemoteRepository
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonmovesresponse.PokemonMovesResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.PokemonAbilityResponse
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.Pokemonlist
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListRespon
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 import retrofit2.Response
 
 class PokemonViewModel(private val remoteRepository: RemoteRepository): ViewModel() {
 
-    val pokemonlist = MutableLiveData<Response<Pokemonlist>>()
+    val pokemonlist = MutableLiveData<Response<PokemonListRespon>>()
     val pokesumrespon = MutableLiveData<Response<PokemonSummaryResponse>>()
     val pokeabtrespon : MutableLiveData<Response<PokemonAbilityResponse>> = MutableLiveData()
     val pokemovesrespon : MutableLiveData<Response<PokemonMovesResponse>> = MutableLiveData()
 
     //pokemon
-    suspend fun getListPokemon(page: Int, limit: Int) =
-        remoteRepository.getListPokemon(page, limit)
+    suspend fun getListPokemon(): LiveData<PagingData<
+            PokemonListResult>> =
+        remoteRepository.getPokemonList().cachedIn(viewModelScope)
+
+    suspend fun getListPokemonTwo(off : Int,limit : Int): LiveData<PokemonListRespon> =
+        remoteRepository.getPokemonListTwo(off, limit)
 
 
 

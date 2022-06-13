@@ -166,17 +166,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Headerlayout" />
 
-            <ProgressBar
-                android:id="@+id/pbar_pokehome"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminateTint="#FA6555"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recpokehom"
-                app:layout_constraintVertical_bias="0.26999998" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

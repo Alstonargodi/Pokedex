@@ -2,12 +2,14 @@
 
 package com.example.pokedek.viewmodel.utils
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedek.model.injection.Injection
 import com.example.pokedek.model.repository.RemoteRepository
 import com.example.pokedek.viewmodel.remote.PokemonViewModel
 
+@Suppress("UNCHECKED_CAST")
 class VModelFactory private constructor(private val repository : RemoteRepository):
     ViewModelProvider.NewInstanceFactory() {
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pokedek.model.local.Entity.Berry.Flavourberrylist
+import com.example.pokedek.model.local.entity.Berry.Flavourberrylist
 import com.example.pokedek.R
 import kotlinx.android.synthetic.main.cv_flavourberry.view.*
 

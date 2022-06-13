@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.model.local.Entity.Item.ItemList
+import com.example.pokedek.model.local.entity.Item.ItemList
 import com.example.pokedek.R
 import kotlinx.android.synthetic.main.cv_item.view.*
 

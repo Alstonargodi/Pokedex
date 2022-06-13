@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
+import androidx.paging.PagingSource
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
-import com.example.pokedek.model.remote.Fetchstatus
+import com.example.pokedek.model.remote.utils.Fetchstatus
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.view.fragment.home.HomeFragmentDirections
 import com.example.pokedek.view.fragment.pokemon.adapter.PokemonRvAdapter
@@ -42,9 +45,7 @@ class PokemonFragment : Fragment() {
         dataList = arrayListOf()
 
 
-        lifecycleScope.launch {
-            getPokemonList()
-        }
+        getPokemonList()
 
         return binding.root
     }
@@ -96,41 +97,27 @@ class PokemonFragment : Fragment() {
         }
     }
 
-    private suspend fun getPokemonList(){
-        isLoading = true
-        binding.progressbarpoke.visibility = View.VISIBLE
+    private fun getPokemonList(){
+        lifecycleScope.launch {
 
-        apiViewModel.getListPokemon(PAGE, LIMIT).observe(viewLifecycleOwner){status->
-            when(status){
-                is Fetchstatus.Loading->{
-                    binding.progressbarpoke.visibility = View.VISIBLE
-                }
-                is Fetchstatus.Sucess->{
-                    binding.progressbarpoke.visibility = View.GONE
-                    dataList.add(status.data)
-                    showPokemonList(dataList.sortedBy { it.name })
-                }
-                is Fetchstatus.Error ->{
-                    setEmptyView()
-                    Log.d("Home Fragment",status.error)
-                }
-                else -> {}
+
+//            apiViewModel.getListPokemonTwo(5,5).observe(viewLifecycleOwner){
+//                Log.d("pokemon list",it.next.toString())
+//            }
+
+            apiViewModel.getListPokemon().observe(viewLifecycleOwner){
+                Log.d("pokemon list",it.toString())
+                val adapter = PokemonRvAdapter()
+                binding.recyclerviewpoke.adapter = adapter
+                binding.recyclerviewpoke.layoutManager = LinearLayoutManager(requireContext())
+                adapter.submitData(lifecycle,it)
             }
         }
+
     }
 
     private fun showPokemonList(data : List<PokemonSummaryResponse>){
-        val adapter = PokemonRvAdapter(data)
-        val recView = binding.recyclerviewpoke
-        recView.adapter = adapter
-        recView.layoutManager= LinearLayoutManager(context)
-        recView.animate().start()
 
-        adapter.onClickDetail(object : PokemonRvAdapter.OnItemClickDetail{
-            override fun onItemClickDetail(data: PokemonSummaryResponse) {
-                goToDetailPokemon(data)
-            }
-        })
     }
 
     private fun goToDetailPokemon(data : PokemonSummaryResponse){
@@ -143,7 +130,7 @@ class PokemonFragment : Fragment() {
             setPadding(LEFT, TOP, RIGHT, BOTTOM)
             setBackgroundResource(R.drawable.emptyview)
         }
-        binding.progressbarpoke.visibility = View.INVISIBLE
+
         Log.d(EXTRA_NAME, "cannot retrive sum data")
     }
 

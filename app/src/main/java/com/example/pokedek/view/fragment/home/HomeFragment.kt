@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.pokedek.databinding.FragmentHomeBinding
-import com.example.pokedek.model.remote.Fetchstatus
+import com.example.pokedek.model.remote.utils.Fetchstatus
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.view.SectionPageAdapter
 import com.example.pokedek.viewmodel.local.LocalViewModel
@@ -53,33 +53,13 @@ class HomeFragment : Fragment() {
             setPagerAdapter(1)
         }
 
-
-//        getDataCount()
         return binding.root
     }
 
 
     private suspend fun getPokemonList(){
         isLoading = true
-        binding.pbarPokehome.visibility = View.VISIBLE
 
-        apiViewModel.getListPokemon(PAGE, LIMIT).observe(viewLifecycleOwner){ status->
-            when(status){
-                is Fetchstatus.Loading->{
-                    binding.pbarPokehome.visibility = View.VISIBLE
-                }
-                is Fetchstatus.Sucess->{
-                    binding.pbarPokehome.visibility = View.GONE
-                    listsum.add(status.data)
-//                    showPokemonList(listsum.distinct())
-                }
-                is Fetchstatus.Error ->{
-//                    setEmptyView()
-                    Log.d("Home Fragment",status.error)
-                }
-                else -> {}
-            }
-        }
     }
 
 

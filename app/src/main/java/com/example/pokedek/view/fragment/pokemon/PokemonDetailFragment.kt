@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.pokedek.R
 import com.example.pokedek.databinding.ActivityMainBinding
 import com.example.pokedek.databinding.FragmentPokemondetailBinding
-import com.example.pokedek.model.local.Entity.Favorite.Favoritelist
+import com.example.pokedek.model.local.entity.Favorite.Favoritelist
 import com.example.pokedek.viewmodel.remote.PokemonViewModel
 import com.example.pokedek.viewmodel.utils.VModelFactory
 import com.example.pokedek.viewmodel.local.LocalViewModel

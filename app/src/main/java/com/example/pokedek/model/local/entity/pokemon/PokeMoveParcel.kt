@@ -1,9 +1,7 @@
-package com.example.pokedek.model.local.Entity.Pokemon
+package com.example.pokedek.model.local.entity.pokemon
 
 data class PokeMoveParcel (
     val effect : String,
     val name : String,
     val shorteffect : String,
 )
-{
-}

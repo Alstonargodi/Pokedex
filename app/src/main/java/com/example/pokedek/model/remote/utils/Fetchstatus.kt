@@ -1,4 +1,4 @@
-package com.example.pokedek.model.remote
+package com.example.pokedek.model.remote.utils
 
 sealed class Fetchstatus <out R> private constructor(){
     data class Sucess<out T>(val data: T): Fetchstatus<T>()
