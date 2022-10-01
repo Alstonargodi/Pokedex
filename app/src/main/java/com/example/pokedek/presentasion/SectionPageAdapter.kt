@@ -1,0 +1,21 @@
+package com.example.pokedek.presentasion
+
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.pokedek.presentasion.fragment.berry.BerryFragment
+import com.example.pokedek.presentasion.fragment.item.ItemFragment
+import com.example.pokedek.presentasion.fragment.pokemon.PokemonFragment
+
+class SectionPageAdapter(activity: FragmentActivity): FragmentStateAdapter(activity) {
+    override fun getItemCount(): Int = 3
+
+    override fun createFragment(position: Int): Fragment {
+       return when(position){
+           0 ->PokemonFragment()
+           1 ->BerryFragment()
+           2 ->ItemFragment()
+           else -> Fragment()
+       }
+    }
+}

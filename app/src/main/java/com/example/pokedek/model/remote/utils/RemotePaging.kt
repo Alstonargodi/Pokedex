@@ -1,17 +1,19 @@
 package com.example.pokedek.model.remote.utils
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokedek.model.remote.apiservice.ApiService
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListRespon
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 
-class RemotePaging(private val apiService: ApiService): PagingSource<Int,
-        PokemonListResult>() {
-    override fun getRefreshKey(state: PagingState<Int,
-            PokemonListResult>): Int? {
+class RemotePaging(private val apiService: ApiService): PagingSource<Int, PokemonListResult>() {
+
+    private lateinit var detailPokemon : DetailPokemon
+
+    fun onDetailPokemon(detail : DetailPokemon){
+       this.detailPokemon = detail
+    }
+
+    override fun getRefreshKey(state: PagingState<Int, PokemonListResult>): Int? {
        return state.anchorPosition?.let { position->
            val anchorPage = state.closestPageToPosition(position)
            anchorPage?.prevKey?.plus(1) ?:
@@ -19,16 +21,19 @@ class RemotePaging(private val apiService: ApiService): PagingSource<Int,
        }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int,
-            PokemonListResult> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonListResult> {
        return try {
-            val position = params.key ?: initial_index
-           val responData = apiService.getListPokemon(position,params.loadSize)
-           Log.d("paging test",responData.results.toString())
+           val position = params.key ?: initial_index
+           val responseData = apiService.getListPokemon(position,params.loadSize)
+
+           responseData.results.forEach {
+               detailPokemon.detailPokemon(it.url)
+           }
+
            LoadResult.Page(
-               data = responData.results,
+               data = responseData.results.distinct(),
                prevKey = if (position == initial_index) null else position - 1,
-               nextKey = if (responData.results.isNullOrEmpty()) null else position + 1
+               nextKey = if (responseData.results.isEmpty()) null else position + 1
            )
        } catch (e : Exception){
            return LoadResult.Error(e)
@@ -36,6 +41,10 @@ class RemotePaging(private val apiService: ApiService): PagingSource<Int,
     }
 
     private companion object{
-        const val initial_index = 1
+        const val initial_index = 0
+    }
+
+    interface DetailPokemon{
+        fun detailPokemon(data : String)
     }
 }

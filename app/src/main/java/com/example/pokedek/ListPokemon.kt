@@ -10,9 +10,8 @@ import com.example.pokedek.databinding.FragmentListPokemonBinding
 
 
 class ListPokemon : Fragment() {
-    lateinit var bind : FragmentListPokemonBinding
+    private lateinit var bind : FragmentListPokemonBinding
     lateinit var itemViewModel : ItemViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,16 +19,12 @@ class ListPokemon : Fragment() {
     ): View? {
         bind = FragmentListPokemonBinding.inflate(layoutInflater)
 
-
-
         return bind.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
     }
 }

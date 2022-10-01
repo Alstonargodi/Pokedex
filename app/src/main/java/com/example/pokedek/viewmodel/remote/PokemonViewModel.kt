@@ -1,9 +1,7 @@
 package com.example.pokedek.viewmodel.remote
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.pokedek.model.repository.RemoteRepository
@@ -22,15 +20,23 @@ class PokemonViewModel(private val remoteRepository: RemoteRepository): ViewMode
     val pokemovesrespon : MutableLiveData<Response<PokemonMovesResponse>> = MutableLiveData()
 
     //pokemon
-    suspend fun getListPokemon(): LiveData<PagingData<
-            PokemonListResult>> =
+    fun getListPokemon(): LiveData<PagingData<PokemonListResult>> =
         remoteRepository.getPokemonList().cachedIn(viewModelScope)
 
-    suspend fun getListPokemonTwo(off : Int,limit : Int): LiveData<PokemonListRespon> =
-        remoteRepository.getPokemonListTwo(off, limit)
+    fun getPokemonSummary(detailUrl : String): LiveData<PokemonSummaryResponse>{
+        return liveData { remoteRepository.getSummaryPokemon(detailUrl) }
+    }
 
+    suspend fun getAll(page: Int,limit: Int): LiveData<PokemonListRespon>{
+        return liveData { remoteRepository.getPokemonListAll(page, limit) }
+    }
 
-
+    suspend fun getAllPokemon(page : Int, limit : Int): LiveData<PokemonListRespon>{
+        return liveData {
+            Log.d("pokemon",remoteRepository.getListPokemon(page, limit).value.toString())
+            remoteRepository.getListPokemon(page, limit)
+        }
+    }
 //    fun getPokemonSummary(name : String){
 //        viewModelScope.launch{
 //            RemoteRepository().getSumPokemon(name).enqueue(object : Callback<PokemonSummaryResponse> {

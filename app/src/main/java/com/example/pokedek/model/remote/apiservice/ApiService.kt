@@ -8,13 +8,11 @@ import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityre
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonmovesresponse.PokemonMovesResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListRespon
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-//"https://pokeapi.co/api/v2"
 interface ApiService {
 
     //Pokemon
@@ -30,10 +28,10 @@ interface ApiService {
         @Query("limit") limit : Int,
     ): PokemonListRespon
 
-
-    @GET("pokemon/{name}/")
-    suspend fun getSummaryPokemon(@Path("name") name : String):
-            PokemonSummaryResponse
+    @GET("{detailUrl}")
+    suspend fun getSummaryPokemon(
+        @Path("detailUrl") detailUrl : String
+    ):PokemonSummaryResponse
 
     @GET("ability/{name}/")
     fun getAbilityPokemon(@Path("name") name : String):
@@ -43,7 +41,6 @@ interface ApiService {
     fun getMovesPokemon(@Path("name") name : String):
             Call<PokemonMovesResponse>
 
-
     //Berry
     @GET("berry")
     fun getBerryList(
@@ -51,11 +48,8 @@ interface ApiService {
         @Query("limit") limit : Int,
     ):Call<BerryListResponse>
 
-
     @GET("berry/{name}/")
     fun getBerrySummary(@Path("name") name : String): Call<BerrySummaryResponse>
-
-
 
     //ItemFragment
     @GET("item")
