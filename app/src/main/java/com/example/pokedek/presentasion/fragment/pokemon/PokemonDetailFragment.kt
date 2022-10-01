@@ -19,9 +19,9 @@ import com.example.pokedek.R
 import com.example.pokedek.databinding.ActivityMainBinding
 import com.example.pokedek.databinding.FragmentPokemondetailBinding
 import com.example.pokedek.model.local.entity.Favorite.Favoritelist
-import com.example.pokedek.viewmodel.remote.PokemonViewModel
-import com.example.pokedek.viewmodel.utils.ViewModelFactory
-import com.example.pokedek.viewmodel.local.LocalViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
+import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
+import com.example.pokedek.presentasion.viewmodel.local.LocalViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -141,7 +141,6 @@ class PokemonDetailFragment : Fragment() {
 //            binding.btnFav.setBackgroundResource(R.drawable.bk_full)
 //            setFavorite()
 //        }
-
     }
 
 

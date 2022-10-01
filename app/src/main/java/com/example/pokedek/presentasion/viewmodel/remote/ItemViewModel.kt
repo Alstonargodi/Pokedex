@@ -1,4 +1,4 @@
-package com.example.pokedek.viewmodel.remote
+package com.example.pokedek.presentasion.viewmodel.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

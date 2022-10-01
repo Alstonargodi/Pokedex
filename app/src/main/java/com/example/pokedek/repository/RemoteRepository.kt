@@ -1,4 +1,4 @@
-package com.example.pokedek.model.repository
+package com.example.pokedek.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -27,7 +27,7 @@ class RemoteRepository (private val apiService: ApiService) {
     //pokemon
     fun getPokemonList(): LiveData<PagingData<PokemonListResult>> {
         return Pager(
-            config = PagingConfig(pageSize = 2),
+            config = PagingConfig(pageSize = 5),
             pagingSourceFactory = { RemotePaging(apiService) }
         ).liveData
     }
@@ -36,14 +36,14 @@ class RemoteRepository (private val apiService: ApiService) {
        return apiService.getSummaryPokemon(detailUrl)
     }
 
-    suspend fun getPokemonListAll(page: Int,limit: Int): LiveData<PokemonListRespon>{
-        return liveData { apiService.getPokemonList(page,limit) }
+    fun callPokemonListAll(page: Int,limit: Int): Call<PokemonListRespon>{
+        return apiService.callPokemonList(page,limit)
     }
     suspend fun getListPokemon(page : Int, limit : Int): LiveData<Fetchstatus<PokemonSummaryResponse>> =
     liveData {
         emit(Fetchstatus.Loading)
         try {
-            apiService.getListPokemon(page,limit).result.forEach {
+            apiService.getListPokemon(page,limit).results.forEach {
                 if(it == null){
                     Log.d("pokemon","empty")
                 }else{
@@ -80,7 +80,7 @@ class RemoteRepository (private val apiService: ApiService) {
         getApiService().getItemList(page,limit)
 
     fun getSumItem(id : String): Call<ItemSummaryResponse> =
-        getApiService().getitemsum(id)
+        getApiService().getItemSummary(id)
 
 
     companion object{

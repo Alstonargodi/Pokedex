@@ -1,24 +1,22 @@
-package com.example.pokedek.viewmodel.remote
+package com.example.pokedek.presentasion.viewmodel.remote
 
 import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.pokedek.model.repository.RemoteRepository
+import com.example.pokedek.repository.RemoteRepository
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonmovesresponse.PokemonMovesResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonabilityresponse.PokemonAbilityResponse
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListRespon
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class PokemonViewModel(private val remoteRepository: RemoteRepository): ViewModel() {
 
-    val pokemonlist = MutableLiveData<Response<PokemonListRespon>>()
-    val pokesumrespon = MutableLiveData<Response<PokemonSummaryResponse>>()
-    val pokeabtrespon : MutableLiveData<Response<PokemonAbilityResponse>> = MutableLiveData()
-    val pokemovesrespon : MutableLiveData<Response<PokemonMovesResponse>> = MutableLiveData()
-
+    val pokemonList : MutableLiveData<PokemonListRespon> = MutableLiveData()
     //pokemon
     fun getListPokemon(): LiveData<PagingData<PokemonListResult>> =
         remoteRepository.getPokemonList().cachedIn(viewModelScope)
@@ -27,8 +25,24 @@ class PokemonViewModel(private val remoteRepository: RemoteRepository): ViewMode
         return liveData { remoteRepository.getSummaryPokemon(detailUrl) }
     }
 
-    suspend fun getAll(page: Int,limit: Int): LiveData<PokemonListRespon>{
-        return liveData { remoteRepository.getPokemonListAll(page, limit) }
+    fun getAll(page: Int,limit: Int){
+        remoteRepository.callPokemonListAll(page, limit).enqueue(object : Callback<PokemonListRespon>{
+            override fun onResponse(
+                call: Call<PokemonListRespon>,
+                response: Response<PokemonListRespon>
+            ) {
+               if (response.isSuccessful){
+                   Log.d("pokemon","success get data")
+                   pokemonList.value = response.body()
+               }else{
+                   Log.d("pokemon","fail get data")
+               }
+            }
+
+            override fun onFailure(call: Call<PokemonListRespon>, t: Throwable) {
+                Log.d("pokemon",t.toString())
+            }
+        })
     }
 
     suspend fun getAllPokemon(page : Int, limit : Int): LiveData<PokemonListRespon>{

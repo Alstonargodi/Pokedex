@@ -11,10 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.pokedek.databinding.FragmentHomeBinding
 import com.example.pokedek.presentasion.SectionPageAdapter
-import com.example.pokedek.viewmodel.local.LocalViewModel
-import com.example.pokedek.viewmodel.utils.ViewModelFactory
+import com.example.pokedek.presentasion.viewmodel.local.LocalViewModel
+import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
 import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokeHomeRvAdapter
-import com.example.pokedek.viewmodel.remote.PokemonViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import kotlinx.coroutines.launch
 
 
@@ -51,21 +51,18 @@ class HomeFragment : Fragment() {
     }
 
 
-    private suspend fun getPokemonList(){
+    private fun getPokemonList(){
         isLoading = true
-        apiViewModel.getAll(0,5).observe(viewLifecycleOwner){
+        Log.d("pokemon","get pokemon")
+        apiViewModel.getAll(0,5)
+
+        apiViewModel.pokemonList.observe(viewLifecycleOwner){
+            Log.d("pokemon","start fetching")
             Log.d("pokemon",it.count.toString())
         }
 
     }
 
-//    private fun showPokemonList(data : List<PokemonSummaryResponse>){
-//        adapter = PokeHomeRvAdapter(data)
-//        val recview = binding.recpokehom
-//        recview.adapter = adapter
-//        recview.layoutManager = LinearLayoutManager(context)
-//
-//    }
 //
 
 //

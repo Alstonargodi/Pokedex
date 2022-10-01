@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.pokedek.databinding.AbilitydetailbottomfragmentBinding
 import com.example.pokedek.presentasion.fragment.pokemon.PokemonDetailFragment.Companion.EXTRA_ABTONE
 import com.example.pokedek.presentasion.fragment.pokemon.PokemonDetailFragment.Companion.EXTRA_ABTWO
-import com.example.pokedek.viewmodel.remote.PokemonViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 

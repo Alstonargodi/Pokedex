@@ -1,4 +1,4 @@
-package com.example.pokedek.model.repository
+package com.example.pokedek.repository
 
 import androidx.lifecycle.LiveData
 import com.example.pokedek.model.local.dao.LocalDao

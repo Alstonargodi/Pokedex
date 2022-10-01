@@ -1,4 +1,4 @@
-package com.example.pokedek.viewmodel.local
+package com.example.pokedek.presentasion.viewmodel.local
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pokedek.model.local.entity.pokemon.PokemonFavorite
 import com.example.pokedek.model.local.databaseconfig.DatabaseConfig
 import com.example.pokedek.model.local.entity.Favorite.Favoritelist
-import com.example.pokedek.model.repository.LocalRepository
+import com.example.pokedek.repository.LocalRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

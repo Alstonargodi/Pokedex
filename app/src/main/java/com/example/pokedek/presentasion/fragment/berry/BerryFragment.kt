@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.model.local.entity.Berry.Berrylist
 import com.example.pokedek.databinding.FragmentBerryBinding
 import com.example.pokedek.presentasion.fragment.berry.adapter.BerryRecviewAdapter
-import com.example.pokedek.viewmodel.remote.BerryViewModel
-import com.example.pokedek.viewmodel.remote.ItemViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.BerryViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.ItemViewModel
 
 class BerryFragment : Fragment() {
 

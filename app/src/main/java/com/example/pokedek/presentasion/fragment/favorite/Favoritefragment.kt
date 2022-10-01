@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.presentasion.fragment.favorite.Adapter.Favoritervadapter
-import com.example.pokedek.viewmodel.local.LocalViewModel
+import com.example.pokedek.presentasion.viewmodel.local.LocalViewModel
 import com.example.pokedek.databinding.FragmentFavoritefragmentBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener

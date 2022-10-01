@@ -15,8 +15,8 @@ import com.example.pokedek.model.local.entity.Berry.Flavourberrylist
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentBerrydetailBinding
 import com.example.pokedek.presentasion.fragment.berry.adapter.BerryFlavourRecviewAdapter
-import com.example.pokedek.viewmodel.remote.BerryViewModel
-import com.example.pokedek.viewmodel.remote.ItemViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.BerryViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.ItemViewModel
 import java.lang.Exception
 
 

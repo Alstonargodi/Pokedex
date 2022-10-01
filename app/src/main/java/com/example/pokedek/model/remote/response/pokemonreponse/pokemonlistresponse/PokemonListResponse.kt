@@ -11,8 +11,6 @@ class PokemonListRespon(
     var previous: Any,
     @SerializedName("results")
     var results: List<PokemonListResult>,
-    @SerializedName("results")
-    var result: List<Result>,
 )
 
 class PokemonListResult(

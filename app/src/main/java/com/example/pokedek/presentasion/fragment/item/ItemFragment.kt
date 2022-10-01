@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.model.local.entity.Item.ItemList
 import com.example.pokedek.presentasion.fragment.item.adapter.Itemrvadapter
-import com.example.pokedek.viewmodel.remote.ItemViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.ItemViewModel
 import com.example.pokedek.databinding.FragmentItemBinding
 
 

@@ -1,5 +1,6 @@
 package com.example.pokedek.model.remote.utils
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokedek.model.remote.apiservice.ApiService
@@ -25,7 +26,7 @@ class RemotePaging(private val apiService: ApiService): PagingSource<Int, Pokemo
        return try {
            val position = params.key ?: initial_index
            val responseData = apiService.getListPokemon(position,params.loadSize)
-
+           Log.d("pokemon paging test",responseData.results.toString())
            responseData.results.forEach {
                detailPokemon.detailPokemon(it.url)
            }

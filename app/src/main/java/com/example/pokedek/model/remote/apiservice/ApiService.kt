@@ -23,10 +23,10 @@ interface ApiService {
     ): PokemonListRespon
 
     @GET("pokemon")
-    suspend fun getPokemonList(
+    fun callPokemonList(
         @Query("offset") off : Int,
         @Query("limit") limit : Int,
-    ): PokemonListRespon
+    ): Call<PokemonListRespon>
 
     @GET("{detailUrl}")
     suspend fun getSummaryPokemon(
@@ -60,7 +60,7 @@ interface ApiService {
 
 
     @GET("item/{idi}/")
-    fun getitemsum(
+    fun getItemSummary(
         @Path("idi") idi : String
     ): Call<ItemSummaryResponse>
 

@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.presentasion.fragment.search.Adapter.Searchrvadapter
 import com.example.pokedek.databinding.FragmentSearchfragmentBinding
-import com.example.pokedek.viewmodel.remote.BerryViewModel
-import com.example.pokedek.viewmodel.remote.ItemViewModel
-import com.example.pokedek.viewmodel.remote.PokemonViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.BerryViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.ItemViewModel
+import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import kotlinx.android.synthetic.main.fragment_searchfragment.view.*
 import kotlin.collections.ArrayList
 

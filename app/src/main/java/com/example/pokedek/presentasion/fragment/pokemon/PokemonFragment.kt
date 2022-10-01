@@ -14,8 +14,8 @@ import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokemonRvAdapter
-import com.example.pokedek.viewmodel.remote.PokemonViewModel
-import com.example.pokedek.viewmodel.utils.ViewModelFactory
+import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
+import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -39,7 +39,9 @@ class PokemonFragment : Fragment() {
         getPokemonList()
 
         lifecycleScope.launch {
-            apiViewModel.getAll(0,5).observe(viewLifecycleOwner){
+            apiViewModel.getAll(0,5)
+            apiViewModel.pokemonList.observe(viewLifecycleOwner){
+                Log.d("pokemon","start fetching")
                 Log.d("pokemon",it.count.toString())
             }
         }
@@ -96,18 +98,11 @@ class PokemonFragment : Fragment() {
     private fun getPokemonList(){
         lifecycleScope.launch {
             apiViewModel.getListPokemon().observe(viewLifecycleOwner){
+                Log.d("pokemon list",it.toString())
                 val adapter = PokemonRvAdapter()
                 binding.recyclerviewpoke.adapter = adapter
                 binding.recyclerviewpoke.layoutManager = LinearLayoutManager(requireContext())
                 adapter.submitData(lifecycle,it)
-
-                lifecycleScope.launch {
-                    delay(2000)
-                    adapter.snapshot().items.forEach {
-                        Log.d("detail",it.url)
-                    }
-                }
-
             }
         }
 
