@@ -11,7 +11,7 @@ import com.example.pokedek.databinding.CvPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 
-class PokemonRvAdapter() : PagingDataAdapter<PokemonListResult, PokemonRvAdapter.ViewHolder>(DIFF_CALLBACK) {
+class PokemonHomeAdapter() : PagingDataAdapter<PokemonListResult, PokemonHomeAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickDetail : OnItemClickDetail
 

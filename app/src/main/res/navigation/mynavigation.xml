@@ -113,12 +113,12 @@
         tools:layout="@layout/fragment_favoritefragment" />
     <fragment
         android:id="@+id/abilitydetail_bottomfragment"
-        android:name="com.example.pokedek.presentasion.fragment.pokemon.PokemonAbilityFragment"
+        android:name="com.example.pokedek.presentasion.fragment.pokemon.PokemonAbilityDialogFragment"
         android:label="abilitydetailbottomfragment"
         tools:layout="@layout/abilitydetailbottomfragment" />
     <fragment
         android:id="@+id/movesdetail_bottomfragment"
-        android:name="com.example.pokedek.presentasion.fragment.pokemon.PokemonMovesFragment"
+        android:name="com.example.pokedek.presentasion.fragment.pokemon.PokemonMovesDialogFragment"
         android:label="movesdetailbottomfragment"
         tools:layout="@layout/movesdetailbottomfragment" />
     <activity

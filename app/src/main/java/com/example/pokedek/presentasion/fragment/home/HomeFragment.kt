@@ -13,7 +13,6 @@ import com.example.pokedek.databinding.FragmentHomeBinding
 import com.example.pokedek.presentasion.SectionPageAdapter
 import com.example.pokedek.presentasion.viewmodel.local.LocalViewModel
 import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
-import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokeHomeRvAdapter
 import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import kotlinx.coroutines.launch
 
@@ -25,7 +24,6 @@ class HomeFragment : Fragment() {
     private val apiViewModel : PokemonViewModel by viewModels{ ViewModelFactory.getInstance() }
     private lateinit var pagerAdapter : SectionPageAdapter
     private lateinit var roomViewModel: LocalViewModel
-    private lateinit var adapter : PokeHomeRvAdapter
 
     private var isLoading = false
 
@@ -62,18 +60,6 @@ class HomeFragment : Fragment() {
         }
 
     }
-
-//
-
-//
-//    private fun setEmptyView(){
-//        binding.recpokehom.apply {
-//            setPadding(10, 20, 10, 20)
-//            setBackgroundResource(R.drawable.emptyview)
-//        }
-//        binding.pbarPokehome.visibility = View.INVISIBLE
-//        Log.d(EXTRA_NAME, "cannot retrive sum data")
-//    }
 
     private fun setPagerAdapter(number : Int){
         pagerAdapter = SectionPageAdapter(requireActivity())

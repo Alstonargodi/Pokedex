@@ -9,20 +9,19 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
-import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokemonRvAdapter
+import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokemonHomeAdapter
 import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class PokemonFragment : Fragment() {
     private lateinit var binding: FragmentPokemonBinding
 
-    private val apiViewModel : PokemonViewModel by viewModels{
+    private val apiViewModel : PokemonHomeViewModel by viewModels{
         ViewModelFactory.getInstance()
     }
 
@@ -38,13 +37,6 @@ class PokemonFragment : Fragment() {
 
         getPokemonList()
 
-        lifecycleScope.launch {
-            apiViewModel.getAll(0,5)
-            apiViewModel.pokemonList.observe(viewLifecycleOwner){
-                Log.d("pokemon","start fetching")
-                Log.d("pokemon",it.count.toString())
-            }
-        }
         return binding.root
     }
 
@@ -97,11 +89,10 @@ class PokemonFragment : Fragment() {
 
     private fun getPokemonList(){
         lifecycleScope.launch {
-            apiViewModel.getListPokemon().observe(viewLifecycleOwner){
-                Log.d("pokemon list",it.toString())
-                val adapter = PokemonRvAdapter()
+            apiViewModel.getPagedListPokemon().observe(viewLifecycleOwner){
+                val adapter = PokemonHomeAdapter()
                 binding.recyclerviewpoke.adapter = adapter
-                binding.recyclerviewpoke.layoutManager = LinearLayoutManager(requireContext())
+                binding.recyclerviewpoke.layoutManager = GridLayoutManager(requireContext(),2)
                 adapter.submitData(lifecycle,it)
             }
         }

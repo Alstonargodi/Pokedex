@@ -8,14 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.pokedek.model.local.entity.pokemon.PokeMoveParcel
-import com.example.pokedek.presentasion.fragment.pokemon.adapter.Pokemonmovesrvadapter
+import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokemonMovesAdapter
 import com.example.pokedek.databinding.MovesdetailbottomfragmentBinding
 import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 
-class PokemonMovesFragment : BottomSheetDialogFragment() {
-
+class PokemonMovesDialogFragment : BottomSheetDialogFragment() {
     private val pokeViewModel by viewModels<PokemonViewModel>()
-
 
     private lateinit var binding : MovesdetailbottomfragmentBinding
 
@@ -24,7 +22,7 @@ class PokemonMovesFragment : BottomSheetDialogFragment() {
         binding = MovesdetailbottomfragmentBinding.inflate(inflater, container, false)
 
 
-        val adapter = Pokemonmovesrvadapter()
+        val adapter = PokemonMovesAdapter()
         val recView = binding.recviewMovesdetail
         recView.adapter = adapter
         recView.layoutManager = LinearLayoutManager(requireContext())

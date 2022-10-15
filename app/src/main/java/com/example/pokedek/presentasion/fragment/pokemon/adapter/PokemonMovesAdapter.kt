@@ -8,7 +8,7 @@ import com.example.pokedek.model.local.entity.pokemon.PokeMoveParcel
 import com.example.pokedek.R
 import kotlinx.android.synthetic.main.cv_pokemoves.view.*
 
-class Pokemonmovesrvadapter: RecyclerView.Adapter<Pokemonmovesrvadapter.viewholder>() {
+class PokemonMovesAdapter: RecyclerView.Adapter<PokemonMovesAdapter.viewholder>() {
     var moveslist = emptyList<PokeMoveParcel>()
 
     class viewholder(view : View): RecyclerView.ViewHolder(view) {}

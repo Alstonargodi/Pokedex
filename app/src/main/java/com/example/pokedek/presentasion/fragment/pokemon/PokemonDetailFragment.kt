@@ -67,7 +67,7 @@ class PokemonDetailFragment : Fragment() {
                     tvdetailPokemAbdua.text = get(1).ability.name
 
                     tvdetailPokemAbsatu.setOnClickListener {
-                        val abilityDialog = PokemonAbilityFragment()
+                        val abilityDialog = PokemonAbilityDialogFragment()
                         val supportManager = (activity as AppCompatActivity).supportFragmentManager
 
                         val args = Bundle()
@@ -115,7 +115,7 @@ class PokemonDetailFragment : Fragment() {
 
         //moves pokemon dialog
         binding.tvdetailPokemMoves.setOnClickListener {
-            val dialog = PokemonMovesFragment()
+            val dialog = PokemonMovesDialogFragment()
             val supportFragmentManager = (activity as AppCompatActivity).supportFragmentManager
 
             val args = Bundle()

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.viewModels
+import com.example.pokedek.R
 import com.example.pokedek.databinding.AbilitydetailbottomfragmentBinding
 import com.example.pokedek.presentasion.fragment.pokemon.PokemonDetailFragment.Companion.EXTRA_ABTONE
 import com.example.pokedek.presentasion.fragment.pokemon.PokemonDetailFragment.Companion.EXTRA_ABTWO
@@ -15,7 +16,7 @@ import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class PokemonAbilityFragment : BottomSheetDialogFragment() {
+class PokemonAbilityDialogFragment : BottomSheetDialogFragment() {
     private val apiviewmodel by viewModels<PokemonViewModel>()
 
     private var _binding: AbilitydetailbottomfragmentBinding? = null
@@ -29,8 +30,6 @@ class PokemonAbilityFragment : BottomSheetDialogFragment() {
 
         val nama = arguments?.getString(EXTRA_ABTONE)
         val namadua = arguments?.getString(EXTRA_ABTWO)
-
-
 
         binding.AbdetailName.text = nama
         binding.AbdetailEffectDUA.text = namadua
@@ -64,7 +63,7 @@ class PokemonAbilityFragment : BottomSheetDialogFragment() {
 
             val bottomSheetDialog = it as BottomSheetDialog
             val parentLayout =
-                bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                bottomSheetDialog.findViewById<View>(R.id.design_bottom_sheet)
             parentLayout?.let { full ->
                 val behaviour = BottomSheetBehavior.from(full)
                 setupFullHeight(full)
@@ -79,9 +78,5 @@ class PokemonAbilityFragment : BottomSheetDialogFragment() {
         layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
         bottomSheet.layoutParams = layoutParams
     }
-
-
-
-
 
 }
