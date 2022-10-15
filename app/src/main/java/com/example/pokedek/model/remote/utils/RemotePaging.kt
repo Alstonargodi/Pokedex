@@ -8,12 +8,6 @@ import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistrespo
 
 class RemotePaging(private val apiService: ApiService): PagingSource<Int, PokemonListResult>() {
 
-    private lateinit var detailPokemon : DetailPokemon
-
-    fun onDetailPokemon(detail : DetailPokemon){
-       this.detailPokemon = detail
-    }
-
     override fun getRefreshKey(state: PagingState<Int, PokemonListResult>): Int? {
        return state.anchorPosition?.let { position->
            val anchorPage = state.closestPageToPosition(position)
@@ -26,13 +20,10 @@ class RemotePaging(private val apiService: ApiService): PagingSource<Int, Pokemo
        return try {
            val position = params.key ?: initial_index
            val responseData = apiService.getListPokemon(position,params.loadSize)
-           Log.d("pokemon paging test",responseData.results.toString())
-           responseData.results.forEach {
-               detailPokemon.detailPokemon(it.url)
-           }
+           Log.d("pokemonpagingtest",responseData.results.toString())
 
            LoadResult.Page(
-               data = responseData.results.distinct(),
+               data = responseData.results,
                prevKey = if (position == initial_index) null else position - 1,
                nextKey = if (responseData.results.isEmpty()) null else position + 1
            )
@@ -45,7 +36,4 @@ class RemotePaging(private val apiService: ApiService): PagingSource<Int, Pokemo
         const val initial_index = 0
     }
 
-    interface DetailPokemon{
-        fun detailPokemon(data : String)
-    }
 }
