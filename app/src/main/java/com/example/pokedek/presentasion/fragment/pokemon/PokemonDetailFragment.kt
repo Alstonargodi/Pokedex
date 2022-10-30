@@ -40,88 +40,88 @@ class PokemonDetailFragment : Fragment() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         mainBinding.root
 
-        val data = PokemonDetailFragmentArgs.fromBundle(requireArguments()).pokemonData
-        binding.textView.text = data.name
-        name = data.name
+        val data = PokemonDetailFragmentArgs.fromBundle(requireArguments()).characterName
+        binding.textView.text = data
+
 
         data.apply {
             binding.apply {
-                link = sprites.other.officialArtwork.frontDefault
+//                link = sprites.other.officialArtwork.frontDefault
+//
+//                Glide.with(requireContext())
+//                    .load(sprites.other.officialArtwork.frontDefault)
+//                    .into(imgdetailPokem)
+//
+             //First Card
+//                tvdetailPokemTypes.text = types[0].type.name
+//                val tvWeight = ValueAnimator.ofInt(0, weight).setDuration(500)
+//                tvWeight.addUpdateListener { tvdetailPokemWeight.text = it.animatedValue.toString() }
+//                tvWeight.start()
+//
+//                val tvHeight = ValueAnimator.ofInt(0, height).setDuration(500)
+//                tvHeight.addUpdateListener { tvdetailPokemHeight.text = it.animatedValue.toString() }
+//                tvHeight.start()
 
-                Glide.with(requireContext())
-                    .load(sprites.other.officialArtwork.frontDefault)
-                    .into(imgdetailPokem)
-
-                //First Card
-                tvdetailPokemTypes.text = types[0].type.name
-                val tvWeight = ValueAnimator.ofInt(0, weight).setDuration(500)
-                tvWeight.addUpdateListener { tvdetailPokemWeight.text = it.animatedValue.toString() }
-                tvWeight.start()
-
-                val tvHeight = ValueAnimator.ofInt(0, height).setDuration(500)
-                tvHeight.addUpdateListener { tvdetailPokemHeight.text = it.animatedValue.toString() }
-                tvHeight.start()
-
-                abilities.apply {
-                    tvdetailPokemAbsatu.text = get(0).ability.name
-                    tvdetailPokemAbdua.text = get(1).ability.name
-
-                    tvdetailPokemAbsatu.setOnClickListener {
-                        val abilityDialog = PokemonAbilityDialogFragment()
-                        val supportManager = (activity as AppCompatActivity).supportFragmentManager
-
-                        val args = Bundle()
-                        args.putString(EXTRA_ABTONE,get(0).ability.name)
-                        args.putString(EXTRA_ABTWO,get(1).ability.name)
-                        abilityDialog.arguments = args
-                        abilityDialog.show(supportManager, EXTRA_ABTDETAIL)
-                    }
-                }
+//                abilities.apply {
+//                    tvdetailPokemAbsatu.text = get(0).ability.name
+//                    tvdetailPokemAbdua.text = get(1).ability.name
+//
+//                    tvdetailPokemAbsatu.setOnClickListener {
+//                        val abilityDialog = PokemonAbilityDialogFragment()
+//                        val supportManager = (activity as AppCompatActivity).supportFragmentManager
+//
+//                        val args = Bundle()
+//                        args.putString(EXTRA_ABTONE,get(0).ability.name)
+//                        args.putString(EXTRA_ABTWO,get(1).ability.name)
+//                        abilityDialog.arguments = args
+//                        abilityDialog.show(supportManager, EXTRA_ABTDETAIL)
+//                    }
+//                }
 
                 //Second Card
-                stats.apply {
-                    val tvHealth = ValueAnimator.ofInt(0,get(0).baseStat).setDuration(500)
-                    ObjectAnimator.ofInt(statsbarHP,EXTRA_NAME,get(0).baseStat).setDuration(500).start()
-                    tvHealth.addUpdateListener { tvdetailPokemHp.text = it.animatedValue.toString() }
-                    tvHealth.start()
-
-                    val tvAttack = ValueAnimator.ofInt(0,get(1).baseStat).setDuration(500)
-                    ObjectAnimator.ofInt(statsbarATK,EXTRA_NAME,get(1).baseStat).setDuration(500).start()
-                    tvAttack.addUpdateListener { tvdetailPokemAtk.text = it.animatedValue.toString() }
-                    tvAttack.start()
-
-                    val tvDefence = ValueAnimator.ofInt(0,get(2).baseStat).setDuration(500)
-                    ObjectAnimator.ofInt(statsbarDef,EXTRA_NAME,get(2).baseStat).setDuration(500).start()
-                    tvDefence.addUpdateListener { tvdetailPokemDef.text = it.animatedValue.toString() }
-                    tvDefence.start()
-
-                    val tvsAttack = ValueAnimator.ofInt(0,get(3).baseStat).setDuration(500)
-                    ObjectAnimator.ofInt(statsbarSatk,EXTRA_NAME,get(3).baseStat).setDuration(500).start()
-                    tvsAttack.addUpdateListener { tvdetailPokemSatk.text = it.animatedValue.toString() }
-                    tvsAttack.start()
-
-                    val tvsDefence = ValueAnimator.ofInt(0,get(4).baseStat).setDuration(500)
-                    ObjectAnimator.ofInt(statsbarSdef,EXTRA_NAME,get(4).baseStat).setDuration(500).start()
-                    tvsDefence.addUpdateListener { tvdetailPokemSdef.text = it.animatedValue.toString() }
-                    tvsDefence.start()
-
-                    val tvSpeed = ValueAnimator.ofInt(0,get(5).baseStat).setDuration(500)
-                    ObjectAnimator.ofInt(statsbarSpd,EXTRA_NAME,get(5).baseStat).setDuration(500).start()
-                    tvSpeed.addUpdateListener { tvdetailPokemSpd.text = it.animatedValue.toString() }
-                    tvSpeed.start()
-                }
+//                stats.apply {
+//                    val tvHealth = ValueAnimator.ofInt(0,get(0).baseStat).setDuration(500)
+//                    ObjectAnimator.ofInt(statsbarHP,EXTRA_NAME,get(0).baseStat).setDuration(500).start()
+//                    tvHealth.addUpdateListener { tvdetailPokemHp.text = it.animatedValue.toString() }
+//                    tvHealth.start()
+//
+//                    val tvAttack = ValueAnimator.ofInt(0,get(1).baseStat).setDuration(500)
+//                    ObjectAnimator.ofInt(statsbarATK,EXTRA_NAME,get(1).baseStat).setDuration(500).start()
+//                    tvAttack.addUpdateListener { tvdetailPokemAtk.text = it.animatedValue.toString() }
+//                    tvAttack.start()
+//
+//                    val tvDefence = ValueAnimator.ofInt(0,get(2).baseStat).setDuration(500)
+//                    ObjectAnimator.ofInt(statsbarDef,EXTRA_NAME,get(2).baseStat).setDuration(500).start()
+//                    tvDefence.addUpdateListener { tvdetailPokemDef.text = it.animatedValue.toString() }
+//                    tvDefence.start()
+//
+//                    val tvsAttack = ValueAnimator.ofInt(0,get(3).baseStat).setDuration(500)
+//                    ObjectAnimator.ofInt(statsbarSatk,EXTRA_NAME,get(3).baseStat).setDuration(500).start()
+//                    tvsAttack.addUpdateListener { tvdetailPokemSatk.text = it.animatedValue.toString() }
+//                    tvsAttack.start()
+//
+//                    val tvsDefence = ValueAnimator.ofInt(0,get(4).baseStat).setDuration(500)
+//                    ObjectAnimator.ofInt(statsbarSdef,EXTRA_NAME,get(4).baseStat).setDuration(500).start()
+//                    tvsDefence.addUpdateListener { tvdetailPokemSdef.text = it.animatedValue.toString() }
+//                    tvsDefence.start()
+//
+//                    val tvSpeed = ValueAnimator.ofInt(0,get(5).baseStat).setDuration(500)
+//                    ObjectAnimator.ofInt(statsbarSpd,EXTRA_NAME,get(5).baseStat).setDuration(500).start()
+//                    tvSpeed.addUpdateListener { tvdetailPokemSpd.text = it.animatedValue.toString() }
+//                    tvSpeed.start()
+//                }
             }
         }
 
         //moves pokemon dialog
         binding.tvdetailPokemMoves.setOnClickListener {
-            val dialog = PokemonMovesDialogFragment()
-            val supportFragmentManager = (activity as AppCompatActivity).supportFragmentManager
-
-            val args = Bundle()
-            args.putString(EXTRA_NAME, data.name)
-            dialog.arguments = args
-            dialog.show(supportFragmentManager,EXTRA_MOVEDETAIL)
+//            val dialog = PokemonMovesDialogFragment()
+//            val supportFragmentManager = (activity as AppCompatActivity).supportFragmentManager
+//
+//            val args = Bundle()
+//            args.putString(EXTRA_NAME, data.name)
+//            dialog.arguments = args
+//            dialog.show(supportFragmentManager,EXTRA_MOVEDETAIL)
         }
 
 

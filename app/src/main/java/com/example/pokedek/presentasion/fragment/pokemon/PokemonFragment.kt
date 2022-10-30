@@ -9,10 +9,12 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
+import com.example.pokedek.presentasion.fragment.home.HomeFragmentDirections
 import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokemonHomeAdapter
 import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
@@ -94,6 +96,14 @@ class PokemonFragment : Fragment() {
                 binding.recyclerviewpoke.adapter = adapter
                 binding.recyclerviewpoke.layoutManager = GridLayoutManager(requireContext(),2)
                 adapter.submitData(lifecycle,it)
+
+                adapter.onClickDetail(object : PokemonHomeAdapter.OnItemClickDetail{
+                    override fun onItemClickDetail(data: String) {
+                        findNavController().navigate(
+                            HomeFragmentDirections.actionFragmenthomeToPokemondetailfragment(data)
+                        )
+                    }
+                })
             }
         }
 

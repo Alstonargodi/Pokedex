@@ -11,9 +11,13 @@ import com.example.pokedek.databinding.CvPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 
-class PokemonHomeAdapter() : PagingDataAdapter<PokemonListResult, PokemonHomeAdapter.ViewHolder>(DIFF_CALLBACK) {
+class PokemonHomeAdapter : PagingDataAdapter<PokemonListResult, PokemonHomeAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickDetail : OnItemClickDetail
+
+    fun onClickDetail(onClickDetail: OnItemClickDetail){
+        this.onItemClickDetail = onClickDetail
+    }
 
     class ViewHolder(var binding : CvPokemonBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(item : PokemonListResult, id : Int){
@@ -29,10 +33,6 @@ class PokemonHomeAdapter() : PagingDataAdapter<PokemonListResult, PokemonHomeAda
         }
     }
 
-    fun onClickDetail(onClickDetail: OnItemClickDetail){
-        this.onItemClickDetail = onClickDetail
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(CvPokemonBinding.inflate(LayoutInflater.from(parent.context),parent,false))
 
@@ -41,12 +41,16 @@ class PokemonHomeAdapter() : PagingDataAdapter<PokemonListResult, PokemonHomeAda
         val item = getItem(position)
         if (item != null) {
             holder.bind(item,position)
+
+            holder.binding.imgpokemonDetail.setOnClickListener {
+                onItemClickDetail.onItemClickDetail(item.name)
+            }
         }
     }
 
 
     interface OnItemClickDetail{
-        fun onItemClickDetail(data : PokemonSummaryResponse)
+        fun onItemClickDetail(data : String)
     }
 
     companion object {
