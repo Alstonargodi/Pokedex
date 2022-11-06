@@ -5,8 +5,6 @@ import com.example.pokedek.repository.RemoteRepository
 
 object Injection {
     fun provideRepository(): RemoteRepository {
-        return RemoteRepository(
-            ApiConfig.getApiService()
-        )
+        return RemoteRepository(ApiConfig.getApiService())
     }
 }

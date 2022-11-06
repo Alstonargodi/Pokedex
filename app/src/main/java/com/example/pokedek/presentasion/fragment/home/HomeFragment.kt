@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentHomeBinding
 import com.example.pokedek.presentasion.SectionPageAdapter
 import com.example.pokedek.presentasion.viewmodel.local.LocalViewModel
@@ -32,46 +34,16 @@ class HomeFragment : Fragment() {
 
         roomViewModel = ViewModelProvider(this)[LocalViewModel::class.java]
 
-        lifecycleScope.launch {
-            getPokemonList()
-        }
-
-        setPagerAdapter(0)
-        binding.PokemonCard.setOnClickListener {
-            setPagerAdapter(0)
-        }
-
-        binding.BerryCard.setOnClickListener {
-            setPagerAdapter(1)
-        }
+        setPagerAdapter()
 
         return binding.root
     }
 
-
-    private fun getPokemonList(){
-        isLoading = true
-        Log.d("pokemon","get pokemon")
-        apiViewModel.getAll(0,5)
-
-        apiViewModel.pokemonList.observe(viewLifecycleOwner){
-            Log.d("pokemon","start fetching")
-            Log.d("pokemon",it.count.toString())
-        }
-
-    }
-
-    private fun setPagerAdapter(number : Int){
+    private fun setPagerAdapter(){
         pagerAdapter = SectionPageAdapter(requireActivity())
         val viewpager = binding.recpokehom
         viewpager.adapter = pagerAdapter
-        viewpager.currentItem = number
     }
 
-
-    companion object{
-        const val PAGE = 0
-        const val LIMIT = 10
-    }
 
 }

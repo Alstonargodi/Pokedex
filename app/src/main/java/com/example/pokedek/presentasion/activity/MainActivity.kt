@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setFragment(fragment : Fragment){
-        val supfragment = supportFragmentManager
-        val transfragment = supfragment.beginTransaction()
-        transfragment.replace(R.id.fragmenthost,fragment)
-        transfragment.commit()
+        val supportFragment = supportFragmentManager
+        val transactionFragment = supportFragment.beginTransaction()
+        transactionFragment.replace(R.id.fragmenthost,fragment)
+        transactionFragment.commit()
     }
 
     private fun immersiveCode(){

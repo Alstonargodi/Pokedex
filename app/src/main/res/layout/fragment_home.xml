@@ -22,142 +22,19 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="900dp">>
+            android:layout_height="900dp"><![CDATA[>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/Headerlayout"
-                android:layout_width="0dp"
-                android:layout_height="115dp"
-                android:background="@drawable/homebg"
-                android:backgroundTint="#EAE8E8"
-                android:minHeight="?attr/actionBarSize"
-                app:contentInsetEnd="0dp"
-                app:contentInsetLeft="0dp"
-                app:contentInsetRight="0dp"
-                app:contentInsetStart="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Toplayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:background="#FA6555"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        app:srcCompat="@drawable/pokelight" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/ItemCard"
-                        android:layout_width="98dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="15dp"
-                        app:cardBackgroundColor="#EAE9E9"
-                        app:cardCornerRadius="5dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/BerryCard"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/BerryCard"
-                        app:layout_constraintTop_toTopOf="@+id/BerryCard"
-                        app:layout_constraintVertical_bias="0.0">
-
-                        <TextView
-                            android:id="@+id/tvitem"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#9F577BC1"
-                            android:drawableTop="@drawable/ic_bag_pokemon"
-                            android:fontFamily="@font/poppinslight"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:text="Item"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/PokemonCard"
-                        android:layout_width="98dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        app:cardBackgroundColor="#EAE9E9"
-                        app:cardCornerRadius="5dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-                        <TextView
-                            android:id="@+id/Berry"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#BD72C7EE"
-                            android:drawableTop="@drawable/ic_character_pokemon"
-                            android:fontFamily="@font/poppinslight"
-                            android:gravity="center"
-                            android:paddingTop="5dp"
-                            android:text="Pokemon"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/BerryCard"
-                        android:layout_width="98dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="15dp"
-                        android:padding="10dp"
-                        app:cardBackgroundColor="#EAE9E9"
-                        app:cardCornerRadius="5dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/PokemonCard"
-                        app:layout_constraintStart_toEndOf="@+id/PokemonCard"
-                        app:layout_constraintTop_toTopOf="@+id/PokemonCard"
-                        app:layout_constraintVertical_bias="0.0">
-
-                        <TextView
-                            android:id="@+id/textView17"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#B2C62F2C"
-                            android:drawableTop="@drawable/ic_berries"
-                            android:fontFamily="@font/poppinslight"
-                            android:gravity="center"
-                            android:paddingTop="3dp"
-                            android:text="Berry"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.appcompat.widget.Toolbar>
+            ]]>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/recpokehom"
                 android:layout_width="0dp"
-                android:layout_height="900dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Headerlayout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
