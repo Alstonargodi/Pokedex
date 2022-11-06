@@ -3,7 +3,6 @@ package com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryr
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-
 class PokemonSummaryResponse(
     @SerializedName("abilities")
     var abilities: List<Ability>,

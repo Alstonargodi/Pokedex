@@ -5,7 +5,8 @@ package com.example.pokedek.presentasion.viewmodel.utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedek.model.injection.Injection
-import com.example.pokedek.presentasion.fragment.pokemon.PokemonHomeViewModel
+import com.example.pokedek.presentasion.fragment.pokemon.viewmodel.PokemonDetailViewModel
+import com.example.pokedek.presentasion.fragment.pokemon.viewmodel.PokemonHomeViewModel
 import com.example.pokedek.repository.RemoteRepository
 import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 
@@ -18,6 +19,8 @@ class ViewModelFactory private constructor(private val repository : RemoteReposi
             return PokemonViewModel(repository) as T
         }else if(modelClass.isAssignableFrom(PokemonHomeViewModel::class.java)){
             return PokemonHomeViewModel(repository) as T
+        }else if(modelClass.isAssignableFrom(PokemonDetailViewModel::class.java)){
+            return PokemonDetailViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

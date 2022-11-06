@@ -28,10 +28,15 @@ interface ApiService {
         @Query("limit") limit : Int,
     ): Call<PokemonListRespon>
 
-    @GET("{detailUrl}")
+    @GET("pokemon/{name}")
     suspend fun getSummaryPokemon(
-        @Path("detailUrl") detailUrl : String
+        @Path("name") name : String
     ):PokemonSummaryResponse
+
+    @GET("pokemon/{name}")
+    fun getDetailPokemon(
+        @Path("name") name : String
+    ):Call<PokemonSummaryResponse>
 
     @GET("ability/{name}/")
     fun getAbilityPokemon(@Path("name") name : String):

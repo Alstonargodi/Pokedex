@@ -32,13 +32,23 @@ class RemoteRepository (private val apiService: ApiService) {
         ).liveData
     }
 
-    suspend fun getSummaryPokemon(detailUrl : String): PokemonSummaryResponse {
-       return apiService.getSummaryPokemon(detailUrl)
+    suspend fun getSummaryPokemon(name : String): LiveData<Fetchstatus<PokemonSummaryResponse>> {
+       return return liveData {
+           emit(Fetchstatus.Loading)
+           try{
+               var data = apiService.getSummaryPokemon(name)
+               emit(Fetchstatus.Sucess(data))
+           }catch (e : Exception){
+               emit(Fetchstatus.Error(e.message.toString()))
+           }
+       }
     }
 
     fun callPokemonListAll(page: Int,limit: Int): Call<PokemonListRespon>{
         return apiService.callPokemonList(page,limit)
     }
+
+
     suspend fun getListPokemon(page : Int, limit : Int): LiveData<Fetchstatus<PokemonSummaryResponse>> =
     liveData {
         emit(Fetchstatus.Loading)

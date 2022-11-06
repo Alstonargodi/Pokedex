@@ -1,4 +1,4 @@
-package com.example.pokedek.presentasion.fragment.pokemon
+package com.example.pokedek.presentasion.fragment.pokemon.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -14,4 +14,6 @@ class PokemonHomeViewModel(
 
     fun getPagedListPokemon(): LiveData<PagingData<PokemonListResult>> =
         repository.getPokemonList().cachedIn(viewModelScope)
+
+
 }

@@ -16,7 +16,7 @@ import com.example.pokedek.databinding.FragmentPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.presentasion.fragment.home.HomeFragmentDirections
 import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokemonHomeAdapter
-import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
+import com.example.pokedek.presentasion.fragment.pokemon.viewmodel.PokemonHomeViewModel
 import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
 import kotlinx.coroutines.launch
 
@@ -120,7 +120,6 @@ class PokemonFragment : Fragment() {
             setPadding(LEFT, TOP, RIGHT, BOTTOM)
             setBackgroundResource(R.drawable.emptyview)
         }
-
         Log.d(EXTRA_NAME, "cannot retrive sum data")
     }
 

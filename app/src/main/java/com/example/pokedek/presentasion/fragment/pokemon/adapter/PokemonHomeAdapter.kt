@@ -1,6 +1,5 @@
 package com.example.pokedek.presentasion.fragment.pokemon.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedek.databinding.CvPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
-import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 
 class PokemonHomeAdapter : PagingDataAdapter<PokemonListResult, PokemonHomeAdapter.ViewHolder>(DIFF_CALLBACK) {
 
@@ -20,12 +18,17 @@ class PokemonHomeAdapter : PagingDataAdapter<PokemonListResult, PokemonHomeAdapt
     }
 
     class ViewHolder(var binding : CvPokemonBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(item : PokemonListResult, id : Int){
+        fun bind(item : PokemonListResult){
             binding.tvpokemonName.text = item.name
-            Log.d("Pokemon Fragment",item.name)
 
-            val imgUrl =
-                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
+            /*
+            get charater id by url link
+
+            - removing url link and slash
+             */
+            val url = item.url.removePrefix("https://pokeapi.co/api/v2/pokemon/")
+            val idUrl = url.replace("/","")
+            val imgUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idUrl}.png"
             Glide.with(binding.root)
                 .asBitmap()
                 .load(imgUrl)
@@ -40,7 +43,7 @@ class PokemonHomeAdapter : PagingDataAdapter<PokemonListResult, PokemonHomeAdapt
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         if (item != null) {
-            holder.bind(item,position)
+            holder.bind(item)
 
             holder.binding.imgpokemonDetail.setOnClickListener {
                 onItemClickDetail.onItemClickDetail(item.name)

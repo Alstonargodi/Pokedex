@@ -20,7 +20,6 @@ class RemotePaging(private val apiService: ApiService): PagingSource<Int, Pokemo
        return try {
            val position = params.key ?: initial_index
            val responseData = apiService.getListPokemon(position,params.loadSize)
-           Log.d("pokemonpagingtest",responseData.results.toString())
 
            LoadResult.Page(
                data = responseData.results,
