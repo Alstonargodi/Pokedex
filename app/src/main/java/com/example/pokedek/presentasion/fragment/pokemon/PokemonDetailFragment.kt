@@ -53,11 +53,9 @@ class PokemonDetailFragment : Fragment() {
         val characterName = PokemonDetailFragmentArgs.fromBundle(requireArguments()).characterName
         binding.textView.text = characterName
         name = characterName
-
         lifecycleScope.launch {
             getPokemonDetail(characterName)
         }
-
         return binding.root
     }
 
@@ -184,10 +182,8 @@ class PokemonDetailFragment : Fragment() {
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.succesadddialog)
         dialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-
         val dateFormat = SimpleDateFormat("d/MMM/yyy")
         val currentDate = dateFormat.format(Date())
-
         val favoriteTemp= Favoritelist(
             0,
             name,
@@ -195,12 +191,10 @@ class PokemonDetailFragment : Fragment() {
             currentDate.toString(),
             link
         )
-
         object: CountDownTimer(1000, 1000){
             override fun onTick(p0: Long) { dialog.show() }
             override fun onFinish() { dialog.dismiss() }
         }.start()
-
         localViewModel.insertfav(favoriteTemp)
     }
 

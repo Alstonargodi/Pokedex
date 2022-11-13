@@ -117,9 +117,6 @@ class PokemonFragment : Fragment() {
     private fun showPokemonList(data : List<PokemonSummaryResponse>){
 
     }
-
-
-
     private fun setEmptyView(){
         binding.recyclerviewpoke.apply {
             setPadding(LEFT, TOP, RIGHT, BOTTOM)

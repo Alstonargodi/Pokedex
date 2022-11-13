@@ -18,7 +18,6 @@ import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
 import com.example.pokedek.presentasion.viewmodel.remote.PokemonViewModel
 import kotlinx.coroutines.launch
 
-
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
