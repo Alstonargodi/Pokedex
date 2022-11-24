@@ -8,14 +8,14 @@ import android.os.Looper
 import androidx.core.content.ContextCompat
 import com.example.pokedek.R
 
-class Splashscreen : AppCompatActivity() {
+class SplashscreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splashscreen)
 
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
-        },3000)
+        },800)
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.detailtop)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.detailtop)

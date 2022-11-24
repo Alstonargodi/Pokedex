@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.model.local.entity.Favorite.Favoritelist
+import com.example.pokedek.model.local.entity.favorite.Favoritelist
 import com.example.pokedek.databinding.CvCardfavoriteBinding
 
 class Favoritervadapter(): RecyclerView.Adapter<Favoritervadapter.viewhold>() {

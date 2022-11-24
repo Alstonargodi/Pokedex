@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedek.model.local.entity.Berry.Berrylist
+import com.example.pokedek.model.local.entity.berry.Berrylist
 import com.example.pokedek.R
 import com.example.pokedek.presentasion.fragment.berry.BerryFragmentDirections
 import kotlinx.android.synthetic.main.cv_berry.view.*

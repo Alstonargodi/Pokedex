@@ -13,7 +13,7 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/font/font.xml" value="0.37447916666666664" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/abilitydetailbottomfragment.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/activity_splashscreen.xml" value="0.5" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/activity_splashscreen.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_berry.xml" value="0.67" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_cardfavorite.xml" value="0.5" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/cv_flavourberry.xml" value="0.5" />
@@ -28,14 +28,14 @@
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_berrydetailfragment.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_berryfragment.xml" value="0.22" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_compare.xml" value="0.33" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_favoritefragment.xml" value="0.33" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_favoritefragment.xml" value="0.22" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_fragmenthome.xml" value="0.33" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_item.xml" value="0.33" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_itemdetail.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_list_pokemon.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_movesdetail_bottomfragment_list_dialog.xml" value="0.27807971014492755" />
-        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_pokemon.xml" value="0.18" />
+        <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_pokemon.xml" value="0.25" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_pokemondetail.xml" value="0.75" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_pokemondetailfragment.xml" value="0.67" />
         <entry key="..\:/Users/alsto/AndroidStudioProjects/Pokedek/app/src/main/res/layout/fragment_searchfragment.xml" value="0.20618556701030927" />

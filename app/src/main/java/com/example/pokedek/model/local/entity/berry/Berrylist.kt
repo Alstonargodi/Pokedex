@@ -1,10 +1,10 @@
-package com.example.pokedek.model.local.entity.Berry
+package com.example.pokedek.model.local.entity.berry
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Flavourberrylist(
+data class Berrylist(
     val name : String,
-    val potecny : String,
+    val link : String,
 ): Parcelable

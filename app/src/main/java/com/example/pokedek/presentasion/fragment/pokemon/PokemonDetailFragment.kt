@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide
 import com.example.pokedek.R
 import com.example.pokedek.databinding.ActivityMainBinding
 import com.example.pokedek.databinding.FragmentPokemondetailBinding
-import com.example.pokedek.model.local.entity.Favorite.Favoritelist
+import com.example.pokedek.model.local.entity.favorite.Favoritelist
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.model.remote.utils.Fetchstatus
 import com.example.pokedek.presentasion.fragment.pokemon.viewmodel.PokemonDetailViewModel
@@ -68,7 +68,6 @@ class PokemonDetailFragment : Fragment() {
                 PokemonDetailFragmentDirections.actionPokemondetailfragmentToPokemon()
             )
         }
-
         binding.btnShare.setOnClickListener {
             binding.btnShare.setBackgroundResource(R.drawable.bk_full)
             setFavorite()
@@ -95,7 +94,6 @@ class PokemonDetailFragment : Fragment() {
         data.apply {
             binding.apply {
                 link = sprites.other.officialArtwork.frontDefault
-
                 Glide.with(requireContext())
                     .load(sprites.other.officialArtwork.frontDefault)
                     .into(imgdetailPokem)
@@ -118,7 +116,6 @@ class PokemonDetailFragment : Fragment() {
                 abilities.apply {
                     tvdetailPokemAbsatu.text = get(0).ability.name
                     tvdetailPokemAbdua.text = get(1).ability.name
-
                     tvdetailPokemAbsatu.setOnClickListener {
                         val abilityDialog = PokemonAbilityDialogFragment()
                         val supportManager = (activity as AppCompatActivity).supportFragmentManager

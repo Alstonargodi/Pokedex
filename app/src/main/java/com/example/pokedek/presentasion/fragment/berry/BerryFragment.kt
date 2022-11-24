@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokedek.model.local.entity.Berry.Berrylist
+import com.example.pokedek.model.local.entity.berry.Berrylist
 import com.example.pokedek.databinding.FragmentBerryBinding
 import com.example.pokedek.presentasion.fragment.berry.adapter.BerryRecviewAdapter
 import com.example.pokedek.presentasion.viewmodel.remote.BerryViewModel

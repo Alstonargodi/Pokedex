@@ -5,36 +5,14 @@
     android:layout_width="match_parent"
     android:background="@color/detailtop"
     android:layout_height="match_parent"
-    tools:context=".presentasion.activity.Splashscreen">
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.159"
-        app:lottie_autoPlay="true"
-        app:lottie_colorFilter="@color/white"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/poke"
-        >
-
-    </com.airbnb.lottie.LottieAnimationView>
+    tools:context=".presentasion.activity.SplashscreenActivity">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="280dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
@@ -42,7 +20,7 @@
         android:textColor="#F2F0F0"
         android:textSize="42sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

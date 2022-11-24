@@ -1,4 +1,4 @@
-package com.example.pokedek.model.local.entity.Item
+package com.example.pokedek.model.local.entity.item
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,11 +1,12 @@
-package com.example.pokedek.model.local.databaseconfig
+package com.example.pokedek.model.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.pokedek.model.local.dao.LocalDao
-import com.example.pokedek.model.local.entity.Favorite.Favoritelist
+import com.example.pokedek.model.local.entity.favorite.FavoriteData
+import com.example.pokedek.model.local.entity.favorite.Favoritelist
 import com.example.pokedek.model.local.entity.pokemon.PokemonFavorite
 
 /*
@@ -19,9 +20,10 @@ Fallbacktodestructive nee when db migrate to new version
 */
 
 @Database(entities = [
+    FavoriteData::class,
     PokemonFavorite::class,
     Favoritelist::class],
-    version = 25,
+    version = 1,
     exportSchema = false
 )
 abstract class DatabaseConfig : RoomDatabase(){
@@ -40,7 +42,7 @@ abstract class DatabaseConfig : RoomDatabase(){
                     val instance = Room.databaseBuilder(
                         context.applicationContext,
                         DatabaseConfig::class.java,
-                        "dbtest")
+                        "DBPokedex")
                         .fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance

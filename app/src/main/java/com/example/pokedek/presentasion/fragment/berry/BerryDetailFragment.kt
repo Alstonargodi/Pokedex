@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.pokedek.model.local.entity.Berry.Flavourberrylist
+import com.example.pokedek.model.local.entity.berry.Flavourberrylist
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentBerrydetailBinding
 import com.example.pokedek.presentasion.fragment.berry.adapter.BerryFlavourRecviewAdapter

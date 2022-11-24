@@ -123,7 +123,7 @@
         tools:layout="@layout/movesdetailbottomfragment" />
     <activity
         android:id="@+id/splashscreen"
-        android:name="com.example.pokedek.presentasion.activity.Splashscreen"
+        android:name="com.example.pokedek.presentasion.activity.SplashscreenActivity"
         android:label="activity_splashscreen"
         tools:layout="@layout/activity_splashscreen" />
     <fragment

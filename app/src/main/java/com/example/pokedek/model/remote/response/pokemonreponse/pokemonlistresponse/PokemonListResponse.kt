@@ -19,10 +19,3 @@ class PokemonListResult(
     @SerializedName("url")
     var url: String,
 )
-
-class Result(
-    @SerializedName("name")
-    var name: String,
-    @SerializedName("url")
-    var url: String,
-)

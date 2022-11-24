@@ -5,8 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.pokedek.model.local.entity.pokemon.PokemonFavorite
-import com.example.pokedek.model.local.databaseconfig.DatabaseConfig
-import com.example.pokedek.model.local.entity.Favorite.Favoritelist
+import com.example.pokedek.model.local.database.DatabaseConfig
+import com.example.pokedek.model.local.entity.favorite.Favoritelist
 import com.example.pokedek.repository.LocalRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,26 +20,25 @@ class LocalViewModel(application: Application): AndroidViewModel(application) {
     init {
         val pokedao = DatabaseConfig.setDatabase(application).LocalDao()
         LocalRepository = LocalRepository(pokedao)
-        readpokelist = LocalRepository.readpoke
-        readfavlistbynew = LocalRepository.readfavbynew
-        readfavlistbyold = LocalRepository.readfavbyold
+        readpokelist = LocalRepository.favoritePokemon
+        readfavlistbynew = LocalRepository.readFavoriteByDesc
+        readfavlistbyold = LocalRepository.readFavoriteByAsc
     }
-
 
 
 
 
     fun readnew(cari : String): LiveData<List<Favoritelist>>{
-        return LocalRepository.readnew(cari)
+        return LocalRepository.readTypeByAsc(cari)
     }
 
     fun readold(cari : String): LiveData<List<Favoritelist>>{
-        return LocalRepository.readold(cari)
+        return LocalRepository.readTypeByDesc(cari)
     }
 
     fun insertfav(favoritelist: Favoritelist){
         viewModelScope.launch(Dispatchers.IO) {
-            LocalRepository.insertfavo(favoritelist)
+            LocalRepository.insertFavoritePokemon(favoritelist)
         }
     }
 
