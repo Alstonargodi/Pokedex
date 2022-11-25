@@ -22,16 +22,10 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val apiViewModel : PokemonViewModel by viewModels{ ViewModelFactory.getInstance() }
     private lateinit var pagerAdapter : SectionPageAdapter
-    private lateinit var roomViewModel: LocalViewModel
-
-    private var isLoading = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-        roomViewModel = ViewModelProvider(this)[LocalViewModel::class.java]
 
         setPagerAdapter()
 

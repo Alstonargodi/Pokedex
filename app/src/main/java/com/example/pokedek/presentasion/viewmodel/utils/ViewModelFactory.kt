@@ -2,6 +2,7 @@
 
 package com.example.pokedek.presentasion.viewmodel.utils
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pokedek.model.injection.Injection
@@ -28,9 +29,9 @@ class ViewModelFactory private constructor(private val repository : RemoteReposi
     companion object{
         @Volatile
         private var instance : ViewModelFactory? = null
-        fun getInstance(): ViewModelFactory =
+        fun getInstance(context : Context): ViewModelFactory =
             instance ?: synchronized(this){
-                instance ?: ViewModelFactory(Injection.provideRepository())
+                instance ?: ViewModelFactory(Injection.provideRepository(context))
             }.also { instance = it }
     }
 }

@@ -8,10 +8,11 @@ import com.example.pokedek.model.local.mediator.pokemon.PokemonMediatorDao
 import com.example.pokedek.model.local.mediator.pokemon.PokemonMediatorList
 import com.example.pokedek.model.local.mediator.remotekey.RemoteKeyDao
 import com.example.pokedek.model.local.mediator.remotekey.RemoteKeys
+import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 
 @Database(
     entities = [
-        PokemonMediatorList::class,
+        PokemonListResult::class,
         RemoteKeys::class
     ],
     version = 1,

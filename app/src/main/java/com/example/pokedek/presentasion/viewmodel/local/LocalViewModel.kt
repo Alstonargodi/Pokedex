@@ -26,8 +26,6 @@ class LocalViewModel(application: Application): AndroidViewModel(application) {
     }
 
 
-
-
     fun readnew(cari : String): LiveData<List<Favoritelist>>{
         return LocalRepository.readTypeByAsc(cari)
     }

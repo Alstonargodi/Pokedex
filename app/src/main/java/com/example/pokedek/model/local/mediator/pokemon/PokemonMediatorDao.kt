@@ -10,7 +10,7 @@ import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistrespo
 @Dao
 interface PokemonMediatorDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPokemonMediatorList(pokemon : List<PokemonMediatorList>)
+    suspend fun insertPokemonMediatorList(pokemon : List<PokemonListResult>)
 
     @Query("select * from TablePokemonMediator")
     fun getAllPokemonMediatorList(): PagingSource<Int,PokemonListResult>

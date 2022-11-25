@@ -8,6 +8,7 @@ import com.example.pokedek.model.local.dao.LocalDao
 import com.example.pokedek.model.local.entity.favorite.FavoriteData
 import com.example.pokedek.model.local.entity.favorite.Favoritelist
 import com.example.pokedek.model.local.entity.pokemon.PokemonFavorite
+import com.example.pokedek.model.local.mediator.database.MediatorDatabase
 
 /*
 Room database
@@ -33,21 +34,16 @@ abstract class DatabaseConfig : RoomDatabase(){
         @Volatile
         private var INSTANCE : DatabaseConfig? = null
 
+        @JvmStatic
         fun setDatabase(context: Context): DatabaseConfig {
-            val mInstance = INSTANCE
-            if (mInstance != null){
-                return mInstance
-            }else{
-                synchronized(this){
-                    val instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        DatabaseConfig::class.java,
-                        "DBPokedex")
-                        .fallbackToDestructiveMigration()
-                        .build()
-                    INSTANCE = instance
-                    return instance
-                }
+            return INSTANCE ?: synchronized(this){
+                INSTANCE ?: Room.databaseBuilder(
+                    context.applicationContext,
+                    DatabaseConfig::class.java,"FavoritePokemonDB"
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
+                    .also { INSTANCE = it }
             }
         }
 

@@ -33,7 +33,7 @@ import java.util.*
 class PokemonDetailFragment : Fragment() {
 
     private val detailViewModel : PokemonDetailViewModel by viewModels{
-        ViewModelFactory.getInstance()
+        ViewModelFactory.getInstance(requireContext())
     }
     private val localViewModel by viewModels<LocalViewModel>()
 

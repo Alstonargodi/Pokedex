@@ -1,5 +1,6 @@
 package com.example.pokedek.presentasion.fragment.pokemon.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -59,11 +60,12 @@ class PokemonHomeAdapter : PagingDataAdapter<PokemonListResult, PokemonHomeAdapt
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<PokemonListResult>() {
             override fun areItemsTheSame(oldItem: PokemonListResult, newItem: PokemonListResult): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id
             }
 
+            @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(oldItem: PokemonListResult, newItem: PokemonListResult): Boolean {
-                return oldItem.name == newItem.name
+                return oldItem == newItem
             }
         }
     }

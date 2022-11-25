@@ -4,10 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
+import androidx.paging.*
+import com.example.pokedek.model.local.mediator.database.MediatorDatabase
 import com.example.pokedek.model.remote.apiconfig.ApiConfig.getApiService
 import com.example.pokedek.model.remote.apiservice.ApiService
 import com.example.pokedek.model.remote.response.berryresponse.berrysummaryresponse.BerrySummaryResponse
@@ -20,10 +18,16 @@ import com.example.pokedek.model.remote.response.pokemonreponse.pokemonmovesresp
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.model.remote.utils.Fetchstatus
 import com.example.pokedek.model.remote.utils.RemotePaging
+import com.example.pokedek.presentasion.utils.paging.PokemonRemoteMediator
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import retrofit2.Call
 
-class RemoteRepository (private val apiService: ApiService) {
-    val pokemonSummary = MutableLiveData<PokemonSummaryResponse>()
+class RemoteRepository (
+    private val apiService: ApiService,
+    private val mediatorDatabase: MediatorDatabase
+) {
+
     //pokemon
     fun getPokemonList(): LiveData<PagingData<PokemonListResult>> {
         return Pager(
@@ -31,6 +35,14 @@ class RemoteRepository (private val apiService: ApiService) {
             pagingSourceFactory = { RemotePaging(apiService) }
         ).liveData
     }
+
+    @OptIn(ExperimentalPagingApi::class)
+    fun getPokemonMediator(): Flow<PagingData<PokemonListResult>> =
+        Pager(
+            config = PagingConfig(pageSize = 5, enablePlaceholders = true),
+            remoteMediator = PokemonRemoteMediator(mediatorDatabase,apiService),
+            pagingSourceFactory = { mediatorDatabase.pokemonMediatorDao().getAllPokemonMediatorList()}
+        ).flow
 
     suspend fun getSummaryPokemon(name : String): LiveData<Fetchstatus<PokemonSummaryResponse>> {
        return return liveData {

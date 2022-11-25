@@ -16,6 +16,7 @@ import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
 import com.example.pokedek.presentasion.fragment.home.HomeFragmentDirections
+import com.example.pokedek.presentasion.fragment.pokemon.adapter.LoadingListAdapter
 import com.example.pokedek.presentasion.fragment.pokemon.adapter.PokemonHomeAdapter
 import com.example.pokedek.presentasion.fragment.pokemon.viewmodel.PokemonHomeViewModel
 import com.example.pokedek.presentasion.viewmodel.utils.ViewModelFactory
@@ -25,10 +26,11 @@ class PokemonFragment : Fragment() {
     private lateinit var binding: FragmentPokemonBinding
 
     private val apiViewModel : PokemonHomeViewModel by viewModels{
-        ViewModelFactory.getInstance()
+        ViewModelFactory.getInstance(requireContext())
     }
 
     private var dataList = ArrayList<PokemonSummaryResponse>()
+    private var pokemonRecyclerViewAdapter = PokemonHomeAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +44,7 @@ class PokemonFragment : Fragment() {
 
         dataList = arrayListOf()
 
-        getPokemonList()
+        showPokemonItem()
 
         return binding.root
     }
@@ -111,8 +113,23 @@ class PokemonFragment : Fragment() {
                 })
             }
         }
-
     }
+
+    private fun showPokemonItem(){
+        lifecycleScope.launch {
+            apiViewModel.getPokemonMediator().observe(viewLifecycleOwner){ response ->
+                binding.recyclerviewpoke.adapter = pokemonRecyclerViewAdapter.withLoadStateFooter(
+                    footer = LoadingListAdapter{
+                        pokemonRecyclerViewAdapter.retry()
+                    }
+                )
+
+                pokemonRecyclerViewAdapter.submitData(requireActivity().lifecycle,response)
+                Log.d("pokemon",response.toString())
+            }
+        }
+    }
+
 
     private fun showPokemonList(data : List<PokemonSummaryResponse>){
 
