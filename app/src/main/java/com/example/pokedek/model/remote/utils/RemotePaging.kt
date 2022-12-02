@@ -22,7 +22,7 @@ class RemotePaging(private val apiService: ApiService): PagingSource<Int, Pokemo
            val responseData = apiService.getListPokemon(position,params.loadSize)
 
            LoadResult.Page(
-               data = responseData.results,
+               data = responseData.results.distinct(),
                prevKey = if (position == initial_index) null else position - 1,
                nextKey = if (responseData.results.isEmpty()) null else position + 1
            )

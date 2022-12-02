@@ -1,16 +1,13 @@
 package com.example.pokedek.presentasion.utils.paging
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.example.pokedek.model.local.mediator.database.MediatorDatabase
-import com.example.pokedek.model.local.mediator.pokemon.PokemonMediatorList
 import com.example.pokedek.model.local.mediator.remotekey.RemoteKeys
 import com.example.pokedek.model.remote.apiservice.ApiService
-import com.example.pokedek.model.remote.response.itemresponse.itemsummaryresponse.Pokemon
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonlistresponse.PokemonListResult
 
 @OptIn(ExperimentalPagingApi::class)
@@ -34,16 +31,14 @@ class PokemonRemoteMediator(
             }
             LoadType.PREPEND -> {
                 val remoteKeys = getRemoteKeyForFirstItem(state)
-                val prevKey = remoteKeys?.prevKey
-                    ?: return MediatorResult.Success(
+                val prevKey = remoteKeys?.prevKey ?: return MediatorResult.Success(
                         endOfPaginationReached = remoteKeys != null)
                 prevKey
             }
 
             LoadType.APPEND -> {
-                val remoteKeys = getRemoteForLastItem(state)
-                val nextKey = remoteKeys?.nextKey
-                    ?: return MediatorResult.Success(
+                val remoteKeys = getRemoteKeyForLastItem(state)
+                val nextKey = remoteKeys?.nextKey ?: return MediatorResult.Success(
                         endOfPaginationReached = remoteKeys != null)
                 nextKey
             }
@@ -64,7 +59,10 @@ class PokemonRemoteMediator(
                 val prevKey = if (page == 1) null else page - 1
                 val nextKey = if (endPagination) null else page + 1
                 val keys = responseData.map {
-                    RemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)
+                    RemoteKeys(
+                        id = it.id.toString(),
+                        prevKey = prevKey,
+                        nextKey = nextKey)
                 }
                 database.RemoteKeyDao().insertAllKeys(keys)
                 database.pokemonMediatorDao().insertPokemonMediatorList(responseData)
@@ -76,24 +74,27 @@ class PokemonRemoteMediator(
 
     }
 
-    private suspend fun getRemoteForLastItem(state: PagingState<Int, PokemonListResult>): RemoteKeys?{
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, PokemonListResult>)
+    : RemoteKeys? {
         return state.pages.lastOrNull {
-            it.data.isEmpty() }?.data?.lastOrNull()?.let { data ->
-            database.RemoteKeyDao().getRemoteKeysId(data.id.toString())
+            it.data.isNotEmpty() }?.data?.lastOrNull()?.let { data ->
+            database.RemoteKeyDao().getRemoteKeysId(data.id)
         }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, PokemonListResult>): RemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, PokemonListResult>)
+    : RemoteKeys? {
         return state.pages.firstOrNull {
             it.data.isNotEmpty() }?.data?.firstOrNull()?.let { data ->
-            database.RemoteKeyDao().getRemoteKeysId(data.id.toString())
+            database.RemoteKeyDao().getRemoteKeysId(data.id)
         }
     }
 
-    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, PokemonListResult>): RemoteKeys? {
+    private suspend fun getRemoteKeyClosestToCurrentPosition(
+        state: PagingState<Int, PokemonListResult>): RemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
-                database.RemoteKeyDao().getRemoteKeysId(id.toString())
+                database.RemoteKeyDao().getRemoteKeysId(id)
             }
         }
     }

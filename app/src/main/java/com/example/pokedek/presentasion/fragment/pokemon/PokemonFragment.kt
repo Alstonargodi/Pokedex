@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedek.R
 import com.example.pokedek.databinding.FragmentPokemonBinding
 import com.example.pokedek.model.remote.response.pokemonreponse.pokemonsummaryresponse.PokemonSummaryResponse
@@ -36,15 +37,13 @@ class PokemonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        requireActivity().window.statusBarColor = ContextCompat.getColor(
-            requireContext(), R.color.detailtop)
-        requireActivity().window.navigationBarColor = ContextCompat.getColor(
-            requireContext(), R.color.detailbot)
+
+        requireActivity().window.navigationBarColor = ContextCompat.getColor(requireContext(), R.color.detailbot)
         binding = FragmentPokemonBinding.inflate(inflater, container, false)
 
         dataList = arrayListOf()
 
-        showPokemonItem()
+        getPokemonList()
 
         return binding.root
     }
@@ -53,58 +52,23 @@ class PokemonFragment : Fragment() {
         view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
 
-            tvsort.setOnClickListener {
-                binding.layhide.visibility =
-                    if (binding.layhide.visibility == View.GONE)
-                        View.VISIBLE
-                    else
-                        View.GONE
-            }
-
-            Pokespin.onItemSelectedListener = object : AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener{
-                override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {}
-
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    when(p0?.getItemAtPosition(p2)){
-                        "Name"->{
-                            showPokemonList(dataList.sortedBy { it.name })
-                        }
-                        "Weight"->{
-                            showPokemonList(dataList.sortedBy { it.weight })
-                        }
-                        "Height"->{
-                            showPokemonList(dataList.sortedBy { it.height })
-                        }
-                        "Hp"->{
-                            showPokemonList(dataList.sortedBy { it.stats[0].baseStat })
-                        }
-                        "Speed"->{
-                            showPokemonList(dataList.sortedBy { it.stats[5].baseStat })
-                        }
-                        "Attack"->{
-                            showPokemonList(dataList.sortedBy { it.stats[1].baseStat })
-                        }
-                    }
-                }
-
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    showPokemonList(dataList.sortedBy { it.name })
-                }
-            }
-        }
     }
 
     private fun getPokemonList(){
         lifecycleScope.launch {
             apiViewModel.getPagedListPokemon().observe(viewLifecycleOwner){
-                val adapter = PokemonHomeAdapter()
+                val adapter = pokemonRecyclerViewAdapter.withLoadStateFooter(
+                    footer = LoadingListAdapter{
+                        pokemonRecyclerViewAdapter.retry()
+                    }
+                )
+                pokemonRecyclerViewAdapter.submitData(lifecycle,it)
                 binding.recyclerviewpoke.adapter = adapter
                 binding.recyclerviewpoke.layoutManager = GridLayoutManager(requireContext(),2)
-                adapter.submitData(lifecycle,it)
 
-                adapter.onClickDetail(object : PokemonHomeAdapter.OnItemClickDetail{
+
+                pokemonRecyclerViewAdapter.onClickDetail(object : PokemonHomeAdapter.OnItemClickDetail{
                     override fun onItemClickDetail(data: String) {
                         findNavController().navigate(
                             HomeFragmentDirections.actionFragmenthomeToPokemondetailfragment(data)
@@ -123,9 +87,7 @@ class PokemonFragment : Fragment() {
                         pokemonRecyclerViewAdapter.retry()
                     }
                 )
-
                 pokemonRecyclerViewAdapter.submitData(requireActivity().lifecycle,response)
-                Log.d("pokemon",response.toString())
             }
         }
     }

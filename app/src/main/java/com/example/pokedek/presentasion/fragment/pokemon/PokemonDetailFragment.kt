@@ -43,7 +43,6 @@ class PokemonDetailFragment : Fragment() {
     private var link = ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(),R.color.detailtopoke)
         requireActivity().window.navigationBarColor = ContextCompat.getColor(requireContext(), R.color.detailbot)
 
         binding = FragmentPokemondetailBinding.inflate(inflater,container,false)

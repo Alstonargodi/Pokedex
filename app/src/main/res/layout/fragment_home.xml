@@ -20,16 +20,47 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#22FFFFFF"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tva2"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Pokemon"
+                android:textColor="#FF72C7EE"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/tvsort"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.appcompat.widget.Toolbar>
+
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="900dp"><![CDATA[>
-
-            ]]>
+            android:layout_height="900dp">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/recpokehom"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:background="#22FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

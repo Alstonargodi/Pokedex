@@ -2,6 +2,7 @@ package com.example.pokedek.presentasion.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.pokedek.R
@@ -18,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         immersiveCode()
-
 
         binding.bottomMenu.setOnItemSelectedListener {
             when(it.itemId){
@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun immersiveCode(){
-        window.statusBarColor = ContextCompat.getColor(this, R.color.detailtop)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        window.statusBarColor = ContextCompat.getColor(this, R.color.primary)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.detailbot)
     }
 }
