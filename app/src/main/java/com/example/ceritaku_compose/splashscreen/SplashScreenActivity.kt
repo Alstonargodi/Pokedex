@@ -22,7 +22,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,7 +59,7 @@ fun SplashScreen(name: String, modifier: Modifier = Modifier) {
     Column(
         modifier = Modifier
             .fillMaxHeight()
-            .background(Color(0xFF121212))
+            .background(Color(0xFF344D67))
             .wrapContentSize(Alignment.Center),
     ) {
         Text(
@@ -64,12 +67,14 @@ fun SplashScreen(name: String, modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth(),
             textAlign = TextAlign.Center,
-            color = Color.White,
+            color = Color(0xFF609EA2),
             fontSize = 60.sp,
-            fontStyle = FontStyle(R.font.poppinsregular)
+            fontFamily = FontFamily(
+                Font(R.font.poppinsbold,FontWeight.Bold)
+            )
         )
         Image(
-            painter = painterResource(id = R.drawable.ic_story),
+            painter = painterResource(id = R.drawable.ball),
             contentDescription = "logo",
             modifier = Modifier.padding(50.dp)
         )
