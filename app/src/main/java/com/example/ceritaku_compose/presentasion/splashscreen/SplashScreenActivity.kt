@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.splashscreen
+package com.example.ceritaku_compose.presentasion.splashscreen
 
 import android.content.Intent
 import android.os.Bundle
@@ -30,9 +30,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ceritaku_compose.mainactivity.MainActivity
+import com.example.ceritaku_compose.presentasion.mainactivity.MainActivity
 import com.example.ceritaku_compose.R
-import com.example.ceritaku_compose.splashscreen.ui.theme.CeritakucomposeTheme
+import com.example.ceritaku_compose.presentasion.splashscreen.ui.theme.CeritakucomposeTheme
 
 class SplashScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

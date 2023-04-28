@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.splashscreen.ui.theme
+package com.example.ceritaku_compose.presentasion.splashscreen.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
