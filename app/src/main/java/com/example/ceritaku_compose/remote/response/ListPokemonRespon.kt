@@ -14,6 +14,7 @@ class ListPokemonRespon(
 )
 
 class PokemonListResult(
+    var id : Int = 0,
     @SerializedName("name")
     var name: String,
     @SerializedName("url")

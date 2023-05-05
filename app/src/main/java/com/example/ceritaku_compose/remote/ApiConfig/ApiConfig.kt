@@ -1,12 +1,13 @@
-package com.example.ceritaku_compose.remote
+package com.example.ceritaku_compose.remote.ApiConfig
 
+import com.example.ceritaku_compose.remote.ApiService.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    fun getApiService(): ApiService{
+    fun getApiService(): ApiService {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(
                 HttpLoggingInterceptor.Level.BODY

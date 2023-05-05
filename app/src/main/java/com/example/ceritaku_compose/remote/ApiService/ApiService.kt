@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.remote
+package com.example.ceritaku_compose.remote.ApiService
 
 import com.example.ceritaku_compose.remote.response.ListPokemonRespon
 import com.example.ceritaku_compose.remote.response.SummaryPokemonRespon
