@@ -8,6 +8,7 @@ import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,11 +18,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -55,16 +59,12 @@ import com.example.ceritaku_compose.presentasion.mainactivity.theme.Ceritakucomp
 import com.example.ceritaku_compose.presentasion.viewmodelfactory.ViewModelFactory
 import com.example.ceritaku_compose.remote.response.ListPokemonRespon
 import com.example.ceritaku_compose.remote.response.PokemonListResult
+import com.example.ceritaku_compose.remote.response.SummaryPokemonRespon
 import com.example.ceritaku_compose.remote.utils.FetchRespon
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    private val viewModel : MainActivityViewModel by viewModels{
-        ViewModelFactory.getInstance()
-    }
-    private var pokemonList : ListPokemonRespon? = null
-
     @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,12 +112,19 @@ fun CharacterList(
     modifier: Modifier = Modifier,
     pokemonList : List<PokemonListResult>
 ) {
+    var selectedItem by remember {mutableStateOf("") }
+
+    if (selectedItem != ""){
+        DetailPokemon(name = selectedItem)
+    }
+
     Box(modifier = modifier) {
         LazyColumn {
             items(pokemonList.size) { data ->
                 PokedexListItem(
                     name = pokemonList[data].name,
-                    photoUrl = pokemonList[data].url
+                    photoUrl = pokemonList[data].url,
+                    onSelected = { selectedItem = it}
                 )
             }
         }
@@ -132,16 +139,52 @@ fun MainActivityApp(
 ) {
     var valueVisible by remember { mutableStateOf(false) }
     var pokemonList by remember { viewModel.pokemonList }
+    var text by remember {mutableStateOf("")}
+
     Column {
         Header(
             showSearch = { valueVisible = it }
         )
-        SearchBar(isShow = valueVisible)
-
-        CharacterList(pokemonList = pokemonList )
+        SearchBar(isShow = valueVisible, onQueryChange = {text = it})
+        Box {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                ProgreesBar()
+            }
+            CharacterList(pokemonList = pokemonList )
+        }
+    }
+}
+@Composable
+fun ProgreesBar(){
+    AnimatedVisibility(visible = false) {
+        CircularProgressIndicator(
+            modifier = Modifier
+                .wrapContentSize(Alignment.Center)
+        )
     }
 }
 
+@Composable
+fun DetailPokemon(
+    viewModel : MainActivityViewModel = viewModel(
+        factory = ViewModelFactory.getInstance()
+    ),
+    name : String,
+){
+    val detail = produceState<FetchRespon<SummaryPokemonRespon>>(initialValue = FetchRespon.Loading){
+        value = viewModel.getPokemonSummary(name = name)
+    }.value
+    when(detail){
+        is FetchRespon.Sucess ->{
+            Log.d("detail",detail.data.height.toString())
+        }
+        else -> {}
+    }
+}
 @Preview(
     showBackground = true,
     showSystemUi = true

@@ -1,7 +1,9 @@
 package com.example.ceritaku_compose.presentasion.mainactivity.component
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -16,24 +18,28 @@ import com.example.ceritaku_compose.presentasion.splashscreen.ui.theme.Ceritakuc
 @Composable
 fun SearchBar (
     modifier: Modifier = Modifier,
-    isShow : Boolean
+    isShow : Boolean,
+    onQueryChange : (String) -> Unit,
 ){
     AnimatedVisibility(
         visible = isShow
     ) {
         TextField(
             value = "",
-            onValueChange = { },
+            onValueChange = onQueryChange,
             modifier = modifier
+                .background(Color.White)
                 .fillMaxWidth(),
             colors = TextFieldDefaults.textFieldColors(
-                disabledIndicatorColor = Color.Transparent,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
+                disabledIndicatorColor = Color.White,
+                focusedIndicatorColor = Color.White,
+                unfocusedIndicatorColor = Color.White,
+
             ),
             placeholder = {
-                Text(text = "Find Pokemon")
-            }
+                Text(text = "search pokemon")
+            },
+            keyboardActions = KeyboardActions()
         )
     }
 }
@@ -44,6 +50,6 @@ fun SearchBar (
 @Composable
 fun SearchPreview(){
     CeritakucomposeTheme {
-        SearchBar(isShow = false)
+//        SearchBar(isShow = false)
     }
 }
