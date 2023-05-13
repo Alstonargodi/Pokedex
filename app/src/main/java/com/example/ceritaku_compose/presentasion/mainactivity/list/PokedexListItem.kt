@@ -31,19 +31,14 @@ import com.example.ceritaku_compose.presentasion.mainactivity.theme.Ceritakucomp
 fun PokedexListItem(
     name : String,
     photoUrl : String,
-    onSelected : (String)->Unit
+    modifier: Modifier
 ) {
-    var data by remember { mutableStateOf("") }
 
-    onSelected(data)
-    Log.d("search",data)
     Card(
-        onClick = { data = name }
+        modifier = modifier
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .padding(5.dp)
         ) {
             val url = photoUrl.removePrefix("https://pokeapi.co/api/v2/pokemon/")
             val idUrl = url.replace("/","")

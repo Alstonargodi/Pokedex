@@ -1,19 +1,12 @@
-package com.example.ceritaku_compose.presentasion.mainactivity
+package com.example.ceritaku_compose.presentasion.mainactivity.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
-import com.example.ceritaku_compose.remote.response.ListPokemonRespon
 import com.example.ceritaku_compose.remote.response.PokemonListResult
 import com.example.ceritaku_compose.remote.response.SummaryPokemonRespon
 import com.example.ceritaku_compose.remote.utils.FetchRespon
 import com.example.ceritaku_compose.repository.RemoteRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MainActivityViewModel(

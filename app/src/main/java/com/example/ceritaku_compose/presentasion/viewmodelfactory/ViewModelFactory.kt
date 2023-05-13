@@ -1,10 +1,9 @@
 package com.example.ceritaku_compose.presentasion.viewmodelfactory
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.ceritaku_compose.injection.Injection
-import com.example.ceritaku_compose.presentasion.mainactivity.MainActivityViewModel
+import com.example.ceritaku_compose.presentasion.mainactivity.viewmodel.MainActivityViewModel
 import com.example.ceritaku_compose.repository.RemoteRepository
 
 class ViewModelFactory (
