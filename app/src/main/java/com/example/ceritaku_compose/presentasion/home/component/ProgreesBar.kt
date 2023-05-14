@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.presentasion.mainactivity.component
+package com.example.ceritaku_compose.presentasion.home.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.wrapContentSize

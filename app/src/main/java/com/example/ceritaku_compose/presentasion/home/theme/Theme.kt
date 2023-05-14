@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.presentasion.mainactivity.theme
+package com.example.ceritaku_compose.presentasion.home.theme
 
 import android.app.Activity
 import android.os.Build

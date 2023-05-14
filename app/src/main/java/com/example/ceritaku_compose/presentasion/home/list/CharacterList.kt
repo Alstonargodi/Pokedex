@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.presentasion.mainactivity.list
+package com.example.ceritaku_compose.presentasion.home.list
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -11,7 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.ceritaku_compose.presentasion.detailpokemon.DetailPokemon
 import com.example.ceritaku_compose.remote.response.PokemonListResult
 
@@ -21,20 +20,18 @@ fun CharacterList(
     pokemonList : List<PokemonListResult>,
     navigateToDetail: (String)->Unit
 ) {
-    var selectedItem by remember { mutableStateOf("") }
-
-    if (selectedItem != ""){
-        DetailPokemon(name = selectedItem)
-    }
-
     Box(modifier = modifier) {
         LazyColumn {
             items(pokemonList.size) { data ->
                 PokedexListItem(
                     name = pokemonList[data].name,
-                    photoUrl = pokemonList[data].url,
+                    photoUrl = (data + 1).toString(),
                     modifier = Modifier
-                        .clickable { navigateToDetail(pokemonList[data].name) }
+                        .clickable {
+                            navigateToDetail(
+                                data.toString(),
+                            )
+                        }
                         .padding(5.dp),
                 )
             }

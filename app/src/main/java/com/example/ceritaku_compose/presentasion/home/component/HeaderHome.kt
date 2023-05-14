@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.presentasion.mainactivity.component
+package com.example.ceritaku_compose.presentasion.home.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.example.ceritaku_compose.R
 
 @Composable
-fun Header(
+fun HeaderHome(
     showSearch : (Boolean) -> Unit
 ){
     var visible by remember { mutableStateOf(false) }

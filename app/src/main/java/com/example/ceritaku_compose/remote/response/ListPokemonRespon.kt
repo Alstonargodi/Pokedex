@@ -1,6 +1,8 @@
 package com.example.ceritaku_compose.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 class ListPokemonRespon(
     @SerializedName("count")
@@ -13,10 +15,11 @@ class ListPokemonRespon(
     var results: List<PokemonListResult>,
 )
 
+@Parcelize
 class PokemonListResult(
     var id : Int = 0,
     @SerializedName("name")
     var name: String,
     @SerializedName("url")
     var url: String,
-)
+): Parcelable

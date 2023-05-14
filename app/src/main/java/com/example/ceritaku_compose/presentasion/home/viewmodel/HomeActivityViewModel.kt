@@ -1,4 +1,4 @@
-package com.example.ceritaku_compose.presentasion.mainactivity.viewmodel
+package com.example.ceritaku_compose.presentasion.home.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -9,7 +9,7 @@ import com.example.ceritaku_compose.remote.utils.FetchRespon
 import com.example.ceritaku_compose.repository.RemoteRepository
 import kotlinx.coroutines.launch
 
-class MainActivityViewModel(
+class HomeActivityViewModel(
     private val remoteRepository: RemoteRepository
 ): ViewModel(){
 
