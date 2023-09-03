@@ -1,6 +1,7 @@
 package com.example.ceritaku_compose.repository
 
 
+import android.util.Log
 import com.example.ceritaku_compose.remote.ApiService.ApiService
 import com.example.ceritaku_compose.remote.response.ListPokemonRespon
 import com.example.ceritaku_compose.remote.response.SummaryPokemonRespon
@@ -21,6 +22,7 @@ class RemoteRepository(
     }
 
     suspend fun getPokemonSummary(name : String): FetchRespon<SummaryPokemonRespon>{
+        Log.d("namapokemon",name)
         val respon = try {
             apiService.getSummaryPokemon(name)
         }catch (e : Exception){

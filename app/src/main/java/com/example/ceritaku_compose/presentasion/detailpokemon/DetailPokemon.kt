@@ -34,9 +34,9 @@ fun DetailPokemon(
     ),
     data : String,
 ){
-    Log.d("detail",data)
+    val page = (data.toInt() + 1).toString()
     val detail = produceState<FetchRespon<SummaryPokemonRespon>>(initialValue = FetchRespon.Loading){
-        value = viewModel.getPokemonSummary(name = data)
+        value = viewModel.getPokemonSummary(name = page)
     }.value
     when(detail){
         is FetchRespon.Loading ->{
@@ -46,15 +46,12 @@ fun DetailPokemon(
         is FetchRespon.Sucess ->{
             ProgreesBar(isShow = false)
             SummaryDetail(
-                data,
+                page,
             )
-            Log.d("detail","berhasil")
+            Log.d("detail",detail.data.name)
         }
         is FetchRespon.Error ->{
             Log.d("detail","error")
-        }
-        else -> {
-
         }
     }
 }
@@ -68,7 +65,7 @@ fun SummaryDetail(
             .fillMaxSize()
     ){
         HeaderDetail()
-        Text(text = "name")
+        Text(text = name)
         Box(
             modifier = Modifier
                 .background(Color.DarkGray)
@@ -90,7 +87,7 @@ fun SummaryDetail(
             ) {
                 Column() {
                     Text(
-                        text = "name",
+                        text = "ability",
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 35.dp),
