@@ -30,7 +30,7 @@ fun CharacterList(
                         .clickable {
                             navigateToDetail(
                                 data.toString(),
-                            )
+                            ) 
                         }
                         .padding(5.dp),
                 )
